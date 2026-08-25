@@ -10,7 +10,7 @@
 <style>
 :root{--ivory:#f4ead8;--ivory2:#fbf5e9;--sage:#727b57;--burg:#7c3241;--rasp:#985463;--gold:#b4935d;--ink:#3f362e;--ease:cubic-bezier(.16,.84,.34,1)}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#F4EADB;font-family:"Zen Kaku Gothic New",system-ui,sans-serif;color:var(--ink);overflow-x:clip}
+html,body{margin:0;min-height:100%;background:#F4EADB;font-family:"Zen Kaku Gothic New",system-ui,sans-serif;color:var(--ink);overflow-x:clip}body{position:relative}
 html.film-locked,html.film-locked body{overflow:hidden!important;overscroll-behavior:none}
 html.film-locked body{position:fixed;inset:0;width:100%;height:100%;touch-action:none}
 button{font:inherit}
@@ -90,7 +90,7 @@ body.text4
 .ch-flourish{display:flex;align-items:center;justify-content:center;gap:.35rem;color:#80825c;margin:.8rem 0 2.1rem;font-size:.75rem}.ch-flourish::before,.ch-flourish::after{content:"";width:42px;height:1px;background:#92936d}
 .welcome-note{font:500 clamp(.58rem,1.15vw,.83rem)/1 "Newsreader",serif;letter-spacing:.3em;text-transform:uppercase;color:#70744c;margin:0 0 1.15rem}
 .welcome-title{font:400 clamp(3rem,8vw,6.5rem)/.85 "Alex Brush",cursive;color:#7c3241;margin:0;white-space:nowrap}
-.welcome-ribbon{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.35rem 0 1.5rem;color:#79805a}.welcome-ribbon i{width:72px;height:1px;background:#8b916b}.welcome-ribbon b{position:relative;display:block;width:42px;height:22px;background:radial-gradient(circle at 50% 45%,#9a5961 0 3px,transparent 4px)}.welcome-ribbon b:before,.welcome-ribbon b:after{content:"";position:absolute;top:3px;width:20px;height:14px;border:1px solid rgba(139,66,76,.55);background:rgba(205,151,156,.38)}.welcome-ribbon b:before{right:20px;border-radius:70% 32% 70% 35%;transform:rotate(15deg)}.welcome-ribbon b:after{left:20px;border-radius:32% 70% 35% 70%;transform:rotate(-15deg)}
+.welcome-ribbon{display:flex;align-items:center;justify-content:center;margin:1.05rem 0 1.25rem}.welcome-ribbon img{display:block;width:min(250px,58vw);height:auto;object-fit:contain}
 .welcome-letter{font:400 clamp(.74rem,1.45vw,1.08rem)/1.55 "Newsreader",Georgia,serif;color:#493833;margin:auto;max-width:590px}
 .welcome-letter p{margin:.55rem 0}
 .count-wrap{margin:1.45rem auto 0}.count-kicker{display:flex;align-items:center;justify-content:center;gap:.65rem;font:500 clamp(.52rem,1vw,.72rem)/1 "Newsreader",serif;letter-spacing:.22em;text-transform:uppercase;color:#73764f}.count-kicker::before,.count-kicker::after{content:"";width:70px;height:1px;background:#9c9c76}
@@ -540,17 +540,11 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:320vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
  .stop-copy time{font-size:.68rem!important;letter-spacing:.13em!important}
 }
-/* One continuous painted story: paired scenes share coordinated artwork. */
-#chapter .painting{background-image:url('assets/backgrounds/continuous/01-opening-welcome.webp')!important;background-position:center top!important;background-size:100% 200%!important}
-.welcome-pin{background:url('assets/backgrounds/continuous/01-opening-welcome.webp') center bottom/100% 200% no-repeat!important}.welcome-art{display:none!important}
-.story-pin{background:url('assets/backgrounds/continuous/02-story-records.webp') center top/100% 200% no-repeat!important}.story-pin:after{background:rgba(248,239,224,.06)!important}
-.records-pin{background:url('assets/backgrounds/continuous/02-story-records.webp') center bottom/100% 200% no-repeat!important}
-.plan-pin{background:url('assets/backgrounds/continuous/03-plan-information.webp') center top/100% 200% no-repeat!important}.plan-art{display:none!important}
-.info-pin{background:url('assets/backgrounds/continuous/03-plan-information.webp') center bottom/100% 200% no-repeat!important}
-.qa-pin{background:url('assets/backgrounds/continuous/04-questions-gallery.webp') center top/100% 200% no-repeat!important}.qa-pin:before{opacity:.12!important}
-.gallery-pin{background:url('assets/backgrounds/continuous/04-questions-gallery.webp') center bottom/100% 200% no-repeat!important}
-.rsvp-chapter{background:url('assets/backgrounds/continuous/05-rsvp-thanks.webp') center top/cover no-repeat!important}
-.rsvp-chapter.rsvp-sent{background:url('assets/backgrounds/continuous/05-rsvp-thanks.webp') center bottom/cover no-repeat!important}
+/* One uninterrupted painting spans the complete invitation. */
+.continuous-master-bg{position:fixed;z-index:0;inset:0;pointer-events:none;background:#fbf4e8 url('assets/backgrounds/continuous/continuous-master.webp') center top/100% auto no-repeat;will-change:background-position}
+#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{position:relative;z-index:1;background:transparent!important}
+#chapter .painting,.welcome-pin,.story-pin,.records-pin,.plan-pin,.info-pin,.qa-pin,.gallery-pin,.rsvp-chapter.rsvp-sent{background:transparent!important}
+.welcome-art,.plan-art{display:none!important}.story-pin:after{background:rgba(248,239,224,.05)!important}.qa-pin:before{opacity:.08!important}
 </style>
 </head>
 <body>
@@ -561,6 +555,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  <button id="skip" type="button">Skip film</button>
 </div>
 <div id="paperCurtain" aria-hidden="true"></div>
+<div class="continuous-master-bg" aria-hidden="true"></div>
 <section id="chapter">
  <div id="hero">
   <div class="painting" id="painting"></div>
@@ -592,7 +587,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
    <div class="ch-flourish" data-welcome=".07">◆</div>
    <p class="welcome-note" data-welcome=".12" data-i18n="noteFromUs">A note from us</p>
    <h2 class="welcome-title" id="welcomeTitle" data-welcome=".18" data-i18n="warmWelcome">A Warm Welcome</h2>
-   <div class="welcome-ribbon" data-welcome=".25"><i></i><b aria-hidden="true"></b><i></i></div>
+   <div class="welcome-ribbon" data-welcome=".25"><img src="assets/chapter-02/welcome-ribbon-painted.webp" alt="" aria-hidden="true"></div>
    <div class="welcome-letter" data-welcome=".33">
     <p data-i18n="welcomeP1">Every step of our journey has brought us to this moment, and we couldn’t be happier to begin our next chapter together.</p>
     <p data-i18n="welcomeP2">To our family and friends: thank you for guiding, supporting, and surrounding us with love every step of the way.</p>
@@ -962,8 +957,10 @@ const rsvpSceneObserver=new IntersectionObserver(entries=>entries.forEach(entry=
 }),{threshold:.16});
 rsvpSceneObserver.observe(rsvpChapter);
 let smoothWelcome=0,smoothPlan=0,smoothStory=0,smoothRecords=0,smoothInfo=0,smoothQa=0,smoothGallery=0,smoothThanks=0,recordsSoonTrigger=null,recordsPanHold=null;
+const continuousMaster=document.querySelector('.continuous-master-bg');
 function sectionProgress(el){const r=el.getBoundingClientRect();return Math.max(0,Math.min(1,-r.top/Math.max(1,el.offsetHeight-innerHeight)))}
 function storyFrame(){
+ const pageTravel=Math.max(1,document.documentElement.scrollHeight-innerHeight),masterProgress=Math.max(0,Math.min(1,scrollY/pageTravel));continuousMaster.style.backgroundPosition=`center ${masterProgress*100}%`;
  const wr=welcomeChapter.getBoundingClientRect();if(wr.bottom>0&&wr.top<innerHeight){const raw=sectionProgress(welcomeChapter);smoothWelcome+= (raw-smoothWelcome)*.1;welcomeArt.style.transform=`scale(1.015) translate3d(0,${-smoothWelcome*8}px,0)`;welcomePieces.forEach(el=>el.classList.toggle('shown',smoothWelcome>=Number(el.dataset.welcome)))}
  const pr=planChapter.getBoundingClientRect();if(pr.bottom>0&&pr.top<innerHeight){const raw=sectionProgress(planChapter);smoothPlan+=(raw-smoothPlan)*.11;const travel=Math.max(0,Math.min(1,(smoothPlan-.05)/.82)),rr=planRail.getBoundingClientRect(),pt=planPath.getPointAtLength(planLen*travel);planStar.style.left=pt.x/100*rr.width+'px';planStar.style.top=pt.y/1000*rr.height+'px';planStar.style.opacity=smoothPlan>.045&&smoothPlan<.92?1:0;planStar.style.transform=`translate(-50%,-50%) rotate(${travel*540}deg)`;planDots.forEach(d=>d.el.style.opacity=d.t<=travel?.88:0);planStops.forEach(s=>s.classList.toggle('shown',travel>=Number(s.dataset.at)-.02))}
   const sr=storyChapter.getBoundingClientRect();if(sr.bottom>0&&sr.top<innerHeight){const raw=sectionProgress(storyChapter);smoothStory+=(raw-smoothStory)*.1;const joinRaw=Math.max(0,Math.min(1,(smoothStory-.08)/.48)),join=joinRaw*joinRaw*(3-2*joinRaw),draw=Math.max(0,Math.min(1,(smoothStory-.58)/.2));storyArt.style.transform=`scale(${1.025-smoothStory*.018}) translate3d(0,${-smoothStory*9}px,0)`;storyAssembly.classList.toggle('assembled',join>.02);heartComplete.style.animation='none';heartImages[0].style.transform=`translate(${-(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*-8}deg)`;heartImages[1].style.transform=`translate(${(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*8}deg)`;heartImages.forEach(el=>el.style.opacity=.18+join*.82);heartUnderlays.forEach(el=>el.style.opacity=join);heartHalves.forEach(el=>{el.style.strokeDashoffset=3000*(1-draw);el.style.opacity=draw*.9});const beat=draw>.985?1+Math.sin(performance.now()/175)*.012+Math.sin(performance.now()/88)*.004:1;heartComplete.style.transform=`scale(${(.88+join*.12)*beat})`;storyPieces.forEach(el=>el.classList.toggle('shown',smoothStory>=Number(el.dataset.story)))}
