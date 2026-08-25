@@ -469,6 +469,46 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
  .rsvp-thanks-card h2{font-size:clamp(2.5rem,12vw,3.7rem)}.rsvp-thanks-card p{font-size:clamp(.72rem,3.3vw,.92rem);line-height:1.42}
  .rsvp-thanks-card .hm-monogram{width:58px;margin-top:.8rem}
 }
+/* Chapter 04 — minimal painted eternity card. The portraits remain separate objects. */
+#storyChapter{height:400vh;background:#a85f70;color:#4d3433}
+.story-pin{background:
+ radial-gradient(circle at 18% 13%,rgba(255,228,219,.24),transparent 31%),
+ radial-gradient(circle at 82% 84%,rgba(91,29,46,.18),transparent 35%),
+ linear-gradient(135deg,#a86172 0%,#985164 48%,#ad6877 100%)}
+.story-pin:before{opacity:.18;background:
+ repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 5px),
+ repeating-linear-gradient(90deg,rgba(83,27,42,.04) 0 1px,transparent 1px 7px)}
+.story-infinity{position:absolute;z-index:0;left:50%;top:51%;width:min(94vw,790px);height:min(35vh,300px);transform:translate(-50%,-50%) rotate(-1deg);opacity:.86;filter:drop-shadow(0 5px 5px rgba(64,21,34,.12));pointer-events:none}
+.story-infinity:before,.story-infinity:after{content:"";position:absolute;top:12%;width:54%;height:72%;border:clamp(5px,.7vw,8px) solid #7a2e41;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(249,219,204,.24),0 0 0 1px rgba(89,25,40,.12)}
+.story-infinity:before{left:3%;transform:rotate(23deg)}.story-infinity:after{right:3%;transform:rotate(-23deg)}
+.story-art{inset:4vh 0 auto;margin-inline:auto;width:min(88vw,620px);height:92vh;background:
+ linear-gradient(rgba(251,243,226,.94),rgba(245,232,208,.96)),
+ radial-gradient(circle at 20% 12%,rgba(183,142,100,.10),transparent 24%);border:1px solid rgba(109,43,57,.78);outline:1px solid rgba(109,43,57,.46);outline-offset:-11px;border-radius:2px;box-shadow:0 24px 55px rgba(57,19,30,.26),inset 0 0 70px rgba(157,114,74,.08);clip-path:polygon(.7% .3%,8% .7%,16% .2%,25% .6%,36% .2%,48% .55%,59% .15%,71% .55%,82% .2%,92% .65%,99.3% .25%,99.7% 9%,99.2% 20%,99.7% 31%,99.3% 43%,99.8% 56%,99.3% 68%,99.7% 80%,99.2% 91%,99.6% 99.5%,91% 99.2%,81% 99.7%,70% 99.3%,58% 99.8%,47% 99.3%,35% 99.7%,24% 99.2%,13% 99.7%,.5% 99.3%,.2% 88%,.7% 77%,.2% 65%,.6% 53%,.15% 40%,.7% 28%,.2% 16%)}
+.story-art:before,.story-art:after{content:"";position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff8e9 0 14%,#d8bb88 31%,#8f6a39 58%,transparent 62%);filter:drop-shadow(0 3px 3px rgba(69,40,27,.2));opacity:.72}
+.story-art:before{width:18px;height:18px;left:6%;top:7%}.story-art:after{width:13px;height:13px;right:7%;bottom:8%}
+.story-shade{z-index:2;background:linear-gradient(180deg,rgba(255,248,235,.12),transparent 22%,transparent 78%,rgba(111,44,57,.04))}
+#storyChapter .story-head{z-index:4;top:10.5%!important;width:min(76vw,520px)!important}
+#storyChapter .story-head .roman{margin:0 0 .35rem;color:#8e7350;font-size:clamp(.52rem,1.2vw,.68rem)}
+#storyChapter .story-head h2{font-size:clamp(3rem,6.3vw,5rem)!important;line-height:.83!important;margin:.1rem 0 .38rem!important}
+#storyChapter .story-head p:last-child{margin:.15rem auto 0;max-width:90%;color:#69524a;font-size:clamp(.72rem,1.4vw,.94rem);line-height:1.35}
+.story-assembly{z-index:4;top:50%;width:min(76vw,530px);height:auto;aspect-ratio:1000/650;transform:translate(-50%,-47%)}
+.heart-underlay{fill:#eee1c8;opacity:0}.story-heart-media{filter:drop-shadow(0 13px 19px rgba(67,38,31,.16))}
+.heart-image.htoo{z-index:1}.heart-image.may{z-index:2}.heart-half{stroke:#7c3241;stroke-width:5.5;filter:drop-shadow(0 1px 0 rgba(255,244,223,.7))}
+.story-assembly .story-monogram{top:64%;width:min(42vw,340px);min-height:74px;padding:.1rem 3.8rem .35rem;font-size:clamp(1.7rem,3.1vw,2.5rem)}
+#storyChapter .story-note{z-index:4;bottom:9.5%;width:min(72vw,470px);padding:0;background:none;border:0;box-shadow:none;color:#6e3943;font:italic 400 clamp(.76rem,1.5vw,1rem)/1.48 "Newsreader",Georgia,serif;letter-spacing:.01em;text-shadow:none;filter:none;mix-blend-mode:multiply;overflow-wrap:anywhere}
+#storyChapter .story-note:before{display:none}
+@media(max-width:640px){
+ #storyChapter{height:350vh}
+ .story-art{inset:3.5vh 0 auto;width:91vw;height:93vh;outline-offset:-8px}
+ .story-infinity{width:112vw;height:25vh;top:51%;opacity:.72}
+ .story-infinity:before,.story-infinity:after{border-width:5px}
+ #storyChapter .story-head{top:11.5%!important;width:78vw!important}
+ #storyChapter .story-head h2{font-size:clamp(2.75rem,13.5vw,3.7rem)!important}
+ #storyChapter .story-head p:last-child{font-size:clamp(.64rem,2.8vw,.77rem)}
+ .story-assembly{top:49%;width:80vw}
+ .story-assembly .story-monogram{top:65%;width:62vw;min-height:59px;padding:.05rem 2.8rem .25rem;font-size:clamp(1.35rem,6.5vw,1.75rem)}
+ #storyChapter .story-note{bottom:9.5%;width:75vw;font-size:clamp(.68rem,3.15vw,.82rem);line-height:1.42}
+}
 </style>
 </head>
 <body>
@@ -543,10 +583,10 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 </section>
 <section id="storyChapter" aria-labelledby="storyTitle">
  <div class="story-pin">
-  <div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
+  <div class="story-infinity" aria-hidden="true"></div><div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
   <header class="story-head"><p class="roman" data-story=".08" data-i18n="chapter04">Chapter 04</p><h2 id="storyTitle" data-story=".14" data-i18n="oneStory">One Story</h2><p data-story=".22" data-i18n="storyLine">Two hearts, one promise, one beautiful story.</p></header>
-  <div class="story-assembly" id="storyAssembly"><div class="heart-complete"><svg class="story-heart-media" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Painted portraits of Htoo and May forming one heart"><defs><path id="heartLeftGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120"/><path id="heartRightGeometry" d="M500 120 C645 18 890 75 880 260 C870 430 650 535 500 610"/><clipPath id="htooHeartHalf"><use href="#heartLeftGeometry"/></clipPath><clipPath id="mayHeartHalf"><use href="#heartRightGeometry"/></clipPath></defs><use class="heart-underlay" href="#heartLeftGeometry"/><use class="heart-underlay" href="#heartRightGeometry"/><g class="heart-image htoo" clip-path="url(#htooHeartHalf)"><image href="assets/photos/htoo.jpg" x="145" y="-35" width="530" height="720" preserveAspectRatio="xMidYMid slice"/></g><g class="heart-image may" clip-path="url(#mayHeartHalf)"><image href="assets/photos/may.jpg" x="315" y="-35" width="530" height="720" preserveAspectRatio="xMidYMid slice"/></g><use class="heart-half heart-left" href="#heartLeftGeometry"/><use class="heart-half heart-right" href="#heartRightGeometry"/></svg><div class="story-monogram" data-story=".48">Htoo &amp; May</div></div></div>
-  <div class="story-note" data-story=".66"><span data-i18n="storyCopy">What began as two separate journeys became a life we now choose to write together—one quiet moment, one adventure, and one page at a time.</span></div>
+  <div class="story-assembly" id="storyAssembly"><div class="heart-complete"><svg class="story-heart-media" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Painted illustrations of Htoo and May moving together to form one heart"><defs><path id="storyHeartGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120 C645 18 890 75 880 260 C870 430 650 535 500 610 Z"/><path id="heartLeftGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120"/><path id="heartRightGeometry" d="M500 120 C645 18 890 75 880 260 C870 430 650 535 500 610"/><clipPath id="storyHeartClip"><use href="#storyHeartGeometry"/></clipPath></defs><use class="heart-underlay" href="#storyHeartGeometry"/><g class="heart-image htoo" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/htoo-illustration.png" x="58" y="72" width="595" height="870" preserveAspectRatio="xMidYMin meet"/></g><g class="heart-image may" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/may-illustration.png" x="350" y="58" width="590" height="885" preserveAspectRatio="xMidYMin meet"/></g><use class="heart-half heart-left" href="#heartLeftGeometry"/><use class="heart-half heart-right" href="#heartRightGeometry"/></svg><div class="story-monogram" data-story=".79">Htoo &amp; May</div></div></div>
+  <div class="story-note" data-story=".84"><span data-i18n="storyCopy">What began as two separate journeys became a life we now choose to write together—one quiet moment, one adventure, and one page at a time.</span></div>
  </div>
 </section>
 <section id="recordsChapter" aria-labelledby="recordsTitle">
@@ -887,7 +927,7 @@ function sectionProgress(el){const r=el.getBoundingClientRect();return Math.max(
 function storyFrame(){
  const wr=welcomeChapter.getBoundingClientRect();if(wr.bottom>0&&wr.top<innerHeight){const raw=sectionProgress(welcomeChapter);smoothWelcome+= (raw-smoothWelcome)*.1;welcomeArt.style.transform=`scale(1.015) translate3d(0,${-smoothWelcome*8}px,0)`;welcomePieces.forEach(el=>el.classList.toggle('shown',smoothWelcome>=Number(el.dataset.welcome)))}
  const pr=planChapter.getBoundingClientRect();if(pr.bottom>0&&pr.top<innerHeight){const raw=sectionProgress(planChapter);smoothPlan+=(raw-smoothPlan)*.11;const travel=Math.max(0,Math.min(1,(smoothPlan-.05)/.82)),rr=planRail.getBoundingClientRect(),pt=planPath.getPointAtLength(planLen*travel);planStar.style.left=pt.x/100*rr.width+'px';planStar.style.top=pt.y/1000*rr.height+'px';planStar.style.opacity=smoothPlan>.045&&smoothPlan<.92?1:0;planStar.style.transform=`translate(-50%,-50%) rotate(${travel*540}deg)`;planDots.forEach(d=>d.el.style.opacity=d.t<=travel?.88:0);planStops.forEach(s=>s.classList.toggle('shown',travel>=Number(s.dataset.at)-.02))}
- const sr=storyChapter.getBoundingClientRect();if(sr.bottom>0&&sr.top<innerHeight){const raw=sectionProgress(storyChapter);smoothStory+=(raw-smoothStory)*.1;const joinRaw=Math.max(0,Math.min(1,(smoothStory-.08)/.48)),join=joinRaw*joinRaw*(3-2*joinRaw),draw=Math.max(0,Math.min(1,(smoothStory-.58)/.2));storyArt.style.transform=`scale(${1.025-smoothStory*.018}) translate3d(0,${-smoothStory*9}px,0)`;storyAssembly.classList.toggle('assembled',join>.02);heartComplete.style.animation='none';heartImages[0].style.transform=`translate(${-(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*-8}deg)`;heartImages[1].style.transform=`translate(${(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*8}deg)`;heartImages.forEach(el=>el.style.opacity=.18+join*.82);heartUnderlays.forEach(el=>el.style.opacity=join);heartHalves.forEach(el=>{el.style.strokeDashoffset=3000*(1-draw);el.style.opacity=draw*.9});const beat=join>.985?1+Math.sin(performance.now()/175)*.012+Math.sin(performance.now()/88)*.004:1;heartComplete.style.transform=`scale(${(.88+join*.12)*beat})`;storyPieces.forEach(el=>el.classList.toggle('shown',smoothStory>=Number(el.dataset.story)))}
+  const sr=storyChapter.getBoundingClientRect();if(sr.bottom>0&&sr.top<innerHeight){const raw=sectionProgress(storyChapter);smoothStory+=(raw-smoothStory)*.1;const joinRaw=Math.max(0,Math.min(1,(smoothStory-.08)/.48)),join=joinRaw*joinRaw*(3-2*joinRaw),draw=Math.max(0,Math.min(1,(smoothStory-.58)/.2));storyArt.style.transform=`scale(${1.025-smoothStory*.018}) translate3d(0,${-smoothStory*9}px,0)`;storyAssembly.classList.toggle('assembled',join>.02);heartComplete.style.animation='none';heartImages[0].style.transform=`translate(${-(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*-8}deg)`;heartImages[1].style.transform=`translate(${(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*8}deg)`;heartImages.forEach(el=>el.style.opacity=.18+join*.82);heartUnderlays.forEach(el=>el.style.opacity=join);heartHalves.forEach(el=>{el.style.strokeDashoffset=3000*(1-draw);el.style.opacity=draw*.9});const beat=draw>.985?1+Math.sin(performance.now()/175)*.012+Math.sin(performance.now()/88)*.004:1;heartComplete.style.transform=`scale(${(.88+join*.12)*beat})`;storyPieces.forEach(el=>el.classList.toggle('shown',smoothStory>=Number(el.dataset.story)))}
  const rr=recordsChapter.getBoundingClientRect();if(rr.bottom>0&&rr.top<innerHeight){const raw=sectionProgress(recordsChapter);smoothRecords+=(raw-smoothRecords)*.13;const step=Math.min(innerWidth*.46,400),travel=(records.length-1)*step+innerWidth*.48,pan=innerWidth*.72-smoothRecords*travel;records.forEach((card,i)=>{const x=pan+i*step,k=Math.max(-1.8,Math.min(1.8,(x-innerWidth*.5)/(innerWidth*.5))),near=Math.max(0,1-Math.abs(k)),arc=-68*(1-k*k),scale=.76+near*.5,pull=Math.max(0,Math.min(1,(near-.86)/.14));card.style.transform=`translate3d(${x}px,${arc-near*18}px,${near*35}px) rotate(${k*10}deg) scale(${scale})`;card.style.opacity=Math.max(0,1.15-Math.abs(k)*.5);card.style.zIndex=String(Math.round(near*30));const vinyl=card.querySelector('.record-vinyl');if(vinyl)vinyl.style.transform=`translate(${pull*62}%,-50%) rotate(${smoothRecords*1260+i*24}deg)`});recordsProgress.style.width=(smoothRecords*100)+'%'}
  const ir=informationChapter.getBoundingClientRect();if(ir.bottom>0&&ir.top<innerHeight){const raw=sectionProgress(informationChapter);smoothInfo+=(raw-smoothInfo)*.15;infoObjects.forEach(item=>item.classList.remove('auto-focus'));if(infoMode!=='manual'&&infoSequenceReady){if(smoothInfo>=.34&&smoothInfo<.91){const slot=(smoothInfo-.34)/.11,index=Math.min(4,Math.floor(slot)),within=slot-Math.floor(slot),key=infoObjects[index].dataset.info;if(within<.76){if(lastAutoInfo!==key||infoMode!=='auto'){lastAutoInfo=key;openInfo(key,infoObjects[index],true)}}else if(infoMode==='auto')closeInfo(false)}else if(infoMode==='auto')closeInfo(false)}}else if(infoMode==='auto')closeInfo(false);
  const qr=qaChapter.getBoundingClientRect();if(qr.bottom>0&&qr.top<innerHeight){const raw=sectionProgress(qaChapter);smoothQa+=(raw-smoothQa)*.14;const next=Math.max(0,Math.min(8,Math.floor(smoothQa*9)));if(next!==activeQa)renderQna(next)}
