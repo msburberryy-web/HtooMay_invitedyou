@@ -1,0 +1,54 @@
+name: Publish live and preview sites
+
+on:
+  push:
+    branches:
+      - preview
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect approved live site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: public
+
+      - name: Collect review version
+        uses: actions/checkout@v4
+        with:
+          ref: preview
+          path: review
+
+      - name: Add review version beneath /preview/
+        shell: bash
+        run: |
+          mkdir -p public/preview
+          rsync -a --delete --exclude='.git' --exclude='.github' review/ public/preview/
+          rm -rf public/.git public/.github
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload combined site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
