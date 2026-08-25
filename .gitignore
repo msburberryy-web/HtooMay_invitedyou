@@ -1,0 +1,8 @@
+# Local project references and development-only files
+sources/
+tools/
+AGENTS.md
+
+# Operating-system files
+.DS_Store
+Thumbs.db
