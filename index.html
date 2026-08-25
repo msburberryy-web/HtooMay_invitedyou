@@ -540,6 +540,18 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:320vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
  .stop-copy time{font-size:.68rem!important;letter-spacing:.13em!important}
 }
+/* Continuous painted-page bridges: zero layout height, so pacing stays unchanged. */
+.chapter-bridge{position:relative;z-index:34;height:0;pointer-events:none;isolation:isolate}
+.chapter-bridge:before{content:"";position:absolute;z-index:-1;left:0;top:0;width:100%;height:clamp(260px,58svh,620px);transform:translateY(-50%);background:linear-gradient(180deg,transparent 0%,rgba(249,242,228,.58) 36%,rgba(239,235,214,.64) 62%,transparent 100%);filter:blur(1px)}
+.chapter-bridge img{position:absolute;left:50%;top:0;width:min(94vw,1080px);height:clamp(390px,76svh,760px);transform:translate(-50%,-50%);object-fit:fill;opacity:.7;filter:saturate(.84) contrast(.94);user-select:none}
+.chapter-bridge.bridge-flip img{transform:translate(-50%,-50%) scaleX(-1)}
+.chapter-bridge.bridge-sage:before{background:linear-gradient(180deg,transparent 0%,rgba(247,240,226,.5) 30%,rgba(226,229,207,.7) 64%,transparent 100%)}
+.chapter-bridge.bridge-blush:before{background:linear-gradient(180deg,transparent 0%,rgba(249,240,226,.48) 30%,rgba(236,218,211,.62) 64%,transparent 100%)}
+@media(max-width:700px){
+ .chapter-bridge:before{height:48svh;background:linear-gradient(180deg,transparent,rgba(248,241,226,.62) 40%,rgba(237,231,211,.64) 63%,transparent)}
+ .chapter-bridge img{width:112vw;height:58svh;opacity:.6;object-fit:fill}
+}
+@media(prefers-reduced-motion:reduce){.chapter-bridge img{opacity:.46}}
 </style>
 </head>
 <body>
@@ -573,6 +585,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 <nav class="site-lang" aria-label="Language and RSVP"><button class="on" data-lang="en">EN</button><button data-lang="ja">日本語</button><button data-lang="my">မြန်မာ</button><a class="site-rsvp" href="#rsvpChapter">RSVP</a></nav>
+<div class="chapter-bridge bridge-blush" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="welcomeChapter" aria-labelledby="welcomeTitle">
  <div class="welcome-pin">
   <div class="welcome-art" aria-hidden="true"></div>
@@ -595,6 +608,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 
+<div class="chapter-bridge bridge-flip bridge-blush" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="storyChapter" aria-labelledby="storyTitle">
  <div class="story-pin">
   <div class="story-infinity" aria-hidden="true"></div><div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
@@ -604,6 +618,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
   <div class="story-note" data-story=".84"><span data-i18n="storyCopy">What began as two separate journeys became a life we now choose to write together—one quiet moment, one adventure, and one page at a time.</span></div>
  </div>
 </section>
+<div class="chapter-bridge" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="recordsChapter" aria-labelledby="recordsTitle">
  <div class="records-pin">
   <header class="records-head"><p class="roman" data-i18n="chapter04">Chapter 04</p><h2 id="recordsTitle"><span data-i18n="recordsLead">The Chapters of</span> <em data-i18n="recordsCalligraphy">Our Story</em></h2><p data-i18n="recordsIntro">Every record holds a moment that brought us here.</p></header>
@@ -623,6 +638,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
   </div>
  </div>
 </section>
+<div class="chapter-bridge bridge-flip bridge-sage" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="planChapter" aria-labelledby="planTitle">
  <div class="plan-pin">
   <div class="plan-art" aria-hidden="true"></div>
@@ -640,6 +656,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
   </div>
  </div>
 </section>
+<div class="chapter-bridge bridge-sage" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="informationChapter" aria-labelledby="informationTitle">
  <div class="info-pin">
   <div class="info-desk">
@@ -655,6 +672,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
   </div>
  </div>
 </section>
+<div class="chapter-bridge bridge-flip" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="qaChapter" aria-labelledby="qaTitle">
  <div class="qa-pin">
   <header class="qa-head"><p class="roman" data-i18n="chapter07">Chapter 07</p><h2 id="qaTitle" data-i18n="qaTitle">Questions &amp; Answers</h2><p class="qa-script">Htoo &amp; May</p></header>
@@ -666,6 +684,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
   <p class="qa-hint" data-i18n="qaHint">Scroll to move through the questions</p>
  </div>
 </section>
+<div class="chapter-bridge bridge-blush" aria-hidden="true"><img src="assets/transitions/continuous-ribbon-botanical.png" alt=""></div>
 <section id="galleryChapter" aria-labelledby="galleryTitle">
  <div class="gallery-pin">
   <header class="gallery-head"><p class="roman" data-i18n="chapter08">Chapter 08</p><h2 id="galleryTitle" data-i18n="galleryTitle">Our Gallery</h2><p class="gallery-script" data-i18n="galleryScript">Moments we’ll treasure forever</p></header>
