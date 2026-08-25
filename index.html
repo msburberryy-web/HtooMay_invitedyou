@@ -505,16 +505,16 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 }
 /* Preserve the physical postcard ratio; long form content scrolls inside the paper. */
 .rsvp-card{width:min(92vw,calc(78svh * .75),607px)!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:3/4;overflow:hidden!important;padding:clamp(2.2rem,4vw,3.15rem) clamp(1.55rem,4.4vw,3rem) clamp(1.7rem,3vw,2.4rem)!important}
-.rsvp-step.on{max-height:calc((min(92vw,calc(78svh * .75),607px) * 1.3333) - 155px);overflow-y:auto;overscroll-behavior:contain;padding:0 .42rem .8rem;scrollbar-width:thin;scrollbar-color:rgba(118,47,62,.28) transparent}
+.rsvp-step.on{max-height:calc((min(92vw,calc(78svh * .75),607px) * 1.3333) - 178px);overflow-y:auto;overscroll-behavior:contain;padding:0 .42rem 1rem;scrollbar-width:thin;scrollbar-color:rgba(118,47,62,.28) transparent}
 .rsvp-step.on::-webkit-scrollbar{width:4px}.rsvp-step.on::-webkit-scrollbar-thumb{background:rgba(118,47,62,.28);border-radius:4px}
 .rsvp-card[data-phase="3"]{min-height:0!important;padding-bottom:1.8rem!important}.rsvp-card[data-phase="3"] .rsvp-field textarea{min-height:68px}.rsvp-card[data-phase="3"] .rsvp-review{padding:.38rem 0;font-size:.78rem;line-height:1.25}.rsvp-card[data-phase="3"] .rsvp-nav{margin-top:.9rem!important}
 .rsvp-thanks-card{width:min(88vw,calc(74svh * .75),540px)!important;aspect-ratio:3/4!important;min-height:0!important;max-height:none!important;padding:clamp(5.8rem,11vw,7.5rem) clamp(3.1rem,8vw,5.4rem) clamp(4rem,8vw,5.6rem)!important;background:none!important;border:0!important;box-shadow:none!important;overflow:visible!important}
 .rsvp-thanks-card:before{display:none!important}.rsvp-thanks-card .thanks-panel-art{width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 20px 28px rgba(65,41,34,.18))}.rsvp-thanks-card h2{font-size:clamp(3rem,7vw,4.8rem);margin-bottom:1rem}.rsvp-thanks-card p{max-width:310px;font-size:clamp(.85rem,1.5vw,1.08rem);line-height:1.48}.rsvp-thanks-card .hm-monogram{width:clamp(58px,8vw,76px);margin-top:1rem}
 @media(max-width:700px){
  .rsvp-card{width:min(92vw,calc(76svh * .75),430px)!important;padding:2.15rem 1.35rem 1.55rem!important}
- .rsvp-step.on{max-height:calc((min(92vw,calc(76svh * .75),430px) * 1.3333) - 132px);padding-inline:.2rem}
+ .rsvp-step.on{max-height:calc((min(92vw,calc(76svh * .75),430px) * 1.3333) - 155px);padding-inline:1rem}
  .rsvp-letter-head{min-height:68px!important}.postcard-progress{margin:.2rem auto .85rem!important}.rsvp-step h3{margin:.25rem 0 1rem;font-size:1.45rem}.rsvp-grid{gap:.58rem}.rsvp-field input,.rsvp-field textarea,.rsvp-field select{padding:.55rem 0}.rsvp-nav{margin-top:1rem}
- .rsvp-card[data-phase="3"] .rsvp-review{grid-template-columns:88px minmax(0,1fr)!important;gap:.12rem .45rem;padding:.3rem 0}.rsvp-card[data-phase="3"] .rsvp-review b{font-size:.62rem}.rsvp-card[data-phase="3"] .rsvp-review span{font-size:.72rem}
+ .rsvp-card[data-phase="3"] .rsvp-review{grid-template-columns:76px minmax(0,1fr)!important;gap:.12rem .55rem;padding:.3rem 0}.rsvp-card[data-phase="3"] .rsvp-review b{font-size:.6rem}.rsvp-card[data-phase="3"] .rsvp-review span{min-width:0;font-size:.7rem;overflow-wrap:anywhere}.rsvp-card[data-phase="3"] .rsvp-status{max-width:100%;margin:.65rem auto 0;padding:0 .25rem;font-size:.78rem;line-height:1.35}.rsvp-card[data-phase="3"] .rsvp-nav{gap:.45rem;margin-top:.75rem!important;padding:0 .15rem .7rem!important}.rsvp-card[data-phase="3"] .rsvp-btn{min-width:0;padding:.72rem .85rem;font-size:.56rem}
  .rsvp-thanks-card{width:min(88vw,calc(72svh * .75),390px)!important;aspect-ratio:3/4!important;padding:5.4rem 2.45rem 3.7rem!important}.rsvp-thanks-card h2{font-size:clamp(2.8rem,12vw,3.8rem)}.rsvp-thanks-card p{font-size:clamp(.78rem,3.25vw,.92rem)}
 }
 </style>
@@ -572,27 +572,10 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
  </div>
 </section>
 
-<section id="planChapter" aria-labelledby="planTitle">
- <div class="plan-pin">
-  <div class="plan-art" aria-hidden="true"></div>
-  <header class="plan-head"><p class="roman" data-i18n="chapter03">Chapter 03</p><h2 id="planTitle" data-i18n="thePlan">The Plan</h2><p>Friday · 16 October 2026</p></header>
-  <div class="plan-rail"><svg viewBox="0 0 100 1000" preserveAspectRatio="none"><path class="plan-ghost" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/><path class="plan-path" id="planPath" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/></svg></div>
-  <div class="plan-trail" id="planTrail"></div><div class="plan-star" id="planStar"></div>
-  <div class="plan-items">
-   <article class="plan-stop" data-at=".12" style="--x:19%;--y:22%;--tilt:-3deg"><img src="assets/chapter-03/shuttle-bus.png" alt="Painted shuttle bus"><div class="stop-copy"><time>12:10</time><b data-i18n="busDeparts">Bus departs</b><small data-i18n="busSub">Departure time varies by station</small></div></article>
-   <article class="plan-stop left" data-at=".27" style="--x:70%;--y:29%;--tilt:2deg"><img src="assets/chapter-03/welcome-sign.png" alt="Painted welcome sign"><div class="stop-copy"><time>13:30</time><b data-i18n="reception">Reception opens</b></div></article>
-   <article class="plan-stop" data-at=".40" style="--x:28%;--y:41%;--tilt:-2deg"><img src="assets/chapter-03/rings.png" alt="Painted wedding rings"><div class="stop-copy"><time>14:30</time><b data-i18n="ceremony">Ceremony begins</b></div></article>
-   <article class="plan-stop left" data-at=".53" style="--x:69%;--y:53%;--tilt:2deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
-   <article class="plan-stop" data-at=".65" style="--x:27%;--y:65%;--tilt:-1deg"><img src="assets/chapter-03/dinner-party.png" alt="Painted wedding party"><div class="stop-copy"><time>16:00</time><b data-i18n="dinner">Dinner party</b></div></article>
-   <article class="plan-stop left" data-at=".77" style="--x:70%;--y:77%;--tilt:2deg"><img src="assets/chapter-03/gramophone.png" alt="Painted gramophone"><div class="stop-copy"><time>18:30</time><b data-i18n="afterParty">After party</b></div></article>
-   <article class="plan-stop" data-at=".90" style="--x:24%;--y:90%;--tilt:-2deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
-  </div>
- </div>
-</section>
 <section id="storyChapter" aria-labelledby="storyTitle">
  <div class="story-pin">
   <div class="story-infinity" aria-hidden="true"></div><div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
-  <header class="story-head"><p class="roman" data-story=".08" data-i18n="chapter04">Chapter 04</p><h2 id="storyTitle" data-story=".14" data-i18n="oneStory">One Story</h2><p data-story=".22" data-i18n="storyLine">Two hearts, one promise, one beautiful story.</p></header>
+  <header class="story-head"><p class="roman" data-story=".08" data-i18n="chapter03">Chapter 03</p><h2 id="storyTitle" data-story=".14" data-i18n="oneStory">One Story</h2><p data-story=".22" data-i18n="storyLine">Two hearts, one promise, one beautiful story.</p></header>
   <div class="story-assembly" id="storyAssembly"><div class="heart-complete"><svg class="story-heart-media" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Painted illustrations of Htoo and May moving together to form one heart"><defs><path id="storyHeartGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120 C645 18 890 75 880 260 C870 430 650 535 500 610 Z"/><path id="heartLeftGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120"/><path id="heartRightGeometry" d="M500 120 C645 18 890 75 880 260 C870 430 650 535 500 610"/><clipPath id="storyHeartClip"><use href="#storyHeartGeometry"/></clipPath></defs><use class="heart-underlay" href="#storyHeartGeometry"/><g class="heart-image htoo" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/htoo-illustration.png" x="58" y="72" width="595" height="870" preserveAspectRatio="xMidYMin meet"/></g><g class="heart-image may" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/may-illustration.png" x="350" y="58" width="590" height="885" preserveAspectRatio="xMidYMin meet"/></g><use class="heart-half heart-left" href="#heartLeftGeometry"/><use class="heart-half heart-right" href="#heartRightGeometry"/></svg><div class="story-monogram" data-story=".79">Htoo &amp; May</div></div></div>
   <img class="story-ornament" src="assets/chapter-04/olive-pearls-ornament.png" alt="" aria-hidden="true" data-story=".81">
   <div class="story-note" data-story=".84"><span data-i18n="storyCopy">What began as two separate journeys became a life we now choose to write together—one quiet moment, one adventure, and one page at a time.</span></div>
@@ -600,7 +583,7 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 </section>
 <section id="recordsChapter" aria-labelledby="recordsTitle">
  <div class="records-pin">
-  <header class="records-head"><p class="roman" data-i18n="chapter05">Chapter 05</p><h2 id="recordsTitle"><span data-i18n="recordsLead">The Chapters of</span> <em data-i18n="recordsCalligraphy">Our Story</em></h2><p data-i18n="recordsIntro">Every record holds a moment that brought us here.</p></header>
+  <header class="records-head"><p class="roman" data-i18n="chapter04">Chapter 04</p><h2 id="recordsTitle"><span data-i18n="recordsLead">The Chapters of</span> <em data-i18n="recordsCalligraphy">Our Story</em></h2><p data-i18n="recordsIntro">Every record holds a moment that brought us here.</p></header>
   <div class="records-stage">
    <article class="story-record" style="--cover-a:#819070;--cover-b:#4e5f4b;--label:#c08b91"><div class="record-inner"><div class="record-vinyl"></div><div class="record-cover"><img src="assets/photos/story-first-meet.jpg" alt="Htoo and May when they first met"><span>First<br>hello</span></div><div class="record-caption" data-i18n="firstMeet">First meeting</div></div></article>
    <article class="story-record" style="--cover-a:#a76c74;--cover-b:#713d49;--label:#d4ae7f"><div class="record-inner"><div class="record-vinyl"></div><div class="record-cover"><img src="assets/photos/story-first-date.jpg" alt="Htoo and May on their first date"><span>Our first<br>date</span></div><div class="record-caption" data-i18n="firstDate">First date</div></div></article>
@@ -614,6 +597,23 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
   <div class="records-progress" aria-hidden="true"><i id="recordsProgress"></i></div>
   <div class="records-soon" id="recordsSoon" aria-hidden="true">
    <div class="soon-vinyl"><div class="soon-vinyl-grooves"></div><div class="soon-label"><div class="soon-copy"><small>Htoo &amp; May</small><span class="soon-flower">❦</span><strong>Coming Soon</strong><i></i><p>The next chapter is<br>still being written</p><b>HM</b></div></div></div>
+  </div>
+ </div>
+</section>
+<section id="planChapter" aria-labelledby="planTitle">
+ <div class="plan-pin">
+  <div class="plan-art" aria-hidden="true"></div>
+  <header class="plan-head"><p class="roman" data-i18n="chapter05">Chapter 05</p><h2 id="planTitle" data-i18n="thePlan">The Plan</h2><p>Friday · 16 October 2026</p></header>
+  <div class="plan-rail"><svg viewBox="0 0 100 1000" preserveAspectRatio="none"><path class="plan-ghost" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/><path class="plan-path" id="planPath" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/></svg></div>
+  <div class="plan-trail" id="planTrail"></div><div class="plan-star" id="planStar"></div>
+  <div class="plan-items">
+   <article class="plan-stop" data-at=".12" style="--x:19%;--y:22%;--tilt:-3deg"><img src="assets/chapter-03/shuttle-bus.png" alt="Painted shuttle bus"><div class="stop-copy"><time>12:10</time><b data-i18n="busDeparts">Bus departs</b><small data-i18n="busSub">Departure time varies by station</small></div></article>
+   <article class="plan-stop left" data-at=".27" style="--x:70%;--y:29%;--tilt:2deg"><img src="assets/chapter-03/welcome-sign.png" alt="Painted welcome sign"><div class="stop-copy"><time>13:30</time><b data-i18n="reception">Reception opens</b></div></article>
+   <article class="plan-stop" data-at=".40" style="--x:28%;--y:41%;--tilt:-2deg"><img src="assets/chapter-03/rings.png" alt="Painted wedding rings"><div class="stop-copy"><time>14:30</time><b data-i18n="ceremony">Ceremony begins</b></div></article>
+   <article class="plan-stop left" data-at=".53" style="--x:69%;--y:53%;--tilt:2deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
+   <article class="plan-stop" data-at=".65" style="--x:27%;--y:65%;--tilt:-1deg"><img src="assets/chapter-03/dinner-party.png" alt="Painted wedding party"><div class="stop-copy"><time>16:00</time><b data-i18n="dinner">Dinner party</b></div></article>
+   <article class="plan-stop left" data-at=".77" style="--x:70%;--y:77%;--tilt:2deg"><img src="assets/chapter-03/gramophone.png" alt="Painted gramophone"><div class="stop-copy"><time>18:30</time><b data-i18n="afterParty">After party</b></div></article>
+   <article class="plan-stop" data-at=".90" style="--x:24%;--y:90%;--tilt:-2deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
   </div>
  </div>
 </section>
@@ -911,7 +911,7 @@ const RSVP_ENDPOINT='https://script.google.com/macros/s/AKfycbzq1pO9lLenqPzQecIh
 const rsvpForm=document.getElementById('rsvpForm'),rsvpSteps=[...document.querySelectorAll('[data-rsvp-step]')],rsvpBar=document.getElementById('rsvpBar'),rsvpThread=document.getElementById('rsvpThread'),rsvpReview=document.getElementById('rsvpReview'),rsvpStatus=document.getElementById('rsvpStatus');
 let rsvpAttend='',rsvpIndex=0,rsvpFlow=[0,1,2,3,4];
 function rsvpData(){return{attending:rsvpAttend,name:document.getElementById('rsvpName').value.trim(),kana:'',contact:document.getElementById('rsvpContact').value.trim(),address:document.getElementById('rsvpAddress').value.trim(),party:Number(document.getElementById('rsvpParty').value),guestNames:document.getElementById('rsvpGuestNames').value.trim(),station:document.getElementById('rsvpStation').value,allergy:document.getElementById('rsvpAllergy').value.trim(),nijikai:document.getElementById('rsvpNijikai').value,message:(rsvpAttend==='no'?document.getElementById('rsvpDeclineMessage'):document.getElementById('rsvpMessage')).value.trim()}}
-function renderRsvp(){const step=rsvpFlow[rsvpIndex],progress=rsvpIndex/(rsvpFlow.length-1)*100;rsvpForm.dataset.phase=String(step);rsvpSteps.forEach(el=>el.classList.toggle('on',Number(el.dataset.rsvpStep)===step));rsvpBar.style.width=progress+'%';rsvpThread.style.height=progress+'%';rsvpThread.parentElement.style.setProperty('--thread',progress+'%');if(step===3){const d=rsvpData(),rows=[['Attendance',d.attending==='yes'?'Joyfully accept':'Regretfully decline'],['Name',d.name],['Contact',d.contact]];if(d.attending==='yes'){rows.push(['Guests',d.party]);if(d.party===2)rows.push(['Guest name',d.guestNames||'—']);rows.push(['Shuttle station',d.station||'—'],['Dietary needs',d.allergy||'—'],['Afterparty',d.nijikai])}rsvpReview.innerHTML=rows.map(row=>`<div class="rsvp-review"><b>${row[0]}</b><span>${String(row[1]||'—').replaceAll('<','&lt;')}</span></div>`).join('')}}
+function renderRsvp(){const step=rsvpFlow[rsvpIndex],progress=rsvpIndex/(rsvpFlow.length-1)*100;rsvpForm.dataset.phase=String(step);rsvpSteps.forEach(el=>el.classList.toggle('on',Number(el.dataset.rsvpStep)===step));const activeStep=rsvpSteps.find(el=>el.classList.contains('on'));if(activeStep)activeStep.scrollTop=0;rsvpBar.style.width=progress+'%';rsvpThread.style.height=progress+'%';rsvpThread.parentElement.style.setProperty('--thread',progress+'%');if(step===3){const d=rsvpData(),rows=[['Attendance',d.attending==='yes'?'Joyfully accept':'Regretfully decline'],['Name',d.name],['Contact',d.contact]];if(d.attending==='yes'){rows.push(['Guests',d.party]);if(d.party===2)rows.push(['Guest name',d.guestNames||'—']);rows.push(['Shuttle station',d.station||'—'],['Dietary needs',d.allergy||'—'],['Afterparty',d.nijikai])}rsvpReview.innerHTML=rows.map(row=>`<div class="rsvp-review"><b>${row[0]}</b><span>${String(row[1]||'—').replaceAll('<','&lt;')}</span></div>`).join('')}}
 document.querySelectorAll('[data-attend]').forEach(button=>button.addEventListener('click',()=>{rsvpAttend=button.dataset.attend;rsvpForm.dataset.attendance=rsvpAttend;document.querySelectorAll('[data-attend]').forEach(el=>el.classList.toggle('on',el===button));rsvpFlow=rsvpAttend==='yes'?[0,1,2,3,4]:[0,1,3,4];rsvpForm.dataset.party=document.getElementById('rsvpParty').value;renderRsvp()}));
 document.getElementById('rsvpAttendanceNext').addEventListener('click',()=>{if(!rsvpAttend)return;rsvpIndex=1;renderRsvp()});
 document.getElementById('rsvpParty').addEventListener('change',event=>{rsvpForm.dataset.party=event.target.value;if(event.target.value==='1')document.getElementById('rsvpGuestNames').value=''});
