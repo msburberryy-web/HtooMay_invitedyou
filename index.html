@@ -475,8 +475,8 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 .story-pin:before{opacity:.08;background:repeating-linear-gradient(0deg,rgba(112,62,60,.04) 0 1px,transparent 1px 5px)}
 .story-infinity{display:none}
 .story-art{inset:8.8vh 0 auto;margin-inline:auto;width:min(45.5vh,88vw);height:82.5vh;background:none;border:0;outline:0;box-shadow:none;clip-path:none;pointer-events:none}
-.story-art:before{content:"";position:absolute;left:calc(50% - 13px);bottom:16.3%;width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 32% 27%,#fffdf6 0 16%,#ead8b6 38%,#b38c53 66%,transparent 69%);box-shadow:26px 0 0 -1px #e1caa5;filter:drop-shadow(0 2px 2px rgba(78,52,34,.18));opacity:.84}
-.story-art:after{content:"";position:absolute;left:50%;bottom:14.1%;transform:translateX(-50%);width:150px;height:18px;opacity:.68;background:radial-gradient(ellipse at 8% 52%,#74784f 0 5%,transparent 6%),radial-gradient(ellipse at 15% 32%,#74784f 0 5%,transparent 6%),radial-gradient(ellipse at 22% 64%,#74784f 0 5%,transparent 6%),radial-gradient(ellipse at 78% 64%,#74784f 0 5%,transparent 6%),radial-gradient(ellipse at 85% 32%,#74784f 0 5%,transparent 6%),radial-gradient(ellipse at 92% 52%,#74784f 0 5%,transparent 6%),linear-gradient(12deg,transparent 0 18%,#74784f 19% 20%,transparent 21% 79%,#74784f 80% 81%,transparent 82%)}
+.story-art:before,.story-art:after{display:none}
+.story-ornament{position:absolute;z-index:4;left:50%;bottom:25.2%;width:min(18vh,31vw,180px);height:auto;transform:translate(-50%,15px);opacity:0;filter:drop-shadow(0 2px 2px rgba(78,52,34,.12));transition:opacity .7s ease,transform .8s var(--ease);pointer-events:none}.story-ornament.shown{opacity:.88;transform:translate(-50%,0)}
 .story-shade{z-index:2;background:linear-gradient(180deg,rgba(255,248,235,.12),transparent 22%,transparent 78%,rgba(111,44,57,.04))}
 #storyChapter .story-head{z-index:4;top:12.7%!important;width:min(39vh,76vw,500px)!important}
 #storyChapter .story-head .roman{margin:0 0 .35rem;color:#8e7350;font-size:clamp(.52rem,1.2vw,.68rem)}
@@ -497,6 +497,7 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
  #storyChapter .story-head p:last-child{font-size:clamp(.64rem,2.8vw,.77rem)}
  .story-assembly{top:49%;width:75vw}
  .story-assembly .story-monogram{top:65%;width:60vw;min-height:58px;padding:.05rem 2.8rem .25rem;font-size:clamp(1.3rem,6vw,1.7rem)}
+ .story-ornament{bottom:25.5%;width:32vw}
  #storyChapter .story-note{bottom:12.5%;width:68vw;font-size:clamp(.66rem,2.9vw,.8rem);line-height:1.42}
 }
 </style>
@@ -576,6 +577,7 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
   <div class="story-infinity" aria-hidden="true"></div><div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
   <header class="story-head"><p class="roman" data-story=".08" data-i18n="chapter04">Chapter 04</p><h2 id="storyTitle" data-story=".14" data-i18n="oneStory">One Story</h2><p data-story=".22" data-i18n="storyLine">Two hearts, one promise, one beautiful story.</p></header>
   <div class="story-assembly" id="storyAssembly"><div class="heart-complete"><svg class="story-heart-media" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Painted illustrations of Htoo and May moving together to form one heart"><defs><path id="storyHeartGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120 C645 18 890 75 880 260 C870 430 650 535 500 610 Z"/><path id="heartLeftGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120"/><path id="heartRightGeometry" d="M500 120 C645 18 890 75 880 260 C870 430 650 535 500 610"/><clipPath id="storyHeartClip"><use href="#storyHeartGeometry"/></clipPath></defs><use class="heart-underlay" href="#storyHeartGeometry"/><g class="heart-image htoo" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/htoo-illustration.png" x="58" y="72" width="595" height="870" preserveAspectRatio="xMidYMin meet"/></g><g class="heart-image may" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/may-illustration.png" x="350" y="58" width="590" height="885" preserveAspectRatio="xMidYMin meet"/></g><use class="heart-half heart-left" href="#heartLeftGeometry"/><use class="heart-half heart-right" href="#heartRightGeometry"/></svg><div class="story-monogram" data-story=".79">Htoo &amp; May</div></div></div>
+  <img class="story-ornament" src="assets/chapter-04/olive-pearls-ornament.png" alt="" aria-hidden="true" data-story=".81">
   <div class="story-note" data-story=".84"><span data-i18n="storyCopy">What began as two separate journeys became a life we now choose to write together—one quiet moment, one adventure, and one page at a time.</span></div>
  </div>
 </section>
