@@ -10,7 +10,7 @@
 <style>
 :root{--ivory:#f4ead8;--ivory2:#fbf5e9;--sage:#727b57;--burg:#7c3241;--rasp:#985463;--gold:#b4935d;--ink:#3f362e;--ease:cubic-bezier(.16,.84,.34,1)}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#F4EADB;font-family:"Zen Kaku Gothic New",system-ui,sans-serif;color:var(--ink);overflow-x:clip}body{position:relative}
+html,body{margin:0;min-height:100%;background:#F4EADB;font-family:"Zen Kaku Gothic New",system-ui,sans-serif;color:var(--ink);overflow-x:clip}
 html.film-locked,html.film-locked body{overflow:hidden!important;overscroll-behavior:none}
 html.film-locked body{position:fixed;inset:0;width:100%;height:100%;touch-action:none}
 button{font:inherit}
@@ -90,7 +90,7 @@ body.text4
 .ch-flourish{display:flex;align-items:center;justify-content:center;gap:.35rem;color:#80825c;margin:.8rem 0 2.1rem;font-size:.75rem}.ch-flourish::before,.ch-flourish::after{content:"";width:42px;height:1px;background:#92936d}
 .welcome-note{font:500 clamp(.58rem,1.15vw,.83rem)/1 "Newsreader",serif;letter-spacing:.3em;text-transform:uppercase;color:#70744c;margin:0 0 1.15rem}
 .welcome-title{font:400 clamp(3rem,8vw,6.5rem)/.85 "Alex Brush",cursive;color:#7c3241;margin:0;white-space:nowrap}
-.welcome-ribbon{display:flex;align-items:center;justify-content:center;margin:1.05rem 0 1.25rem}.welcome-ribbon img{display:block;width:min(250px,58vw);height:auto;object-fit:contain}
+.welcome-ribbon{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.35rem 0 1.5rem;color:#79805a}.welcome-ribbon i{width:72px;height:1px;background:#8b916b}.welcome-ribbon b{position:relative;display:block;width:42px;height:22px;background:radial-gradient(circle at 50% 45%,#9a5961 0 3px,transparent 4px)}.welcome-ribbon b:before,.welcome-ribbon b:after{content:"";position:absolute;top:3px;width:20px;height:14px;border:1px solid rgba(139,66,76,.55);background:rgba(205,151,156,.38)}.welcome-ribbon b:before{right:20px;border-radius:70% 32% 70% 35%;transform:rotate(15deg)}.welcome-ribbon b:after{left:20px;border-radius:32% 70% 35% 70%;transform:rotate(-15deg)}
 .welcome-letter{font:400 clamp(.74rem,1.45vw,1.08rem)/1.55 "Newsreader",Georgia,serif;color:#493833;margin:auto;max-width:590px}
 .welcome-letter p{margin:.55rem 0}
 .count-wrap{margin:1.45rem auto 0}.count-kicker{display:flex;align-items:center;justify-content:center;gap:.65rem;font:500 clamp(.52rem,1vw,.72rem)/1 "Newsreader",serif;letter-spacing:.22em;text-transform:uppercase;color:#73764f}.count-kicker::before,.count-kicker::after{content:"";width:70px;height:1px;background:#9c9c76}
@@ -540,11 +540,6 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:320vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
  .stop-copy time{font-size:.68rem!important;letter-spacing:.13em!important}
 }
-/* One uninterrupted painting spans the complete invitation. */
-.continuous-master-bg{position:fixed;z-index:0;inset:0;pointer-events:none;background:#fbf4e8 url('assets/backgrounds/continuous/connected-originals-full-app.webp') center top/100% auto no-repeat;will-change:background-position}
-#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{position:relative;z-index:1;background:transparent!important}
-#chapter .painting,.welcome-pin,.story-pin,.records-pin,.plan-pin,.info-pin,.qa-pin,.gallery-pin,.rsvp-chapter.rsvp-sent{background:transparent!important}
-.welcome-art,.plan-art{display:none!important}.story-pin:after{background:rgba(248,239,224,.05)!important}.qa-pin:before{opacity:.08!important}
 </style>
 </head>
 <body>
@@ -555,7 +550,6 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  <button id="skip" type="button">Skip film</button>
 </div>
 <div id="paperCurtain" aria-hidden="true"></div>
-<div class="continuous-master-bg" aria-hidden="true"></div>
 <section id="chapter">
  <div id="hero">
   <div class="painting" id="painting"></div>
@@ -587,7 +581,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
    <div class="ch-flourish" data-welcome=".07">◆</div>
    <p class="welcome-note" data-welcome=".12" data-i18n="noteFromUs">A note from us</p>
    <h2 class="welcome-title" id="welcomeTitle" data-welcome=".18" data-i18n="warmWelcome">A Warm Welcome</h2>
-   <div class="welcome-ribbon" data-welcome=".25"><img src="assets/chapter-02/welcome-ribbon-painted.webp" alt="" aria-hidden="true"></div>
+   <div class="welcome-ribbon" data-welcome=".25"><i></i><b aria-hidden="true"></b><i></i></div>
    <div class="welcome-letter" data-welcome=".33">
     <p data-i18n="welcomeP1">Every step of our journey has brought us to this moment, and we couldn’t be happier to begin our next chapter together.</p>
     <p data-i18n="welcomeP2">To our family and friends: thank you for guiding, supporting, and surrounding us with love every step of the way.</p>
@@ -785,81 +779,375 @@ const music=document.getElementById('music');
 music.addEventListener('click',()=>music.classList.toggle('on'));
 
 /* Chapters 02–03: multilingual painted story and shared-path journey */
-const translations={
- en:{chapter02:'Chapter 02',noteFromUs:'A note from us',warmWelcome:'A Warm Welcome',welcomeP1:'Every step of our journey has brought us to this moment, and we couldn’t be happier to begin our next chapter together.',welcomeP2:'To our family and friends: thank you for guiding, supporting, and surrounding us with love every step of the way.',welcomeP3:'We are so honored to share this special day with the people who mean the world to us. We can’t wait to celebrate together!',untilWedding:'Until our wedding day',days:'Days',hours:'Hours',minutes:'Minutes',seconds:'Seconds',continueStory:'Continue our story',chapter03:'Chapter 03',thePlan:'The Plan',busDeparts:'Bus departs',busSub:'Departure time varies by station',reception:'Reception opens',ceremony:'Ceremony begins',cocktail:'Cocktail hour',dinner:'Dinner party',afterParty:'After party',sendOff:'Send-off',chapter04:'Chapter 04',oneStory:'One Story',storyLine:'Two hearts, one promise, one beautiful story.',storyCopy:'What began as two separate journeys became a life we now choose to write together—one quiet moment, one adventure, and one page at a time.',chapter05:'Chapter 05',recordsLead:'The Chapters of',recordsCalligraphy:'Our Story',recordsIntro:'Every record holds a moment that brought us here.',firstMeet:'First meeting',firstDate:'First date',firstTrip:'First journey',ourHome:'Finding home',proposal:'The proposal',forever:'Forever begins',chapter06:'Chapter 06',informationTitle:'Information',saveDateLabel:'Save the Date',saveDateShort:'16 October',infoHint:'Tap an illustrated item to open its details · Scroll to preview each one',chapter07:'Chapter 07',qaTitle:'Questions & Answers',qaHint:'Scroll to move through the questions'},
- ja:{chapter02:'第2章',noteFromUs:'私たちからのご挨拶',warmWelcome:'ようこそ',welcomeP1:'これまでの道のりのひとつひとつが、私達を今日という特別な日へと導いてくれました。共に新しい歩みを始められることを、心から嬉しく思っています。',welcomeP2:'いつも温かく導き、支えてくださった家族とご友人の皆様に、深い感謝を申し上げます。',welcomeP3:'私達にとってかけがえのない皆様とこの日を共有できることを、とても幸せに思います。当日、一緒に素晴らしい時間を過ごせることを楽しみにしています！',untilWedding:'結婚式まで',days:'日',hours:'時間',minutes:'分',seconds:'秒',continueStory:'物語の続きを見る',chapter03:'第3章',thePlan:'当日の予定',busDeparts:'送迎バス発車',busSub:'※乗車駅によって出発時間が異なります',reception:'受付開始',ceremony:'挙式開始',cocktail:'カクテルタイム',dinner:'ディナーパーティー',afterParty:'アフターパーティー',sendOff:'お見送り',chapter04:'第4章',oneStory:'ひとつの物語',storyLine:'二つの心、ひとつの約束、ひとつの美しい物語。',storyCopy:'別々に歩んでいた二人の旅は、今、一緒に綴っていく人生になりました。静かな瞬間も、冒険も、一ページずつ大切に重ねていきます。',chapter05:'第5章',recordsLead:'これまでの',recordsCalligraphy:'歩み',recordsIntro:'一枚一枚のレコードに、今日へ続く思い出を。',firstMeet:'出会い',firstDate:'初めてのデート',firstTrip:'初めての旅',ourHome:'帰る場所',proposal:'プロポーズ',forever:'永遠の始まり',chapter06:'第6章',informationTitle:'ご案内',saveDateLabel:'日程',saveDateShort:'10月16日',infoHint:'スクロールして見る · 絵をタップして詳細へ',chapter07:'第7章',qaTitle:'よくあるご質問',qaHint:'スクロールして質問を見る'},
- my:{chapter02:'အခန်း ၀၂',noteFromUs:'ကျွန်တော်တို့ထံမှ စာတစ်စောင်',warmWelcome:'နွေးထွေးစွာ ကြိုဆိုပါတယ်။',welcomeP1:'ကျွန်တော်တို့ လျှောက်လှမ်းခဲ့တဲ့ ခြေလှမ်းတိုင်းက ဒီနေ့ ဒီအချိန်လေးဆီကို ဦးတည်ခေါ်ဆောင်လာခဲ့တာ ဖြစ်ပြီး၊ အခုလို ဘဝအခန်းသစ်တစ်ခုကို အတူတကွ စတင်ခွင့်ရတဲ့အတွက် အတိုင်းမသိ ဝမ်းမြောက်မိပါတယ်။',welcomeP2:'ခရီးစဉ်တစ်လျှောက်လုံးမှာ လမ်းပြပေးခဲ့ပြီး မေတ္တာတရားများစွာနဲ့ ပံ့ပိုးကူညီပေးခဲ့ကြတဲ့ မိသားစုနဲ့ မိတ်ဆွေသူငယ်ချင်းများအားလုံးကို အထူးပင် ကျေးဇူးတင်ရှိပါတယ်။',welcomeP3:'ကျွန်တော်တို့အတွက် အရေးအကြီးဆုံးဖြစ်တဲ့ လူကြီးမင်းတို့နဲ့အတူ ဒီအမှတ်တရနေ့လေးကို ဝေမျှဆင်နွှဲခွင့်ရတဲ့အတွက် ဝမ်းမြောက်ဂုဏ်ယူမိပြီး ပွဲနေ့မှာ အားလုံးနဲ့ ဆုံတွေ့ဖို့ ရင်ခုန်စွာဖြင့် စောင့်မျှော်နေပါတယ်။',untilWedding:'မင်္ဂလာပွဲအထိ',days:'ရက်',hours:'နာရီ',minutes:'မိနစ်',seconds:'စက္ကန့်',continueStory:'ကျွန်တော်တို့၏ဇာတ်လမ်းကို ဆက်ကြည့်ရန်',chapter03:'အခန်း ၀၃',thePlan:'အစီအစဉ်',busDeparts:'ကြိုပို့ဘတ်စ်ကား ထွက်ခွာချိန်',busSub:'ကားဂိတ်အလိုက် ထွက်ခွာချိန် ကွဲပြားနိုင်ပါသည်။',reception:'ဧည့်ခံပွဲ စတင်ချိန်',ceremony:'မင်္ဂလာအခမ်းအနား စတင်ချိန်',cocktail:'ကော့တေးအချိန်',dinner:'ညစာစားပွဲ',afterParty:'အာဖတာပါတီ',sendOff:'နှုတ်ဆက်ပို့ဆောင်ခြင်း',chapter04:'အခန်း ၀၄',oneStory:'ဇာတ်လမ်းတစ်ပုဒ်',storyLine:'ဝေးကွာခဲ့သော နှလုံးသားနှစ်ခု၊ ယခုအခါ တစ်ထပ်တည်း ကျရောက်ခဲ့ပါပြီ။',storyCopy:'သီးခြားခရီးနှစ်ခုမှ စတင်ခဲ့ရာ ယနေ့တွင် အတူတကွ ရေးသားမည့် ဘဝတစ်ခု ဖြစ်လာခဲ့သည်—ငြိမ်သက်သောအခိုက်အတန့်တိုင်း၊ စွန့်စားမှုတိုင်းနှင့် စာမျက်နှာတိုင်းကို အတူတကွ။',chapter05:'အခန်း ၀၅',recordsLead:'ကျွန်တော်တို့၏',recordsCalligraphy:'အမှတ်တရ သမိုင်းကြောင်းများ',recordsIntro:'ဓာတ်ပြားတစ်ချပ်စီတွင် ယနေ့သို့ ခေါ်ဆောင်ခဲ့သည့် အမှတ်တရတစ်ခုရှိသည်။',firstMeet:'ပထမဆုံးတွေ့ဆုံခြင်း',firstDate:'ပထမဆုံးချိန်းတွေ့ခြင်း',firstTrip:'ပထမဆုံးခရီး',ourHome:'အိမ်ကိုတွေ့ရှိခြင်း',proposal:'လက်ထပ်ခွင့်တောင်းခြင်း',forever:'ထာဝရစတင်ခြင်း',chapter06:'အခန်း ၀၆',informationTitle:'သိရှိရန်များ',saveDateLabel:'ကျင်းပမည့်ရက်စွဲ',saveDateShort:'၁၆ အောက်တိုဘာ',infoHint:'အောက်သို့ဆွဲကြည့်ပါ · အသေးစိတ်အတွက် ပုံကိုနှိပ်ပါ',chapter07:'အခန်း ၀၇',qaTitle:'မေးလေ့ရှိသော မေးခွန်းများ',qaHint:'မေးခွန်းများကြည့်ရန် အောက်သို့ဆွဲပါ'}
+const translations = {
+  en: {
+    chapter02: 'Chapter 02',
+    noteFromUs: 'A Note From Us',
+    warmWelcome: 'Welcome!',
+    welcomeP1: 'Every step of our journey has brought us right here, and we couldn’t be more excited to start this next chapter together.',
+    welcomeP2: 'To our family and friends: thank you for cheering us on, guiding us, and sharing so much love with us along the way.',
+    welcomeP3: 'It means the absolute world to share this special day with our favorite people. We can’t wait to celebrate together!',
+    untilWedding: 'Counting down to the big day',
+    days: 'Days',
+    hours: 'Hours',
+    minutes: 'Minutes',
+    seconds: 'Seconds',
+    continueStory: 'Follow our journey',
+    chapter03: 'Chapter 03',
+    thePlan: 'The Schedule',
+    busDeparts: 'Shuttle bus leaves',
+    busSub: 'Departure times vary slightly by station',
+    reception: 'Doors open & welcome drink',
+    ceremony: 'Wedding ceremony',
+    cocktail: 'Cocktails & bites',
+    dinner: 'Dinner party',
+    afterParty: 'After-party',
+    sendOff: 'Send-off & goodbyes',
+    chapter04: 'Chapter 04',
+    oneStory: 'Our Story',
+    storyLine: 'Two separate paths that found their way home to each other.',
+    storyCopy: 'What started out as two independent journeys turned into a life we love building together—one quiet moment, one fun adventure, and one sweet memory at a time.',
+    chapter05: 'Chapter 05',
+    recordsLead: 'Snapshots of',
+    recordsCalligraphy: 'Our Story',
+    recordsIntro: 'Every milestone holds a favorite memory that led us right here.',
+    firstMeet: 'How we met',
+    firstDate: 'Our first date',
+    firstTrip: 'First getaway',
+    ourHome: 'Making our home',
+    proposal: 'The question was popped!',
+    forever: 'Where forever starts',
+    meetingFamily: 'Bringing our families together',
+    nikkah: 'Our Nikkah',
+    publicAnnouncement: 'We’re getting married!',
+    chapter06: 'Chapter 06',
+    informationTitle: 'Good to Know',
+    saveDateLabel: 'Save the Date',
+    saveDateShort: '16 October 2026',
+    infoHint: 'Tap any illustration or scroll through to see the details',
+    chapter07: 'Chapter 07',
+    qaTitle: 'Q & A',
+    qaHint: 'Scroll through to check out common questions'
+  },
+  ja: {
+    chapter02: '第2章',
+    noteFromUs: '私たちからのメッセージ',
+    warmWelcome: 'ようこそ！',
+    welcomeP1: 'これまでの道のりのひとつひとつが、私たちを今日へと導いてくれました。ふたりで新しい物語をスタートできることを、本当に嬉しく思っています。',
+    welcomeP2: 'いつも温かく見守り、応援してくださる家族や大切な友人たちに、心からありがとうを伝えたいです。',
+    welcomeP3: '大好きな皆様と一緒にこの日を迎えられることが、最高の幸せです。当日、笑顔でお会いできるのを楽しみにしています！',
+    untilWedding: '結婚式当日まであと',
+    days: '日',
+    hours: '時間',
+    minutes: '分',
+    seconds: '秒',
+    continueStory: 'ふたりの歩みを見る',
+    chapter03: '第3章',
+    thePlan: '当日のタイムスケジュール',
+    busDeparts: '送迎バス出発',
+    busSub: '※ご乗車駅によって出発時間が異なります',
+    reception: '受付スタート',
+    ceremony: '挙式',
+    cocktail: 'ウェルカムパーティー',
+    dinner: 'ディナーパーティー',
+    afterParty: '2次会（アフターパーティー）',
+    sendOff: 'お見送り',
+    chapter04: '第4章',
+    oneStory: 'ふたりのストーリー',
+    storyLine: '遠く離れていたふたつの心が寄り添い、ひとつになりました。',
+    storyCopy: '別々に歩んでいたふたりが出会い、今、一緒に楽しむ人生が始まりました。日々の楽しい瞬間も、これからの冒険も、一歩ずつ大切に重ねていきます。',
+    chapter05: '第5章',
+    recordsLead: 'ふたりの',
+    recordsCalligraphy: 'たいせつな歩み',
+    recordsIntro: '今日につながる、とっておきの思い出たち。',
+    firstMeet: '初めての出会い',
+    firstDate: '初デート',
+    firstTrip: '初めての旅行',
+    ourHome: 'ふたりの暮らし',
+    proposal: 'プロポーズ！',
+    forever: 'ここから永遠へ',
+    meetingFamily: '両家顔合わせ',
+    nikkah: '結婚の誓い（ニカー）',
+    publicAnnouncement: '結婚のご報告',
+    chapter06: '第6章',
+    informationTitle: 'イベントのご案内',
+    saveDateLabel: '開催日',
+    saveDateShort: '10月16日（金）',
+    infoHint: 'イラストをタップ、またはスクロールして詳細をチェック！',
+    chapter07: '第7章',
+    qaTitle: 'よくあるご質問',
+    qaHint: 'スクロールして気になる質問をチェックしてみてください'
+  },
+  my: {
+    chapter02: 'အခန်း ၀၂',
+    noteFromUs: 'မင်္ဂလာနှုတ်ခွန်းဆက်လွှာ',
+    warmWelcome: 'လှိုက်လှဲပျော်ရွှင်စွာ ကြိုဆိုပါတယ်နော်',
+    welcomeP1: 'ကျွန်တော်တို့နှစ်ယောက် လျှောက်လှမ်းခဲ့တဲ့ ခြေလှမ်းတိုင်းက ဒီနေ့ ဒီအချိန်လေးဆီ ခေါ်ဆောင်လာခဲ့တာပါ။ အခုလို ဘဝအခန်းသစ်တစ်ခုကို အတူတူ စတင်ခွင့်ရတဲ့အတွက် တကယ်ကို စိတ်လှုပ်ရှား ပျော်ရွှင်ရပါတယ်။',
+    welcomeP2: 'ခရီးစဉ်တစ်လျှောက်လုံးမှာ အမြဲတစေ လမ်းပြဖေးမပြီး ချစ်ခြင်းမေတ္တာတွေနဲ့ အားပေးကူညီခဲ့ကြတဲ့ မိဘဆွေမျိုးတွေနဲ့ မိတ်ဆွေသူငယ်ချင်း အားလုံးကို အထူးပဲ ကျေးဇူးတင်ပါတယ်။',
+    welcomeP3: 'ကျွန်တော်တို့အတွက် အရမ်းအရေးပါတဲ့ ချစ်ခင်ရသူတွေနဲ့ ဒီအမှတ်တရနေ့လေးကို အတူတူ ဆင်နွှဲခွင့်ရတာ တကယ့်ကို ဝမ်းသာစရာပါပဲ။ ပွဲနေ့မှာ အားလုံးနဲ့ ပျော်ပျော်ပါးပါး ဆုံတွေ့ဖို့ ရင်ခုန်စွာ စောင့်မျှော်နေပါတယ်ခင်ဗျာ/ရှင့်။',
+    untilWedding: 'မင်္ဂလာရက်လေး ရောက်ဖို့ ကျန်ရှိချိန်',
+    days: 'ရက်',
+    hours: 'နာရီ',
+    minutes: 'မိနစ်',
+    seconds: 'စက္ကန့်',
+    continueStory: 'ကျွန်တော်တို့ရဲ့ ဇာတ်လမ်းလေး ဆက်ဖတ်ကြည့်ရန်',
+    chapter03: 'အခန်း ၀၃',
+    thePlan: 'ပွဲအစီအစဉ်လေးများ',
+    busDeparts: 'ကြိုပို့ဘတ်စ်ကား စတင်ထွက်ခွာချိန်',
+    busSub: 'ဘူတာဂိတ်အလိုက် ထွက်ခွာချိန် အနည်းငယ် ကွဲပြားနိုင်ပါတယ်နော်',
+    reception: 'ဧည့်ခံပွဲ စတင်ချိန်',
+    ceremony: 'မင်္ဂလာအခမ်းအနား စတင်ချိန်',
+    cocktail: 'ကော့တေးနှင့် အဖျော်ယမကာ တည်ခင်းချိန်',
+    dinner: 'မင်္ဂလာညစာစားပွဲ',
+    afterParty: 'After-Party မိတ်ဆုံပါတီ',
+    sendOff: 'ဧည့်သည်တော်များအား နှုတ်ဆက်ပို့ဆောင်ခြင်း',
+    chapter04: 'အခန်း ၀၄',
+    oneStory: 'ကျွန်တော်တို့ရဲ့ ဇာတ်လမ်း',
+    storyLine: 'သီးခြားစီ စတင်ခဲ့ရာကနေ ထာဝရလက်တွဲခွင့်ရခဲ့တဲ့ နှလုံးသားနှစ်ခုရဲ့ အချစ်ဇာတ်လမ်းလေးပါ။',
+    storyCopy: 'သီးခြားစီ လျှောက်လှမ်းခဲ့ရာကနေ အခုဆို အတူတူ ရေးသားမယ့် ဘဝခရီးလမ်းသစ်လေး ဖြစ်လာခဲ့ပါပြီ—ပျော်စရာ အခိုက်အတန့်တိုင်း၊ စွန့်စားမှုတိုင်းနဲ့ နေ့ရက်တိုင်းကို လက်တွဲညီညီ ဖြတ်သန်းသွားမှာပါ။',
+    chapter05: 'အခန်း ၀၅',
+    recordsLead: 'ကျွန်တော်တို့ရဲ့',
+    recordsCalligraphy: 'အမှတ်တရ ခြေလှမ်းလေးများ',
+    recordsIntro: 'ဒီနေ့လေးဆီ ရောက်လာစေခဲ့တဲ့ အမှတ်ရစရာ မှတ်တိုင်လေးတွေပါ။',
+    firstMeet: 'ပထမဆုံး စတင်ဆုံတွေ့ခြင်း',
+    firstDate: 'ပထမဆုံး ချိန်းတွေ့ခြင်း',
+    firstTrip: 'ပထမဆုံး အတူသွားခဲ့တဲ့ ခရီးစဉ်',
+    ourHome: 'အတူတူ ဖန်တီးခဲ့တဲ့ အိမ်ကလေး',
+    proposal: 'လက်ထပ်ခွင့် တောင်းခဲ့တဲ့နေ့',
+    forever: 'ထာဝရရဲ့ အစပြုရာ',
+    meetingFamily: 'မိဘနှစ်ပါးနှင့် တွေ့ဆုံခြင်း',
+    nikkah: 'နိကာဟ် မင်္ဂလာအခမ်းအနား',
+    publicAnnouncement: 'မင်္ဂလာသတင်း အသိပေးခြင်း',
+    chapter06: 'အခန်း ၀၆',
+    informationTitle: 'သိရှိထားသင့်သည့် အချက်အလက်များ',
+    saveDateLabel: 'မင်္ဂလာရက်စွဲ',
+    saveDateShort: '၁၆ အောက်တိုဘာ ၂၀၂၆',
+    infoHint: 'အသေးစိတ်သိရှိဖို့ ပုံလေးတွေကို နှိပ်ကြည့်ပါ သို့မဟုတ် အောက်သို့ ဆွဲကြည့်ပါနော်',
+    chapter07: 'အခန်း ၀၇',
+    qaTitle: 'မေးလေ့ရှိသော မေးခွန်းများ',
+    qaHint: 'မေးခွန်းနှင့် အဖြေများကို ကြည့်ရှုဖို့ အောက်သို့ ဆွဲကြည့်ပါ'
+  }
 };
 Object.assign(translations.en,{meetingFamily:'Meeting family',nikkah:'Our Nikkah',publicAnnouncement:'Public announcement'});
 Object.assign(translations.ja,{meetingFamily:'家族との出会い',nikkah:'ニカー',publicAnnouncement:'結婚のご報告'});
 Object.assign(translations.my,{meetingFamily:'မိသားစုနှင့် တွေ့ဆုံခြင်း',nikkah:'နိကာဟ်အခမ်းအနား',publicAnnouncement:'လက်ထပ်မည့်အကြောင်း ကြေညာခြင်း'});
-const galleryTranslations={
- en:{chapter08:'Chapter 08',galleryTitle:'Our Gallery',galleryScript:'Moments we’ll treasure forever',galleryHint:'Drag, swipe, or simply continue',galleryCount:'12 photographs',galleryContinue:'Continue our story'},
- ja:{chapter08:'第8章',galleryTitle:'ギャラリー',galleryScript:'いつまでも大切にしたい瞬間',galleryHint:'ドラッグ・スワイプ、またはそのまま次へ',galleryCount:'写真 12枚',galleryContinue:'物語の続きを見る'},
- my:{chapter08:'အခန်း ၀၈',galleryTitle:'ဓာတ်ပုံပြခန်း',galleryScript:'ထာဝရတန်ဖိုးထားမည့် အခိုက်အတန့်များ',galleryHint:'ဆွဲကြည့်ပါ၊ ပွတ်ကြည့်ပါ၊ သို့မဟုတ် ဆက်သွားပါ',galleryCount:'ဓာတ်ပုံ ၁၂ ပုံ',galleryContinue:'ဇာတ်လမ်းကို ဆက်ကြည့်ရန်'}
+const galleryTranslations = {
+  en: {
+    chapter08: 'Chapter 08',
+    galleryTitle: 'Photo Gallery',
+    galleryScript: 'A few moments we’ll treasure forever',
+    galleryHint: 'Swipe, drag, or scroll to take a peek',
+    galleryCount: '12 Photos',
+    galleryContinue: 'Head to RSVP'
+  },
+  ja: {
+    chapter08: '第8章',
+    galleryTitle: 'フォトギャラリー',
+    galleryScript: 'とっておきの宝物のような瞬間たち',
+    galleryHint: 'スワイプまたはドラッグで写真をチェック！',
+    galleryCount: '全12枚',
+    galleryContinue: '出欠のお返事へ進む'
+  },
+  my: {
+    chapter08: 'အခန်း ၀၈',
+    galleryTitle: 'အမှတ်တရ ဓာတ်ပုံပြခန်း',
+    galleryScript: 'တစ်သက်လုံး တန်ဖိုးထားမယ့် အမှတ်တရလေးများ',
+    galleryHint: 'ဓာတ်ပုံလေးတွေကို ကြည့်ရှုဖို့ ပွတ်ဆွဲကြည့်ပါ',
+    galleryCount: 'စုစုပေါင်း ဓာတ်ပုံ ၁၂ ပုံ',
+    galleryContinue: 'တက်ရောက်မှု အတည်ပြုရန်'
+  }
 };
-const rsvpTranslations={
- en:{attendQ:'Will you join us?',accept:'Joyfully<br>Accept',decline:'Regretfully<br>Decline',details:'Your details',shortNote:'Just your name, contact, and an optional note are enough.',name:'Name',kana:'Phonetic Reading (Optional)',contact:'Email or Phone Number',address:'Mailing Address (Optional)',optionalMessage:'Your Message (Optional)',back:'Back',next:'Next',coupleMessage:'Message for the Couple',submit:'Submit RSVP',thanks:'Thank you',onWay:'Your card is on its way.',celebrate:'We look forward to celebrating with you!'},
- ja:{attendQ:'ご出席いただけますか？',accept:'喜んで<br>出席します',decline:'あいにく<br>欠席します',details:'お客様情報',shortNote:'お名前・ご連絡先・任意のメッセージのみでご回答いただけます。',name:'お名前',kana:'ふりがな（任意）',contact:'メールアドレスまたは電話番号',address:'ご住所（任意）',optionalMessage:'メッセージ（任意）',back:'戻る',next:'次へ',coupleMessage:'新郎新婦へのメッセージ',submit:'送信する',thanks:'ありがとうございます！',onWay:'ご回答を送信しました。',celebrate:'当日お会いできることを楽しみにしております！'},
- my:{attendQ:'မင်္ဂလာပွဲသို့ တက်ရောက်နိုင်ပါသလား။',accept:'ဝမ်းမြောက်စွာ<br>တက်ရောက်ပါမည်',decline:'မတက်ရောက်<br>နိုင်ပါ',details:'လူကြီးမင်း၏ အချက်အလက်များ',shortNote:'အမည်၊ ဆက်သွယ်ရန်နှင့် ဆုတောင်းစကားတစ်ခုသာ ဖြည့်ပေးရုံဖြင့် ရပါသည်။',name:'အမည်',kana:'အသံထွက် (သို့) စာလုံးပေါင်း',contact:'အီးမေးလ် (သို့) ဖုန်းနံပါတ်',address:'နေရပ်လိပ်စာ (ချန်ထားနိုင်သည်)',optionalMessage:'ဆုတောင်းစကား (ချန်ထားနိုင်သည်)',back:'နောက်သို့',next:'ရှေ့သို့',coupleMessage:'ဆုတောင်းစကားများ ပေးပို့ရန်',submit:'ပေးပို့မည်',thanks:'ကျေးဇူးတင်ရှိပါသည်။',onWay:'လူကြီးမင်း၏ အကြောင်းပြန်ချက်ကို ပေးပို့ပြီးပါပြီ။',celebrate:'ပွဲနေ့တွင် ဆုံတွေ့ကြပါစို့။'}
+const rsvpTranslations = {
+  en: {
+    attendQ: 'Can you make it?',
+    accept: 'Joyfully<br>Accepts',
+    decline: 'Regretfully<br>Declines',
+    details: 'Your Details',
+    shortNote: 'Please drop your name, contact info, and a sweet note if you’d like!',
+    name: 'Your Name',
+    kana: 'Pronunciation / Furigana (Optional)',
+    contact: 'Email or Mobile Number',
+    address: 'Mailing Address (Optional)',
+    optionalMessage: 'Leave a Note (Optional)',
+    back: 'Back',
+    next: 'Next',
+    coupleMessage: 'Wishes for the Couple',
+    submit: 'Send RSVP',
+    thanks: 'Thank you so much!',
+    onWay: 'Your RSVP is in! We got your response.',
+    celebrate: 'Can’t wait to celebrate together on the big day!'
+  },
+  ja: {
+    attendQ: 'ご出欠をお聞かせください！',
+    accept: '喜んで<br>出席します',
+    decline: '残念ながら<br>欠席します',
+    details: 'ゲスト情報のご入力',
+    shortNote: 'お席札のご用意とご連絡のため、お名前・ご連絡先のご入力をお願いいたします。',
+    name: 'お名前',
+    kana: 'ふりがな（任意）',
+    contact: 'メールアドレス または お電話番号',
+    address: 'ご住所（任意）',
+    optionalMessage: 'メッセージ（任意）',
+    back: '戻る',
+    next: '次へ',
+    coupleMessage: '新郎新婦へひとこと！',
+    submit: '送信する',
+    thanks: 'ご回答ありがとうございます！',
+    onWay: 'お返事を受け付けました！',
+    celebrate: '当日、皆様と笑顔でお会いできるのを楽しみにしています！'
+  },
+  my: {
+    attendQ: 'မင်္ဂလာပွဲလေးကို လာရောက်ဆင်နွှဲပေးနိုင်မလားခင်ဗျာ/ရှင့်။',
+    accept: 'ဝမ်းမြောက်စွာ<br>တက်ရောက်ပါမည်',
+    decline: 'မတက်ရောက်<br>နိုင်ပါ',
+    details: 'လူကြီးမင်း၏ အချက်အလက်များ',
+    shortNote: 'ဧည့်သည်နေရာပြကတ်ပြား ပြင်ဆင်ဖို့နဲ့ အရေးကြီးကိစ္စလေးတွေ အသိပေးနိုင်ဖို့ နာမည်နဲ့ ဖုန်းနံပါတ် ဖြည့်ပေးပါနော်။',
+    name: 'အမည်',
+    kana: 'အသံထွက် / စာလုံးပေါင်း (ချန်ထားနိုင်သည်)',
+    contact: 'အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်',
+    address: 'နေရပ်လိပ်စာ (ချန်ထားနိုင်သည်)',
+    optionalMessage: 'ဆုတောင်းစကား (ချန်ထားနိုင်သည်)',
+    back: 'နောက်သို့',
+    next: 'ရှေ့သို့',
+    coupleMessage: 'မင်္ဂလာမောင်နှံထံသို့ ဆုတောင်းစကားများ',
+    submit: 'အတည်ပြု ပေးပို့မည်',
+    thanks: 'ကျေးဇူးအများကြီးတင်ပါတယ်နော်！',
+    onWay: 'လူကြီးမင်းရဲ့ အကြောင်းပြန်ကြားချက်ကို ရရှိသွားပါပြီ။',
+    celebrate: 'မင်္ဂလာပွဲနေ့မှာ အားလုံးနဲ့ ပျော်ပျော်ပါးပါး ဆုံကြမယ်နော်။'
+  }
 };
-const infoContent={
- en:{
-  save:{title:'Save the Date',body:'Friday, 16 October 2026. Reception opens at 13:30 and the ceremony begins at 14:30.',meta:['Reception opens at 13:30 · Ceremony begins at 14:30','Please arrive by 14:10, about 20 minutes before the ceremony'],action:'Add to calendar'},
-  dress:{title:'Dress Code',body:'Our dress code is cocktail style — polished yet comfortable. If you would like to complement our palette, consider champagne, soft yellow, sage, dusty rose, or warm earthy tones. Black tie is warmly welcomed for gentlemen.',meta:['Cocktail style','Champagne · soft yellow · sage · warm earth'],action:'Close & continue'},
-  location:{title:'Atsugi Area',body:'Our venue is in the Atsugi Area in Kanagawa, Japan. The nearest station is Atsugi Station. The exact venue details will be shared later.',meta:['Destination: Atsugi Area','Nearest station: Atsugi Station'],action:'View Atsugi Station'},
-  transport:{title:'Getting There',body:'Complimentary shuttle buses are planned from Shinjuku, Tokyo Station, and Ikebukuro. Please select your preferred station in the RSVP so we can confirm the final pickup point and schedule.',meta:['Shinjuku · Tokyo Station · Ikebukuro','Return transportation is also planned'],action:'Confirm through RSVP'},
-  afterparty:{title:'Afterparty',body:'Want to keep the celebration going? We are planning a casual, optional afterparty with more food, drinks, and music. We will cover part of the door fee, so only a small contribution will be requested on arrival.',meta:['Optional celebration','Food · drinks · music'],action:'Respond in RSVP'}
- },
- ja:{
-  save:{title:'日程',body:'2026年10月16日（金）。受付は13:30、挙式は14:30に開始いたします。',meta:['受付開始 13:30 · 挙式開始 14:30','挙式20分前の14:10頃までにお越しください'],action:'カレンダーに追加'},
-  dress:{title:'ドレスコード',body:'ドレスコードはカクテルスタイルです。フォーマルすぎず、上品な装いでお越しください。カラーを合わせられる方は、シャンパンゴールド、レモンイエロー、ブラウン系がおすすめです。男性はブラックタイも歓迎いたします。',meta:['カクテルスタイル','シャンパンゴールド · レモンイエロー · ブラウン'],action:'閉じて続きを見る'},
-  location:{title:'厚木エリア',body:'会場は神奈川県の厚木エリアにございます。最寄り駅は厚木駅です。詳しい会場情報は後日お知らせいたします。',meta:['目的地：厚木エリア','最寄り駅：厚木駅'],action:'厚木駅を見る'},
-  transport:{title:'アクセス',body:'主要3駅から無料送迎バスをご用意しております。新宿・東京・池袋を予定しておりますが、皆様のご都合に応じて最終決定いたします。お帰りも同駅まで送迎いたしますので、RSVPにてご希望の乗車駅をお知らせください。',meta:['新宿 · 東京 · 池袋','お帰りも同駅まで送迎いたします'],action:'RSVPで回答'},
-  afterparty:{title:'アフターパーティー',body:'まだまだ一緒に盛り上がりたい方向けに、2次会をご用意しています！気軽にお越しいただけるよう会費制ですが、一部の会費のみでご参加いただけます。参加は完全自由ですので、ご都合のつく方はぜひRSVPにてご回答ください！',meta:['自由参加','食事 · ドリンク · 音楽'],action:'RSVPで回答'}
- },
- my:{
-  save:{title:'ကျင်းပမည့်ရက်စွဲ',body:'၂၀၂၆ ခုနှစ်၊ အောက်တိုဘာလ (၁၆) ရက် (သောကြာနေ့)။ ဧည့်ခံချိန် ၁၃:၃၀ နှင့် မင်္ဂလာအခမ်းအနား ၁၄:၃၀ တွင် စတင်ပါမည်။',meta:['ဧည့်ခံချိန် ၁၃:၃၀ · အခမ်းအနား ၁၄:၃၀','အခမ်းအနားမစတင်မီ မိနစ် ၂၀၊ ၁၄:၁၀ ခန့်တွင် ရောက်ရှိပေးပါရန်'],action:'ပြက္ခဒိန်တွင် ထည့်သွင်းမည်'},
-  dress:{title:'ဝတ်စုံဒီဇိုင်း',body:'ဝတ်စုံဒီဇိုင်းမှာ Cocktail Style ဖြစ်ပါသည်။ ပေါ့ပါးလွတ်လပ်စွာ တင့်တယ်စွာ ဝတ်ဆင်နိုင်ပါသည်။ အဝတ်အစားအရောင်ကို ပွဲနှင့်လိုက်ဖက်အောင် ဝတ်ဆင်လိုပါက ဝင်္ကပါရောင် (Champagne)၊ အဝါနုရောင် သို့မဟုတ် အညိုရောင်လိုင်းများကို ရွေးချယ်နိုင်ပါသည်။ အမျိုးသားများအတွက် Black Tie ဝတ်စုံဖြင့်လည်း တက်ရောက်နိုင်ပါသည်။',meta:['Cocktail Style','Champagne · အဝါနု · အညိုရောင်'],action:'ပိတ်ပြီး ဆက်ကြည့်ရန်'},
-  location:{title:'Atsugi Area',body:'ကျွန်တော်တို့ ပွဲကျင်းပမည့်နေရာသည် Atsugi ဒေသတွင် ဖြစ်ပြီး အနီးဆုံးဘူတာမှာ Atsugi Station ဖြစ်ပါသည်။ အသေးစိတ်နေရာကို နောက်မှ အသိပေးပါမည်။',meta:['တည်နေရာ: Atsugi Area','အနီးဆုံးဘူတာ: Atsugi Station'],action:'Atsugi Station ကြည့်ရန်'},
-  transport:{title:'ခရီးစဉ်ဆိုင်ရာ',body:'အဓိက ဘူတာရုံ (၃) ခုမှ ကြိုပို့ဘတ်စ်ကားများ စီစဉ်ပေးထားပြီး၊ ပွဲအပြီးတွင် မူလဘူတာသို့ ပြန်လည်ပို့ဆောင်ပေးပါမည်။ Shinjuku၊ Tokyo Station နှင့် Ikebukuro တို့အနက် သင်နှစ်သက်ရာဂိတ်ကို RSVP တွင် ဖြေကြားပေးပါရန်။',meta:['Shinjuku · Tokyo Station · Ikebukuro','အပြန်ခရီးလည်း စီစဉ်ပေးထားပါသည်'],action:'RSVP တွင် ဖြေကြားရန်'},
-  afterparty:{title:'Afterparty',body:'ပွဲပြီးလို့ အိမ်မပြန်ချင်သေးဘဲ ဆက်လက်ပျော်ပါးချင်သူများအတွက် အစားအသောက်၊ အဖျော်ယမကာများနှင့် Afterparty (2次会) လေး ရှိပါသေးတယ်နော်။ ပွဲဝင်ကြေး၏ တစ်စိတ်တစ်ပိုင်းကို ကျွန်တော်တို့က စိုက်ထုတ်ပေးထားတာမို့ ပွဲဝင်ပေါက်မှာ ဝင်ကြေးတစ်စိတ်တစ်ပိုင်းကိုသာ ပေးသွင်းကာ ပါဝင်နိုင်မှာဖြစ်ပါတယ်။ တက်ရောက်ချင်ပါက RSVP မှာ ဆန္ဒပြုပေးခဲ့ပါနော်။',meta:['လွတ်လပ်စွာ ပါဝင်နိုင်သည်','အစားအသောက် · အဖျော်ယမကာ · တေးဂီတ'],action:'RSVP တွင် ဖြေကြားရန်'}
- }
+const infoContent = {
+  en: {
+    save: {
+      title: 'Date & Time',
+      body: 'Friday, 16 October 2026. Reception opens at 13:30, and the ceremony kicks off at 14:30. We recommend getting there around 14:10 so you can grab a good seat and get comfortable!',
+      meta: ['Reception: 13:30 · Ceremony: 14:30', 'Recommended arrival: by 14:10 (20 mins early)'],
+      action: 'Add to Calendar'
+    },
+    dress: {
+      title: 'Dress Code',
+      body: 'Cocktail Attire — polished, stylish, and comfortable for enjoying the day. If you’d love to match our wedding palette, shades of champagne, soft yellow, sage green, dusty rose, or warm earth tones look amazing! Gentlemen are also warmly welcome to rock a black tie.',
+      meta: ['Cocktail Attire', 'Palette: Champagne · Soft Yellow · Sage · Earthy Tones'],
+      action: 'Got it!'
+    },
+    location: {
+      title: 'Location & Area',
+      body: 'Our venue is set in the lovely Atsugi area in Kanagawa, Japan. The nearest main hub is Atsugi Station. We’ll send over the exact venue address once you submit your RSVP!',
+      meta: ['Area: Atsugi, Kanagawa', 'Nearest Station: Atsugi Station'],
+      action: 'View on Map'
+    },
+    transport: {
+      title: 'Free Shuttle Buses',
+      body: 'We’re organizing free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro straight to the venue and back after the party! Please let us know your preferred pick-up station in your RSVP so we can save your seat.',
+      meta: ['Hubs: Shinjuku · Tokyo · Ikebukuro', 'Round-trip rides included'],
+      action: 'Pick Hub in RSVP'
+    },
+    afterparty: {
+      title: 'The After-Party',
+      body: 'Want to keep the fun going? We’re hosting a casual after-party with plenty of drinks, bites, and great tunes. We’re covering part of the costs, so only a small contribution will be collected at the door. Totally optional, but we’d love to see you there!',
+      meta: ['Optional Fun', 'Drinks · Bites · Music'],
+      action: 'RSVP for After-Party'
+    }
+  },
+  ja: {
+    save: {
+      title: '日時・受付',
+      body: '2026年10月16日（金）。受付スタートは13:30、挙式は14:30に開式します。開式の20分前（14:10頃）を目安にお越しいただき、ゆったりお席でお待ちください！',
+      meta: ['受付開始 13:30 · 挙式開式 14:30', '※挙式20分前（14:10頃）までにお越しください'],
+      action: 'カレンダーに登録'
+    },
+    dress: {
+      title: 'ドレスコード',
+      body: '当日は「カクテルスタイル」でお気軽にお越しください。フォーマルすぎず、オシャレで過ごしやすい装いがぴったりです。カラーを合わせたい方は、シャンパン、やわらかイエロー、セージグリーン、アースカラー系がおすすめ！男性のブラックタイも大歓迎です。',
+      meta: ['カクテルスタイル', 'おすすめカラー：シャンパン · イエロー · セージ · アースカラー'],
+      action: '閉じる'
+    },
+    location: {
+      title: '会場エリア',
+      body: '会場は神奈川県・厚木エリアにあります。最寄り駅は厚木駅です。詳しい所在地はご出欠のお返事をいただいた後にすぐご案内しますので、お楽しみに！',
+      meta: ['エリア：神奈川県 厚木エリア', '最寄り駅：厚木駅'],
+      action: '厚木駅の周辺地図を見る'
+    },
+    transport: {
+      title: '無料送迎バスのご案内',
+      body: '主要3駅（新宿駅・東京駅・池袋駅）から無料の往復送迎バスをご用意しています！皆様のご希望に合わせて便数を調整しますので、RSVPフォームからご都合のよい駅を教えてくださいね。お帰りも同じ駅までお送りします。',
+      meta: ['発着駅：新宿 · 東京 · 池袋', '※お帰りも同じ駅まで送迎します！'],
+      action: 'RSVPで希望駅を選ぶ'
+    },
+    afterparty: {
+      title: '2次会（アフターパーティー）',
+      body: 'まだまだ一緒に盛り上がりたい皆様へ、カジュアルな2次会をご用意しています！気軽にご参加いただけるよう、会費の一部は私たちが負担します。完全自由参加ですので、来られる方はぜひRSVPで教えてください！',
+      meta: ['自由参加！', '会費制（一部負担）· 軽食・ドリンク・音楽'],
+      action: 'RSVPで回答する'
+    }
+  },
+  my: {
+    save: {
+      title: 'မင်္ဂလာရက်စွဲနှင့် အချိန်',
+      body: '၂၀၂၆ ခုနှစ်၊ အောက်တိုဘာလ (၁၆) ရက် (သောကြာနေ့)။ ဧည့်ခံပွဲ စတင်ချိန်က နေ့လယ် ၁၃:၃၀ နာရီဖြစ်ပြီး မင်္ဂလာအခမ်းအနားကတော့ ၁၄:၃၀ နာရီမှာ စတင်ပါမယ်နော်။ အခမ်းအနားမစခင် မိနစ် ၂၀ လောက်အလို (၁၄:၁၀ နာရီခန့်) ကြိုရောက်ပေးရင် အဆင်ပြေပြေ နေရာယူနိုင်မှာပါခင်ဗျာ/ရှင့်။',
+      meta: ['ဧည့်ခံချိန် ၁၃:၃၀ · အခမ်းအနား ၁၄:၃၀', 'အခမ်းအနားမစခင် မိနစ် ၂၀ (၁၄:၁၀ ခန့်) ရောက်ပေးပါနော်'],
+      action: 'ပြက္ခဒိန်တွင် မှတ်သားမည်'
+    },
+    dress: {
+      title: 'ဝတ်စုံဒီဇိုင်း စတိုင်လ်',
+      body: 'ဝတ်စုံဒီဇိုင်းကတော့ Cocktail Style ဖြစ်ပြီး ပေါ့ပေါ့ပါးပါးနဲ့ တင့်တယ်လှပတဲ့ ဝတ်စုံတွေကို စိတ်ကြိုက် ရွေးချယ်ဝတ်ဆင်နိုင်ပါတယ်။ မင်္ဂလာပွဲ Theme အရောင်လေးတွေနဲ့ ဆင်တူဝတ်ချင်တယ်ဆိုရင်တော့ Champagne (ရွှေဖျော့ရောင်)၊ အဝါနုရောင်၊ Sage (အစိမ်းနုရောင်)၊ Dusty Rose ဒါမှမဟုတ် သဘာဝဆန်တဲ့ Earth Tones အရောင်လိုင်းလေးတွေ အလွန်လိုက်ဖက်ပါတယ်နော်။ အမျိုးသားများအနေနဲ့ Black Tie ဝတ်စုံနဲ့လည်း တက်ရောက်နိုင်ပါတယ်။',
+      meta: ['Cocktail Style (Semi-Formal)', 'ရွေးချယ်ရန်အရောင်- Champagne · အဝါနု · Sage · Earth Tones'],
+      action: 'ပိတ်မည်'
+    },
+    location: {
+      title: 'မင်္ဂလာပွဲ ကျင်းပမည့်နေရာ',
+      body: 'မင်္ဂလာပွဲ ကျင်းပမည့်နေရာကတော့ ဂျပန်နိုင်ငံ၊ ခါနဂါဝါခရိုင်၊ သာယာလှပတဲ့ Atsugi ဧရိယာမှာ ဖြစ်ပြီး အနီးဆုံးဘူတာကတော့ Atsugi Station ပါ။ တည်နေရာလိပ်စာ အတိအကျကိုတော့ RSVP အကြောင်းပြန်ကြားချက်လေး ရရှိပြီးတာနဲ့ အသိပေးသွားပါမယ်နော်။',
+      meta: ['ဒေသ- ခါနဂါဝါခရိုင်၊ Atsugi ဧရိယာ', 'အနီးဆုံးဘူတာ- Atsugi Station'],
+      action: 'ဘူတာမြေပုံ ကြည့်ရန်'
+    },
+    transport: {
+      title: 'အခမဲ့ ကြိုပို့ယာဉ် စီစဉ်ထားရှိမှု',
+      body: 'အဓိက ဘူတာကြီး (၃) ခုဖြစ်တဲ့ Shinjuku၊ Tokyo Station နဲ့ Ikebukuro ဘူတာတွေကနေ ပွဲကျင်းပရာနေရာအထိ အခမဲ့ အသွားအပြန် ကြိုပို့ဘတ်စ်ကားတွေ စီစဉ်ပေးထားပါတယ်။ သွားလာရ အဆင်ပြေစေမယ့် ဘူတာလေးကို RSVP ဖောင်မှာ ရွေးချယ်ပေးပါဦးနော်။',
+      meta: ['ကြိုပို့ဘူတာများ- Shinjuku · Tokyo · Ikebukuro', 'အသွားအပြန် ကားစီစဉ်ပေးထားပါသည်'],
+      action: 'RSVP တွင် ဘူတာရွေးရန်'
+    },
+    afterparty: {
+      title: 'After-Party မိတ်ဆုံပါတီ',
+      body: 'မင်္ဂလာဧည့်ခံပွဲပြီးလို့ အိမ်မပြန်ချင်သေးဘဲ ဆက်ပြီး ပျော်ပါးချင်သူများအတွက် အစားအသောက်၊ အဖျော်ယမကာနဲ့ တေးဂီတတို့နဲ့ ပေါ့ပေါ့ပါးပါး After-Party လေး ရှိပါသေးတယ်နော်။ အားလုံး လာရလွယ်ကူအောင် ကုန်ကျစရိတ်တစ်စိတ်တစ်ပိုင်းကို မင်္ဂလာမောင်နှံက ကျခံပေးထားတာမို့ အနည်းငယ်သော ဝင်ကြေးလေးသာ ကျသင့်ပါမယ်။ လာချင်တယ်ဆိုရင် RSVP မှာ အသိပေးခဲ့ပါဦးနော်။',
+      meta: ['လွတ်လပ်စွာ ပါဝင်နိုင်သည်', 'အစားအသောက် · အဖျော်ယမကာ · တေးဂီတ'],
+      action: 'RSVP တွင် ဖြေကြားရန်'
+    }
+  }
 };
-const qnaContent={
- en:[
-  ['How do we get to the venue?','The venue is near Atsugi — roughly 48 minutes from Shinjuku Station. Shuttle buses will operate from Shinjuku, Tokyo Station, and Ikebukuro. As seating is limited to 27–28 guests per bus, please reserve a seat in your RSVP.'],
-  ['Where is the exact location?',"We're keeping the exact address a pleasant surprise until after you RSVP! For now, you can plan on traveling to the scenic Atsugi area."],
-  ['Are children and senior family members welcome?',"We would love to celebrate with everyone, but our venue's remote location and limited accessibility may make travel uncomfortable for young children and senior family members. We kindly ask for your understanding."],
-  ['How should I inform you about dietary requirements?','You can easily note any dietary restrictions or allergies in the RSVP section below under “Dietary requirements”.'],
-  ['What time should I arrive?','We recommend arriving about 20 minutes before the 14:30 ceremony so you can settle in comfortably.'],
-  ['Is parking available on site?','Yes, parking is available. Please kindly let us know in advance so we can reserve a space for you.'],
-  ['What is the dress code?','Please refer to the Dress Code item in the Information chapter above.'],
-  ['May I bring a guest (+1)?',"If you are attending as a couple, only one RSVP form is needed — simply include your partner's name when filling it out!"],
-  ['Can I update my RSVP details later?',"Yes, of course! Plans change, and that's completely okay. If you need to update your attendance, guest details, or transportation preference, simply contact us directly anytime."]
- ],
- ja:[
-  ['会場へのアクセス方法は？','会場は厚木エリアにございます（新宿駅から約48分）。新宿・東京・池袋から送迎バスを用意しております。定員がございますのでRSVPにてご希望をお知らせください。'],
-  ['詳しい住所はどこですか？','住所はご出席のご連絡をいただいた後にご案内いたします。厚木エリアでの素敵な一日をお楽しみに！'],
-  ['子供や高齢の家族も一緒に参加できますか？','皆様とのお祝いを心より楽しみにしておりますが、会場が遠方にありバリアフリー設備が限られているため、小さなお子様やご年配の皆様にはご負担となる可能性がございます。何卒ご理解賜りますようお願い申し上げます。'],
-  ['アレルギー対応はありますか？','下のRSVPフォームに「アレルギー・お食事のお好み」欄がございますので、ご記入ください。'],
-  ['何時頃に到着すればよいですか？','挙式開始（14:30）の20分前頃を目安にお越しください。'],
-  ['駐車場はありますか？','お車でお越しいただけます。事前に台数を把握するためRSVPにてお知らせください。'],
-  ['服装の指定はありますか？','上記のInformation章にある「ドレスコード」の項目をご覧ください。'],
-  ['同伴者（+1）を連れて行ってもいいですか？','ご夫婦やパートナーとご一緒に出席される場合は、お二人で1回のご回答で構いません。フォーム内にお連れ様のお名前をご記入ください。'],
-  ['回答後にRSVP内容を変更できますか？','はい、いつでも変更可能です。ご都合が変わられた場合は直接ご連絡いただけますと幸いです。']
- ],
- my:[
-  ['ပွဲကျင်းပမည့်နေရာသို့ မည်သို့သွားရောက်ရမည်နည်း။','ပွဲကျင်းပမည့်နေရာသည် Atsugi ဧရိယာတွင်ရှိပြီး Shinjuku ဘူတာမှ မိနစ် ၄၈ ခန့် ကွာဝေးပါသည်။ Shinjuku, Tokyo Station, Ikebukuro တို့မှ ကြိုပို့ကားများ စီစဉ်ပေးထားပါသည်။ အစီးရေ ကန့်သတ်ချက်ရှိပါသဖြင့် RSVP တွင် ကြိုတင်စာရင်းပေးပါရန်။'],
-  ['ပွဲကျင်းပမည့် လိပ်စာအတိအကျမှာ မည်သို့နည်း။','လိပ်စာအတိအကျကို RSVP စာရင်းပေးသွင်းပြီးမှ အကြောင်းကြားပေးပါမည်။ လက်ရှိတွင် Atsugi ဧရိယာသို့ လာရောက်ရမည်ဟု မှတ်သားပေးပါ။'],
-  ['ကလေးငယ်များနှင့် လူကြီးမိဘများကို ခေါ်ဆောင်လာခွင့်ရှိပါသလား။','မင်္ဂလာပွဲလေးမှာ အားလုံးနဲ့ ဆုံတွေ့ချင်ပေမဲ့လည်း၊ ပွဲကျင်းပမယ့်နေရာက သွားလာရလှမ်းပြီး အဆင်ပြေပစ္စည်း အကန့်အသတ်ရှိတာကြောင့် ကလေးငယ်များနှင့် လူကြီးမိဘများ ခရီးပန်းမှာ စိုးရိမ်မိပါတယ်။ နားလည်ပေးကြဖို့ မေတ္တာရပ်ခံပါတယ်ရှင့်။'],
-  ['မတည့်သည့် အစားအစာများကို မည်သို့ အကြောင်းကြားရမည်နည်း။','အောက်ပါ RSVP ဖောင်တွင် အစားအသောက်နှင့် ပတ်သက်သည့် လိုအပ်ချက်များကို ဖြည့်စွက်ပေးနိုင်ပါသည်။'],
-  ['မည်သည့်အချိန်တွင် ရောက်ရှိရမည်နည်း။','မင်္ဂလာပွဲ စတင်မည့် ၁၄:၃၀ နာရီ မတိုင်မီ မိနစ် ၂၀ ခန့် ကြိုတင်ရောက်ရှိပေးပါရန်။'],
-  ['ကားရပ်နားရန် နေရာရှိပါသလား။','ကားရပ်နားရန်နေရာ စီစဉ်ပေးထားပါသည်။ ကြိုတင်ပြင်ဆင်နိုင်ရန်အတွက် RSVP တွင် အသိပေးပေးပါရန်။'],
-  ['ဝတ်ဆင်ရမည့် ဝတ်စုံအမျိုးအစားမှာ မည်သို့နည်း။','အထက်ပါ Information အခန်းရှိ Dress Code အပိုင်းတွင် ကြည့်ရှုနိုင်ပါသည်။'],
-  ['အဖော် (+1) ခေါ်ဆောင်လာခွင့် ရှိပါသလား။','ဇနီးမောင်နှံ သို့မဟုတ် အဖော်နှင့်အတူ တက်ရောက်မည်ဆိုပါက ဖောင်တစ်ကြိမ်သာ ဖြည့်ပေးရုံဖြင့် အတူတက်ရောက်မည့်သူ၏ အမည်ကို တစ်ပါတည်း ဖြည့်စွက်ပေးနိုင်ပါသည်။'],
-  ['RSVP ဖြည့်ပြီးပါက အချက်အလက်များ ပြန်လည်ပြင်ဆင်နိုင်ပါသလား။','ဟုတ်ကဲ့၊ ပြင်ဆင်နိုင်ပါသည်။ အစီအစဉ်များ ပြောင်းလဲပါက ကျွန်တော်တို့ထံ တိုက်ရိုက် ဆက်သွယ် အကြောင်းကြားနိုင်ပါသည်။']
- ]
+const qnaContent = {
+  en: [
+    ['How do we get to the venue?', 'The venue is out in the scenic Atsugi area—about 48 minutes from Shinjuku Station. We’re running free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro! Since seats per bus are limited, please make sure to pick your preferred station in the RSVP form.'],
+    ['Where is the exact location?', 'We’re keeping the exact venue address a fun little surprise until after you RSVP! For now, you can plan your trip towards the Atsugi area.'],
+    ['Can children and senior family members join?', 'We’d truly love to celebrate with everyone! However, because our venue is set in a natural, outdoor-friendly area with limited accessibility, the walking and terrain might be a bit tiring for very young kids and elderly family members. We kindly ask for your understanding!'],
+    ['How should I share any dietary restrictions or allergies?', 'Super easy—just drop any food allergies or special dietary needs into the "Dietary Requirements" box on the RSVP form below.'],
+    ['What time should I arrive?', 'We suggest arriving around 14:10 (about 20 minutes before the 14:30 ceremony starts) so you have plenty of time to check in, grab a drink, and find a cozy seat.'],
+    ['Is there parking available on site?', 'Yes, we have parking spots available! Just let us know in advance on your RSVP form if you’ll be driving over so we can save a spot for you.'],
+    ['What should I wear (dress code)?', 'Check out the "Dress Code" card under the Event Details section above for all our outfit tips and color palette ideas!'],
+    ['Can I bring a plus-one (+1)?', 'Couples and partners only need to fill out one single RSVP form—just be sure to type your partner’s name into the guest field!'],
+    ['Can I update my RSVP details later if plans change?', 'Of course! Life happens and plans change. If you need to update anything, just reach out to us directly anytime.']
+  ],
+  ja: [
+    ['会場へのアクセス方法は？', '会場は緑豊かな厚木エリアにあります（新宿駅から約48分）。新宿駅・東京駅・池袋駅から無料送迎バスをご用意しています！お席に限りがありますので、RSVPフォームからご希望の乗車駅を教えてくださいね。'],
+    ['詳しい会場の住所はいつ分かりますか？', '詳しい住所は、出欠のご回答をいただいた後にすぐご案内します！自然あふれる厚木エリアでの一日を楽しみにしていてくださいね。'],
+    ['子供や高齢の家族も一緒に参加できますか？', '皆様とお祝いできることを心から願っておりますが、会場が自然豊かな立地にありバリアフリー設備が限られているため、小さなお子様やご高齢のご家族には移動のご負担になってしまう可能性がございます。ご理解いただけますと幸いです。'],
+    ['アレルギーや食事のリクエストはどう伝えればいいですか？', '下のRSVPフォームに「アレルギー・お食事のご要望」欄がありますので、そちらへ気軽にご記入ください！'],
+    ['当日は何時頃に着けばいいですか？', '挙式開式（14:30）の20分前、14:10頃を目安にお越しいただけると、ゆったり受付とお席の確保ができます！'],
+    ['車で行く場合、駐車場はありますか？', 'はい、お車でお越しいただけます！駐車スペースをご用意しますので、事前にRSVPフォームでお知らせくださいね。'],
+    ['服装（ドレスコード）の指定はありますか？', '本ページ上部の「イベントのご案内」内にある「ドレスコード」をぜひチェックしてみてください！'],
+    ['パートナーや同伴者と一緒に回答できますか？', 'ご夫婦やパートナーとご一緒に出席される場合は、おふたりで1回のご回答で大丈夫です！フォーム内にお連れ様のお名前をご記入ください。'],
+    ['回答後に内容を変更することはできますか？', 'もちろんいつでも変更OKです！予定が変わった際はお気軽に直接ご連絡くださいね。']
+  ],
+  my: [
+    ['မင်္ဂလာပွဲ ကျင်းပမည့်နေရာကို ဘယ်လို သွားရမလဲခင်ဗျာ/ရှင့်။', 'ပွဲကျင်းပမည့်နေရာက Atsugi ဧရိယာမှာရှိပြီး Shinjuku ဘူတာကနေ မိနစ် ၄၈ မိနစ်ခန့် ကွာဝေးပါတယ်။ Shinjuku၊ Tokyo Station နဲ့ Ikebukuro ဘူတာတွေကနေ အခမဲ့ ကြိုပို့ဘတ်စ်ကားတွေ စီစဉ်ပေးထားတာမို့ RSVP ဖောင်မှာ ကြိုတင်စာရင်းပေးထားနိုင်ပါတယ်နော်။'],
+    ['လိပ်စာအတိအကျကို ဘယ်အချိန် သိရမလဲနော်။', 'လိပ်စာအတိအကျကိုတော့ RSVP စာရင်းပေးသွင်းပြီးတာနဲ့ ချက်ချင်း အသိပေးသွားပါမယ်။ လောလောဆယ်မှာတော့ Atsugi ဧရိယာကို လာရောက်ရမယ်လို့ မှတ်သားထားပေးပါနော်။'],
+    ['ကလေးငယ်များနှင့် လူကြီးမိဘများ အတူတူ လိုက်ပါနိုင်ပါသလား။', 'မင်္ဂလာပွဲလေးမှာ အားလုံးနဲ့ အတူတူ ဆုံတွေ့ချင်ပေမယ့်လည်း ပွဲကျင်းပမယ့်နေရာက သဘာဝဆန်ဆန် နေရာဖြစ်ပြီး အထောက်အကူပြု အဆောက်အအုံ အကန့်အသတ်ရှိတာကြောင့် ကလေးငယ်များနှင့် လူကြီးမိဘများ ခရီးပန်းမှာ စိုးရိမ်မိပါတယ်။ နားလည်ပေးကြဖို့ မေတ္တာရပ်ခံပါတယ်နော်။'],
+    ['အစားအသောက် ဓာတ်မတည့်တာတွေကို ဘယ်လို အကြောင်းကြားရမလဲ။', 'အောက်ပါ RSVP ဖောင်ထဲက “အစားအသောက် လိုအပ်ချက်များ” နေရာမှာ ဓာတ်မတည့်တာတွေ ဒါမှမဟုတ် ရှောင်ချင်တာတွေကို လွတ်လပ်စွာ ရေးသားပေးနိုင်ပါတယ်ခင်ဗျာ/ရှင့်။'],
+    ['ပွဲကို ဘယ်အချိန် အရောက်လာရမလဲနော်။', 'မင်္ဂလာအခမ်းအနား စတင်မည့် ၁၄:၃၀ နာရီ မတိုင်မီ မိနစ် ၂၀ ခန့်အလို (၁၄:၁၀ နာရီခန့်) ကြိုတင်ရောက်ရှိပေးရင် အေးအေးဆေးဆေး နေရာယူနိုင်မှာပါနော်။'],
+    ['ကိုယ်ပိုင်ကားနဲ့ လာရင် ကားရပ်နားဖို့ နေရာရှိပါသလား။', 'ဟုတ်ကဲ့၊ ကားရပ်နားရန်နေရာ စီစဉ်ပေးထားပါတယ်နော်။ နေရာကြိုချထားနိုင်ဖို့အတွက် ကားနဲ့လာမယ့်အကြောင်း RSVP ဖောင်မှာ အသိပေးပေးပါနော်။'],
+    ['ဘယ်လို ဝတ်စုံဒီဇိုင်း ဝတ်ဆင်ရမလဲခင်ဗျာ/ရှင့်။', 'အထက်ပါ Information အပိုင်းထဲက “ဝတ်စုံဒီဇိုင်း စတိုင်လ်” အကွက်လေးမှာ အရောင်နှင့် စတိုင်လ် အသေးစိတ်ကို ဝင်ရောက်ကြည့်ရှုနိုင်ပါတယ်နော်။'],
+    ['အဖော် သို့မဟုတ် ဧည့်သည် (+1) ခေါ်ဆောင်လာနိုင်ပါသလား။', 'ဇနီးမောင်နှံ သို့မဟုတ် အဖော်နှင့်အတူ တက်ရောက်မယ်ဆိုရင် ဖောင်တစ်ကြိမ်သာ ဖြည့်စွက်ပေးရုံဖြင့် အတူတက်ရောက်မယ့်သူရဲ့ အမည်ကို တစ်ပါတည်း ဖြည့်သွင်းပေးနိုင်ပါတယ်နော်။'],
+    ['RSVP ဖြည့်ပြီးသွားရင် အချက်အလက်တွေ ပြန်ပြင်လို့ ရပါသလား။', 'ဟုတ်ကဲ့၊ အချိန်မရွေး ပြင်ဆင်နိုင်ပါတယ်ခင်ဗျာ/ရှင့်။ အစီအစဉ် အပြောင်းအလဲရှိရင် ကျွန်တော်တို့ထံ တိုက်ရိုက် ဆက်သွယ် အကြောင်းကြားနိုင်ပါတယ်နော်။']
+  ]
 };
 let activeLang='en';
 document.querySelectorAll('.site-lang button').forEach(btn=>btn.addEventListener('click',()=>{
@@ -957,10 +1245,8 @@ const rsvpSceneObserver=new IntersectionObserver(entries=>entries.forEach(entry=
 }),{threshold:.16});
 rsvpSceneObserver.observe(rsvpChapter);
 let smoothWelcome=0,smoothPlan=0,smoothStory=0,smoothRecords=0,smoothInfo=0,smoothQa=0,smoothGallery=0,smoothThanks=0,recordsSoonTrigger=null,recordsPanHold=null;
-const continuousMaster=document.querySelector('.continuous-master-bg');
 function sectionProgress(el){const r=el.getBoundingClientRect();return Math.max(0,Math.min(1,-r.top/Math.max(1,el.offsetHeight-innerHeight)))}
 function storyFrame(){
- const pageTravel=Math.max(1,document.documentElement.scrollHeight-innerHeight),masterProgress=Math.max(0,Math.min(1,scrollY/pageTravel));continuousMaster.style.backgroundPosition=`center ${masterProgress*100}%`;
  const wr=welcomeChapter.getBoundingClientRect();if(wr.bottom>0&&wr.top<innerHeight){const raw=sectionProgress(welcomeChapter);smoothWelcome+= (raw-smoothWelcome)*.1;welcomeArt.style.transform=`scale(1.015) translate3d(0,${-smoothWelcome*8}px,0)`;welcomePieces.forEach(el=>el.classList.toggle('shown',smoothWelcome>=Number(el.dataset.welcome)))}
  const pr=planChapter.getBoundingClientRect();if(pr.bottom>0&&pr.top<innerHeight){const raw=sectionProgress(planChapter);smoothPlan+=(raw-smoothPlan)*.11;const travel=Math.max(0,Math.min(1,(smoothPlan-.05)/.82)),rr=planRail.getBoundingClientRect(),pt=planPath.getPointAtLength(planLen*travel);planStar.style.left=pt.x/100*rr.width+'px';planStar.style.top=pt.y/1000*rr.height+'px';planStar.style.opacity=smoothPlan>.045&&smoothPlan<.92?1:0;planStar.style.transform=`translate(-50%,-50%) rotate(${travel*540}deg)`;planDots.forEach(d=>d.el.style.opacity=d.t<=travel?.88:0);planStops.forEach(s=>s.classList.toggle('shown',travel>=Number(s.dataset.at)-.02))}
   const sr=storyChapter.getBoundingClientRect();if(sr.bottom>0&&sr.top<innerHeight){const raw=sectionProgress(storyChapter);smoothStory+=(raw-smoothStory)*.1;const joinRaw=Math.max(0,Math.min(1,(smoothStory-.08)/.48)),join=joinRaw*joinRaw*(3-2*joinRaw),draw=Math.max(0,Math.min(1,(smoothStory-.58)/.2));storyArt.style.transform=`scale(${1.025-smoothStory*.018}) translate3d(0,${-smoothStory*9}px,0)`;storyAssembly.classList.toggle('assembled',join>.02);heartComplete.style.animation='none';heartImages[0].style.transform=`translate(${-(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*-8}deg)`;heartImages[1].style.transform=`translate(${(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*8}deg)`;heartImages.forEach(el=>el.style.opacity=.18+join*.82);heartUnderlays.forEach(el=>el.style.opacity=join);heartHalves.forEach(el=>{el.style.strokeDashoffset=3000*(1-draw);el.style.opacity=draw*.9});const beat=draw>.985?1+Math.sin(performance.now()/175)*.012+Math.sin(performance.now()/88)*.004:1;heartComplete.style.transform=`scale(${(.88+join*.12)*beat})`;storyPieces.forEach(el=>el.classList.toggle('shown',smoothStory>=Number(el.dataset.story)))}
@@ -973,6 +1259,7 @@ function storyFrame(){
  const recordsSoon=document.getElementById('recordsSoon'),recordsRect=recordsChapter.getBoundingClientRect();if(recordsRect.bottom>0&&recordsRect.top<innerHeight){const rp=sectionProgress(recordsChapter),stage=document.querySelector('.records-stage'),lastRecord=records.at(-1),lastCover=lastRecord.querySelector('.record-cover'),lastCaption=lastRecord.querySelector('.record-caption'),anchor=lastRecord.querySelector('.last-vinyl-anchor'),anchorRect=anchor.getBoundingClientRect(),lastRect=lastRecord.getBoundingClientRect(),baseSize=Math.max(1,lastRecord.offsetWidth*.96*(lastRect.width/Math.max(1,lastRecord.offsetWidth))),centerDistance=Math.abs(lastRect.left+lastRect.width/2-innerWidth/2);if(rp<.66){recordsSoonTrigger=null;recordsPanHold=null}if(recordsSoonTrigger===null&&rp>.69&&centerDistance<baseSize*.34){recordsSoonTrigger=rp;recordsPanHold=(innerWidth*.22+(records.length-1)*Math.min(innerWidth*.46,400)+lastRecord.offsetWidth/2)/((records.length-1)*Math.min(innerWidth*.46,400)+innerWidth*.48)}const phase=recordsSoonTrigger===null?0:Math.max(0,Math.min(1,(rp-recordsSoonTrigger)/.17)),pull=Math.max(0,Math.min(1,(phase-.05)/.28)),zoom=Math.max(0,Math.min(1,(phase-.38)/.62)),easePull=pull*pull*(3-2*pull),easeZoom=zoom*zoom*(3-2*zoom),reveal=Math.max(0,Math.min(1,(pull-.03)/.34)),pulledX=anchorRect.left+easePull*baseSize*.48,vinylX=pulledX+(innerWidth/2-pulledX)*easeZoom,vinylY=anchorRect.top+(innerHeight/2-anchorRect.top)*easeZoom,targetSize=innerWidth<=700?Math.min(innerWidth*2.05,innerHeight*1.05):Math.min(innerWidth*1.18,innerHeight*1.45),vinylSize=baseSize+(targetSize-baseSize)*easeZoom,vinylTurn=smoothRecords*1260+120+easePull*240+easeZoom*540;lastCover.style.transform=`translate3d(${-easePull*78}%,${easePull*4}%,0) rotate(${-easePull*7}deg)`;lastCover.style.opacity='1';lastCaption.style.opacity=String(1-easePull);recordsSoon.style.opacity=phase>.05?1:0;recordsSoon.style.zIndex=pull>.18?'30':'4';recordsSoon.style.setProperty('--vinyl-opacity',String(reveal));recordsSoon.style.setProperty('--vinyl-left',`${vinylX}px`);recordsSoon.style.setProperty('--vinyl-top',`${vinylY}px`);recordsSoon.style.setProperty('--vinyl-size',`${vinylSize}px`);recordsSoon.style.setProperty('--vinyl-turn',`${vinylTurn}deg`);recordsSoon.style.setProperty('--copy-turn',`${-vinylTurn*easeZoom}deg`);recordsSoon.style.setProperty('--copy-scale',String(.35+easeZoom*.65));stage.style.opacity=String(1-Math.max(0,(zoom-.18)/.72));document.querySelector('.records-head').style.opacity=String(1-Math.max(0,(pull-.45)/.55));document.querySelector('.records-progress').style.opacity=String(1-Math.max(0,(pull-.45)/.55))}
  requestAnimationFrame(storyFrame);
 }
+document.querySelector('.site-lang button[data-lang="en"]').click();
 requestAnimationFrame(storyFrame);
 </script>
 </body></html>
