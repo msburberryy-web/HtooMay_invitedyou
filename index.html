@@ -532,6 +532,14 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 #informationChapter{height:300vh!important}
 #qaChapter{height:620vh!important}
 #galleryChapter{height:280vh!important}
+
+/* Preserve every chapter artwork while softly joining the sticky scene handoffs. */
+.scene-seam{position:absolute;z-index:65;left:0;right:0;top:-12svh;height:24svh;pointer-events:none;background-position:center top;background-size:cover;background-repeat:no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 30%,#000 72%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 30%,#000 72%)}
+.seam-story{background-image:url('assets/chapter-04/one-story-background-planned.png')}
+.seam-records{background-image:linear-gradient(rgba(239,228,208,.82),rgba(239,228,208,.9)),url('assets/backgrounds/chapter-04-scrapbook-clean.png')}
+.seam-plan{background-image:url('assets/backgrounds/chapter-05-plan-sage.png')}
+.seam-information,.seam-qa,.seam-gallery,.seam-rsvp{background-image:linear-gradient(rgba(247,239,224,.86),rgba(240,228,207,.91)),url('assets/backgrounds/chapter-04-scrapbook-clean.png')}
+@media(max-width:700px){.scene-seam{top:-10svh;height:20svh}}
 .stop-copy time{font-size:clamp(.76rem,1.55vw,1rem)!important;font-weight:600!important;letter-spacing:.17em!important}
 html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa-question,html[lang="my"] .qa-answer,html[lang="my"] .info-sheet,html[lang="my"] .rsvp-step,html[lang="my"] .rsvp-status{font-family:"Noto Serif Myanmar",serif!important}
 .rsvp-chapter.rsvp-sent .postcard-pin{display:none!important}
@@ -596,6 +604,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 </section>
 
 <section id="storyChapter" aria-labelledby="storyTitle">
+ <div class="scene-seam seam-story" aria-hidden="true"></div>
  <div class="story-pin">
   <div class="story-infinity" aria-hidden="true"></div><div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
   <header class="story-head"><p class="roman" data-story=".08" data-i18n="chapter03">Chapter 03</p><h2 id="storyTitle" data-story=".14" data-i18n="oneStory">One Story</h2><p data-story=".22" data-i18n="storyLine">Two hearts, one promise, one beautiful story.</p></header>
@@ -605,6 +614,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 <section id="recordsChapter" aria-labelledby="recordsTitle">
+ <div class="scene-seam seam-records" aria-hidden="true"></div>
  <div class="records-pin">
   <header class="records-head"><p class="roman" data-i18n="chapter04">Chapter 04</p><h2 id="recordsTitle"><span data-i18n="recordsLead">The Chapters of</span> <em data-i18n="recordsCalligraphy">Our Story</em></h2><p data-i18n="recordsIntro">Every record holds a moment that brought us here.</p></header>
   <div class="records-stage">
@@ -624,6 +634,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 <section id="planChapter" aria-labelledby="planTitle">
+ <div class="scene-seam seam-plan" aria-hidden="true"></div>
  <div class="plan-pin">
   <div class="plan-art" aria-hidden="true"></div>
   <header class="plan-head"><p class="roman" data-i18n="chapter05">Chapter 05</p><h2 id="planTitle" data-i18n="thePlan">The Plan</h2><p>Friday · 16 October 2026</p></header>
@@ -641,6 +652,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 <section id="informationChapter" aria-labelledby="informationTitle">
+ <div class="scene-seam seam-information" aria-hidden="true"></div>
  <div class="info-pin">
   <div class="info-desk">
    <header class="info-head"><p class="roman" data-i18n="chapter06">Chapter 06</p><h2 id="informationTitle" data-i18n="informationTitle">Information</h2><p class="info-script">Htoo &amp; May</p></header>
@@ -656,6 +668,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 <section id="qaChapter" aria-labelledby="qaTitle">
+ <div class="scene-seam seam-qa" aria-hidden="true"></div>
  <div class="qa-pin">
   <header class="qa-head"><p class="roman" data-i18n="chapter07">Chapter 07</p><h2 id="qaTitle" data-i18n="qaTitle">Questions &amp; Answers</h2><p class="qa-script">Htoo &amp; May</p></header>
   <div class="qa-layout">
@@ -667,6 +680,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
  </div>
 </section>
 <section id="galleryChapter" aria-labelledby="galleryTitle">
+ <div class="scene-seam seam-gallery" aria-hidden="true"></div>
  <div class="gallery-pin">
   <header class="gallery-head"><p class="roman" data-i18n="chapter08">Chapter 08</p><h2 id="galleryTitle" data-i18n="galleryTitle">Our Gallery</h2><p class="gallery-script" data-i18n="galleryScript">Moments we’ll treasure forever</p></header>
   <div class="gallery-viewport" id="galleryViewport" aria-label="Wedding gallery — drag or swipe to browse">
@@ -691,7 +705,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 </section>
 <div class="gallery-end" id="galleryEnd" aria-hidden="true"></div>
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Enlarged gallery photograph" aria-hidden="true"><button type="button" id="galleryLightboxClose" aria-label="Close enlarged photograph"></button><img id="galleryLightboxImage" src="" alt=""></div>
-<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>16 September 2026</strong>.</p></header>
+<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>16 September 2026</strong>.</p></header>
  <div class="reply-stage"><span class="postcard-pin" aria-hidden="true"></span><div class="reply-envelope-back" aria-hidden="true"><span class="reply-flap"></span><span class="reply-pocket"></span></div><div class="reply-thread" aria-hidden="true"><i id="rsvpThread"></i><b></b></div>
  <article class="rsvp-thanks-card" id="thanksPanel" aria-labelledby="thanksTitle"><img class="thanks-panel-art" src="assets/chapter-11/thank-you-journey-postcard.png" alt="" aria-hidden="true"><h2 id="thanksTitle">Thank you</h2><p>for being part of our story so far.</p><p>The best chapter is about to begin, and we cannot wait to celebrate it with you.</p><img class="hm-monogram is-image" src="assets/photos/monogram.png" alt="Htoo and May monogram"></article>
  <div class="witness-stack-card" aria-hidden="true"><img src="assets/chapter-09/witness-still-life-card-final.png" alt=""></div>
