@@ -588,6 +588,20 @@ html[lang="my"] .rsvp-review{font-size:clamp(.66rem,2vw,.82rem)!important;line-h
 html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa-question,html[lang="my"] .qa-answer,html[lang="my"] .info-sheet,html[lang="my"] .rsvp-step,html[lang="my"] .rsvp-status{font-family:"Noto Serif Myanmar",serif!important}
 .rsvp-chapter.rsvp-sent .postcard-pin{display:none!important}
 .rsvp-chapter.rsvp-sent .rsvp-thanks-card{left:auto!important;right:auto!important;margin:1rem auto 2rem!important;transform:scale(1) rotate(0)!important}
+
+/* Seamless-background prototype: artwork dissolves into one shared paper canvas. */
+body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{background-color:#f3eadc!important}
+.scene-seam{display:none!important}
+.painting{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 78%,rgba(0,0,0,.72) 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 78%,rgba(0,0,0,.72) 88%,transparent 100%)}
+.welcome-art{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%)}
+.chapter-bg-fade{position:absolute;z-index:0;inset:0;pointer-events:none;background-position:center;background-size:cover;background-repeat:no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%)}
+.story-bg-fade{background-image:url('assets/chapter-04/one-story-background-planned.png');background-size:auto 100%}
+.records-bg-fade,.info-bg-fade,.qa-bg-fade,.gallery-bg-fade,.rsvp-bg-fade{background-image:linear-gradient(rgba(247,239,224,.72),rgba(239,226,205,.8)),url('assets/backgrounds/chapter-04-scrapbook-clean.png')}
+.plan-bg-fade{background-image:url('assets/backgrounds/chapter-05-plan-sage.png')}
+.story-pin,.records-pin,.plan-pin,.info-pin,.qa-pin,.gallery-pin{background:#f3eadc!important}
+.story-pin>.chapter-bg-fade,.records-pin>.chapter-bg-fade,.plan-pin>.chapter-bg-fade,.info-pin>.chapter-bg-fade,.qa-pin>.chapter-bg-fade,.gallery-pin>.chapter-bg-fade{z-index:0}
+.rsvp-bg-fade{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.8) 12%,#000 24%,#000 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.8) 12%,#000 24%,#000 100%)}
+@media(max-width:700px){.story-bg-fade{background-size:100% 100%}.chapter-bg-fade{background-position:center top}}
 @media(max-width:700px){
  #chapter{height:160vh!important}
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:320vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
@@ -652,6 +666,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 <section id="storyChapter" aria-labelledby="storyTitle">
  <div class="scene-seam seam-story" aria-hidden="true"></div>
  <div class="story-pin">
+  <div class="chapter-bg-fade story-bg-fade" aria-hidden="true"></div>
   <div class="story-infinity" aria-hidden="true"></div><div class="story-art" aria-hidden="true"></div><div class="story-shade" aria-hidden="true"></div>
   <header class="story-head"><p class="roman" data-story=".08" data-i18n="chapter03">Chapter 03</p><h2 id="storyTitle" data-story=".14" data-i18n="oneStory">One Story</h2><p data-story=".22" data-i18n="storyLine">Two hearts, one promise, one beautiful story.</p></header>
   <div class="story-assembly" id="storyAssembly"><div class="heart-complete"><svg class="story-heart-media" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Painted illustrations of Htoo and May moving together to form one heart"><defs><path id="storyHeartGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120 C645 18 890 75 880 260 C870 430 650 535 500 610 Z"/><path id="heartLeftGeometry" d="M500 610 C350 535 130 430 120 260 C110 75 355 18 500 120"/><path id="heartRightGeometry" d="M500 120 C645 18 890 75 880 260 C870 430 650 535 500 610"/><clipPath id="storyHeartClip"><use href="#storyHeartGeometry"/></clipPath></defs><use class="heart-underlay" href="#storyHeartGeometry"/><g class="heart-image htoo" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/htoo-illustration.png" x="58" y="72" width="595" height="870" preserveAspectRatio="xMidYMin meet"/></g><g class="heart-image may" clip-path="url(#storyHeartClip)"><image href="assets/chapter-04/may-illustration.png" x="350" y="78" width="590" height="885" preserveAspectRatio="xMidYMin meet"/></g><use class="heart-half heart-left" href="#heartLeftGeometry"/><use class="heart-half heart-right" href="#heartRightGeometry"/></svg><div class="story-monogram" data-story=".79">Htoo &amp; May</div></div></div>
@@ -662,6 +677,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 <section id="recordsChapter" aria-labelledby="recordsTitle">
  <div class="scene-seam seam-records" aria-hidden="true"></div>
  <div class="records-pin">
+  <div class="chapter-bg-fade records-bg-fade" aria-hidden="true"></div>
   <header class="records-head"><p class="roman" data-i18n="chapter04">Chapter 04</p><h2 id="recordsTitle"><span data-i18n="recordsLead">The Chapters of</span> <em data-i18n="recordsCalligraphy">Our Story</em></h2><p data-i18n="recordsIntro">Every record holds a moment that brought us here.</p></header>
   <div class="records-stage">
    <article class="story-record" style="--cover-a:#819070;--cover-b:#4e5f4b;--label:#c08b91"><div class="record-inner"><div class="record-vinyl"></div><div class="record-cover"><img src="assets/photos/story-first-meet.jpg" alt="Htoo and May when they first met"><span>First<br>hello</span></div><div class="record-caption" data-i18n="firstMeet">First meeting</div></div></article>
@@ -682,6 +698,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 <section id="planChapter" aria-labelledby="planTitle">
  <div class="scene-seam seam-plan" aria-hidden="true"></div>
  <div class="plan-pin">
+  <div class="chapter-bg-fade plan-bg-fade" aria-hidden="true"></div>
   <div class="plan-art" aria-hidden="true"></div>
   <header class="plan-head"><p class="roman" data-i18n="chapter05">Chapter 05</p><h2 id="planTitle" data-i18n="thePlan">The Plan</h2><p>Friday · 16 October 2026</p></header>
   <div class="plan-rail"><svg viewBox="0 0 100 1000" preserveAspectRatio="none"><path class="plan-ghost" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/><path class="plan-path" id="planPath" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/></svg></div>
@@ -700,6 +717,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 <section id="informationChapter" aria-labelledby="informationTitle">
  <div class="scene-seam seam-information" aria-hidden="true"></div>
  <div class="info-pin">
+  <div class="chapter-bg-fade info-bg-fade" aria-hidden="true"></div>
   <div class="info-desk">
    <header class="info-head"><p class="roman" data-i18n="chapter06">Chapter 06</p><h2 id="informationTitle" data-i18n="informationTitle">Information</h2><p class="info-script">Htoo &amp; May</p></header>
    <div class="info-stage" id="infoStage">
@@ -716,6 +734,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 <section id="qaChapter" aria-labelledby="qaTitle">
  <div class="scene-seam seam-qa" aria-hidden="true"></div>
  <div class="qa-pin">
+  <div class="chapter-bg-fade qa-bg-fade" aria-hidden="true"></div>
   <header class="qa-head"><p class="roman" data-i18n="chapter07">Chapter 07</p><h2 id="qaTitle" data-i18n="qaTitle">Questions &amp; Answers</h2><p class="qa-script">Htoo &amp; May</p></header>
   <div class="qa-layout">
    <nav class="qa-index" id="qaIndex" aria-label="Questions"><span class="qa-thread" aria-hidden="true"><i id="qaMarker"></i></span></nav>
@@ -728,6 +747,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 <section id="galleryChapter" aria-labelledby="galleryTitle">
  <div class="scene-seam seam-gallery" aria-hidden="true"></div>
  <div class="gallery-pin">
+  <div class="chapter-bg-fade gallery-bg-fade" aria-hidden="true"></div>
   <header class="gallery-head"><p class="roman" data-i18n="chapter08">Chapter 08</p><h2 id="galleryTitle" data-i18n="galleryTitle">Our Gallery</h2><p class="gallery-script" data-i18n="galleryScript">Moments we’ll treasure forever</p></header>
   <div class="gallery-viewport" id="galleryViewport" aria-label="Wedding gallery — drag or swipe to browse">
    <div class="gallery-track" id="galleryTrack">
@@ -751,7 +771,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 </section>
 <div class="gallery-end" id="galleryEnd" aria-hidden="true"></div>
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Enlarged gallery photograph" aria-hidden="true"><button type="button" id="galleryLightboxClose" aria-label="Close enlarged photograph"></button><img id="galleryLightboxImage" src="" alt=""></div>
-<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>16 September 2026</strong>.</p></header>
+<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="chapter-bg-fade rsvp-bg-fade" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>16 September 2026</strong>.</p></header>
  <div class="reply-stage"><span class="postcard-pin" aria-hidden="true"></span><div class="reply-envelope-back" aria-hidden="true"><span class="reply-flap"></span><span class="reply-pocket"></span></div><div class="reply-thread" aria-hidden="true"><i id="rsvpThread"></i><b></b></div>
  <article class="rsvp-thanks-card" id="thanksPanel" aria-labelledby="thanksTitle"><img class="thanks-panel-art" src="assets/chapter-11/thank-you-journey-postcard.png" alt="" aria-hidden="true"><h2 id="thanksTitle">Thank you</h2><p>for being part of our story so far.</p><p>The best chapter is about to begin, and we cannot wait to celebrate it with you.</p><img class="hm-monogram is-image" src="assets/photos/monogram.png" alt="Htoo and May monogram"></article>
  <div class="witness-stack-card" aria-hidden="true"><img src="assets/chapter-09/witness-still-life-card-final.png" alt=""></div>
