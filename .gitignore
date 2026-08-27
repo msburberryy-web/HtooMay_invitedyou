@@ -6,3 +6,6 @@ AGENTS.md
 # Operating-system files
 .DS_Store
 Thumbs.db
+
+# Generated deployment output
+dist/
