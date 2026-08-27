@@ -615,13 +615,10 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 .info-rsvp-notice{display:none;margin:1.15rem auto 0!important;padding:1rem 1.1rem;border:1px solid rgba(118,47,62,.32);background:rgba(255,247,233,.72);color:#762f3e!important;font:500 clamp(1rem,1.65vw,1.35rem)/1.35 "Newsreader",Georgia,serif!important;text-align:center;box-shadow:0 5px 0 rgba(180,147,93,.45)}
 .info-rsvp-notice.show{display:block}
 .info-action[hidden]{display:none!important}
-.butterfly-flight-layer{position:fixed;z-index:3;inset:0;overflow:hidden;pointer-events:none;opacity:.72;transition:opacity .5s ease}.film-locked .butterfly-flight-layer{opacity:0}.painted-butterfly{position:absolute;width:clamp(38px,5.5vw,74px);aspect-ratio:3/4;overflow:hidden;filter:drop-shadow(0 5px 5px rgba(95,61,50,.12));will-change:transform}.painted-butterfly img{position:absolute;top:0;width:200%;height:100%;max-width:none;object-fit:fill;transform-origin:center;animation:butterflyWings 1.15s ease-in-out infinite alternate}.painted-butterfly.open img{left:0}.painted-butterfly.side img{left:-100%}.painted-butterfly.one{left:8%;top:72%;animation:butterflyFlightOne 18s ease-in-out infinite}.painted-butterfly.two{left:76%;top:28%;width:clamp(30px,4.2vw,58px);animation:butterflyFlightTwo 23s ease-in-out -7s infinite}.painted-butterfly.three{left:48%;top:84%;width:clamp(26px,3.7vw,50px);animation:butterflyFlightThree 20s ease-in-out -12s infinite}
-@keyframes butterflyWings{from{transform:scaleX(.83) rotate(-2deg)}to{transform:scaleX(1.02) rotate(2deg)}}
-@keyframes butterflyFlightOne{0%,100%{transform:translate3d(-14vw,12vh,0) rotate(-9deg)}28%{transform:translate3d(18vw,-24vh,0) rotate(8deg)}58%{transform:translate3d(52vw,-54vh,0) rotate(-5deg)}82%{transform:translate3d(78vw,-32vh,0) rotate(10deg)}}
-@keyframes butterflyFlightTwo{0%,100%{transform:translate3d(18vw,-18vh,0) rotate(8deg)}34%{transform:translate3d(-24vw,20vh,0) rotate(-12deg)}67%{transform:translate3d(-58vw,46vh,0) rotate(5deg)}}
-@keyframes butterflyFlightThree{0%,100%{transform:translate3d(-46vw,10vh,0) rotate(-7deg)}40%{transform:translate3d(-8vw,-48vh,0) rotate(11deg)}72%{transform:translate3d(38vw,-68vh,0) rotate(-4deg)}}
-@media(max-width:700px){.plan-pin:after{height:19svh}.info-rsvp-notice{font-size:clamp(.94rem,4.3vw,1.15rem)!important}.butterfly-flight-layer{opacity:.62}.painted-butterfly{width:46px}.painted-butterfly.two{width:38px}.painted-butterfly.three{width:32px}}
-@media(prefers-reduced-motion:reduce){.painted-butterfly{display:none}}
+.butterfly-flight-layer{position:fixed;z-index:3;inset:0;overflow:visible;pointer-events:none;opacity:.64;transition:opacity .5s ease}.film-locked .butterfly-flight-layer{opacity:0}.painted-butterfly{position:absolute;left:72%;top:58%;width:clamp(58px,7vw,92px);height:auto;transform-origin:center;filter:drop-shadow(0 5px 5px rgba(95,61,50,.12));will-change:transform;animation:butterflyHover 8s ease-in-out infinite}
+@keyframes butterflyHover{0%,100%{transform:translate3d(-1.5vw,1vh,0) rotate(-4deg) scale(.97)}36%{transform:translate3d(1.7vw,-2.2vh,0) rotate(3deg) scale(1)}68%{transform:translate3d(-.7vw,-.6vh,0) rotate(-2deg) scale(.98)}}
+@media(max-width:700px){.plan-pin:after{height:19svh}.info-rsvp-notice{font-size:clamp(.94rem,4.3vw,1.15rem)!important}.butterfly-flight-layer{opacity:.58}.painted-butterfly{left:70%;top:61%;width:64px}}
+@media(prefers-reduced-motion:reduce){.painted-butterfly{animation:none;opacity:.48}}
 #welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{margin-top:-5vh}
 @media(max-width:700px){
  .story-bg-fade{background-size:100% 100%}.chapter-bg-fade{background-position:center top}
@@ -667,7 +664,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  </div>
 </section>
 <nav class="site-lang" aria-label="Language and RSVP"><button class="on" data-lang="en">EN</button><button data-lang="ja">日本語</button><button data-lang="my">မြန်မာ</button><a class="site-rsvp" href="#rsvpChapter">RSVP</a></nav>
-<div class="butterfly-flight-layer" aria-hidden="true"><span class="painted-butterfly open one"><img src="assets/decor/butterfly-watercolor-sprite.png" alt=""></span><span class="painted-butterfly side two"><img src="assets/decor/butterfly-watercolor-sprite.png" alt=""></span><span class="painted-butterfly open three"><img src="assets/decor/butterfly-watercolor-sprite.png" alt=""></span></div>
+<div class="butterfly-flight-layer" aria-hidden="true"><img class="painted-butterfly" src="assets/decor/butterfly-watercolor-single.png" alt=""></div>
 <section id="welcomeChapter" aria-labelledby="welcomeTitle">
  <div class="scene-seam seam-welcome" aria-hidden="true"></div>
  <div class="welcome-pin">
