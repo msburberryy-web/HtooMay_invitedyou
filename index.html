@@ -534,13 +534,18 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 #galleryChapter{height:280vh!important}
 
 /* Preserve every chapter artwork while softly joining the sticky scene handoffs. */
-.scene-seam{position:absolute;z-index:65;left:0;right:0;top:-12svh;height:24svh;pointer-events:none;background:linear-gradient(180deg,var(--seam-from),var(--seam-mid) 48%,var(--seam-to));filter:saturate(.92);-webkit-mask-image:linear-gradient(180deg,transparent,#000 34%,#000 66%,transparent);mask-image:linear-gradient(180deg,transparent,#000 34%,#000 66%,transparent)}
+.scene-seam{position:absolute;z-index:1;left:0;right:0;top:-12svh;height:24svh;pointer-events:none;background:linear-gradient(180deg,var(--seam-from),var(--seam-mid) 48%,var(--seam-to));filter:saturate(.92);-webkit-mask-image:linear-gradient(180deg,transparent,#000 34%,#000 66%,transparent);mask-image:linear-gradient(180deg,transparent,#000 34%,#000 66%,transparent)}
+.seam-welcome{--seam-from:#f8efdf;--seam-mid:#faf2e5;--seam-to:#fbf5e9}
 .seam-story{--seam-from:#f3e6d9;--seam-mid:#efdeda;--seam-to:#eadbd2}
 .seam-records{--seam-from:#eadbd2;--seam-mid:#eee0d2;--seam-to:#efe4d0}
 .seam-plan{--seam-from:#efe4d0;--seam-mid:#ece5d5;--seam-to:#e9e8da}
 .seam-information{--seam-from:#e9e8da;--seam-mid:#ece3d2;--seam-to:#efe3cf}
 .seam-qa,.seam-gallery,.seam-rsvp{--seam-from:#efe3cf;--seam-mid:#f1e6d4;--seam-to:#efe3cf}
 @media(max-width:700px){.scene-seam{top:-12svh;height:24svh}}
+
+/* Keep the joining wash behind chapter labels, cards and interactive artwork. */
+.welcome-pin,.story-pin,.records-pin,.plan-pin,.info-pin,.qa-pin,.gallery-pin{z-index:2}
+.rsvp-wrap{z-index:2}
 
 /* Burmese needs a denser, calmer scale than the Latin display typography. */
 html[lang="my"] .welcome-title,
@@ -584,6 +589,7 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 .rsvp-chapter.rsvp-sent .postcard-pin{display:none!important}
 .rsvp-chapter.rsvp-sent .rsvp-thanks-card{left:auto!important;right:auto!important;margin:1rem auto 2rem!important;transform:scale(1) rotate(0)!important}
 @media(max-width:700px){
+ #chapter{height:160vh!important}
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:320vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
  .stop-copy time{font-size:.68rem!important;letter-spacing:.13em!important}
 }
@@ -621,23 +627,24 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 </section>
 <nav class="site-lang" aria-label="Language and RSVP"><button class="on" data-lang="en">EN</button><button data-lang="ja">日本語</button><button data-lang="my">မြန်မာ</button><a class="site-rsvp" href="#rsvpChapter">RSVP</a></nav>
 <section id="welcomeChapter" aria-labelledby="welcomeTitle">
+ <div class="scene-seam seam-welcome" aria-hidden="true"></div>
  <div class="welcome-pin">
   <div class="welcome-art" aria-hidden="true"></div>
   <div class="welcome-copy">
-   <p class="ch-label" data-welcome=".03" data-i18n="chapter02">Chapter 02</p>
-   <div class="ch-flourish" data-welcome=".07">◆</div>
-   <p class="welcome-note" data-welcome=".12" data-i18n="noteFromUs">A note from us</p>
-   <h2 class="welcome-title" id="welcomeTitle" data-welcome=".18" data-i18n="warmWelcome">A Warm Welcome</h2>
-   <div class="welcome-ribbon" data-welcome=".25"><i></i><b aria-hidden="true"></b><i></i></div>
-   <div class="welcome-letter" data-welcome=".33">
+   <p class="ch-label" data-welcome="0" data-i18n="chapter02">Chapter 02</p>
+   <div class="ch-flourish" data-welcome=".012">◆</div>
+   <p class="welcome-note" data-welcome=".025" data-i18n="noteFromUs">A note from us</p>
+   <h2 class="welcome-title" id="welcomeTitle" data-welcome=".04" data-i18n="warmWelcome">A Warm Welcome</h2>
+   <div class="welcome-ribbon" data-welcome=".065"><i></i><b aria-hidden="true"></b><i></i></div>
+   <div class="welcome-letter" data-welcome=".095">
     <p data-i18n="welcomeP1">Every step of our journey has brought us to this moment, and we couldn’t be happier to begin our next chapter together.</p>
     <p data-i18n="welcomeP2">To our family and friends: thank you for guiding, supporting, and surrounding us with love every step of the way.</p>
     <p data-i18n="welcomeP3">We are so honored to share this special day with the people who mean the world to us. We can’t wait to celebrate together!</p>
    </div>
-   <div class="count-wrap" data-welcome=".52"><p class="count-kicker" data-i18n="untilWedding">Until our wedding day</p><div class="welcome-count" aria-live="polite">
+   <div class="count-wrap" data-welcome=".155"><p class="count-kicker" data-i18n="untilWedding">Until our wedding day</p><div class="welcome-count" aria-live="polite">
     <div class="count-unit"><strong id="countDays">000</strong><span data-i18n="days">Days</span></div><div class="count-unit"><strong id="countHours">00</strong><span data-i18n="hours">Hours</span></div><div class="count-unit"><strong id="countMinutes">00</strong><span data-i18n="minutes">Minutes</span></div><div class="count-unit"><strong id="countSeconds">00</strong><span data-i18n="seconds">Seconds</span></div>
    </div></div>
-   <p class="continue-cue" data-welcome=".68" data-i18n="continueStory">Continue our story</p>
+   <p class="continue-cue" data-welcome=".22" data-i18n="continueStory">Continue our story</p>
   </div>
  </div>
 </section>
