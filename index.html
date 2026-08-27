@@ -611,6 +611,17 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 .info-pin>.previous-bg-bridge.soft{background-image:linear-gradient(180deg,#e9e8da 0,rgba(242,234,217,.7) 48%,transparent 100%)}
 .qa-pin>.previous-bg-bridge.soft,.gallery-pin>.previous-bg-bridge.soft,.rsvp-chapter>.previous-bg-bridge.soft{background-image:linear-gradient(180deg,#f1e6d4 0,rgba(247,239,226,.68) 48%,transparent 100%)}
 .welcome-pin>.previous-bg-bridge,.story-pin>.previous-bg-bridge,.records-pin>.previous-bg-bridge,.plan-pin>.previous-bg-bridge,.info-pin>.previous-bg-bridge,.qa-pin>.previous-bg-bridge,.gallery-pin>.previous-bg-bridge,.rsvp-chapter>.previous-bg-bridge{z-index:1}
+.plan-pin:after{content:"";position:absolute;z-index:12;left:0;right:0;bottom:-1px;height:16svh;pointer-events:none;background:linear-gradient(180deg,transparent 0,rgba(247,239,226,.5) 58%,#f7efe2 100%)}
+.info-rsvp-notice{display:none;margin:1.15rem auto 0!important;padding:1rem 1.1rem;border:1px solid rgba(118,47,62,.32);background:rgba(255,247,233,.72);color:#762f3e!important;font:500 clamp(1rem,1.65vw,1.35rem)/1.35 "Newsreader",Georgia,serif!important;text-align:center;box-shadow:0 5px 0 rgba(180,147,93,.45)}
+.info-rsvp-notice.show{display:block}
+.info-action[hidden]{display:none!important}
+.butterfly-flight-layer{position:fixed;z-index:3;inset:0;overflow:hidden;pointer-events:none;opacity:.72;transition:opacity .5s ease}.film-locked .butterfly-flight-layer{opacity:0}.painted-butterfly{position:absolute;width:clamp(38px,5.5vw,74px);aspect-ratio:3/4;overflow:hidden;filter:drop-shadow(0 5px 5px rgba(95,61,50,.12));will-change:transform}.painted-butterfly img{position:absolute;top:0;width:200%;height:100%;max-width:none;object-fit:fill;transform-origin:center;animation:butterflyWings 1.15s ease-in-out infinite alternate}.painted-butterfly.open img{left:0}.painted-butterfly.side img{left:-100%}.painted-butterfly.one{left:8%;top:72%;animation:butterflyFlightOne 18s ease-in-out infinite}.painted-butterfly.two{left:76%;top:28%;width:clamp(30px,4.2vw,58px);animation:butterflyFlightTwo 23s ease-in-out -7s infinite}.painted-butterfly.three{left:48%;top:84%;width:clamp(26px,3.7vw,50px);animation:butterflyFlightThree 20s ease-in-out -12s infinite}
+@keyframes butterflyWings{from{transform:scaleX(.83) rotate(-2deg)}to{transform:scaleX(1.02) rotate(2deg)}}
+@keyframes butterflyFlightOne{0%,100%{transform:translate3d(-14vw,12vh,0) rotate(-9deg)}28%{transform:translate3d(18vw,-24vh,0) rotate(8deg)}58%{transform:translate3d(52vw,-54vh,0) rotate(-5deg)}82%{transform:translate3d(78vw,-32vh,0) rotate(10deg)}}
+@keyframes butterflyFlightTwo{0%,100%{transform:translate3d(18vw,-18vh,0) rotate(8deg)}34%{transform:translate3d(-24vw,20vh,0) rotate(-12deg)}67%{transform:translate3d(-58vw,46vh,0) rotate(5deg)}}
+@keyframes butterflyFlightThree{0%,100%{transform:translate3d(-46vw,10vh,0) rotate(-7deg)}40%{transform:translate3d(-8vw,-48vh,0) rotate(11deg)}72%{transform:translate3d(38vw,-68vh,0) rotate(-4deg)}}
+@media(max-width:700px){.plan-pin:after{height:19svh}.info-rsvp-notice{font-size:clamp(.94rem,4.3vw,1.15rem)!important}.butterfly-flight-layer{opacity:.62}.painted-butterfly{width:46px}.painted-butterfly.two{width:38px}.painted-butterfly.three{width:32px}}
+@media(prefers-reduced-motion:reduce){.painted-butterfly{display:none}}
 #welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{margin-top:-5vh}
 @media(max-width:700px){
  .story-bg-fade{background-size:100% 100%}.chapter-bg-fade{background-position:center top}
@@ -656,6 +667,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  </div>
 </section>
 <nav class="site-lang" aria-label="Language and RSVP"><button class="on" data-lang="en">EN</button><button data-lang="ja">日本語</button><button data-lang="my">မြန်မာ</button><a class="site-rsvp" href="#rsvpChapter">RSVP</a></nav>
+<div class="butterfly-flight-layer" aria-hidden="true"><span class="painted-butterfly open one"><img src="assets/decor/butterfly-watercolor-sprite.png" alt=""></span><span class="painted-butterfly side two"><img src="assets/decor/butterfly-watercolor-sprite.png" alt=""></span><span class="painted-butterfly open three"><img src="assets/decor/butterfly-watercolor-sprite.png" alt=""></span></div>
 <section id="welcomeChapter" aria-labelledby="welcomeTitle">
  <div class="scene-seam seam-welcome" aria-hidden="true"></div>
  <div class="welcome-pin">
@@ -730,7 +742,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
    <article class="plan-stop left" data-at=".53" style="--x:69%;--y:53%;--tilt:2deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
    <article class="plan-stop" data-at=".65" style="--x:27%;--y:65%;--tilt:-1deg"><img src="assets/chapter-03/dinner-party.png" alt="Painted wedding party"><div class="stop-copy"><time>16:00</time><b data-i18n="dinner">Dinner party</b></div></article>
    <article class="plan-stop left" data-at=".77" style="--x:70%;--y:77%;--tilt:2deg"><img src="assets/chapter-03/gramophone.png" alt="Painted gramophone"><div class="stop-copy"><time>18:30</time><b data-i18n="afterParty">After party</b></div></article>
-   <article class="plan-stop" data-at=".90" style="--x:24%;--y:90%;--tilt:-2deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
+   <article class="plan-stop" data-at=".88" style="--x:27%;--y:85%;--tilt:-2deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
   </div>
  </div>
 </section>
@@ -794,7 +806,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 </section>
 <div class="gallery-end" id="galleryEnd" aria-hidden="true"></div>
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Enlarged gallery photograph" aria-hidden="true"><button type="button" id="galleryLightboxClose" aria-label="Close enlarged photograph"></button><img id="galleryLightboxImage" src="" alt=""></div>
-<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="chapter-bg-fade rsvp-bg-fade" aria-hidden="true"></div><div class="previous-bg-bridge soft" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>16 September 2026</strong>.</p></header>
+<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="chapter-bg-fade rsvp-bg-fade" aria-hidden="true"></div><div class="previous-bg-bridge soft" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>14 September 2026</strong>.</p></header>
  <div class="reply-stage"><span class="postcard-pin" aria-hidden="true"></span><div class="reply-envelope-back" aria-hidden="true"><span class="reply-flap"></span><span class="reply-pocket"></span></div><div class="reply-thread" aria-hidden="true"><i id="rsvpThread"></i><b></b></div>
  <article class="rsvp-thanks-card" id="thanksPanel" aria-labelledby="thanksTitle"><img class="thanks-panel-art" src="assets/chapter-11/thank-you-journey-postcard.png" alt="" aria-hidden="true"><h2 id="thanksTitle">Thank you</h2><p>for being part of our story so far.</p><p>The best chapter is about to begin, and we cannot wait to celebrate it with you.</p><img class="hm-monogram is-image" src="assets/photos/monogram.png" alt="Htoo and May monogram"></article>
  <div class="witness-stack-card" aria-hidden="true"><img src="assets/chapter-09/witness-still-life-card-final.png" alt=""></div>
@@ -811,7 +823,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="info-focus-art"><img id="infoFocusImage" src="assets/chapter-06/save-date-calendar.png" alt=""></div>
   <div class="info-sheet">
    <p class="roman" data-i18n="informationTitle">Information</p><h3 id="infoDialogTitle"></h3><p id="infoDialogBody"></p>
-   <div class="info-meta" id="infoDialogMeta"></div><div class="info-map" id="infoDialogMap"><iframe title="Map of Atsugi Station, Kanagawa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Atsugi%20Station%20Kanagawa&amp;z=15&amp;output=embed"></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
+   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><div class="info-map" id="infoDialogMap"><iframe title="Map of Atsugi Station, Kanagawa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Atsugi%20Station%20Kanagawa&amp;z=15&amp;output=embed"></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
   </div>
  </article>
 </div>
@@ -1143,13 +1155,15 @@ const infoContent = {
       title: 'Free Shuttle Buses',
       body: 'We’re organizing free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro straight to the venue and back after the party! Please let us know your preferred pick-up station in your RSVP so we can save your seat.',
       meta: ['Hubs: Shinjuku · Tokyo · Ikebukuro', 'Round-trip rides included'],
-      action: 'Pick Hub in RSVP'
+      action: '',
+      notice: 'Please choose your preferred shuttle station in the RSVP form.'
     },
     afterparty: {
       title: 'The After-Party',
       body: 'Want to keep the fun going? We’re hosting a casual after-party with plenty of drinks, bites, and great tunes. We’re covering part of the costs, so only a small contribution will be collected at the door. Totally optional, but we’d love to see you there!',
       meta: ['Optional Fun', 'Drinks · Bites · Music'],
-      action: 'RSVP for After-Party'
+      action: '',
+      notice: 'Please tell us whether you’ll join the after-party in the RSVP form.'
     }
   },
   ja: {
@@ -1175,13 +1189,15 @@ const infoContent = {
       title: '無料送迎バスのご案内',
       body: '主要3駅（新宿駅・東京駅・池袋駅）から無料の往復送迎バスをご用意しています！皆様のご希望に合わせて便数を調整しますので、RSVPフォームからご都合のよい駅を教えてくださいね。お帰りも同じ駅までお送りします。',
       meta: ['発着駅：新宿 · 東京 · 池袋', '※お帰りも同じ駅まで送迎します！'],
-      action: 'RSVPで希望駅を選ぶ'
+      action: '',
+      notice: 'ご希望の乗車駅は、RSVPフォームで必ずお知らせください。'
     },
     afterparty: {
       title: '2次会（アフターパーティー）',
       body: 'まだまだ一緒に盛り上がりたい皆様へ、カジュアルな2次会をご用意しています！気軽にご参加いただけるよう、会費の一部は私たちが負担します。完全自由参加ですので、来られる方はぜひRSVPで教えてください！',
       meta: ['自由参加！', '会費制（一部負担）· 軽食・ドリンク・音楽'],
-      action: 'RSVPで回答する'
+      action: '',
+      notice: '2次会へのご参加について、RSVPフォームで必ずお知らせください。'
     }
   },
   my: {
@@ -1207,13 +1223,15 @@ const infoContent = {
       title: 'အခမဲ့ ကြိုပို့ယာဉ် စီစဉ်ထားရှိမှု',
       body: 'အဓိက ဘူတာကြီး (၃) ခုဖြစ်တဲ့ Shinjuku၊ Tokyo Station နဲ့ Ikebukuro ဘူတာတွေကနေ ပွဲကျင်းပရာနေရာအထိ အခမဲ့ အသွားအပြန် ကြိုပို့ဘတ်စ်ကားတွေ စီစဉ်ပေးထားပါတယ်။ သွားလာရ အဆင်ပြေစေမယ့် ဘူတာလေးကို RSVP ဖောင်မှာ ရွေးချယ်ပေးပါဦးနော်။',
       meta: ['ကြိုပို့ဘူတာများ- Shinjuku · Tokyo · Ikebukuro', 'အသွားအပြန် ကားစီစဉ်ပေးထားပါသည်'],
-      action: 'RSVP တွင် ဘူတာရွေးရန်'
+      action: '',
+      notice: 'သင်နှစ်သက်သော ကြိုပို့ဘူတာကို RSVP ဖောင်တွင် မဖြစ်မနေ ရွေးချယ်ပေးပါ။'
     },
     afterparty: {
       title: 'After-Party မိတ်ဆုံပါတီ',
       body: 'မင်္ဂလာဧည့်ခံပွဲပြီးလို့ အိမ်မပြန်ချင်သေးဘဲ ဆက်ပြီး ပျော်ပါးချင်သူများအတွက် အစားအသောက်၊ အဖျော်ယမကာနဲ့ တေးဂီတတို့နဲ့ ပေါ့ပေါ့ပါးပါး After-Party လေး ရှိပါသေးတယ်နော်။ အားလုံး လာရလွယ်ကူအောင် ကုန်ကျစရိတ်တစ်စိတ်တစ်ပိုင်းကို မင်္ဂလာမောင်နှံက ကျခံပေးထားတာမို့ အနည်းငယ်သော ဝင်ကြေးလေးသာ ကျသင့်ပါမယ်။ လာချင်တယ်ဆိုရင် RSVP မှာ အသိပေးခဲ့ပါဦးနော်။',
       meta: ['လွတ်လပ်စွာ ပါဝင်နိုင်သည်', 'အစားအသောက် · အဖျော်ယမကာ · တေးဂီတ'],
-      action: 'RSVP တွင် ဖြေကြားရန်'
+      action: '',
+      notice: 'After-Party တက်ရောက်မည်၊ မတက်ရောက်မည်ကို RSVP ဖောင်တွင် မဖြစ်မနေ ဖြေကြားပေးပါ။'
     }
   }
 };
@@ -1286,7 +1304,7 @@ const planChapter=document.getElementById('planChapter'),planRail=document.query
 const storyChapter=document.getElementById('storyChapter'),storyArt=document.querySelector('.story-art'),storyAssembly=document.getElementById('storyAssembly'),storyPieces=[...document.querySelectorAll('[data-story]')];
 const heartComplete=document.querySelector('.heart-complete'),heartImages=[...document.querySelectorAll('.heart-image')],heartHalves=[...document.querySelectorAll('.heart-half')],heartUnderlays=[...document.querySelectorAll('.heart-underlay')];
 const recordsChapter=document.getElementById('recordsChapter'),records=[...document.querySelectorAll('.story-record')],recordsProgress=document.getElementById('recordsProgress');
-const informationChapter=document.getElementById('informationChapter'),infoObjects=[...document.querySelectorAll('.info-object')],infoOverlay=document.getElementById('infoOverlay'),infoClose=document.getElementById('infoClose'),infoFocusImage=document.getElementById('infoFocusImage'),infoDialogTitle=document.getElementById('infoDialogTitle'),infoDialogBody=document.getElementById('infoDialogBody'),infoDialogMeta=document.getElementById('infoDialogMeta'),infoDialogMap=document.getElementById('infoDialogMap'),infoDialogAction=document.getElementById('infoDialogAction');
+const informationChapter=document.getElementById('informationChapter'),infoObjects=[...document.querySelectorAll('.info-object')],infoOverlay=document.getElementById('infoOverlay'),infoClose=document.getElementById('infoClose'),infoFocusImage=document.getElementById('infoFocusImage'),infoDialogTitle=document.getElementById('infoDialogTitle'),infoDialogBody=document.getElementById('infoDialogBody'),infoDialogMeta=document.getElementById('infoDialogMeta'),infoRsvpNotice=document.getElementById('infoRsvpNotice'),infoDialogMap=document.getElementById('infoDialogMap'),infoDialogAction=document.getElementById('infoDialogAction');
 const infoStage=document.getElementById('infoStage');
 let infoSequenceStarted=false,infoSequenceReady=false;
 const infoSequenceObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting&&!infoSequenceStarted){infoSequenceStarted=true;infoStage.classList.add('assembling');infoObjects.forEach((item,index)=>setTimeout(()=>item.classList.add('sequence-revealed'),1950+index*950));setTimeout(()=>{infoSequenceReady=true;infoStage.classList.add('sequence-ready')},5850)}}),{threshold:.06,rootMargin:'0px 0px -6% 0px'});
@@ -1302,8 +1320,10 @@ function renderInfo(key){
  const item=infoContent[activeLang][key]||infoContent.en[key],trigger=document.querySelector(`[data-info="${key}"]`);
  infoFocusImage.src=trigger.querySelector('img').src;infoFocusImage.alt=trigger.querySelector('img').alt;
  infoDialogTitle.textContent=item.title;infoDialogBody.textContent=item.body;infoDialogMeta.replaceChildren(...item.meta.map(line=>{const span=document.createElement('span');span.textContent=line;return span}));
+ infoRsvpNotice.textContent=item.notice||'';infoRsvpNotice.classList.toggle('show',Boolean(item.notice));
  infoDialogMap.classList.toggle('show',key==='location');
  infoDialogAction.textContent=item.action;infoDialogAction.dataset.kind=key;
+ infoDialogAction.hidden=!item.action;
  infoDialogAction.href=key==='location'?'https://www.google.com/maps/search/?api=1&query=Atsugi+Station+Kanagawa':'#';
  infoDialogAction.target=key==='location'?'_blank':'';infoDialogAction.rel=key==='location'?'noopener':'';
 }
@@ -1311,7 +1331,7 @@ function openInfo(key,trigger,auto=false){lastInfoTrigger=trigger;infoMode=auto?
 function closeInfo(restore=true){if(!infoOverlay.classList.contains('open'))return;const wasManual=infoMode==='manual';infoMode=null;infoOverlay.classList.remove('open','auto-open');infoOverlay.setAttribute('aria-hidden','true');document.body.classList.remove('info-open');if(wasManual&&restore)lastInfoTrigger?.focus({preventScroll:true})}
 infoObjects.forEach(button=>button.addEventListener('click',()=>openInfo(button.dataset.info,button,false)));
 infoClose.addEventListener('click',closeInfo);infoOverlay.addEventListener('click',event=>{if(event.target===infoOverlay)closeInfo()});
-addEventListener('keydown',event=>{if(event.key==='Escape')closeInfo();if(event.key==='Tab'&&infoOverlay.classList.contains('open')){const focusable=[infoClose,infoDialogAction],index=focusable.indexOf(document.activeElement);if(event.shiftKey&&index<=0){event.preventDefault();focusable.at(-1).focus()}else if(!event.shiftKey&&index===focusable.length-1){event.preventDefault();focusable[0].focus()}}});
+addEventListener('keydown',event=>{if(event.key==='Escape')closeInfo();if(event.key==='Tab'&&infoOverlay.classList.contains('open')){const focusable=[infoClose,infoDialogAction].filter(el=>!el.hidden),index=focusable.indexOf(document.activeElement);if(event.shiftKey&&index<=0){event.preventDefault();focusable.at(-1).focus()}else if(!event.shiftKey&&index===focusable.length-1){event.preventDefault();focusable[0].focus()}}});
 infoDialogAction.addEventListener('click',event=>{const key=infoDialogAction.dataset.kind;if(key==='save'){event.preventDefault();const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:Atsugi Area, Kanagawa, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}else if(key!=='location'){event.preventDefault();closeInfo()}});
 document.getElementById('rsvpCalendar').addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:Atsugi Area, Kanagawa, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)});
 document.getElementById('rsvpRevealThanks').addEventListener('click',()=>{if(rsvpForm.classList.contains('is-flying'))return;rsvpForm.classList.add('is-flying');rsvpChapter.classList.add('rsvp-sent')});
