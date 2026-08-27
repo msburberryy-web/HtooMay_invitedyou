@@ -615,10 +615,12 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 .info-rsvp-notice{display:none;margin:1.15rem auto 0!important;padding:1rem 1.1rem;border:1px solid rgba(118,47,62,.32);background:rgba(255,247,233,.72);color:#762f3e!important;font:500 clamp(1rem,1.65vw,1.35rem)/1.35 "Newsreader",Georgia,serif!important;text-align:center;box-shadow:0 5px 0 rgba(180,147,93,.45)}
 .info-rsvp-notice.show{display:block}
 .info-action[hidden]{display:none!important}
-.butterfly-flight-layer{position:fixed;z-index:3;inset:0;overflow:visible;pointer-events:none;opacity:.64;transition:opacity .5s ease}.film-locked .butterfly-flight-layer{opacity:0}.painted-butterfly{position:absolute;left:72%;top:58%;width:clamp(58px,7vw,92px);height:auto;transform-origin:center;filter:drop-shadow(0 5px 5px rgba(95,61,50,.12));will-change:transform;animation:butterflyHover 8s ease-in-out infinite}
-@keyframes butterflyHover{0%,100%{transform:translate3d(-1.5vw,1vh,0) rotate(-4deg) scale(.97)}36%{transform:translate3d(1.7vw,-2.2vh,0) rotate(3deg) scale(1)}68%{transform:translate3d(-.7vw,-.6vh,0) rotate(-2deg) scale(.98)}}
-@media(max-width:700px){.plan-pin:after{height:19svh}.info-rsvp-notice{font-size:clamp(.94rem,4.3vw,1.15rem)!important}.butterfly-flight-layer{opacity:.58}.painted-butterfly{left:70%;top:61%;width:64px}}
-@media(prefers-reduced-motion:reduce){.painted-butterfly{animation:none;opacity:.48}}
+.opening-butterflies{position:absolute;z-index:8;inset:0;overflow:hidden;pointer-events:none;opacity:.68}.opening-butterfly{position:absolute;width:clamp(48px,6vw,78px);height:auto;transform-origin:center;filter:drop-shadow(0 4px 4px rgba(95,61,50,.1));will-change:transform}.opening-butterfly.one{left:7%;top:18%;animation:butterflyHoverOne 8s ease-in-out infinite}.opening-butterfly.two{right:7%;top:25%;width:clamp(40px,5vw,66px);animation:butterflyHoverTwo 9.5s ease-in-out -2s infinite}.opening-butterfly.three{right:10%;bottom:14%;width:clamp(44px,5.5vw,72px);animation:butterflyHoverThree 8.8s ease-in-out -4s infinite}
+@keyframes butterflyHoverOne{0%,100%{transform:translate3d(0,2px,0) rotate(-8deg)}50%{transform:translate3d(5px,-7px,0) rotate(-2deg)}}
+@keyframes butterflyHoverTwo{0%,100%{transform:translate3d(-2px,0,0) rotate(9deg)}50%{transform:translate3d(4px,6px,0) rotate(4deg)}}
+@keyframes butterflyHoverThree{0%,100%{transform:translate3d(1px,2px,0) rotate(-5deg)}50%{transform:translate3d(-5px,-6px,0) rotate(2deg)}}
+@media(max-width:700px){.plan-pin:after{height:19svh}.info-rsvp-notice{font-size:clamp(.94rem,4.3vw,1.15rem)!important}.opening-butterflies{opacity:.62}.opening-butterfly.one{left:5%;top:17%;width:52px}.opening-butterfly.two{right:4%;top:29%;width:44px}.opening-butterfly.three{right:7%;bottom:13%;width:48px}}
+@media(prefers-reduced-motion:reduce){.opening-butterfly{animation:none}}
 #welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{margin-top:-5vh}
 @media(max-width:700px){
  .story-bg-fade{background-size:100% 100%}.chapter-bg-fade{background-position:center top}
@@ -646,6 +648,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="painting" id="painting"></div>
   <div class="paper-clean"></div>
   <div class="wash"></div><div class="grain"></div>
+  <div class="opening-butterflies" aria-hidden="true"><img class="opening-butterfly one" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly two" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly three" src="assets/decor/butterfly-watercolor-single.png" alt=""></div>
   <div class="top-ui"><button class="music" id="music" aria-label="Music on or off">
    <svg viewBox="0 0 24 24"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
   </button></div>
@@ -664,7 +667,6 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  </div>
 </section>
 <nav class="site-lang" aria-label="Language and RSVP"><button class="on" data-lang="en">EN</button><button data-lang="ja">日本語</button><button data-lang="my">မြန်မာ</button><a class="site-rsvp" href="#rsvpChapter">RSVP</a></nav>
-<div class="butterfly-flight-layer" aria-hidden="true"><img class="painted-butterfly" src="assets/decor/butterfly-watercolor-single.png" alt=""></div>
 <section id="welcomeChapter" aria-labelledby="welcomeTitle">
  <div class="scene-seam seam-welcome" aria-hidden="true"></div>
  <div class="welcome-pin">
