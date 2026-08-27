@@ -603,6 +603,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 .rsvp-bg-fade{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.8) 12%,#000 24%,#000 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.8) 12%,#000 24%,#000 100%)}
 .previous-bg-bridge{position:absolute;z-index:1;left:-6vw;right:-6vw;top:0;height:clamp(120px,19svh,210px);pointer-events:none;background-repeat:no-repeat;background-position:center bottom;background-size:112vw 112svh;transform:scale(1.025);transform-origin:center top;-webkit-mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.94) 22%,rgba(0,0,0,.58) 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.94) 22%,rgba(0,0,0,.58) 62%,transparent 100%)}
 .previous-bg-bridge.soft{height:clamp(82px,12svh,130px);transform:none;background-size:auto;-webkit-mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.68) 45%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.68) 45%,transparent 100%)}
+.welcome-pin>.previous-bg-bridge.soft{background-image:linear-gradient(180deg,#f8efdf 0,rgba(250,243,230,.78) 45%,transparent 100%)}
 .story-pin>.previous-bg-bridge.soft{background-image:linear-gradient(180deg,#ead8d0 0,rgba(238,218,210,.78) 42%,transparent 100%)}
 .records-pin>.previous-bg-bridge.soft{background-image:linear-gradient(180deg,#eadbd2 0,rgba(244,232,215,.72) 48%,transparent 100%)}
 .plan-pin>.previous-bg-bridge.soft{background-image:linear-gradient(180deg,#f1e5d3 0,rgba(233,232,218,.74) 48%,transparent 100%)}
@@ -657,7 +658,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  <div class="scene-seam seam-welcome" aria-hidden="true"></div>
  <div class="welcome-pin">
   <div class="welcome-art" aria-hidden="true"></div>
-  <div class="previous-bg-bridge" data-background-source="#painting" aria-hidden="true"></div>
+  <div class="previous-bg-bridge soft" aria-hidden="true"></div>
   <div class="welcome-copy">
    <p class="ch-label" data-welcome="0" data-i18n="chapter02">Chapter 02</p>
    <div class="ch-flourish" data-welcome=".012">◆</div>
