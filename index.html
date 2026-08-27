@@ -590,18 +590,22 @@ html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa
 .rsvp-chapter.rsvp-sent .rsvp-thanks-card{left:auto!important;right:auto!important;margin:1rem auto 2rem!important;transform:scale(1) rotate(0)!important}
 
 /* Seamless-background prototype: artwork dissolves into one shared paper canvas. */
-body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{background-color:#f3eadc!important}
+body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{background-color:#f7efe2!important}
 .scene-seam{display:none!important}
-.painting{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 78%,rgba(0,0,0,.72) 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 78%,rgba(0,0,0,.72) 88%,transparent 100%)}
-.welcome-art{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%)}
-.chapter-bg-fade{position:absolute;z-index:0;inset:0;pointer-events:none;background-position:center;background-size:cover;background-repeat:no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 10%,#000 18%,#000 82%,rgba(0,0,0,.78) 90%,transparent 100%)}
+.painting{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%)}
+.welcome-art{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 4%,#000 10%,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 4%,#000 10%,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%)}
+.chapter-bg-fade{position:absolute;z-index:0;inset:0;pointer-events:none;background-position:center;background-size:cover;background-repeat:no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 4%,#000 10%,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.78) 4%,#000 10%,#000 90%,rgba(0,0,0,.78) 96%,transparent 100%)}
 .story-bg-fade{background-image:url('assets/chapter-04/one-story-background-planned.png');background-size:auto 100%}
 .records-bg-fade,.info-bg-fade,.qa-bg-fade,.gallery-bg-fade,.rsvp-bg-fade{background-image:linear-gradient(rgba(247,239,224,.72),rgba(239,226,205,.8)),url('assets/backgrounds/chapter-04-scrapbook-clean.png')}
 .plan-bg-fade{background-image:url('assets/backgrounds/chapter-05-plan-sage.png')}
-.story-pin,.records-pin,.plan-pin,.info-pin,.qa-pin,.gallery-pin{background:#f3eadc!important}
+.story-pin,.records-pin,.plan-pin,.info-pin,.qa-pin,.gallery-pin{background:#f7efe2!important}
 .story-pin>.chapter-bg-fade,.records-pin>.chapter-bg-fade,.plan-pin>.chapter-bg-fade,.info-pin>.chapter-bg-fade,.qa-pin>.chapter-bg-fade,.gallery-pin>.chapter-bg-fade{z-index:0}
 .rsvp-bg-fade{-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.8) 12%,#000 24%,#000 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.8) 12%,#000 24%,#000 100%)}
-@media(max-width:700px){.story-bg-fade{background-size:100% 100%}.chapter-bg-fade{background-position:center top}}
+#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{margin-top:-5vh}
+@media(max-width:700px){
+ .story-bg-fade{background-size:100% 100%}.chapter-bg-fade{background-position:center top}
+ #welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#informationChapter,#qaChapter,#galleryChapter,.rsvp-chapter{margin-top:-7svh}
+}
 @media(max-width:700px){
  #chapter{height:160vh!important}
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:320vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
