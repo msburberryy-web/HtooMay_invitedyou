@@ -953,6 +953,7 @@ function revealInvitation(){
 }
 function openInvitation(){
  if(ended||opening)return;opening=true;
+ startDefaultMusic();
  try{film.pause()}catch(error){}
  skip.disabled=true;
  if(criticalAssetsReady){revealInvitation();return}
@@ -986,12 +987,15 @@ addEventListener('scroll',()=>{
 const music=document.getElementById('music');
 document.body.append(music.closest('.top-ui'));
 const soundtrack=new Audio('assets/audio/wedding-jazz.mp3');
-soundtrack.loop=true;soundtrack.preload='metadata';soundtrack.volume=.24;
+soundtrack.loop=true;soundtrack.preload='auto';soundtrack.volume=.24;soundtrack.load();
+function setMusicState(on){music.classList.toggle('on',on);music.setAttribute('aria-pressed',String(on));music.setAttribute('aria-label',on?'Mute background music':'Play background music');music.title=on?'Mute background music':'Play background music'}
+async function startDefaultMusic(){if(!soundtrack.paused){setMusicState(true);return true}try{await soundtrack.play();setMusicState(true);return true}catch(error){setMusicState(false);return false}}
 async function toggleMusic(){
- const turningOn=!music.classList.contains('on');
- if(turningOn){try{await soundtrack.play();music.classList.add('on');music.setAttribute('aria-pressed','true');music.setAttribute('aria-label','Mute background music');music.title='Mute background music'}catch(error){music.setAttribute('aria-label','Music could not be played. Tap to retry');music.title='Tap to retry music'}}else{soundtrack.pause();music.classList.remove('on');music.setAttribute('aria-pressed','false');music.setAttribute('aria-label','Play background music');music.title='Play background music'}
+ if(soundtrack.paused){if(!await startDefaultMusic()){music.setAttribute('aria-label','Music could not be played. Tap to retry');music.title='Tap to retry music'}}else{soundtrack.pause();setMusicState(false)}
 }
 music.addEventListener('click',toggleMusic);
+const beginMusicOnFirstGesture=event=>{if(event.target?.closest?.('#music'))return;startDefaultMusic().then(started=>{if(started){removeEventListener('pointerdown',beginMusicOnFirstGesture,true);removeEventListener('keydown',beginMusicOnFirstGesture,true)}})};
+addEventListener('pointerdown',beginMusicOnFirstGesture,true);addEventListener('keydown',beginMusicOnFirstGesture,true);
 
 /* Chapters 02–03: multilingual painted story and shared-path journey */
 const translations = {
