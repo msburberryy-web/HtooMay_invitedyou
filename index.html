@@ -981,7 +981,7 @@ addEventListener('scroll',()=>{
 
 const music=document.getElementById('music');
 document.body.append(music.closest('.top-ui'));
-const soundtrack=new Audio('https://commons.wikimedia.org/wiki/Special:Redirect/file/OriginalDixielandJassBand-JazzMeBlues.ogg');
+const soundtrack=new Audio('assets/audio/wedding-jazz.mp3');
 soundtrack.loop=true;soundtrack.preload='metadata';soundtrack.volume=.24;
 async function toggleMusic(){
  const turningOn=!music.classList.contains('on');

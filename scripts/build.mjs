@@ -9,7 +9,7 @@ const html = await readFile(htmlPath, "utf8");
 // The entire experience is self-contained in index.html. Copy only local assets
 // that its HTML, CSS, and JavaScript actually reference; concept drafts stay out
 // of the Cloudflare deployment without being removed from the repository.
-const assetPattern = /assets\/[A-Za-z0-9_./-]+?\.(?:png|jpe?g|webp|gif|svg|mp4|webm|woff2?)/gi;
+const assetPattern = /assets\/[A-Za-z0-9_./-]+?\.(?:png|jpe?g|webp|gif|svg|mp3|ogg|mp4|webm|woff2?)/gi;
 const assetPaths = [...new Set(html.match(assetPattern) ?? [])].sort();
 
 await rm(output, { recursive: true, force: true });
