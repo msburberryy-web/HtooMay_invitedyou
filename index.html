@@ -675,6 +675,18 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 .rsvp-child-note{display:none;grid-column:1/-1;margin:.15rem 0 .35rem;padding:.65rem .75rem;border-left:2px solid rgba(118,47,62,.55);color:#6d5b50;font:400 clamp(.72rem,1.2vw,.9rem)/1.5 "Newsreader",Georgia,serif}
 .rsvp-card[data-attendance="yes"] .rsvp-child-note{display:block}
 html[lang="my"] .rsvp-child-note{font-family:"Noto Serif Myanmar",serif;font-size:clamp(.68rem,1.1vw,.82rem)}
+html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .stop-copy,html[lang="my"] .qa-question,html[lang="my"] .qa-answer{letter-spacing:0!important}
+html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .records-head h2,html[lang="ja"] .info-head h2,html[lang="ja"] .qa-head h2,html[lang="ja"] .gallery-head h2,html[lang="ja"] .rsvp-head h2{font-size:clamp(2rem,4.6vw,3.8rem)!important;line-height:1.15!important;letter-spacing:.015em!important}
+@media(max-width:700px){
+ html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .records-head h2,html[lang="ja"] .info-head h2,html[lang="ja"] .qa-head h2,html[lang="ja"] .gallery-head h2,html[lang="ja"] .rsvp-head h2{font-size:clamp(1.55rem,7vw,2.15rem)!important;line-height:1.25!important}
+ html[lang="my"] .plan-head h2,html[lang="my"] .story-head h2,html[lang="my"] .records-head h2,html[lang="my"] .info-head h2,html[lang="my"] .qa-head h2,html[lang="my"] .gallery-head h2,html[lang="my"] .rsvp-head h2{font-size:clamp(1.2rem,5.6vw,1.7rem)!important;line-height:1.38!important;letter-spacing:0!important}
+ html[lang="ja"] .plan-stop,html[lang="my"] .plan-stop{width:clamp(52px,14vw,68px)!important}
+ html[lang="ja"] .plan-stop .stop-copy,html[lang="my"] .plan-stop .stop-copy,html[lang="ja"] .plan-stop.left .stop-copy,html[lang="my"] .plan-stop.left .stop-copy{left:50%;right:auto;top:100%;width:clamp(132px,37vw,158px);transform:translate(-50%,.18rem);text-align:center}
+ html[lang="ja"] .stop-copy time,html[lang="my"] .stop-copy time{font-size:.62rem!important;line-height:1.15!important;letter-spacing:0!important}
+ html[lang="ja"] .stop-copy b{font-size:.67rem!important;line-height:1.2!important}
+ html[lang="my"] .stop-copy b{font-size:.58rem!important;line-height:1.45!important;letter-spacing:0!important}
+ html[lang="ja"] .stop-copy small,html[lang="my"] .stop-copy small{font-size:.48rem;line-height:1.3;letter-spacing:0!important}
+}
 </style>
 </head>
 <body>
@@ -846,7 +858,7 @@ html[lang="my"] .rsvp-child-note{font-family:"Noto Serif Myanmar",serif;font-siz
 </section>
 <div class="gallery-end" id="galleryEnd" aria-hidden="true"></div>
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Enlarged gallery photograph" aria-hidden="true"><button type="button" id="galleryLightboxClose" aria-label="Close enlarged photograph"></button><img id="galleryLightboxImage" src="" alt=""></div>
-<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="chapter-bg-fade rsvp-bg-fade" aria-hidden="true"></div><div class="previous-bg-bridge soft" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle">RSVP</h2><p class="rsvp-deadline">Kindly reply by <strong>14 September 2026</strong>.</p></header>
+<section class="rsvp-chapter" id="rsvpChapter" aria-labelledby="rsvpTitle"><div class="scene-seam seam-rsvp" aria-hidden="true"></div><div class="chapter-bg-fade rsvp-bg-fade" aria-hidden="true"></div><div class="previous-bg-bridge soft" aria-hidden="true"></div><div class="rsvp-wrap"><header class="rsvp-head"><h2 id="rsvpTitle" data-i18n="rsvpTitle">RSVP</h2><p class="rsvp-deadline" data-i18n="rsvpDeadline">Kindly reply by 14 September 2026.</p></header>
  <div class="reply-stage"><span class="postcard-pin" aria-hidden="true"></span><div class="reply-envelope-back" aria-hidden="true"><span class="reply-flap"></span><span class="reply-pocket"></span></div><div class="reply-thread" aria-hidden="true"><i id="rsvpThread"></i><b></b></div>
  <article class="rsvp-thanks-card" id="thanksPanel" aria-labelledby="thanksTitle"><img class="thanks-panel-art" src="assets/chapter-11/thank-you-journey-postcard.png" alt="" aria-hidden="true"><h2 id="thanksTitle">Thank you</h2><p>for being part of our story so far.</p><p>The best chapter is about to begin, and we cannot wait to celebrate it with you.</p><img class="hm-monogram is-image" src="assets/photos/monogram-burgundy-hd.png" alt="Htoo and May monogram"></article>
  <div class="witness-stack-card" aria-hidden="true"><img src="assets/chapter-09/witness-still-life-card-final.png" alt=""></div>
@@ -1007,7 +1019,9 @@ const translations = {
     infoHint: 'Tap any illustration or scroll through to see the details',
     chapter07: 'Chapter 07',
     qaTitle: 'Q & A',
-    qaHint: 'Scroll through to check out common questions'
+    qaHint: 'Scroll through to check out common questions',
+    rsvpTitle: 'RSVP',
+    rsvpDeadline: 'Kindly reply by 14 September 2026.'
   },
   ja: {
     chapter02: '第2章',
@@ -1035,12 +1049,12 @@ const translations = {
     sendOff: 'お見送り',
     chapter04: '第4章',
     oneStory: 'ふたりのストーリー',
-    storyLine: '遠く離れていたふたつの心が寄り添い、ひとつになりました。',
-    storyCopy: '別々に歩んでいたふたりが出会い、今、一緒に楽しむ人生が始まりました。日々の楽しい瞬間も、これからの冒険も、一歩ずつ大切に重ねていきます。',
+    storyLine: 'それぞれの日々を歩んできたふたりが出会い、ひとつの物語が始まりました。',
+    storyCopy: '日々のささやかな喜びも、これからの新しい冒険も、ふたりで一歩ずつ大切に重ねていきます。',
     chapter05: '第5章',
     recordsLead: 'ふたりの',
-    recordsCalligraphy: 'たいせつな歩み',
-    recordsIntro: '今日につながる、とっておきの思い出たち。',
+    recordsCalligraphy: 'ふたりの大切な歩み',
+    recordsIntro: '今日へとつながる、心に残る思い出の数々。',
     firstMeet: '初めての出会い',
     firstDate: '初デート',
     firstTrip: '初めての旅行',
@@ -1057,7 +1071,9 @@ const translations = {
     infoHint: 'イラストをタップ、またはスクロールして詳細をチェック！',
     chapter07: '第7章',
     qaTitle: 'よくあるご質問',
-    qaHint: 'スクロールして気になる質問をチェックしてみてください'
+    qaHint: 'スクロールして気になる質問をチェックしてみてください',
+    rsvpTitle: 'ご出欠確認',
+    rsvpDeadline: '2026年9月14日までにご回答をお願いいたします。'
   },
   my: {
     chapter02: 'အခန်း ၀၂',
@@ -1107,7 +1123,9 @@ const translations = {
     infoHint: 'အသေးစိတ်သိရှိဖို့ ပုံလေးတွေကို နှိပ်ကြည့်ပါ သို့မဟုတ် အောက်သို့ ဆွဲကြည့်ပါနော်',
     chapter07: 'အခန်း ၀၇',
     qaTitle: 'မေးလေ့ရှိသော မေးခွန်းများ',
-    qaHint: 'မေးခွန်းနှင့် အဖြေများကို ကြည့်ရှုဖို့ အောက်သို့ ဆွဲကြည့်ပါ'
+    qaHint: 'မေးခွန်းနှင့် အဖြေများကို ကြည့်ရှုဖို့ အောက်သို့ ဆွဲကြည့်ပါ',
+    rsvpTitle: 'တက်ရောက်မှု အတည်ပြုခြင်း',
+    rsvpDeadline: '၂၀၂၆ ခုနှစ် စက်တင်ဘာလ ၁၄ ရက်နေ့ နောက်ဆုံးထား၍ အကြောင်းပြန်ပေးပါရန်။'
   }
 };
 Object.assign(translations.en,{meetingFamily:'Meeting family',nikkah:'Our Nikkah',publicAnnouncement:'Public announcement'});
@@ -1125,7 +1143,7 @@ const galleryTranslations = {
   ja: {
     chapter08: '第8章',
     galleryTitle: 'フォトギャラリー',
-    galleryScript: 'とっておきの宝物のような瞬間たち',
+    galleryScript: 'かけがえのない瞬間',
     galleryHint: 'スワイプまたはドラッグで写真をチェック！',
     galleryCount: '全12枚',
     galleryContinue: '出欠のお返事へ進む'
@@ -1225,7 +1243,7 @@ const infoContent = {
     transport: {
       title: 'Free Shuttle Buses',
       body: 'We’re organizing free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro straight to the venue and back after the party! Please let us know your preferred pick-up station in your RSVP so we can save your seat.',
-      meta: ['Hubs: Shinjuku · Tokyo · Ikebukuro', 'Round-trip rides included'],
+      meta: ['Hubs: Shinjuku · Tokyo · Ikebukuro', 'Round-trip rides available (time may varies).'],
       action: '',
       notice: 'Please choose your preferred shuttle station in the RSVP form.'
     },
@@ -1314,12 +1332,12 @@ const infoContent = {
 const qnaContent = {
   en: [
     ['How do we get to the venue?', 'The venue is out in the scenic Atsugi area—about 48 minutes from Shinjuku Station. We’re running free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro! Since seats per bus are limited, please make sure to pick your preferred station in the RSVP form.'],
-    ['Where is the exact location?', 'We’re keeping the exact venue address a fun little surprise until after you RSVP! For now, you can plan your trip towards the Atsugi area.'],
+    ['Where is the exact location?', 'We’ll share the exact venue address after you submit your RSVP. For now, please plan your trip towards the Atsugi area.'],
     ['How should I share any dietary restrictions or allergies?', 'Super easy—just drop any food allergies or special dietary needs into the "Dietary Requirements" box on the RSVP form below.'],
     ['What time should I arrive?', 'We suggest arriving around 14:10 (about 20 minutes before the 14:30 ceremony starts) so you have plenty of time to check in, grab a drink, and find a cozy seat.'],
     ['Is there parking available on site?', 'Yes, we have parking spots available! Just let us know in advance on your RSVP form if you’ll be driving over so we can save a spot for you.'],
     ['What should I wear (dress code)?', 'Check out the "Dress Code" card under the Event Details section above for all our outfit tips and color palette ideas!'],
-    ['Can I bring a plus-one (+1)?', 'Couples and partners only need to fill out one single RSVP form—just be sure to type your partner’s name into the guest field!'],
+    ['Can I bring a plus-one (+1)?', 'Due to venue capacity, our celebration is limited strictly to named invited guests. If you and your partner or spouse are attending together, you only need to submit one RSVP form—just be sure to include their name in the guest field so we can seat you together!'],
     ['Can I update my RSVP details later if plans change?', 'Of course! Life happens and plans change. If you need to update anything, just reach out to us directly anytime.']
   ],
   ja: [
@@ -1329,7 +1347,7 @@ const qnaContent = {
     ['当日は何時頃に着けばいいですか？', '挙式開式（14:30）の20分前、14:10頃を目安にお越しいただけると、ゆったり受付とお席の確保ができます！'],
     ['車で行く場合、駐車場はありますか？', 'はい、お車でお越しいただけます！駐車スペースをご用意しますので、事前にRSVPフォームでお知らせくださいね。'],
     ['服装（ドレスコード）の指定はありますか？', '本ページ上部の「イベントのご案内」内にある「ドレスコード」をぜひチェックしてみてください！'],
-    ['パートナーや同伴者と一緒に回答できますか？', 'ご夫婦やパートナーとご一緒に出席される場合は、おふたりで1回のご回答で大丈夫です！フォーム内にお連れ様のお名前をご記入ください。'],
+    ['同伴者（+1）を連れて行ってもいいですか？', '会場の席数に限りがあるため、誠に恐縮ながらご招待状をお送りした方のみのご出席とさせていただいております。ご夫婦やパートナーとご一緒に出席される場合は、お二人で1回のみのRSVP回答で問題ございません。フォーム内にお連れ様のお名前をご記入ください。'],
     ['回答後に内容を変更することはできますか？', 'もちろんいつでも変更OKです！予定が変わった際はお気軽に直接ご連絡くださいね。']
   ],
   my: [
@@ -1339,7 +1357,7 @@ const qnaContent = {
     ['ပွဲကို ဘယ်အချိန် အရောက်လာရမလဲနော်။', 'မင်္ဂလာအခမ်းအနား စတင်မည့် ၁၄:၃၀ နာရီ မတိုင်မီ မိနစ် ၂၀ ခန့်အလို (၁၄:၁၀ နာရီခန့်) ကြိုတင်ရောက်ရှိပေးရင် အေးအေးဆေးဆေး နေရာယူနိုင်မှာပါနော်။'],
     ['ကိုယ်ပိုင်ကားနဲ့ လာရင် ကားရပ်နားဖို့ နေရာရှိပါသလား။', 'ဟုတ်ကဲ့၊ ကားရပ်နားရန်နေရာ စီစဉ်ပေးထားပါတယ်နော်။ နေရာကြိုချထားနိုင်ဖို့အတွက် ကားနဲ့လာမယ့်အကြောင်း RSVP ဖောင်မှာ အသိပေးပေးပါနော်။'],
     ['ဘယ်လို ဝတ်စုံဒီဇိုင်း ဝတ်ဆင်ရမလဲခင်ဗျာ/ရှင့်။', 'အထက်ပါ Information အပိုင်းထဲက “ဝတ်စုံဒီဇိုင်း စတိုင်လ်” အကွက်လေးမှာ အရောင်နှင့် စတိုင်လ် အသေးစိတ်ကို ဝင်ရောက်ကြည့်ရှုနိုင်ပါတယ်နော်။'],
-    ['အဖော် သို့မဟုတ် ဧည့်သည် (+1) ခေါ်ဆောင်လာနိုင်ပါသလား။', 'ဇနီးမောင်နှံ သို့မဟုတ် အဖော်နှင့်အတူ တက်ရောက်မယ်ဆိုရင် ဖောင်တစ်ကြိမ်သာ ဖြည့်စွက်ပေးရုံဖြင့် အတူတက်ရောက်မယ့်သူရဲ့ အမည်ကို တစ်ပါတည်း ဖြည့်သွင်းပေးနိုင်ပါတယ်နော်။'],
+    ['အဖော် (+1) ခေါ်ဆောင်လာခွင့် ရှိပါသလား။', 'ပွဲခန်းမနေရာ အကန့်အသတ်ရှိပါသဖြင့် ဖိတ်ကြားထားသော ဧည့်သည်တော်များသာ တက်ရောက်ပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။ ဇနီးမောင်နှံ (သို့မဟုတ်) ဖိတ်ကြားထားသော စုံတွဲများ အတူတကွ တက်ရောက်မည်ဆိုပါက ဖောင်တစ်ကြိမ်သာ ဖြည့်စွက်ပေးရုံဖြင့် အတူတက်ရောက်မည့်သူ၏ အမည်ကို တစ်ပါတည်း ဖြည့်သွင်းပေးနိုင်ပါသည်။'],
     ['RSVP ဖြည့်ပြီးသွားရင် အချက်အလက်တွေ ပြန်ပြင်လို့ ရပါသလား။', 'ဟုတ်ကဲ့၊ အချိန်မရွေး ပြင်ဆင်နိုင်ပါတယ်ခင်ဗျာ/ရှင့်။ အစီအစဉ် အပြောင်းအလဲရှိရင် ကျွန်တော်တို့ထံ တိုက်ရိုက် ဆက်သွယ် အကြောင်းကြားနိုင်ပါတယ်နော်။']
   ]
 };
