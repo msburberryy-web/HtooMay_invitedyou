@@ -73,8 +73,9 @@ body.text4
 @keyframes bob{0%,100%{translate:0 0}50%{translate:0 5px}}
 
 .top-ui{position:fixed;z-index:72;top:max(1rem,env(safe-area-inset-top));left:max(1rem,env(safe-area-inset-left));display:flex;gap:.7rem;align-items:center;color:#5d5545}
-.music{position:relative;border:1px solid rgba(92,77,58,.38);width:42px;height:42px;border-radius:50%;background:rgba(250,244,232,.88);display:grid;place-items:center;box-shadow:0 5px 18px rgba(92,62,46,.12);backdrop-filter:blur(10px);cursor:pointer}
+.music{position:relative;border:1px solid rgba(146,104,48,.28);width:48px;height:48px;border-radius:50%;background:rgba(250,244,232,.76);display:grid;place-items:center;box-shadow:0 5px 18px rgba(92,62,46,.12);backdrop-filter:blur(10px);cursor:pointer}
 .music svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.4}
+.music img{display:block;width:43px;height:43px;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(79,47,34,.18));pointer-events:none}
 .music:after{content:"";position:absolute;width:23px;height:1.5px;background:currentColor;transform:rotate(-45deg);transition:opacity .2s ease}.music.on{color:var(--burg);border-color:rgba(124,50,65,.55)}.music.on:after{opacity:0}
 
 #after{display:none}
@@ -670,9 +671,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="paper-clean"></div>
   <div class="wash"></div><div class="grain"></div>
   <div class="opening-butterflies" aria-hidden="true"><img class="opening-butterfly one" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly two" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly three" src="assets/decor/butterfly-watercolor-single.png" alt=""></div>
-  <div class="top-ui"><button class="music" id="music" type="button" aria-label="Play background music" aria-pressed="false" title="Play background music">
-   <svg viewBox="0 0 24 24"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
-  </button></div>
+  <div class="top-ui"><button class="music" id="music" type="button" aria-label="Play background music" aria-pressed="false" title="Play background music"><img src="assets/decor/music-gramophone-watercolor.png" alt="" aria-hidden="true"></button></div>
   <div class="copy" id="copy">
     <h1 class="names reveal r1">Htoo <span class="amp">&amp;</span> May</h1>
     <p class="tag reveal r2">We're getting married</p>
