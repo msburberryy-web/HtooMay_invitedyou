@@ -1158,10 +1158,10 @@ const infoContent = {
       notice: 'Please choose your preferred shuttle station in the RSVP form.'
     },
     afterparty: {
-      title: 'The After-Party',
-      body: 'Want to keep the fun going? We’re hosting a casual after-party with plenty of drinks, bites, and great tunes. We’re covering part of the costs, so only a small contribution will be collected at the door. Totally optional, but we’d love to see you there!',
+      title: 'Afterparty',
+      body: 'Want to keep the celebration going? We’re throwing a casual afterparty (2次会) with more food, drinks, and great music! To make it easy for everyone to join, we’ve provided part of the door fee (会費制)—so it’s just a minimal contribution upon arrival. Totally optional, but we’d love to see you there!',
       meta: ['Optional Fun', 'Drinks · Bites · Music'],
-      action: '',
+      action: 'Learn more about kaihisei (会費制) →',
       notice: 'Please tell us whether you’ll join the after-party in the RSVP form.'
     }
   },
@@ -1323,15 +1323,16 @@ function renderInfo(key){
  infoDialogMap.classList.toggle('show',key==='location');
  infoDialogAction.textContent=item.action;infoDialogAction.dataset.kind=key;
  infoDialogAction.hidden=!item.action;
- infoDialogAction.href=key==='location'?'https://www.google.com/maps/search/?api=1&query=Atsugi+Station+Kanagawa':'#';
- infoDialogAction.target=key==='location'?'_blank':'';infoDialogAction.rel=key==='location'?'noopener':'';
+ const externalHref=key==='location'?'https://www.google.com/maps/search/?api=1&query=Atsugi+Station+Kanagawa':key==='afterparty'?'https://zexy.net/article/app000101492/':'';
+ infoDialogAction.href=externalHref||'#';
+ infoDialogAction.target=externalHref?'_blank':'';infoDialogAction.rel=externalHref?'noopener noreferrer':'';
 }
 function openInfo(key,trigger,auto=false){lastInfoTrigger=trigger;infoMode=auto?'auto':'manual';infoOverlay.dataset.active=key;renderInfo(key);infoOverlay.classList.toggle('auto-open',auto);infoOverlay.classList.add('open');infoOverlay.setAttribute('aria-hidden','false');document.body.classList.toggle('info-open',!auto);if(!auto)setTimeout(()=>infoClose.focus(),50)}
 function closeInfo(restore=true){if(!infoOverlay.classList.contains('open'))return;const wasManual=infoMode==='manual';infoMode=null;infoOverlay.classList.remove('open','auto-open');infoOverlay.setAttribute('aria-hidden','true');document.body.classList.remove('info-open');if(wasManual&&restore)lastInfoTrigger?.focus({preventScroll:true})}
 infoObjects.forEach(button=>button.addEventListener('click',()=>openInfo(button.dataset.info,button,false)));
 infoClose.addEventListener('click',closeInfo);infoOverlay.addEventListener('click',event=>{if(event.target===infoOverlay)closeInfo()});
 addEventListener('keydown',event=>{if(event.key==='Escape')closeInfo();if(event.key==='Tab'&&infoOverlay.classList.contains('open')){const focusable=[infoClose,infoDialogAction].filter(el=>!el.hidden),index=focusable.indexOf(document.activeElement);if(event.shiftKey&&index<=0){event.preventDefault();focusable.at(-1).focus()}else if(!event.shiftKey&&index===focusable.length-1){event.preventDefault();focusable[0].focus()}}});
-infoDialogAction.addEventListener('click',event=>{const key=infoDialogAction.dataset.kind;if(key==='save'){event.preventDefault();const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:Atsugi Area, Kanagawa, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}else if(key!=='location'){event.preventDefault();closeInfo()}});
+infoDialogAction.addEventListener('click',event=>{const key=infoDialogAction.dataset.kind;if(key==='save'){event.preventDefault();const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:Atsugi Area, Kanagawa, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}else if(key!=='location'&&key!=='afterparty'){event.preventDefault();closeInfo()}});
 document.getElementById('rsvpCalendar').addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:Atsugi Area, Kanagawa, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)});
 document.getElementById('rsvpRevealThanks').addEventListener('click',()=>{if(rsvpForm.classList.contains('is-flying'))return;rsvpForm.classList.add('is-flying');rsvpChapter.classList.add('rsvp-sent')});
 function buildQnaIndex(){
