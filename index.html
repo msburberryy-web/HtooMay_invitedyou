@@ -673,6 +673,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  .stop-copy small{display:block;font-size:.53rem;line-height:1.25;letter-spacing:.015em}
 }
 .plan-stop,.plan-stop:not(.shown),.plan-stop.shown{--tilt:0deg!important}
+@media(max-width:700px){.plan-stop:last-child{--x:14%!important}}
 .rsvp-child-note{display:none;grid-column:1/-1;margin:.15rem 0 .35rem;padding:.65rem .75rem;border-left:2px solid rgba(118,47,62,.55);color:#6d5b50;font:400 clamp(.72rem,1.2vw,.9rem)/1.5 "Newsreader",Georgia,serif}
 .rsvp-card[data-attendance="yes"] .rsvp-child-note{display:block}
 html[lang="my"] .rsvp-child-note{font-family:"Noto Serif Myanmar",serif;font-size:clamp(.68rem,1.1vw,.82rem)}
@@ -811,7 +812,7 @@ html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .re
    <article class="plan-stop left" data-at=".50" style="--x:70%;--y:54%;--tilt:0deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
    <article class="plan-stop" data-at=".66" style="--x:28%;--y:66%;--tilt:0deg"><img src="assets/chapter-03/dinner-party.png" alt="Painted wedding party"><div class="stop-copy"><time>16:00</time><b data-i18n="dinner">Dinner party</b></div></article>
    <article class="plan-stop left" data-at=".82" style="--x:70%;--y:78%;--tilt:0deg"><img src="assets/chapter-03/gramophone.png" alt="Painted gramophone"><div class="stop-copy"><time>18:30</time><b data-i18n="afterParty">After party</b></div></article>
-   <article class="plan-stop" data-at=".97" style="--x:78%;--y:89%;--tilt:0deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
+   <article class="plan-stop" data-at=".97" style="--x:20%;--y:89%;--tilt:0deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
   </div>
  </div>
 </section>
