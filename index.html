@@ -318,6 +318,7 @@ body.text4 .ribbon-img{opacity:.94;transform:none}
 .last-vinyl-anchor{position:absolute;left:97%;top:50%;width:1px;height:1px;pointer-events:none}
 .final-sleeve .record-cover img{filter:saturate(.94) brightness(1)}.final-sleeve .record-cover:after{display:none}.final-sleeve .record-cover span{display:block;width:54%;padding:0;background:none;color:#742f3e;font:400 clamp(1.55rem,2.8vw,2.45rem)/.9 "Alex Brush",cursive;text-shadow:none}.final-sleeve .record-caption{letter-spacing:.2em}
 .soon-vinyl{container-type:inline-size}.soon-copy small{font-size:clamp(.48rem,2.2cqw,2.2rem)}.soon-copy strong{font-size:clamp(1rem,7cqw,7.5rem)}.soon-copy p{font-size:clamp(.45rem,3cqw,2.8rem)}.soon-copy b{font-size:clamp(.65rem,3.8cqw,3.4rem)}
+.soon-copy strong{display:block;width:84%;margin:.08em auto 0;white-space:nowrap;text-align:center;font-size:clamp(.9rem,5.25cqw,5.4rem);line-height:.92;letter-spacing:-.035em}
 .soon-copy .soon-monogram{display:block;width:clamp(22px,10cqw,108px);height:auto;margin-top:clamp(.3rem,1.7cqw,1rem);object-fit:contain;filter:drop-shadow(0 1px 1px rgba(30,8,14,.32))}
 #recordsChapter{height:520vh}@media(max-width:700px){#recordsChapter{height:560vh!important}.final-sleeve .record-cover span{font-size:clamp(1.5rem,7vw,2rem)}}
 .gallery-viewport{inset:23% 0 10%}.gallery-print{width:clamp(270px,34vw,500px)}.gallery-print.portrait{width:clamp(220px,27vw,370px)}.gallery-print img{height:clamp(280px,50vh,510px);object-fit:contain;background:#f7efdf}.gallery-print.portrait img{height:clamp(340px,58vh,570px)}
@@ -665,10 +666,15 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  .stop-copy{box-sizing:border-box;width:clamp(108px,26vw,132px);min-width:0;padding:.36rem .42rem;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;text-shadow:0 1px 0 rgba(255,249,237,.95),0 0 7px rgba(255,249,237,.9)}
  .plan-stop .stop-copy{transform:translate(.65rem,-50%)}
  .plan-stop.left .stop-copy{transform:translate(-.65rem,-50%)}
- .stop-copy time{font-size:.52rem!important;letter-spacing:.1em!important}
- .stop-copy b{font-size:.68rem!important;line-height:1.12}
- .stop-copy small{display:none}
+ .plan-stop,.plan-stop:not(.shown),.plan-stop.shown{--tilt:0deg!important}
+ .stop-copy time{font:500 .72rem/1.05 "Newsreader",Georgia,serif!important;letter-spacing:.055em!important}
+ .stop-copy b{font:500 .8rem/1.12 "Newsreader",Georgia,serif!important}
+ .stop-copy small{display:block;font-size:.53rem;line-height:1.25;letter-spacing:.015em}
 }
+.plan-stop,.plan-stop:not(.shown),.plan-stop.shown{--tilt:0deg!important}
+.rsvp-child-note{display:none;grid-column:1/-1;margin:.15rem 0 .35rem;padding:.65rem .75rem;border-left:2px solid rgba(118,47,62,.55);color:#6d5b50;font:400 clamp(.72rem,1.2vw,.9rem)/1.5 "Newsreader",Georgia,serif}
+.rsvp-card[data-attendance="yes"] .rsvp-child-note{display:block}
+html[lang="my"] .rsvp-child-note{font-family:"Noto Serif Myanmar",serif;font-size:clamp(.68rem,1.1vw,.82rem)}
 </style>
 </head>
 <body>
@@ -770,7 +776,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="plan-rail"><svg viewBox="0 0 100 1000" preserveAspectRatio="none"><path class="plan-ghost" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/><path class="plan-path" id="planPath" d="M18 118 C42 92 70 126 58 205 S16 276 27 360 S82 414 70 500 S18 566 31 652 S85 706 67 786 S28 850 78 920"/></svg></div>
   <div class="plan-trail" id="planTrail"></div><div class="plan-star" id="planStar"></div>
   <div class="plan-items">
-   <article class="plan-stop" data-at=".12" style="--x:19%;--y:22%;--tilt:-3deg"><img src="assets/chapter-03/shuttle-bus.png" alt="Painted shuttle bus"><div class="stop-copy"><time>12:10</time><b data-i18n="busDeparts">Bus departs</b><small data-i18n="busSub">Departure time varies by station</small></div></article>
+   <article class="plan-stop" data-at=".12" style="--x:19%;--y:22%;--tilt:0deg"><img src="assets/chapter-03/shuttle-bus.png" alt="Painted shuttle bus"><div class="stop-copy"><time data-i18n="guestNotes">Guest notes</time><b data-i18n="busDeparts">Free shuttle bus</b><small data-i18n="busSub">Departure time depends on your selected station</small></div></article>
    <article class="plan-stop left" data-at=".27" style="--x:70%;--y:29%;--tilt:2deg"><img src="assets/chapter-03/welcome-sign.png" alt="Painted welcome sign"><div class="stop-copy"><time>13:30</time><b data-i18n="reception">Reception opens</b></div></article>
    <article class="plan-stop" data-at=".40" style="--x:28%;--y:41%;--tilt:-2deg"><img src="assets/chapter-03/rings.png" alt="Painted wedding rings"><div class="stop-copy"><time>14:30</time><b data-i18n="ceremony">Ceremony begins</b></div></article>
    <article class="plan-stop left" data-at=".53" style="--x:69%;--y:53%;--tilt:2deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
@@ -845,7 +851,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  <article class="rsvp-thanks-card" id="thanksPanel" aria-labelledby="thanksTitle"><img class="thanks-panel-art" src="assets/chapter-11/thank-you-journey-postcard.png" alt="" aria-hidden="true"><h2 id="thanksTitle">Thank you</h2><p>for being part of our story so far.</p><p>The best chapter is about to begin, and we cannot wait to celebrate it with you.</p><img class="hm-monogram is-image" src="assets/photos/monogram-burgundy-hd.png" alt="Htoo and May monogram"></article>
  <div class="witness-stack-card" aria-hidden="true"><img src="assets/chapter-09/witness-still-life-card-final.png" alt=""></div>
  <form class="rsvp-card" id="rsvpForm" data-phase="0"><div class="rsvp-letter-head"><img src="assets/photos/monogram-burgundy-hd.png" alt="Htoo and May monogram"><span>16 October 2026</span></div><div class="postcard-progress" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i></div><div class="rsvp-progress"><i id="rsvpBar"></i></div>
-  <fieldset class="rsvp-step on" data-rsvp-step="0"><h3 data-rsvp-i18n="attendQ">Will you join us?</h3><div class="rsvp-choices"><button class="rsvp-choice botanical" type="button" data-attend="yes"><span data-rsvp-i18n="accept">Joyfully<br>Accept</span></button><button class="rsvp-choice botanical" type="button" data-attend="no"><span data-rsvp-i18n="decline">Regretfully<br>Decline</span></button></div><label class="rsvp-field rsvp-party-first"><span>Number of guests</span><select id="rsvpParty" name="party"><option>1</option><option>2</option></select></label><button class="rsvp-calendar" id="rsvpCalendar" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v3M18 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Zm3 7h3v3H8Z"/></svg><span>Add to calendar<small>16 October 2026</small></span></button><div class="rsvp-nav rsvp-attendance-next"><button class="rsvp-btn" type="button" id="rsvpAttendanceNext">Next</button></div></fieldset>
+  <fieldset class="rsvp-step on" data-rsvp-step="0"><h3 data-rsvp-i18n="attendQ">Will you join us?</h3><div class="rsvp-choices"><button class="rsvp-choice botanical" type="button" data-attend="yes"><span data-rsvp-i18n="accept">Joyfully<br>Accept</span></button><button class="rsvp-choice botanical" type="button" data-attend="no"><span data-rsvp-i18n="decline">Regretfully<br>Decline</span></button></div><label class="rsvp-field rsvp-party-first"><span>Number of guests</span><select id="rsvpParty" name="party"><option>1</option><option>2</option></select></label><p class="rsvp-child-note" data-rsvp-i18n="childNote">If bringing your little ones along is essential, please let us know in advance so we can assist you.</p><button class="rsvp-calendar" id="rsvpCalendar" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v3M18 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Zm3 7h3v3H8Z"/></svg><span>Add to calendar<small>16 October 2026</small></span></button><div class="rsvp-nav rsvp-attendance-next"><button class="rsvp-btn" type="button" id="rsvpAttendanceNext">Next</button></div></fieldset>
   <fieldset class="rsvp-step" data-rsvp-step="1"><h3 data-rsvp-i18n="details">Your details</h3><p class="decline-kind-note" data-rsvp-i18n="shortNote">Just your name, contact, and an optional note are enough.</p><div class="rsvp-grid"><label class="rsvp-field"><span data-rsvp-i18n="name">Name</span><input id="rsvpName" name="name" autocomplete="name" required></label><label class="rsvp-field"><span data-rsvp-i18n="contact">Email or Phone Number</span><input id="rsvpContact" name="contact" autocomplete="email" required></label><label class="rsvp-field decline-extra"><span data-rsvp-i18n="address">Mailing Address (Optional)</span><input id="rsvpAddress" name="address" autocomplete="street-address"></label><label class="rsvp-field decline-only full"><span data-rsvp-i18n="optionalMessage">Optional Message</span><textarea id="rsvpDeclineMessage" name="declineMessage" placeholder="A short note is enough…"></textarea></label></div><p class="rsvp-field-error" id="rsvpFieldError" role="alert"></p><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back data-rsvp-i18n="back">Back</button><button class="rsvp-btn" type="button" data-rsvp-next data-rsvp-i18n="next">Next</button></div></fieldset>
   <fieldset class="rsvp-step" data-rsvp-step="2"><h3>Celebration details</h3><div class="rsvp-grid"><label class="rsvp-field rsvp-guest-names"><span>Guest name</span><input id="rsvpGuestNames" name="guestNames"></label><label class="rsvp-field full"><span>Preferred shuttle station</span><select id="rsvpStation" name="station"><option value="">Please select</option><option>Shinjuku</option><option value="Tokyo">Tokyo Station</option><option>Ikebukuro</option><option value="Own">I will travel independently</option><option value="Later">Decide later</option></select></label><label class="rsvp-field full"><span>Dietary requirements</span><input id="rsvpAllergy" name="allergy" placeholder="Food allergies or restrictions"></label><label class="rsvp-field full"><span>Optional afterparty (2次会)</span><select id="rsvpNijikai" name="nijikai"><option value="later">Decide later</option><option value="yes">Count me in!</option><option value="no">Unable to join</option></select></label><a class="rsvp-detail-link" id="rsvpAfterpartyDetails" href="#afterparty-details">View afterparty details</a></div><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back>Back</button><button class="rsvp-btn" type="button" data-rsvp-next>Next</button></div></fieldset>
   <fieldset class="rsvp-step" data-rsvp-step="3"><h3 data-rsvp-i18n="coupleMessage">Message for the Couple</h3><label class="rsvp-field full"><span data-rsvp-i18n="optionalMessage">Your Message (Optional)</span><textarea id="rsvpMessage" name="message"></textarea></label><div id="rsvpReview"></div><p class="rsvp-status" id="rsvpStatus" role="status"></p><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back data-rsvp-i18n="back">Back</button><button class="rsvp-btn" type="submit" data-rsvp-i18n="submit">Submit RSVP</button></div></fieldset>
@@ -968,8 +974,9 @@ const translations = {
     continueStory: 'Follow our journey',
     chapter03: 'Chapter 03',
     thePlan: 'The Schedule',
-    busDeparts: 'Shuttle bus leaves',
-    busSub: 'Departure times vary slightly by station',
+    guestNotes: 'Guest notes',
+    busDeparts: 'Free shuttle bus',
+    busSub: 'Departure time depends on your selected station',
     reception: 'Doors open & welcome drink',
     ceremony: 'Wedding ceremony',
     cocktail: 'Cocktails & bites',
@@ -1017,8 +1024,9 @@ const translations = {
     continueStory: 'ふたりの歩みを見る',
     chapter03: '第3章',
     thePlan: '当日のタイムスケジュール',
-    busDeparts: '送迎バス出発',
-    busSub: '※ご乗車駅によって出発時間が異なります',
+    guestNotes: 'ゲストの皆様へ',
+    busDeparts: '無料送迎バス',
+    busSub: '出発時間はご利用の駅によって異なります',
     reception: '受付スタート',
     ceremony: '挙式',
     cocktail: 'ウェルカムパーティー',
@@ -1066,8 +1074,9 @@ const translations = {
     continueStory: 'ကျွန်တော်တို့ရဲ့ ဇာတ်လမ်းလေး ဆက်ဖတ်ကြည့်ရန်',
     chapter03: 'အခန်း ၀၃',
     thePlan: 'ပွဲအစီအစဉ်လေးများ',
-    busDeparts: 'ကြိုပို့ဘတ်စ်ကား စတင်ထွက်ခွာချိန်',
-    busSub: 'ဘူတာဂိတ်အလိုက် ထွက်ခွာချိန် အနည်းငယ် ကွဲပြားနိုင်ပါတယ်နော်',
+    guestNotes: 'ဧည့်သည်တော်များအတွက် မှတ်ချက်',
+    busDeparts: 'အခမဲ့ ကြိုပို့ဘတ်စ်ကား',
+    busSub: 'ထွက်ခွာချိန်သည် ရွေးချယ်ထားသော ဘူတာအလိုက် ကွဲပြားပါသည်',
     reception: 'ဧည့်ခံပွဲ စတင်ချိန်',
     ceremony: 'မင်္ဂလာအခမ်းအနား စတင်ချိန်',
     cocktail: 'ကော့တေးနှင့် အဖျော်ယမကာ တည်ခင်းချိန်',
@@ -1148,7 +1157,8 @@ const rsvpTranslations = {
     submit: 'Send RSVP',
     thanks: 'Thank you so much!',
     onWay: 'Your RSVP is in! We got your response.',
-    celebrate: 'Can’t wait to celebrate together on the big day!'
+    celebrate: 'Can’t wait to celebrate together on the big day!',
+    childNote: 'If bringing your little ones along is essential, please let us know in advance so we can assist you.'
   },
   ja: {
     attendQ: 'ご出欠をお聞かせください！',
@@ -1167,7 +1177,8 @@ const rsvpTranslations = {
     submit: '送信する',
     thanks: 'ご回答ありがとうございます！',
     onWay: 'お返事を受け付けました！',
-    celebrate: '当日、皆様と笑顔でお会いできるのを楽しみにしています！'
+    celebrate: '当日、皆様と笑顔でお会いできるのを楽しみにしています！',
+    childNote: '小さなお子様のご同伴が必要な場合は、事前にご相談いただけますと幸いです。'
   },
   my: {
     attendQ: 'မင်္ဂလာပွဲလေးကို လာရောက်ဆင်နွှဲပေးနိုင်မလားခင်ဗျာ/ရှင့်။',
@@ -1186,7 +1197,8 @@ const rsvpTranslations = {
     submit: 'အတည်ပြု ပေးပို့မည်',
     thanks: 'ကျေးဇူးအများကြီးတင်ပါတယ်နော်！',
     onWay: 'လူကြီးမင်းရဲ့ အကြောင်းပြန်ကြားချက်ကို ရရှိသွားပါပြီ။',
-    celebrate: 'မင်္ဂလာပွဲနေ့မှာ အားလုံးနဲ့ ပျော်ပျော်ပါးပါး ဆုံကြမယ်နော်။'
+    celebrate: 'မင်္ဂလာပွဲနေ့မှာ အားလုံးနဲ့ ပျော်ပျော်ပါးပါး ဆုံကြမယ်နော်။',
+    childNote: 'ကလေးငယ်များ အတူတကွ လိုက်ပါလာရန် လိုအပ်ပါက ကြိုတင်အသိပေး ဆွေးနွေးပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။'
   }
 };
 const infoContent = {
@@ -1207,7 +1219,8 @@ const infoContent = {
       title: 'Location & Area',
       body: 'Our venue is set in the lovely Atsugi area in Kanagawa, Japan. The nearest main hub is Atsugi Station. We’ll send over the exact venue address once you submit your RSVP!',
       meta: ['Area: Atsugi, Kanagawa', 'Nearest Station: Atsugi Station'],
-      action: 'View on Map'
+      action: 'View on Map',
+      notice: 'Please note: The day involves extended travel and outdoor walking, which may feel physically demanding for young children or senior family members. If you need any accessibility support, please reach out to us in advance so we can assist you.'
     },
     transport: {
       title: 'Free Shuttle Buses',
@@ -1242,7 +1255,8 @@ const infoContent = {
       title: '会場エリア',
       body: '会場は神奈川県・厚木エリアにあります。最寄り駅は厚木駅です。詳しい所在地はご出欠のお返事をいただいた後にすぐご案内しますので、お楽しみに！',
       meta: ['エリア：神奈川県 厚木エリア', '最寄り駅：厚木駅'],
-      action: '厚木駅の周辺地図を見る'
+      action: '厚木駅の周辺地図を見る',
+      notice: '※長時間の移動や徒歩での移動が含まれるため、小さなお子様やご高齢のご家族にとっては少々お体に負担となる場合がございます。移動面でのサポートやご配慮が必要な場合は、事前にご相談いただけますと幸いです。'
     },
     transport: {
       title: '無料送迎バスのご案内',
@@ -1277,7 +1291,8 @@ const infoContent = {
       title: 'မင်္ဂလာပွဲ ကျင်းပမည့်နေရာ',
       body: 'မင်္ဂလာပွဲ ကျင်းပမည့်နေရာကတော့ ဂျပန်နိုင်ငံ၊ ခါနဂါဝါခရိုင်၊ သာယာလှပတဲ့ Atsugi ဧရိယာမှာ ဖြစ်ပြီး အနီးဆုံးဘူတာကတော့ Atsugi Station ပါ။ တည်နေရာလိပ်စာ အတိအကျကိုတော့ RSVP အကြောင်းပြန်ကြားချက်လေး ရရှိပြီးတာနဲ့ အသိပေးသွားပါမယ်နော်။',
       meta: ['ဒေသ- ခါနဂါဝါခရိုင်၊ Atsugi ဧရိယာ', 'အနီးဆုံးဘူတာ- Atsugi Station'],
-      action: 'ဘူတာမြေပုံ ကြည့်ရန်'
+      action: 'ဘူတာမြေပုံ ကြည့်ရန်',
+      notice: 'မှတ်ချက် - ကြိုပို့ကားစီးနင်းချိန်နှင့် လမ်းလျှောက်ရမှုများ ပါဝင်သောကြောင့် ကလေးငယ်များနှင့် လူကြီးမိဘများအတွက် ခရီးပန်းနိုင်ပါသည်။ သွားလာရေးဆိုင်ရာ အထူးအကူအညီ လိုအပ်ပါက ကြိုတင်အသိပေး ဆွေးနွေးပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။'
     },
     transport: {
       title: 'အခမဲ့ ကြိုပို့ယာဉ် စီစဉ်ထားရှိမှု',
@@ -1300,7 +1315,6 @@ const qnaContent = {
   en: [
     ['How do we get to the venue?', 'The venue is out in the scenic Atsugi area—about 48 minutes from Shinjuku Station. We’re running free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro! Since seats per bus are limited, please make sure to pick your preferred station in the RSVP form.'],
     ['Where is the exact location?', 'We’re keeping the exact venue address a fun little surprise until after you RSVP! For now, you can plan your trip towards the Atsugi area.'],
-    ['Can children and senior family members join?', 'We’d truly love to celebrate with everyone! However, because our venue is set in a natural, outdoor-friendly area with limited accessibility, the walking and terrain might be a bit tiring for very young kids and elderly family members. We kindly ask for your understanding!'],
     ['How should I share any dietary restrictions or allergies?', 'Super easy—just drop any food allergies or special dietary needs into the "Dietary Requirements" box on the RSVP form below.'],
     ['What time should I arrive?', 'We suggest arriving around 14:10 (about 20 minutes before the 14:30 ceremony starts) so you have plenty of time to check in, grab a drink, and find a cozy seat.'],
     ['Is there parking available on site?', 'Yes, we have parking spots available! Just let us know in advance on your RSVP form if you’ll be driving over so we can save a spot for you.'],
@@ -1311,7 +1325,6 @@ const qnaContent = {
   ja: [
     ['会場へのアクセス方法は？', '会場は緑豊かな厚木エリアにあります（新宿駅から約48分）。新宿駅・東京駅・池袋駅から無料送迎バスをご用意しています！お席に限りがありますので、RSVPフォームからご希望の乗車駅を教えてくださいね。'],
     ['詳しい会場の住所はいつ分かりますか？', '詳しい住所は、出欠のご回答をいただいた後にすぐご案内します！自然あふれる厚木エリアでの一日を楽しみにしていてくださいね。'],
-    ['子供や高齢の家族も一緒に参加できますか？', '皆様とお祝いできることを心から願っておりますが、会場が自然豊かな立地にありバリアフリー設備が限られているため、小さなお子様やご高齢のご家族には移動のご負担になってしまう可能性がございます。ご理解いただけますと幸いです。'],
     ['アレルギーや食事のリクエストはどう伝えればいいですか？', '下のRSVPフォームに「アレルギー・お食事のご要望」欄がありますので、そちらへ気軽にご記入ください！'],
     ['当日は何時頃に着けばいいですか？', '挙式開式（14:30）の20分前、14:10頃を目安にお越しいただけると、ゆったり受付とお席の確保ができます！'],
     ['車で行く場合、駐車場はありますか？', 'はい、お車でお越しいただけます！駐車スペースをご用意しますので、事前にRSVPフォームでお知らせくださいね。'],
@@ -1322,7 +1335,6 @@ const qnaContent = {
   my: [
     ['မင်္ဂလာပွဲ ကျင်းပမည့်နေရာကို ဘယ်လို သွားရမလဲခင်ဗျာ/ရှင့်။', 'ပွဲကျင်းပမည့်နေရာက Atsugi ဧရိယာမှာရှိပြီး Shinjuku ဘူတာကနေ မိနစ် ၄၈ မိနစ်ခန့် ကွာဝေးပါတယ်။ Shinjuku၊ Tokyo Station နဲ့ Ikebukuro ဘူတာတွေကနေ အခမဲ့ ကြိုပို့ဘတ်စ်ကားတွေ စီစဉ်ပေးထားတာမို့ RSVP ဖောင်မှာ ကြိုတင်စာရင်းပေးထားနိုင်ပါတယ်နော်။'],
     ['လိပ်စာအတိအကျကို ဘယ်အချိန် သိရမလဲနော်။', 'လိပ်စာအတိအကျကိုတော့ RSVP စာရင်းပေးသွင်းပြီးတာနဲ့ ချက်ချင်း အသိပေးသွားပါမယ်။ လောလောဆယ်မှာတော့ Atsugi ဧရိယာကို လာရောက်ရမယ်လို့ မှတ်သားထားပေးပါနော်။'],
-    ['ကလေးငယ်များနှင့် လူကြီးမိဘများ အတူတူ လိုက်ပါနိုင်ပါသလား။', 'မင်္ဂလာပွဲလေးမှာ အားလုံးနဲ့ အတူတူ ဆုံတွေ့ချင်ပေမယ့်လည်း ပွဲကျင်းပမယ့်နေရာက သဘာဝဆန်ဆန် နေရာဖြစ်ပြီး အထောက်အကူပြု အဆောက်အအုံ အကန့်အသတ်ရှိတာကြောင့် ကလေးငယ်များနှင့် လူကြီးမိဘများ ခရီးပန်းမှာ စိုးရိမ်မိပါတယ်။ နားလည်ပေးကြဖို့ မေတ္တာရပ်ခံပါတယ်နော်။'],
     ['အစားအသောက် ဓာတ်မတည့်တာတွေကို ဘယ်လို အကြောင်းကြားရမလဲ။', 'အောက်ပါ RSVP ဖောင်ထဲက “အစားအသောက် လိုအပ်ချက်များ” နေရာမှာ ဓာတ်မတည့်တာတွေ ဒါမှမဟုတ် ရှောင်ချင်တာတွေကို လွတ်လပ်စွာ ရေးသားပေးနိုင်ပါတယ်ခင်ဗျာ/ရှင့်။'],
     ['ပွဲကို ဘယ်အချိန် အရောက်လာရမလဲနော်။', 'မင်္ဂလာအခမ်းအနား စတင်မည့် ၁၄:၃၀ နာရီ မတိုင်မီ မိနစ် ၂၀ ခန့်အလို (၁၄:၁၀ နာရီခန့်) ကြိုတင်ရောက်ရှိပေးရင် အေးအေးဆေးဆေး နေရာယူနိုင်မှာပါနော်။'],
     ['ကိုယ်ပိုင်ကားနဲ့ လာရင် ကားရပ်နားဖို့ နေရာရှိပါသလား။', 'ဟုတ်ကဲ့၊ ကားရပ်နားရန်နေရာ စီစဉ်ပေးထားပါတယ်နော်။ နေရာကြိုချထားနိုင်ဖို့အတွက် ကားနဲ့လာမယ့်အကြောင်း RSVP ဖောင်မှာ အသိပေးပေးပါနော်။'],
@@ -1380,7 +1392,7 @@ const qaChapter=document.getElementById('qaChapter'),qaIndex=document.getElement
 const galleryChapter=document.getElementById('galleryChapter'),galleryViewport=document.getElementById('galleryViewport'),galleryTrack=document.getElementById('galleryTrack'),galleryBridge=document.getElementById('galleryBridge'),galleryHeroPhoto=document.getElementById('galleryHeroPhoto'),galleryHeroFront=galleryHeroPhoto.querySelector('.hero-photo-front'),galleryHeroBack=galleryHeroPhoto.querySelector('.hero-photo-back'),galleryFlashBloom=document.getElementById('galleryFlashBloom'),galleryFlashFragments=document.getElementById('galleryFlashFragments'),galleryMessageParts=[...document.querySelectorAll('#galleryPhotoMessage>*')],gallerySourcePrints=[...document.querySelectorAll('.gallery-print')].slice(-5),bridgePhotos=[...document.querySelectorAll('.bridge-photo')],galleryChrome=[document.querySelector('.gallery-head'),document.querySelector('.gallery-hint')].filter(Boolean);
 const rsvpCalendarButton=document.getElementById('rsvpCalendar');
 document.querySelector('[data-rsvp-step="4"] .rsvp-done').append(rsvpCalendarButton);
-const qaArtPaths=['assets/chapter-06/transportation.png','assets/chapter-06/location.png','assets/chapter-03/welcome-sign.png','assets/chapter-03/dinner-party.png','assets/chapter-06/save-date-calendar.png','assets/chapter-03/luggage.png','assets/chapter-06/dress-code.png','assets/chapter-03/welcome-sign.png','assets/chapter-06/transportation.png'];
+const qaArtPaths=['assets/chapter-06/transportation.png','assets/chapter-06/location.png','assets/chapter-03/dinner-party.png','assets/chapter-06/save-date-calendar.png','assets/chapter-03/luggage.png','assets/chapter-06/dress-code.png','assets/chapter-03/welcome-sign.png','assets/chapter-06/transportation.png'];
 let lastInfoTrigger=null,infoMode=null,lastAutoInfo=null,dismissedAutoInfo=null,activeQa=0,qaTimer=null;
 function renderInfo(key){
  const item=infoContent[activeLang][key]||infoContent.en[key],trigger=document.querySelector(`[data-info="${key}"]`);
@@ -1431,8 +1443,8 @@ function buildQnaIndex(){
  qnaContent[activeLang].forEach((item,index)=>{const num=String(index+1).padStart(2,'0'),button=document.createElement('button');button.type='button';button.dataset.qa=String(index);button.innerHTML=`<span>${num}</span><b>${item[0]}</b>`;button.querySelector('b').style.fontWeight='inherit';button.addEventListener('click',()=>jumpQna(index));qaIndex.appendChild(button);const mobile=document.createElement('button');mobile.type='button';mobile.dataset.qa=String(index);mobile.textContent=num;mobile.setAttribute('aria-label',item[0]);mobile.addEventListener('click',()=>jumpQna(index));qaMobileIndex.appendChild(mobile)});
 }
 function emitQaParticles(direction){let layer=qaPaper.querySelector('.qa-particles');if(!layer){layer=document.createElement('div');layer.className='qa-particles';layer.setAttribute('aria-hidden','true');qaPaper.append(layer)}layer.replaceChildren();for(let i=0;i<34;i++){const particle=document.createElement('i');particle.className=`qa-particle ${direction}`;particle.style.left=`${16+Math.random()*68}%`;particle.style.top=`${28+Math.random()*48}%`;particle.style.setProperty('--size',`${1+Math.random()*2.4}px`);particle.style.setProperty('--dx',`${(Math.random()-.5)*34}px`);particle.style.setProperty('--dy',`${(Math.random()-.5)*28}px`);particle.style.setProperty('--delay',`${Math.random()*55}ms`);layer.append(particle)}setTimeout(()=>layer.replaceChildren(),360)}
-function renderQna(index,instant=false){activeQa=index;clearTimeout(qaTimer);const apply=()=>{const item=qnaContent[activeLang][index];qaNumber.textContent=String(index+1).padStart(2,'0');qaQuestion.textContent=item[0];qaAnswer.textContent=item[1];qaArt.src=qaArtPaths[index];document.querySelectorAll('[data-qa]').forEach(el=>el.classList.toggle('active',Number(el.dataset.qa)===index));qaMarker.style.top=(index/8*100)+'%'};if(instant){apply();return}qaPaper.classList.remove('particle-in');qaPaper.classList.add('particle-out');emitQaParticles('out');qaTimer=setTimeout(()=>{apply();qaPaper.classList.remove('particle-out');qaPaper.classList.add('particle-in');emitQaParticles('in');setTimeout(()=>qaPaper.classList.remove('particle-in'),240)},125)}
-function jumpQna(index){const travel=qaChapter.offsetHeight-innerHeight,top=qaChapter.offsetTop+(index+.12)/9*travel;scrollTo({top,behavior:reduce?'auto':'smooth'})}
+function renderQna(index,instant=false){activeQa=index;clearTimeout(qaTimer);const apply=()=>{const item=qnaContent[activeLang][index],last=Math.max(1,qnaContent[activeLang].length-1);qaNumber.textContent=String(index+1).padStart(2,'0');qaQuestion.textContent=item[0];qaAnswer.textContent=item[1];qaArt.src=qaArtPaths[index];document.querySelectorAll('[data-qa]').forEach(el=>el.classList.toggle('active',Number(el.dataset.qa)===index));qaMarker.style.top=(index/last*100)+'%'};if(instant){apply();return}qaPaper.classList.remove('particle-in');qaPaper.classList.add('particle-out');emitQaParticles('out');qaTimer=setTimeout(()=>{apply();qaPaper.classList.remove('particle-out');qaPaper.classList.add('particle-in');emitQaParticles('in');setTimeout(()=>qaPaper.classList.remove('particle-in'),240)},125)}
+function jumpQna(index){const total=qnaContent[activeLang].length,travel=qaChapter.offsetHeight-innerHeight,top=qaChapter.offsetTop+(index+.12)/total*travel;scrollTo({top,behavior:reduce?'auto':'smooth'})}
 buildQnaIndex();renderQna(0,true);
 let galleryDrag=0,galleryPointer=false,galleryPointerX=0,galleryDragStart=0,galleryDragged=false,galleryBridgeStarts=null;
 galleryViewport.addEventListener('pointerdown',event=>{galleryPointer=true;galleryDragged=false;galleryPointerX=event.clientX;galleryDragStart=galleryDrag;galleryViewport.classList.add('dragging');galleryViewport.setPointerCapture(event.pointerId)});
@@ -1473,7 +1485,7 @@ function storyFrame(){
   const sr=storyChapter.getBoundingClientRect();if(sr.bottom>0&&sr.top<innerHeight){const raw=sectionProgress(storyChapter);smoothStory+=(raw-smoothStory)*.1;const joinRaw=Math.max(0,Math.min(1,(smoothStory-.08)/.48)),join=joinRaw*joinRaw*(3-2*joinRaw),draw=Math.max(0,Math.min(1,(smoothStory-.58)/.2));storyArt.style.transform=`scale(${1.025-smoothStory*.018}) translate3d(0,${-smoothStory*9}px,0)`;storyAssembly.classList.toggle('assembled',join>.02);heartComplete.style.animation='none';heartImages[0].style.transform=`translate(${-(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*-8}deg)`;heartImages[1].style.transform=`translate(${(1-join)*108}%,${(1-join)*14}%) rotate(${(1-join)*8}deg)`;heartImages.forEach(el=>el.style.opacity=.18+join*.82);heartUnderlays.forEach(el=>el.style.opacity=join);heartHalves.forEach(el=>{el.style.strokeDashoffset=3000*(1-draw);el.style.opacity=draw*.9});if(draw>.985&&!heartCelebrated){heartCelebrated=true;startHeartFireworks()}else if(draw<.35&&heartCelebrated){heartCelebrated=false;clearHeartFireworks()}const beat=draw>.985?1+Math.sin(performance.now()/175)*.012+Math.sin(performance.now()/88)*.004:1;heartComplete.style.transform=`scale(${(.88+join*.12)*beat})`;storyPieces.forEach(el=>el.classList.toggle('shown',smoothStory>=Number(el.dataset.story)))}
  const rr=recordsChapter.getBoundingClientRect();if(rr.bottom>0&&rr.top<innerHeight){const raw=sectionProgress(recordsChapter);smoothRecords+=(raw-smoothRecords)*.11;const step=Math.min(innerWidth*.46,400),travel=(records.length-1)*step+innerWidth*.48,panProgress=recordsPanHold??Math.min(1,smoothRecords/.82),pan=innerWidth*.72-panProgress*travel;records.forEach((card,i)=>{const x=pan+i*step,k=Math.max(-1.8,Math.min(1.8,(x-innerWidth*.5)/(innerWidth*.5))),near=Math.max(0,1-Math.abs(k)),arc=-68*(1-k*k),scale=.76+near*.5,pull=Math.max(0,Math.min(1,(near-.86)/.14));card.style.transform=`translate3d(${x}px,${arc-near*18}px,${near*35}px) rotate(${k*10}deg) scale(${scale})`;card.style.opacity=Math.max(0,1.15-Math.abs(k)*.5);card.style.zIndex=String(Math.round(near*30));const vinyl=card.querySelector('.record-vinyl');if(vinyl)vinyl.style.transform=`translate(${pull*62}%,-50%) rotate(${smoothRecords*1260+i*24}deg)`});recordsProgress.style.width=(Math.min(1,panProgress)*100)+'%'}
  const ir=informationChapter.getBoundingClientRect();if(ir.bottom>0&&ir.top<innerHeight){smoothInfo=sectionProgress(informationChapter);updateInformationScroll(smoothInfo)}else if(infoMode==='auto'){lastAutoInfo=null;closeInfo(false)}
- const qr=qaChapter.getBoundingClientRect();if(qr.bottom>0&&qr.top<innerHeight){const raw=sectionProgress(qaChapter);smoothQa+=(raw-smoothQa)*.14;const next=Math.max(0,Math.min(8,Math.floor(smoothQa*9)));if(next!==activeQa)renderQna(next)}
+ const qr=qaChapter.getBoundingClientRect();if(qr.bottom>0&&qr.top<innerHeight){const raw=sectionProgress(qaChapter),total=qnaContent[activeLang].length;smoothQa+=(raw-smoothQa)*.14;const next=Math.max(0,Math.min(total-1,Math.floor(smoothQa*total)));if(next!==activeQa)renderQna(next)}
  const gr=galleryChapter.getBoundingClientRect();if(gr.bottom>0&&gr.top<innerHeight){const raw=sectionProgress(galleryChapter);smoothGallery+=(raw-smoothGallery)*.1;const bridge=Math.max(0,Math.min(1,(smoothGallery-.55)/.15)),panProgress=Math.min(1,smoothGallery/.62),flipRaw=Math.max(0,Math.min(1,(smoothGallery-.72)/.12)),flip=flipRaw*flipRaw*(3-2*flipRaw),settle=Math.max(0,Math.min(1,(smoothGallery-.84)/.07)),zoomRaw=Math.max(0,Math.min(1,(smoothGallery-.91)/.085)),zoomCard=zoomRaw*zoomRaw*(3-2*zoomRaw),flash=1-Math.min(1,Math.abs(smoothGallery-.78)/.035),maxPan=Math.max(0,galleryTrack.scrollWidth-innerWidth+innerWidth*.12),dragMin=-maxPan*(1-panProgress),dragMax=maxPan*panProgress;galleryDrag=Math.max(dragMin,Math.min(dragMax,galleryDrag));galleryTrack.style.transform=`translate3d(${-panProgress*maxPan+galleryDrag}px,-50%,0)`;if(bridge<.015)galleryBridgeStarts=null;if(bridge>=.015&&!galleryBridgeStarts)galleryBridgeStarts=gallerySourcePrints.map((source,index)=>{const r=source.getBoundingClientRect();return[(r.left+r.width/2-innerWidth/2)/innerWidth*100,(r.top+r.height/2-innerHeight/2)/innerHeight*100,[-2,2.5,1.5,-2.5,2][index]]});galleryTrack.style.opacity=1-bridge;galleryBridge.style.opacity=bridge;galleryBridge.style.transform='none';galleryChrome.forEach(el=>el.style.opacity=1-bridge);const starts=galleryBridgeStarts||[[-55,4,-2],[-25,-5,2.5],[5,4,1.5],[35,-4,-2.5],[65,3,2]],ends=[[-13,3,-8],[14,-4,7],[-9,-8,5],[10,9,-5],[0,0,0]],heroRect=galleryHeroPhoto.getBoundingClientRect(),coverScale=Math.max(innerWidth/Math.max(1,heroRect.width),innerHeight/Math.max(1,heroRect.height))*1.04;bridgePhotos.forEach((el,index)=>{const a=starts[index],b=ends[index],hero=index===bridgePhotos.length-1,x=a[0]+(b[0]-a[0])*bridge,y=a[1]+(b[1]-a[1])*bridge,z=a[2]+(b[2]-a[2])*bridge*(1-zoomCard),yTurn=hero?(flip<.5?flip*180:(1-flip)*-180):0,scale=hero?1+zoomCard*(coverScale-1):1;el.style.transform=`translate(calc(-50% + ${x}vw),calc(-50% + ${y}vh)) rotateZ(${z}deg) rotateY(${yTurn}deg) scale(${scale})`;el.style.opacity=hero?1:1-zoomCard});galleryHeroFront.style.opacity=flip<.5?1:0;galleryHeroBack.style.opacity=flip<.5?0:1;galleryFlashBloom.style.opacity=Math.max(0,flash);galleryFlashFragments.style.opacity=settle*(1-zoomCard);galleryFlashFragments.style.transform=`scale(${.72+settle*.28}) translateY(${settle*2}vh)`;galleryMessageParts.forEach((el,index)=>{const show=Math.max(0,Math.min(1,(smoothGallery-.84-index*.025)/.06))*(1-zoomCard);el.style.opacity=show;el.style.transform=`translateY(${(1-show)*15}px)`})}
  if(gr.bottom>0&&gr.top<innerHeight&&smoothGallery>.7){const flipPhase=Math.max(0,Math.min(1,(smoothGallery-.72)/.12)),turn=flipPhase<.5?flipPhase*180:(1-flipPhase)*-180,desk=Math.max(0,Math.min(1,(smoothGallery-.91)/.09)),scale=1+desk*.12;galleryHeroPhoto.style.transform=`translate(-50%,-50%) rotateY(${turn}deg) scale(${scale})`;bridgePhotos.slice(0,-1).forEach((el,index)=>{el.style.opacity=String(1-desk);el.style.transform+=` translate(${(index-1.5)*desk*9}vw,${(index%2?1:-1)*desk*5}vh)`})}
  if(gr.bottom>0&&gr.top<innerHeight){const ink=Math.max(0,Math.min(1,(smoothGallery-.835)/.075));galleryHeroPhoto.style.setProperty('--ink-opacity',String(ink))}
