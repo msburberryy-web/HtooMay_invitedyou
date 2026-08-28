@@ -28,7 +28,8 @@ button{font:inherit}
 .journey-portal:before,.journey-portal:after{content:"";position:absolute;width:min(65vw,520px);aspect-ratio:1;background:url('assets/decor/butterfly-watercolor-single.png') center/contain no-repeat;opacity:.22;filter:sepia(.16);animation:portalFloat 2.8s ease-in-out infinite}
 .journey-portal:before{left:-20%;bottom:-22%;transform:rotate(-18deg)}.journey-portal:after{right:-22%;top:-24%;transform:rotate(158deg);animation-delay:-1.4s}
 .journey-mark{position:relative;z-index:1;text-align:center;color:var(--burg);animation:portalArrive .9s var(--ease) both}
-.journey-monogram{display:block;width:clamp(82px,19vw,132px);height:auto;margin:auto;object-fit:contain;filter:drop-shadow(0 5px 7px rgba(79,35,42,.14))}.journey-copy{display:block;margin-top:1rem;font:500 clamp(.62rem,2.8vw,.82rem)/1.5 "Newsreader",serif;letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+.journey-monogram-loader{--load:0;position:relative;width:clamp(92px,21vw,142px);margin:auto;aspect-ratio:1;filter:drop-shadow(0 5px 7px rgba(79,35,42,.14))}.journey-monogram{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}.journey-monogram.ghost{opacity:.16;filter:grayscale(1) sepia(.35)}.journey-monogram-fill{position:absolute;inset:0;overflow:hidden;clip-path:inset(calc((1 - var(--load)) * 100%) 0 0);transition:clip-path .48s cubic-bezier(.22,.8,.3,1)}.journey-monogram-fill .journey-monogram{filter:saturate(1.08)}.journey-fuel-line{position:absolute;z-index:2;left:10%;right:10%;bottom:calc(var(--load) * 80% + 10%);height:1px;background:linear-gradient(90deg,transparent,#c59a55 22% 78%,transparent);box-shadow:0 0 7px rgba(197,154,85,.75);opacity:calc(.25 + var(--load));transition:bottom .48s cubic-bezier(.22,.8,.3,1)}.journey-load{display:block;margin-top:.55rem;color:#9b7650;font:500 .55rem/1 Georgia,serif;letter-spacing:.15em}.journey-copy{display:block;margin-top:.65rem;font:500 clamp(.62rem,2.8vw,.82rem)/1.5 "Newsreader",serif;letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+.journey-monogram-loader.full{animation:journeyFull .8s ease-in-out infinite alternate}.journey-monogram-loader.full .journey-fuel-line{opacity:0}@keyframes journeyFull{to{filter:drop-shadow(0 0 12px rgba(148,55,71,.34));transform:scale(1.025)}}
 @keyframes portalArrive{from{opacity:0;transform:scale(.86) translateY(18px);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}@keyframes portalFloat{0%,100%{translate:0 0;rotate:-2deg}50%{translate:10px -12px;rotate:4deg}}
 @media(max-width:700px){.journey-portal:before,.journey-portal:after{width:48vw;opacity:.2}.journey-portal:before{left:-8%;bottom:-7%}.journey-portal:after{right:-9%;top:-8%}.journey-copy{letter-spacing:.14em}}
 
@@ -695,7 +696,7 @@ html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .re
   <source src="https://res.cloudinary.com/j3lgvkwu/video/upload/f_auto,q_auto/intro_dkfc95.mp4" type="video/mp4">
  </video>
  <button id="skip" type="button">Skip film</button>
- <div class="journey-portal" aria-hidden="true"><div class="journey-mark"><img class="journey-monogram" src="assets/photos/monogram-burgundy-hd.png" alt=""><span class="journey-copy">Taking you into our painted world</span></div></div>
+ <div class="journey-portal" aria-hidden="true"><div class="journey-mark"><div class="journey-monogram-loader" id="journeyLoader"><img class="journey-monogram ghost" src="assets/photos/monogram-burgundy-hd.png" alt=""><span class="journey-monogram-fill"><img class="journey-monogram" src="assets/photos/monogram-burgundy-hd.png" alt=""></span><i class="journey-fuel-line"></i></div><span class="journey-load" id="journeyLoad">0%</span><span class="journey-copy">Taking you into our painted world</span></div></div>
 </div>
 <div id="paperCurtain" aria-hidden="true"></div>
 <section id="chapter">
@@ -880,13 +881,15 @@ html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .re
  </article>
 </div>
 <script>
-const intro=document.getElementById('intro'),film=document.getElementById('film'),skip=document.getElementById('skip');
+const intro=document.getElementById('intro'),film=document.getElementById('film'),skip=document.getElementById('skip'),journeyLoader=document.getElementById('journeyLoader'),journeyLoad=document.getElementById('journeyLoad');
 const painting=document.getElementById('painting');
 let ended=false,opening=false;
 const backgroundAssets=[
  'assets/backgrounds/chapter-01-opening-calla-lily.png','assets/backgrounds/chapter-02-welcome.png','assets/chapter-04/one-story-background-planned.png','assets/backgrounds/chapter-04-scrapbook-clean.png','assets/backgrounds/chapter-05-plan-sage.png','assets/backgrounds/chapter-11-thank-you-clean.png','assets/backgrounds/chapter-11-thank-you-reference.png'
 ];
-const backgroundsReady=Promise.all(backgroundAssets.map(source=>new Promise(resolve=>{const image=new Image();image.decoding='async';image.onload=async()=>{try{await image.decode()}catch(error){}resolve()};image.onerror=resolve;image.src=source})));
+let backgroundLoaded=0;
+function updateJourneyLoad(){const progress=Math.min(1,backgroundLoaded/backgroundAssets.length);journeyLoader.style.setProperty('--load',progress.toFixed(3));journeyLoad.textContent=`${Math.round(progress*100)}%`;if(progress>=1)journeyLoader.classList.add('full')}
+const backgroundsReady=Promise.all(backgroundAssets.map(source=>new Promise(resolve=>{const image=new Image(),finish=()=>{backgroundLoaded+=1;updateJourneyLoad();resolve()};image.decoding='async';image.onload=async()=>{try{await image.decode()}catch(error){}finish()};image.onerror=finish;image.src=source})));
 let criticalAssetsReady=false;backgroundsReady.then(()=>{criticalAssetsReady=true});
 const warmPageAssets=()=>{
  const sources=[...new Set([...backgroundAssets,...Array.from(document.querySelectorAll('img[src]'),image=>image.currentSrc||image.src)])];
