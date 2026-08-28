@@ -662,8 +662,8 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  .plan-items{inset:0}
  .plan-ghost{stroke:rgba(107,31,45,.12);stroke-opacity:.55}
  .plan-stop{width:clamp(68px,17vw,88px)!important}
- .plan-stop:nth-child(odd){--x:18%!important}
- .plan-stop:nth-child(even){--x:82%!important}
+ .plan-stop.side-left{--x:18%!important}
+ .plan-stop.side-right{--x:82%!important}
  .stop-copy{box-sizing:border-box;width:clamp(108px,26vw,132px);min-width:0;padding:.36rem .42rem;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;text-shadow:0 1px 0 rgba(255,249,237,.95),0 0 7px rgba(255,249,237,.9)}
  .plan-stop .stop-copy{transform:translate(.65rem,-50%)}
  .plan-stop.left .stop-copy{transform:translate(-.65rem,-50%)}
@@ -805,13 +805,13 @@ html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .re
   <div class="plan-rail"><svg viewBox="0 0 100 1000" preserveAspectRatio="none"><path class="plan-ghost" d="M18 190 C68 190 78 235 70 300 C62 365 20 355 28 420 C36 485 80 475 70 540 C60 605 20 595 28 660 C36 725 80 715 70 780 C60 845 30 830 78 890"/><path class="plan-path" id="planPath" d="M18 190 C68 190 78 235 70 300 C62 365 20 355 28 420 C36 485 80 475 70 540 C60 605 20 595 28 660 C36 725 80 715 70 780 C60 845 30 830 78 890"/></svg></div>
   <div class="plan-trail" id="planTrail"></div><div class="plan-star" id="planStar"></div>
   <div class="plan-items">
-   <article class="plan-stop" data-at=".03" style="--x:18%;--y:19%;--tilt:0deg"><img src="assets/chapter-03/shuttle-bus.png" alt="Painted shuttle bus"><div class="stop-copy"><time data-i18n="guestNotes">Guest notes</time><b data-i18n="busDeparts">Free shuttle bus</b><small data-i18n="busSub">Departure time depends on your selected station</small></div></article>
-   <article class="plan-stop left" data-at=".18" style="--x:70%;--y:30%;--tilt:0deg"><img src="assets/chapter-03/welcome-sign.png" alt="Painted welcome sign"><div class="stop-copy"><time>13:30</time><b data-i18n="reception">Reception opens</b></div></article>
-   <article class="plan-stop" data-at=".34" style="--x:28%;--y:42%;--tilt:0deg"><img src="assets/chapter-03/rings.png" alt="Painted wedding rings"><div class="stop-copy"><time>14:30</time><b data-i18n="ceremony">Ceremony begins</b></div></article>
-   <article class="plan-stop left" data-at=".50" style="--x:70%;--y:54%;--tilt:0deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
-   <article class="plan-stop" data-at=".66" style="--x:28%;--y:66%;--tilt:0deg"><img src="assets/chapter-03/dinner-party.png" alt="Painted wedding party"><div class="stop-copy"><time>16:00</time><b data-i18n="dinner">Dinner party</b></div></article>
-   <article class="plan-stop left" data-at=".82" style="--x:70%;--y:78%;--tilt:0deg"><img src="assets/chapter-03/gramophone.png" alt="Painted gramophone"><div class="stop-copy"><time>18:30</time><b data-i18n="afterParty">After party</b></div></article>
-   <article class="plan-stop" data-at=".97" style="--x:28%;--y:89%;--tilt:0deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
+   <article class="plan-stop side-left" data-at=".03" style="--x:18%;--y:19%;--tilt:0deg"><img src="assets/chapter-03/shuttle-bus.png" alt="Painted shuttle bus"><div class="stop-copy"><time data-i18n="guestNotes">Guest notes</time><b data-i18n="busDeparts">Free shuttle bus</b><small data-i18n="busSub">Departure time depends on your selected station</small></div></article>
+   <article class="plan-stop left side-right" data-at=".18" style="--x:70%;--y:30%;--tilt:0deg"><img src="assets/chapter-03/welcome-sign.png" alt="Painted welcome sign"><div class="stop-copy"><time>13:30</time><b data-i18n="reception">Reception opens</b></div></article>
+   <article class="plan-stop side-left" data-at=".34" style="--x:28%;--y:42%;--tilt:0deg"><img src="assets/chapter-03/rings.png" alt="Painted wedding rings"><div class="stop-copy"><time>14:30</time><b data-i18n="ceremony">Ceremony begins</b></div></article>
+   <article class="plan-stop left side-right" data-at=".50" style="--x:70%;--y:54%;--tilt:0deg"><img src="assets/chapter-03/champagne.png" alt="Painted champagne glasses"><div class="stop-copy"><time>15:00</time><b data-i18n="cocktail">Cocktail hour</b></div></article>
+   <article class="plan-stop side-left" data-at=".66" style="--x:28%;--y:66%;--tilt:0deg"><img src="assets/chapter-03/dinner-party.png" alt="Painted wedding party"><div class="stop-copy"><time>16:00</time><b data-i18n="dinner">Dinner party</b></div></article>
+   <article class="plan-stop left side-right" data-at=".82" style="--x:70%;--y:78%;--tilt:0deg"><img src="assets/chapter-03/gramophone.png" alt="Painted gramophone"><div class="stop-copy"><time>18:30</time><b data-i18n="afterParty">After party</b></div></article>
+   <article class="plan-stop side-left" data-at=".97" style="--x:28%;--y:89%;--tilt:0deg"><img src="assets/chapter-03/luggage.png" alt="Painted luggage"><div class="stop-copy"><time>21:00</time><b data-i18n="sendOff">Send-off</b></div></article>
   </div>
  </div>
 </section>
