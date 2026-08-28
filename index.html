@@ -72,10 +72,10 @@ body.text4
 .arrow{width:18px;height:18px;border-right:2px solid var(--burg);border-bottom:2px solid var(--burg);transform:rotate(45deg);margin:.75rem auto 0;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{translate:0 0}50%{translate:0 5px}}
 
-.top-ui{position:absolute;z-index:15;top:max(1rem,env(safe-area-inset-top));right:1rem;display:flex;gap:.7rem;align-items:center;color:#5d5545}
-.music{border:1px solid rgba(92,77,58,.38);width:42px;height:42px;border-radius:50%;background:rgba(250,244,232,.62);display:grid;place-items:center;backdrop-filter:blur(5px);cursor:pointer}
+.top-ui{position:fixed;z-index:72;top:max(1rem,env(safe-area-inset-top));left:max(1rem,env(safe-area-inset-left));display:flex;gap:.7rem;align-items:center;color:#5d5545}
+.music{position:relative;border:1px solid rgba(92,77,58,.38);width:42px;height:42px;border-radius:50%;background:rgba(250,244,232,.88);display:grid;place-items:center;box-shadow:0 5px 18px rgba(92,62,46,.12);backdrop-filter:blur(10px);cursor:pointer}
 .music svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.4}
-.music.on{color:var(--burg);border-color:rgba(124,50,65,.55)}
+.music:after{content:"";position:absolute;width:23px;height:1.5px;background:currentColor;transform:rotate(-45deg);transition:opacity .2s ease}.music.on{color:var(--burg);border-color:rgba(124,50,65,.55)}.music.on:after{opacity:0}
 
 #after{display:none}
 
@@ -632,10 +632,17 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 @media(max-width:700px){
  #chapter{height:160vh!important}
  #welcomeChapter{height:360vh!important}#storyChapter{height:290vh!important}#recordsChapter{height:460vh!important}#planChapter{height:410vh!important}#informationChapter{height:620vh!important}#qaChapter{height:480vh!important}#galleryChapter{height:300vh!important}
-.plan-ghost{stroke:rgba(107,31,45,.13)}
-.stop-copy{box-sizing:border-box;padding:.52rem .66rem;border-radius:10px;background:rgba(247,239,226,.9);box-shadow:0 5px 14px rgba(73,52,42,.06);backdrop-filter:blur(2px)}
-@media(max-width:700px){.plan-items{inset:3% 0 1%}.plan-stop{width:clamp(70px,18vw,94px)!important}.stop-copy{width:29vw;min-width:104px;padding:.45rem .48rem}.plan-stop .stop-copy{transform:translate(1.15rem,-50%)}.plan-stop.left .stop-copy{transform:translate(-1.15rem,-50%)}.stop-copy time{font-size:.53rem}.stop-copy b{font-size:.75rem;line-height:1.18}.plan-ghost{stroke-opacity:.58}}
- .stop-copy time{font-size:.68rem!important;letter-spacing:.13em!important}
+ .plan-items{inset:3% 0 1%}
+ .plan-ghost{stroke:rgba(107,31,45,.12);stroke-opacity:.55}
+ .plan-stop{width:clamp(68px,17vw,88px)!important}
+ .plan-stop:nth-child(odd){--x:18%!important}
+ .plan-stop:nth-child(even){--x:82%!important}
+ .stop-copy{box-sizing:border-box;width:clamp(108px,26vw,132px);min-width:0;padding:.36rem .42rem;border:1px solid rgba(116,47,62,.08);border-radius:6px;background:rgba(249,242,229,.94);box-shadow:0 4px 11px rgba(73,52,42,.05);backdrop-filter:blur(2px)}
+ .plan-stop .stop-copy{transform:translate(.65rem,-50%)}
+ .plan-stop.left .stop-copy{transform:translate(-.65rem,-50%)}
+ .stop-copy time{font-size:.52rem!important;letter-spacing:.1em!important}
+ .stop-copy b{font-size:.68rem!important;line-height:1.12}
+ .stop-copy small{display:none}
 }
 </style>
 </head>
@@ -653,7 +660,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="paper-clean"></div>
   <div class="wash"></div><div class="grain"></div>
   <div class="opening-butterflies" aria-hidden="true"><img class="opening-butterfly one" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly two" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly three" src="assets/decor/butterfly-watercolor-single.png" alt=""></div>
-  <div class="top-ui"><button class="music" id="music" aria-label="Music on or off">
+  <div class="top-ui"><button class="music" id="music" type="button" aria-label="Play background music" aria-pressed="false" title="Play background music">
    <svg viewBox="0 0 24 24"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
   </button></div>
   <div class="copy" id="copy">
@@ -833,7 +840,11 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 <script>
 const intro=document.getElementById('intro'),film=document.getElementById('film'),skip=document.getElementById('skip');
 const painting=document.getElementById('painting');
-let ended=false;
+let ended=false,opening=false;
+const backgroundAssets=[
+ 'assets/backgrounds/chapter-01-opening-calla-lily.png','assets/backgrounds/chapter-02-welcome.png','assets/chapter-04/one-story-background-planned.png','assets/backgrounds/chapter-04-scrapbook-clean.png','assets/backgrounds/chapter-05-plan-sage.png','assets/backgrounds/chapter-11-thank-you-clean.png','assets/backgrounds/chapter-11-thank-you-reference.png'
+];
+const backgroundsReady=Promise.all(backgroundAssets.map(source=>new Promise(resolve=>{const image=new Image();image.decoding='async';image.onload=async()=>{try{await image.decode()}catch(error){}resolve()};image.onerror=resolve;image.src=source})));
 const blockedScrollKeys=new Set(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ']);
 function blockFilmScroll(event){
  if(ended)return;
@@ -852,10 +863,9 @@ function releaseFilmLock(){
  scrollTo(0,0);
  requestAnimationFrame(()=>scrollTo(0,0));
 }
-function openInvitation(){
+function revealInvitation(){
  if(ended)return;ended=true;
  try{film.pause()}catch(error){}
- skip.disabled=true;
  scrollTo(0,0);
  document.body.classList.add('open');
  setTimeout(()=>{
@@ -868,6 +878,12 @@ function openInvitation(){
  const times=[1050,1900,2750,3500,4400,5250];
  marks.forEach((m,i)=>setTimeout(()=>document.body.classList.add(m),times[i]));
  setTimeout(()=>{if(intro.parentNode)intro.remove()},2800);
+}
+function openInvitation(){
+ if(ended||opening)return;opening=true;
+ try{film.pause()}catch(error){}
+ skip.disabled=true;skip.textContent='Preparing artwork…';
+ backgroundsReady.finally(revealInvitation);
 }
 skip.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();openInvitation()});
 film.addEventListener('ended',openInvitation);
@@ -894,7 +910,20 @@ addEventListener('scroll',()=>{
 },{passive:true});
 
 const music=document.getElementById('music');
-music.addEventListener('click',()=>music.classList.toggle('on'));
+document.body.append(music.closest('.top-ui'));
+let musicContext=null,musicGain=null,musicTimer=null,musicStep=0;
+const musicChords=[[261.63,329.63,392],[220,277.18,329.63],[174.61,220,261.63],[196,246.94,293.66]];
+function playMusicChord(){
+ if(!musicContext||musicContext.state!=='running')return;
+ const now=musicContext.currentTime,chord=musicChords[musicStep++%musicChords.length];
+ chord.forEach((frequency,index)=>{const oscillator=musicContext.createOscillator(),gain=musicContext.createGain();oscillator.type=index===0?'sine':'triangle';oscillator.frequency.value=frequency/2;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(index===0?.032:.014,now+.7);gain.gain.exponentialRampToValueAtTime(.0001,now+5.8);oscillator.connect(gain).connect(musicGain);oscillator.start(now);oscillator.stop(now+6)});
+}
+async function toggleMusic(){
+ if(!musicContext){musicContext=new (window.AudioContext||window.webkitAudioContext)();musicGain=musicContext.createGain();musicGain.gain.value=.72;musicGain.connect(musicContext.destination)}
+ const turningOn=!music.classList.contains('on');
+ if(turningOn){await musicContext.resume();musicGain.gain.cancelScheduledValues(musicContext.currentTime);musicGain.gain.setTargetAtTime(.72,musicContext.currentTime,.08);music.classList.add('on');music.setAttribute('aria-pressed','true');music.setAttribute('aria-label','Mute background music');music.title='Mute background music';playMusicChord();musicTimer=setInterval(playMusicChord,5200)}else{clearInterval(musicTimer);musicTimer=null;musicGain.gain.cancelScheduledValues(musicContext.currentTime);musicGain.gain.setTargetAtTime(.0001,musicContext.currentTime,.12);setTimeout(()=>musicContext.suspend(),500);music.classList.remove('on');music.setAttribute('aria-pressed','false');music.setAttribute('aria-label','Play background music');music.title='Play background music'}
+}
+music.addEventListener('click',toggleMusic);
 
 /* Chapters 02–03: multilingual painted story and shared-path journey */
 const translations = {
