@@ -6,7 +6,7 @@
 <title>Htoo &amp; May — 16.10.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Noto+Serif+Myanmar:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Noto+Serif+Myanmar:wght@100;200;300;400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{--ivory:#f4ead8;--ivory2:#fbf5e9;--sage:#727b57;--burg:#7c3241;--rasp:#985463;--gold:#b4935d;--ink:#3f362e;--ease:cubic-bezier(.16,.84,.34,1)}
 *{box-sizing:border-box}
@@ -677,6 +677,11 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
 .rsvp-card[data-attendance="yes"] .rsvp-child-note{display:block}
 html[lang="my"] .rsvp-child-note{font-family:"Noto Serif Myanmar",serif;font-size:clamp(.68rem,1.1vw,.82rem)}
 html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .stop-copy,html[lang="my"] .qa-question,html[lang="my"] .qa-answer{letter-spacing:0!important}
+html[lang="my"] body,html[lang="my"] button,html[lang="my"] input,html[lang="my"] textarea,html[lang="my"] select,.site-lang button[data-lang="my"]{font-family:"Noto Serif Myanmar",serif!important}
+html[lang="my"] body,html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .info-sheet,html[lang="my"] .qa-answer,html[lang="my"] .rsvp-step{font-weight:300!important}
+html[lang="my"] .roman,html[lang="my"] .info-hint,html[lang="my"] .qa-hint,html[lang="my"] .gallery-hint,html[lang="my"] .info-meta,html[lang="my"] .rsvp-field span,html[lang="my"] .rsvp-deadline{font-weight:200!important}
+html[lang="my"] h1,html[lang="my"] h2,html[lang="my"] h3,html[lang="my"] .qa-question,html[lang="my"] .stop-copy b,html[lang="my"] .info-rsvp-notice{font-family:"Noto Serif Myanmar",serif!important;font-weight:400!important}
+html[lang="my"] .chapter-head p:last-child,html[lang="my"] .story-note,html[lang="my"] .records-head p,html[lang="my"] .gallery-script{font-weight:100!important}
 html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .records-head h2,html[lang="ja"] .info-head h2,html[lang="ja"] .qa-head h2,html[lang="ja"] .gallery-head h2,html[lang="ja"] .rsvp-head h2{font-size:clamp(2rem,4.6vw,3.8rem)!important;line-height:1.15!important;letter-spacing:.015em!important}
 @media(max-width:700px){
  html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .records-head h2,html[lang="ja"] .info-head h2,html[lang="ja"] .qa-head h2,html[lang="ja"] .gallery-head h2,html[lang="ja"] .rsvp-head h2{font-size:clamp(1.55rem,7vw,2.15rem)!important;line-height:1.25!important}
@@ -876,7 +881,7 @@ html[lang="ja"] .plan-head h2,html[lang="ja"] .story-head h2,html[lang="ja"] .re
   <div class="info-focus-art"><img id="infoFocusImage" src="assets/chapter-06/save-date-calendar.png" alt=""></div>
   <div class="info-sheet">
    <p class="roman" data-i18n="informationTitle">Information</p><h3 id="infoDialogTitle"></h3><p id="infoDialogBody"></p>
-   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><div class="info-map" id="infoDialogMap"><iframe title="Map of Atsugi Station, Kanagawa" loading="eager" referrerpolicy="no-referrer" src="https://www.openstreetmap.org/export/embed.html?bbox=139.36343%2C35.4334%2C139.39343%2C35.4534&amp;layer=mapnik&amp;marker=35.4434%2C139.37843"></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
+   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><div class="info-map" id="infoDialogMap"><iframe title="Google Map of Atsugi Station, Kanagawa" loading="eager" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Atsugi%20Station%2C%20Kanagawa%2C%20Japan&amp;output=embed" allowfullscreen></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
   </div>
  </article>
 </div>
