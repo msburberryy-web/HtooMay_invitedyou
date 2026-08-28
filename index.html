@@ -98,6 +98,7 @@ body.text4
 .continue-cue{margin:1.15rem 0 0;font:500 clamp(.48rem,.95vw,.7rem)/1 "Newsreader",serif;letter-spacing:.2em;text-transform:uppercase;color:#7c3241}.continue-cue::after{content:"⌄";display:block;font-size:1.2rem;margin-top:.45rem;animation:bob 2s ease-in-out infinite}
 
 .site-lang{position:fixed;z-index:70;right:max(1rem,env(safe-area-inset-right));top:max(1rem,env(safe-area-inset-top));display:flex;align-items:center;padding:.35rem .45rem;border-radius:999px;background:rgba(255,252,247,.86);box-shadow:0 5px 20px rgba(92,62,46,.12);backdrop-filter:blur(12px)}
+.site-lang{background:transparent;box-shadow:none;backdrop-filter:none}.site-lang button:not(.on){text-shadow:0 1px 4px rgba(255,250,240,.95)}
 .site-lang button{border:0;background:none;color:#7c3241;padding:.55rem .7rem;cursor:pointer;font-size:.68rem}.site-lang button+button{border-left:1px solid rgba(124,50,65,.18)}.site-lang button.on{color:#fff;background:#7c3241;border-radius:999px}.site-rsvp{display:inline-flex;align-items:center;justify-content:center;margin-left:.3rem;padding:.58rem .78rem;border-left:1px solid rgba(124,50,65,.18);border-radius:0 999px 999px 0;color:#fff8ed;background:#7c3241;text-decoration:none;font:500 .62rem/1 Georgia,serif;letter-spacing:.1em;text-transform:uppercase}.site-rsvp:hover,.site-rsvp:focus-visible{background:#5f202d;outline:2px solid rgba(180,147,93,.55);outline-offset:2px}
 
 /* Chapter 03 — retained plan journey */
@@ -145,6 +146,8 @@ body.text4
 .info-live-date{position:absolute;z-index:2;left:50%;top:38%;width:58%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;color:#743442}.info-live-date small{display:block;font:500 clamp(.38rem,.62vw,.55rem)/1 Georgia,serif;letter-spacing:.22em;text-transform:uppercase}.info-live-date strong{display:block;font:400 clamp(.78rem,1.45vw,1.28rem)/1.05 "Newsreader",serif;margin:.35rem 0}.info-live-date span{font:500 clamp(.38rem,.65vw,.54rem)/1.2 Georgia,serif;letter-spacing:.14em;text-transform:uppercase}
 .info-hint{position:absolute;z-index:4;left:50%;bottom:2.8%;transform:translateX(-50%);margin:0;color:#755b50;font:500 .58rem/1.4 Georgia,serif;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;opacity:.72}
 .info-overlay[data-active="afterparty"] .info-sheet h3{font-size:clamp(1.85rem,3.3vw,3.25rem);line-height:1.02}
+.info-highlight{font-weight:600;color:#762f3e;background:linear-gradient(transparent 62%,rgba(214,180,108,.28) 62%);padding:0 .08em}
+.info-meta[hidden]{display:none!important}
 body.info-open{overflow:hidden}body.info-open .site-lang{z-index:110}.info-overlay{position:fixed;z-index:90;inset:0;display:grid;place-items:center;padding:clamp(1rem,4vw,3.2rem);background:rgba(94,72,57,.18);backdrop-filter:blur(9px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s ease,visibility .45s ease}.info-overlay.open{opacity:1;visibility:visible;pointer-events:auto}.info-overlay.auto-open{pointer-events:none}.info-overlay.auto-open .info-close{display:none}.info-focus{position:relative;display:grid;grid-template-columns:minmax(220px,.78fr) minmax(330px,1.2fr);align-items:center;width:min(92vw,930px);max-height:88svh;padding:clamp(1.1rem,3vw,2.5rem);background:#f8efdf;box-shadow:0 28px 70px rgba(62,42,35,.28);clip-path:polygon(0 1%,3% 0,7% .7%,12% 0,17% .8%,22% .1%,27% .7%,33% 0,38% .8%,43% .1%,49% .7%,54% 0,60% .8%,66% .1%,72% .7%,78% 0,84% .8%,90% .1%,96% .7%,100% 0,99.5% 8%,100% 16%,99.4% 24%,100% 33%,99.5% 43%,100% 52%,99.4% 62%,100% 72%,99.5% 82%,100% 92%,99% 100%,93% 99.3%,86% 100%,79% 99.3%,72% 100%,65% 99.3%,58% 100%,51% 99.3%,44% 100%,37% 99.3%,30% 100%,23% 99.3%,16% 100%,9% 99.3%,1% 100%,.5% 91%,0 81%,.6% 71%,0 61%,.5% 51%,0 41%,.6% 31%,0 21%,.5% 11%)}.info-focus:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.08'/%3E%3C/svg%3E")}.info-focus-art{display:grid;place-items:center;min-width:0}.info-focus-art img{display:block;max-width:100%;max-height:min(64vh,540px);object-fit:contain;filter:drop-shadow(0 18px 18px rgba(74,49,39,.2));transform:translateX(-22px) rotate(-2deg);opacity:0;transition:transform .7s var(--ease),opacity .45s ease}.info-overlay.open .info-focus-art img{transform:none;opacity:1}.info-sheet{min-width:0;padding:1rem clamp(1rem,3vw,2.4rem);border-left:1px solid rgba(124,50,65,.18);font-family:"Newsreader",Georgia,serif}.info-sheet .roman{font:500 .58rem/1.2 Georgia,serif;letter-spacing:.25em;text-transform:uppercase;color:#8b7653;margin:0 0 .8rem}.info-sheet h3{font:400 clamp(2.3rem,4.2vw,4.2rem)/.9 "Alex Brush",cursive;color:#762f3e;margin:0 0 1.25rem}.info-sheet p{font:400 clamp(.84rem,1.25vw,1.02rem)/1.6 "Newsreader",Georgia,serif;color:#4f4038;margin:.65rem 0}.info-sheet .info-meta{display:grid;gap:.45rem;margin:1.05rem 0 0;padding:1rem 0;border-top:1px solid rgba(124,50,65,.16);border-bottom:1px solid rgba(124,50,65,.16)}.info-meta span{font:500 .72rem/1.4 Georgia,serif;letter-spacing:.08em;color:#6f514b}.info-map{display:none;height:180px;margin:.8rem 0 0;overflow:hidden;border:1px solid rgba(124,50,65,.18);box-shadow:0 8px 20px rgba(64,43,36,.1)}.info-map.show{display:block}.info-map iframe{display:block;width:100%;height:100%;border:0;filter:saturate(.65) sepia(.08)}.info-action{display:inline-flex;align-items:center;justify-content:center;margin-top:1rem;padding:.72rem 1.1rem;border:1px solid #793342;background:#793342;color:#fff8eb;font:500 .62rem/1 Georgia,serif;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;cursor:pointer;box-shadow:0 4px 0 #b4935d;transition:transform .25s ease,box-shadow .25s ease}.info-action:hover,.info-action:focus-visible{transform:translateY(-2px);box-shadow:0 6px 0 #b4935d;outline:2px solid rgba(180,147,93,.55);outline-offset:3px}.info-close{position:absolute;z-index:3;right:1.4rem;top:1.15rem;width:42px;height:42px;border:0;background:none;color:#a0763e;cursor:pointer}.info-close:before,.info-close:after{content:"";position:absolute;left:50%;top:50%;width:25px;height:1.5px;background:currentColor}.info-close:before{transform:translate(-50%,-50%) rotate(45deg)}.info-close:after{transform:translate(-50%,-50%) rotate(-45deg)}
 
 /* Chapter 07 — progressive Q&A index */
@@ -1196,9 +1199,10 @@ const infoContent = {
     afterparty: {
       title: 'Joining us for the Afterparty (2次会)?',
       body: 'Once the ceremony and reception wrap up, the night will still be young! You are warmly invited to keep the celebration going with us at the afterparty. Note: This is completely optional. In line with local customs, there is a small cover charge at the door for catering and drinks.',
-      meta: ['Completely optional', 'Small cover charge at the door for catering and drinks'],
+      highlight: 'This is completely optional. In line with local customs, there is a small cover charge at the door for catering and drinks.',
+      meta: [],
       action: 'Learn about Japan’s 会費制 custom →',
-      notice: 'This cover charge applies only to the optional afterparty. The ceremony and reception follow the usual ご祝儀 custom. Please select your afterparty attendance in the RSVP form.'
+      notice: 'Please select your afterparty attendance in the RSVP form.'
     }
   },
   ja: {
@@ -1230,9 +1234,10 @@ const infoContent = {
     afterparty: {
       title: '2次会（アフターパーティー）へのご参加',
       body: '挙式・披露宴が終わった後も、まだまだ夜はこれから！もう少し皆様と楽しい時間を過ごしたく、カジュアルな2次会を企画しております。※こちらは自由参加となります。飲食代として当日の受付にて会費の一部のみ申し受けます。',
-      meta: ['自由参加', '飲食代として当日受付にて会費の一部を申し受けます'],
+      highlight: '※こちらは自由参加となります。飲食代として当日の受付にて会費の一部のみ申し受けます。',
+      meta: [],
       action: '日本の会費制について詳しく見る →',
-      notice: '会費は自由参加の2次会のみに適用されます。挙式・披露宴は通常のご祝儀制となります。2次会へのご参加についてRSVPフォームでお知らせください。'
+      notice: '2次会へのご参加についてRSVPフォームでお知らせください。'
     }
   },
   my: {
@@ -1264,9 +1269,10 @@ const infoContent = {
     afterparty: {
       title: 'Afterparty (2次会) သို့ ပါဝင်ဆင်နွှဲမည်လား။',
       body: 'မင်္ဂလာအခမ်းအနားနှင့် ဧည့်ခံပွဲ ပြီးဆုံးသွားသည့်တိုင် ညချမ်းအချိန်လေး ကျန်ရှိနေသေးပါသဖြင့် ကျွန်တော်တို့နှင့်အတူ Afterparty တွင် ဆက်လက်ဆင်နွှဲနိုင်ပါသည်။ မှတ်ချက် — ဤအစီအစဉ်သည် မိမိဆန္ဒအလျောက် လွတ်လပ်စွာ ရွေးချယ်နိုင်သော အစီအစဉ်ဖြစ်ပါသည်။ အစားအသောက်နှင့် အချိုရည်အတွက် ပွဲအဝင်တွင် ဧည့်သည်များ ကုန်ကျစရိတ်၏ တစ်စိတ်တစ်ပိုင်းကို ပေးဆောင်ခြင်းဖြင့် ဆက်လက်ပါဝင်ဆင်နွှဲနိုင်ပါသည်။',
-      meta: ['မိမိဆန္ဒအလျောက် ပါဝင်နိုင်သည်', 'အစားအသောက်နှင့် အချိုရည်အတွက် ပွဲအဝင်တွင် ကုန်ကျစရိတ်တစ်စိတ်တစ်ပိုင်း ပေးဆောင်ရန်'],
+      highlight: 'မှတ်ချက် — ဤအစီအစဉ်သည် မိမိဆန္ဒအလျောက် လွတ်လပ်စွာ ရွေးချယ်နိုင်သော အစီအစဉ်ဖြစ်ပါသည်။ အစားအသောက်နှင့် အချိုရည်အတွက် ပွဲအဝင်တွင် ဧည့်သည်များ ကုန်ကျစရိတ်၏ တစ်စိတ်တစ်ပိုင်းကို ပေးဆောင်ခြင်းဖြင့် ဆက်လက်ပါဝင်ဆင်နွှဲနိုင်ပါသည်။',
+      meta: [],
       action: 'ဂျပန်၏ 会費制 စနစ်အကြောင်း လေ့လာရန် →',
-      notice: 'ဤကုန်ကျစရိတ်သည် လွတ်လပ်စွာ ပါဝင်နိုင်သော After-Party အတွက်သာဖြစ်ပါသည်။ မင်္ဂလာအခမ်းအနားနှင့် ဧည့်ခံပွဲတွင် ပုံမှန် ご祝儀 စနစ်ကို အသုံးပြုပါသည်။ RSVP ဖောင်တွင် After-Party တက်ရောက်မှုကို ဖြေကြားပေးပါ။'
+      notice: 'RSVP ဖောင်တွင် After-Party တက်ရောက်မှုကို ဖြေကြားပေးပါ။'
     }
   }
 };
@@ -1353,7 +1359,7 @@ let lastInfoTrigger=null,infoMode=null,lastAutoInfo=null,dismissedAutoInfo=null,
 function renderInfo(key){
  const item=infoContent[activeLang][key]||infoContent.en[key],trigger=document.querySelector(`[data-info="${key}"]`);
  infoFocusImage.src=trigger.querySelector('img').src;infoFocusImage.alt=trigger.querySelector('img').alt;
- infoDialogTitle.textContent=item.title;infoDialogBody.textContent=item.body;infoDialogMeta.replaceChildren(...item.meta.map(line=>{const span=document.createElement('span');span.textContent=line;return span}));
+ infoDialogTitle.textContent=item.title;infoDialogBody.replaceChildren();if(item.highlight&&item.body.includes(item.highlight)){const [before,after]=item.body.split(item.highlight),strong=document.createElement('strong');strong.className='info-highlight';strong.textContent=item.highlight;infoDialogBody.append(document.createTextNode(before),strong,document.createTextNode(after||''))}else infoDialogBody.textContent=item.body;infoDialogMeta.replaceChildren(...item.meta.map(line=>{const span=document.createElement('span');span.textContent=line;return span}));infoDialogMeta.hidden=!item.meta.length;
  infoRsvpNotice.textContent=item.notice||'';infoRsvpNotice.classList.toggle('show',Boolean(item.notice));
  infoDialogMap.classList.toggle('show',key==='location');
  infoDialogAction.textContent=item.action;infoDialogAction.dataset.kind=key;
