@@ -20,6 +20,17 @@ button{font:inherit}
 #intro::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.08),rgba(0,0,0,.35));pointer-events:none}
 #skip{position:absolute;z-index:3;right:1rem;bottom:max(1.2rem,env(safe-area-inset-bottom));border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.24);color:#fff;padding:.72rem 1rem;border-radius:999px;letter-spacing:.16em;text-transform:uppercase;font-size:.61rem;backdrop-filter:blur(10px);cursor:pointer;touch-action:manipulation}
 #skip:disabled{opacity:.65;cursor:default}
+#intro.journey #film{opacity:0;transform:scale(1.035)}
+#film{transition:opacity .45s ease,transform 1.2s var(--ease)}
+#intro.journey #skip{opacity:0;pointer-events:none}
+.journey-portal{position:absolute;z-index:2;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(255,250,237,.98) 0 22%,rgba(246,232,211,.97) 58%,rgba(222,204,175,.96) 100%);opacity:0;visibility:hidden;transition:opacity .38s ease,visibility .38s ease}
+#intro.journey .journey-portal{opacity:1;visibility:visible}
+.journey-portal:before,.journey-portal:after{content:"";position:absolute;width:min(65vw,520px);aspect-ratio:1;background:url('assets/decor/butterfly-watercolor-single.png') center/contain no-repeat;opacity:.22;filter:sepia(.16);animation:portalFloat 2.8s ease-in-out infinite}
+.journey-portal:before{left:-20%;bottom:-22%;transform:rotate(-18deg)}.journey-portal:after{right:-22%;top:-24%;transform:rotate(158deg);animation-delay:-1.4s}
+.journey-mark{position:relative;z-index:1;text-align:center;color:var(--burg);animation:portalArrive .9s var(--ease) both}
+.journey-monogram{display:block;font:400 clamp(3rem,16vw,5.7rem)/.8 "Alex Brush",cursive}.journey-copy{display:block;margin-top:1rem;font:500 clamp(.62rem,2.8vw,.82rem)/1.5 "Newsreader",serif;letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+@keyframes portalArrive{from{opacity:0;transform:scale(.86) translateY(18px);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}@keyframes portalFloat{0%,100%{translate:0 0;rotate:-2deg}50%{translate:10px -12px;rotate:4deg}}
+@media(max-width:700px){.journey-portal:before,.journey-portal:after{width:48vw;opacity:.2}.journey-portal:before{left:-8%;bottom:-7%}.journey-portal:after{right:-9%;top:-8%}.journey-copy{letter-spacing:.14em}}
 
 /* paper reveal */
 #paperCurtain{position:fixed;inset:0;z-index:80;pointer-events:none;transform:translateY(102%);transition:transform 1.65s var(--ease),opacity .65s ease;background:var(--ivory2)}
@@ -664,6 +675,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <source src="https://res.cloudinary.com/j3lgvkwu/video/upload/f_auto,q_auto/intro_dkfc95.mp4" type="video/mp4">
  </video>
  <button id="skip" type="button">Skip film</button>
+ <div class="journey-portal" aria-hidden="true"><div class="journey-mark"><span class="journey-monogram">HM</span><span class="journey-copy">Taking you into our painted world</span></div></div>
 </div>
 <div id="paperCurtain" aria-hidden="true"></div>
 <section id="chapter">
@@ -855,6 +867,11 @@ const backgroundAssets=[
  'assets/backgrounds/chapter-01-opening-calla-lily.png','assets/backgrounds/chapter-02-welcome.png','assets/chapter-04/one-story-background-planned.png','assets/backgrounds/chapter-04-scrapbook-clean.png','assets/backgrounds/chapter-05-plan-sage.png','assets/backgrounds/chapter-11-thank-you-clean.png','assets/backgrounds/chapter-11-thank-you-reference.png'
 ];
 const backgroundsReady=Promise.all(backgroundAssets.map(source=>new Promise(resolve=>{const image=new Image();image.decoding='async';image.onload=async()=>{try{await image.decode()}catch(error){}resolve()};image.onerror=resolve;image.src=source})));
+const warmPageAssets=()=>{
+ const sources=[...new Set([...backgroundAssets,...Array.from(document.querySelectorAll('img[src]'),image=>image.currentSrc||image.src)])];
+ sources.forEach(source=>{const image=new Image();image.decoding='async';image.src=source});
+};
+warmPageAssets();
 const blockedScrollKeys=new Set(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ']);
 function blockFilmScroll(event){
  if(ended)return;
@@ -892,8 +909,10 @@ function revealInvitation(){
 function openInvitation(){
  if(ended||opening)return;opening=true;
  try{film.pause()}catch(error){}
- skip.disabled=true;skip.textContent='Taking you into our painted world…';
- backgroundsReady.finally(revealInvitation);
+ skip.disabled=true;
+ intro.classList.add('journey');
+ // The painted interlude replaces loading waits; remaining assets keep warming in the background.
+ setTimeout(revealInvitation,760);
 }
 skip.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();openInvitation()});
 film.addEventListener('ended',openInvitation);
