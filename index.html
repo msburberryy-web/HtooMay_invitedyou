@@ -813,7 +813,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
  <form class="rsvp-card" id="rsvpForm" data-phase="0"><div class="rsvp-letter-head"><img src="assets/photos/monogram.png" alt="Htoo and May monogram"><span>16 October 2026</span></div><div class="postcard-progress" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i></div><div class="rsvp-progress"><i id="rsvpBar"></i></div>
   <fieldset class="rsvp-step on" data-rsvp-step="0"><h3 data-rsvp-i18n="attendQ">Will you join us?</h3><div class="rsvp-choices"><button class="rsvp-choice botanical" type="button" data-attend="yes"><span data-rsvp-i18n="accept">Joyfully<br>Accept</span></button><button class="rsvp-choice botanical" type="button" data-attend="no"><span data-rsvp-i18n="decline">Regretfully<br>Decline</span></button></div><label class="rsvp-field rsvp-party-first"><span>Number of guests</span><select id="rsvpParty" name="party"><option>1</option><option>2</option></select></label><button class="rsvp-calendar" id="rsvpCalendar" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v3M18 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Zm3 7h3v3H8Z"/></svg><span>Add to calendar<small>16 October 2026</small></span></button><div class="rsvp-nav rsvp-attendance-next"><button class="rsvp-btn" type="button" id="rsvpAttendanceNext">Next</button></div></fieldset>
   <fieldset class="rsvp-step" data-rsvp-step="1"><h3 data-rsvp-i18n="details">Your details</h3><p class="decline-kind-note" data-rsvp-i18n="shortNote">Just your name, contact, and an optional note are enough.</p><div class="rsvp-grid"><label class="rsvp-field"><span data-rsvp-i18n="name">Name</span><input id="rsvpName" name="name" autocomplete="name" required></label><label class="rsvp-field"><span data-rsvp-i18n="contact">Email or Phone Number</span><input id="rsvpContact" name="contact" autocomplete="email" required></label><label class="rsvp-field decline-extra"><span data-rsvp-i18n="address">Mailing Address (Optional)</span><input id="rsvpAddress" name="address" autocomplete="street-address"></label><label class="rsvp-field decline-only full"><span data-rsvp-i18n="optionalMessage">Optional Message</span><textarea id="rsvpDeclineMessage" name="declineMessage" placeholder="A short note is enough…"></textarea></label></div><p class="rsvp-field-error" id="rsvpFieldError" role="alert"></p><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back data-rsvp-i18n="back">Back</button><button class="rsvp-btn" type="button" data-rsvp-next data-rsvp-i18n="next">Next</button></div></fieldset>
-  <fieldset class="rsvp-step" data-rsvp-step="2"><h3>Celebration details</h3><div class="rsvp-grid"><label class="rsvp-field rsvp-guest-names"><span>Guest name</span><input id="rsvpGuestNames" name="guestNames"></label><label class="rsvp-field full"><span>Preferred shuttle station</span><select id="rsvpStation" name="station"><option value="">Please select</option><option>Shinjuku</option><option value="Tokyo">Tokyo Station</option><option>Ikebukuro</option><option value="Own">I will travel independently</option><option value="Later">Decide later</option></select></label><label class="rsvp-field full"><span>Dietary requirements</span><input id="rsvpAllergy" name="allergy" placeholder="Food allergies or restrictions"></label><label class="rsvp-field full"><span>Afterparty (2次会) · ¥5,000</span><select id="rsvpNijikai" name="nijikai"><option value="later">Decide later</option><option value="yes">Count me in!</option><option value="no">Unable to join</option></select></label><a class="rsvp-detail-link" id="rsvpAfterpartyDetails" href="#afterparty-details">View afterparty details · ¥5,000</a></div><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back>Back</button><button class="rsvp-btn" type="button" data-rsvp-next>Next</button></div></fieldset>
+  <fieldset class="rsvp-step" data-rsvp-step="2"><h3>Celebration details</h3><div class="rsvp-grid"><label class="rsvp-field rsvp-guest-names"><span>Guest name</span><input id="rsvpGuestNames" name="guestNames"></label><label class="rsvp-field full"><span>Preferred shuttle station</span><select id="rsvpStation" name="station"><option value="">Please select</option><option>Shinjuku</option><option value="Tokyo">Tokyo Station</option><option>Ikebukuro</option><option value="Own">I will travel independently</option><option value="Later">Decide later</option></select></label><label class="rsvp-field full"><span>Dietary requirements</span><input id="rsvpAllergy" name="allergy" placeholder="Food allergies or restrictions"></label><label class="rsvp-field full"><span>Optional afterparty (2次会) only · ¥5,000</span><select id="rsvpNijikai" name="nijikai"><option value="later">Decide later</option><option value="yes">Count me in!</option><option value="no">Unable to join</option></select></label><a class="rsvp-detail-link" id="rsvpAfterpartyDetails" href="#afterparty-details">View afterparty details · Separate ¥5,000 fee</a></div><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back>Back</button><button class="rsvp-btn" type="button" data-rsvp-next>Next</button></div></fieldset>
   <fieldset class="rsvp-step" data-rsvp-step="3"><h3 data-rsvp-i18n="coupleMessage">Message for the Couple</h3><label class="rsvp-field full"><span data-rsvp-i18n="optionalMessage">Your Message (Optional)</span><textarea id="rsvpMessage" name="message"></textarea></label><div id="rsvpReview"></div><p class="rsvp-status" id="rsvpStatus" role="status"></p><div class="rsvp-nav"><button class="rsvp-btn ghost" type="button" data-rsvp-back data-rsvp-i18n="back">Back</button><button class="rsvp-btn" type="submit" data-rsvp-i18n="submit">Submit RSVP</button></div></fieldset>
   <fieldset class="rsvp-step" data-rsvp-step="4"><div class="rsvp-done"><div class="postcard-stamp" aria-hidden="true"><span>RSVP</span><b>RECEIVED</b></div><h3 data-rsvp-i18n="thanks">Thank you</h3><p class="postcard-on-way" data-rsvp-i18n="onWay">Your card is on its way.</p><p data-rsvp-i18n="celebrate">We look forward to celebrating with you!</p><div class="rsvp-nav rsvp-finish"><button class="rsvp-btn ghost" type="button" id="rsvpRevealThanks">Continue</button></div></div></fieldset>
  </form><div class="reply-envelope-front" aria-hidden="true"></div></div></div></section>
@@ -1160,10 +1160,10 @@ const infoContent = {
     },
     afterparty: {
       title: 'Afterparty',
-      body: 'Want to keep the celebration going? We’re throwing a casual afterparty (2次会) with more food, drinks, and great music! To make it easy for everyone to join, we’ve provided part of the door fee (会費制)—so your contribution is ¥5,000 upon arrival. Totally optional, but we’d love to see you there!',
-      meta: ['Door contribution · ¥5,000', 'Drinks · Bites · Music'],
-      action: 'Learn more about kaihisei (会費制) →',
-      notice: 'Please tell us whether you’ll join the after-party in the RSVP form.'
+      body: 'Want to keep the celebration going? We’re throwing a casual afterparty (2次会) with more food, drinks, and great music! To make it easy for everyone to join, we’ve covered part of the cost, so the afterparty contribution is ¥5,000 upon arrival. This is only for the optional afterparty and is separate from the wedding ceremony and reception, which follow the usual ご祝儀 custom. We’d love to see you there!',
+      meta: ['Afterparty-only fee · ¥5,000', 'Wedding ceremony & reception · ご祝儀'],
+      action: 'About afterparty kaihisei (会費制) →',
+      notice: '¥5,000 applies only to the optional afterparty. The ceremony and reception follow the usual ご祝儀 custom. Please select your afterparty attendance in the RSVP form.'
     }
   },
   ja: {
@@ -1194,10 +1194,10 @@ const infoContent = {
     },
     afterparty: {
       title: '2次会（アフターパーティー）',
-      body: 'まだまだ一緒に盛り上がりたい皆様へ、カジュアルな2次会をご用意しています！気軽にご参加いただけるよう、会費の一部は私たちが負担します。当日は受付で5,000円だけお支払いください。完全自由参加ですので、来られる方はぜひRSVPで教えてください！',
-      meta: ['会費 · 5,000円', '軽食・ドリンク・音楽'],
+      body: 'まだまだ一緒に盛り上がりたい皆様へ、カジュアルな2次会をご用意しています！気軽にご参加いただけるよう、会費の一部は私たちが負担します。当日は2次会の受付で5,000円だけお支払いください。こちらは自由参加の2次会のみの会費で、挙式・披露宴とは別です。挙式・披露宴は通常のご祝儀制となります。来られる方はぜひRSVPで教えてください！',
+      meta: ['2次会のみ · 会費5,000円', '挙式・披露宴 · 通常のご祝儀制'],
       action: '',
-      notice: '2次会へのご参加について、RSVPフォームで必ずお知らせください。'
+      notice: '5,000円は自由参加の2次会のみの会費です。挙式・披露宴は通常のご祝儀制となります。2次会へのご参加についてRSVPフォームでお知らせください。'
     }
   },
   my: {
@@ -1228,10 +1228,10 @@ const infoContent = {
     },
     afterparty: {
       title: 'After-Party မိတ်ဆုံပါတီ',
-      body: 'မင်္ဂလာဧည့်ခံပွဲပြီးလို့ အိမ်မပြန်ချင်သေးဘဲ ဆက်ပြီး ပျော်ပါးချင်သူများအတွက် အစားအသောက်၊ အဖျော်ယမကာနဲ့ တေးဂီတတို့နဲ့ ပေါ့ပေါ့ပါးပါး After-Party လေး ရှိပါသေးတယ်နော်။ အားလုံး လာရလွယ်ကူအောင် ကုန်ကျစရိတ်တစ်စိတ်တစ်ပိုင်းကို မင်္ဂလာမောင်နှံက ကျခံပေးထားတာမို့ ရောက်ရှိချိန်တွင် ¥5,000 သာ ပေးဆောင်ရပါမယ်။ လာချင်တယ်ဆိုရင် RSVP မှာ အသိပေးခဲ့ပါဦးနော်။',
-      meta: ['ဝင်ကြေး · ¥5,000', 'အစားအသောက် · အဖျော်ယမကာ · တေးဂီတ'],
+      body: 'မင်္ဂလာဧည့်ခံပွဲပြီးလို့ ဆက်ပြီး ပျော်ပါးချင်သူများအတွက် အစားအသောက်၊ အဖျော်ယမကာနဲ့ တေးဂီတတို့နဲ့ ပေါ့ပေါ့ပါးပါး After-Party လေး ရှိပါသေးတယ်နော်။ ကုန်ကျစရိတ်တစ်စိတ်တစ်ပိုင်းကို မင်္ဂလာမောင်နှံက ကျခံပေးထားတာမို့ After-Party ရောက်ရှိချိန်တွင် ¥5,000 သာ ပေးဆောင်ရပါမယ်။ ဒီငွေဟာ လွတ်လပ်စွာ ပါဝင်နိုင်တဲ့ After-Party အတွက်သာဖြစ်ပြီး မင်္ဂလာအခမ်းအနားနှင့် ဧည့်ခံပွဲ၏ ပုံမှန် ご祝儀 လက်ဆောင်စနစ်နဲ့ သီးခြားဖြစ်ပါတယ်။ RSVP မှာ အသိပေးခဲ့ပါဦးနော်။',
+      meta: ['After-Party သီးသန့် · ¥5,000', 'မင်္ဂလာပွဲ · ပုံမှန် ご祝儀'],
       action: '',
-      notice: 'After-Party တက်ရောက်မည်၊ မတက်ရောက်မည်ကို RSVP ဖောင်တွင် မဖြစ်မနေ ဖြေကြားပေးပါ။'
+      notice: '¥5,000 သည် လွတ်လပ်စွာ ပါဝင်နိုင်သော After-Party အတွက်သာဖြစ်ပါသည်။ မင်္ဂလာအခမ်းအနားနှင့် ဧည့်ခံပွဲတွင် ပုံမှန် ご祝儀 စနစ်ကို အသုံးပြုပါသည်။ RSVP ဖောင်တွင် After-Party တက်ရောက်မှုကို ဖြေကြားပေးပါ။'
     }
   }
 };
