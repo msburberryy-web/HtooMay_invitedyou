@@ -2,6 +2,7 @@
   "name": "htoo-may-invited-you",
   "private": true,
   "scripts": {
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "deploy:cloudflare": "npx wrangler@latest deploy"
   }
 }
