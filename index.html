@@ -76,6 +76,7 @@ body.text4
 .music{position:relative;border:1px solid rgba(146,104,48,.28);width:48px;height:48px;border-radius:50%;background:rgba(250,244,232,.76);display:grid;place-items:center;box-shadow:0 5px 18px rgba(92,62,46,.12);backdrop-filter:blur(10px);cursor:pointer}
 .music svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.4}
 .music img{display:block;width:43px;height:43px;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(79,47,34,.18));pointer-events:none}
+.music img{transition:transform .18s ease,filter .18s ease}.music.on{background:rgba(237,232,208,.94);box-shadow:0 0 0 3px rgba(180,147,93,.28),0 5px 18px rgba(92,62,46,.12)}.music.on img{transform:scale(1.08);filter:drop-shadow(0 2px 3px rgba(79,47,34,.28)) saturate(1.12)}
 .music:after{content:"";position:absolute;width:23px;height:1.5px;background:currentColor;transform:rotate(-45deg);transition:opacity .2s ease}.music.on{color:var(--burg);border-color:rgba(124,50,65,.55)}.music.on:after{opacity:0}
 
 #after{display:none}
@@ -671,7 +672,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="paper-clean"></div>
   <div class="wash"></div><div class="grain"></div>
   <div class="opening-butterflies" aria-hidden="true"><img class="opening-butterfly one" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly two" src="assets/decor/butterfly-watercolor-single.png" alt=""><img class="opening-butterfly three" src="assets/decor/butterfly-watercolor-single.png" alt=""></div>
-  <div class="top-ui"><button class="music" id="music" type="button" aria-label="Play background music" aria-pressed="false" title="Play background music"><img src="assets/decor/music-gramophone-watercolor.png" alt="" aria-hidden="true"></button></div>
+  <div class="top-ui"><button class="music" id="music" type="button" aria-label="Play background music" aria-pressed="false" title="Play background music"><img src="assets/decor/music-notes-watercolor.png" alt="" aria-hidden="true"></button></div>
   <div class="copy" id="copy">
     <h1 class="names reveal r1">Htoo <span class="amp">&amp;</span> May</h1>
     <p class="tag reveal r2">We're getting married</p>
@@ -842,7 +843,7 @@ body,#chapter,#welcomeChapter,#storyChapter,#recordsChapter,#planChapter,#inform
   <div class="info-focus-art"><img id="infoFocusImage" src="assets/chapter-06/save-date-calendar.png" alt=""></div>
   <div class="info-sheet">
    <p class="roman" data-i18n="informationTitle">Information</p><h3 id="infoDialogTitle"></h3><p id="infoDialogBody"></p>
-   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><div class="info-map" id="infoDialogMap"><iframe title="Map of Atsugi Station, Kanagawa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Atsugi%20Station%20Kanagawa&amp;z=15&amp;output=embed"></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
+   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><div class="info-map" id="infoDialogMap"><iframe title="Map of Atsugi Station, Kanagawa" loading="eager" referrerpolicy="no-referrer" src="https://www.openstreetmap.org/export/embed.html?bbox=139.36343%2C35.4334%2C139.39343%2C35.4534&amp;layer=mapnik&amp;marker=35.4434%2C139.37843"></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
   </div>
  </article>
 </div>
@@ -891,7 +892,7 @@ function revealInvitation(){
 function openInvitation(){
  if(ended||opening)return;opening=true;
  try{film.pause()}catch(error){}
- skip.disabled=true;skip.textContent='Preparing artwork…';
+ skip.disabled=true;skip.textContent='Taking you into our painted world…';
  backgroundsReady.finally(revealInvitation);
 }
 skip.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();openInvitation()});
@@ -920,17 +921,11 @@ addEventListener('scroll',()=>{
 
 const music=document.getElementById('music');
 document.body.append(music.closest('.top-ui'));
-let musicContext=null,musicGain=null,musicTimer=null,musicStep=0;
-const musicChords=[[261.63,329.63,392],[220,277.18,329.63],[174.61,220,261.63],[196,246.94,293.66]];
-function playMusicChord(){
- if(!musicContext||musicContext.state!=='running')return;
- const now=musicContext.currentTime,chord=musicChords[musicStep++%musicChords.length];
- chord.forEach((frequency,index)=>{const oscillator=musicContext.createOscillator(),gain=musicContext.createGain();oscillator.type=index===0?'sine':'triangle';oscillator.frequency.value=frequency/2;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(index===0?.032:.014,now+.7);gain.gain.exponentialRampToValueAtTime(.0001,now+5.8);oscillator.connect(gain).connect(musicGain);oscillator.start(now);oscillator.stop(now+6)});
-}
+const soundtrack=new Audio('https://commons.wikimedia.org/wiki/Special:Redirect/file/OriginalDixielandJassBand-JazzMeBlues.ogg');
+soundtrack.loop=true;soundtrack.preload='metadata';soundtrack.volume=.24;
 async function toggleMusic(){
- if(!musicContext){musicContext=new (window.AudioContext||window.webkitAudioContext)();musicGain=musicContext.createGain();musicGain.gain.value=.72;musicGain.connect(musicContext.destination)}
  const turningOn=!music.classList.contains('on');
- if(turningOn){await musicContext.resume();musicGain.gain.cancelScheduledValues(musicContext.currentTime);musicGain.gain.setTargetAtTime(.72,musicContext.currentTime,.08);music.classList.add('on');music.setAttribute('aria-pressed','true');music.setAttribute('aria-label','Mute background music');music.title='Mute background music';playMusicChord();musicTimer=setInterval(playMusicChord,5200)}else{clearInterval(musicTimer);musicTimer=null;musicGain.gain.cancelScheduledValues(musicContext.currentTime);musicGain.gain.setTargetAtTime(.0001,musicContext.currentTime,.12);setTimeout(()=>musicContext.suspend(),500);music.classList.remove('on');music.setAttribute('aria-pressed','false');music.setAttribute('aria-label','Play background music');music.title='Play background music'}
+ if(turningOn){try{await soundtrack.play();music.classList.add('on');music.setAttribute('aria-pressed','true');music.setAttribute('aria-label','Mute background music');music.title='Mute background music'}catch(error){music.setAttribute('aria-label','Music could not be played. Tap to retry');music.title='Tap to retry music'}}else{soundtrack.pause();music.classList.remove('on');music.setAttribute('aria-pressed','false');music.setAttribute('aria-label','Play background music');music.title='Play background music'}
 }
 music.addEventListener('click',toggleMusic);
 
