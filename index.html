@@ -1428,8 +1428,6 @@ function openInfo(key,trigger,auto=false){lastInfoTrigger=trigger;infoMode=auto?
 const AFTERPARTY_HASH='#afterparty-details';
 function openAfterpartyDetails(updateHash=true){const trigger=updateHash?document.getElementById('rsvpAfterpartyDetails'):document.querySelector('[data-info="afterparty"]');if(updateHash&&location.hash!==AFTERPARTY_HASH)history.pushState(null,'',AFTERPARTY_HASH);openInfo('afterparty',trigger,false)}
 document.getElementById('rsvpAfterpartyDetails').addEventListener('click',event=>{event.preventDefault();openAfterpartyDetails(true)});
-function revealAfterpartyDeepLink(){if(location.hash!==AFTERPARTY_HASH)return;if(!document.body.classList.contains('ready')){setTimeout(revealAfterpartyDeepLink,250);return}openAfterpartyDetails(false)}
-addEventListener('hashchange',revealAfterpartyDeepLink);setTimeout(revealAfterpartyDeepLink,0);
 function closeInfo(restore=true){if(!infoOverlay.classList.contains('open'))return;const wasManual=infoMode==='manual',wasAuto=infoMode==='auto';if(wasAuto&&restore)dismissedAutoInfo=lastAutoInfo;infoMode=null;infoOverlay.classList.remove('open','auto-open');infoOverlay.setAttribute('aria-hidden','true');document.body.classList.remove('info-open');if(wasManual&&restore)lastInfoTrigger?.focus({preventScroll:true})}
 function updateInformationScroll(progress){
  const sequenceStart=.045,sequenceEnd=.855,slot=(sequenceEnd-sequenceStart)/infoObjects.length;
