@@ -626,6 +626,9 @@ html[lang="my"] .rsvp-review{font-size:clamp(.66rem,2vw,.82rem)!important;line-h
  html[lang="my"] .rsvp-field,
  html[lang="my"] .rsvp-review{font-size:clamp(.6rem,3vw,.74rem)!important}
 }
+/* #storyChapter's ID rules force the Alex Brush script font/size regardless of language; Burmese has no glyphs there and needs the same denser serif scale as the other chapter headings. */
+html[lang="my"] #storyChapter .story-head h2{font-family:"Noto Serif Myanmar",serif!important;font-size:clamp(1.8rem,5.8vw,3rem)!important;line-height:1.42!important;letter-spacing:0!important}
+@media(max-width:700px){html[lang="my"] #storyChapter .story-head h2{font-size:clamp(1.2rem,5.6vw,1.7rem)!important;line-height:1.38!important}}
 .stop-copy time{font-size:clamp(.76rem,1.55vw,1rem)!important;font-weight:600!important;letter-spacing:.17em!important}
 html[lang="my"] [data-i18n],html[lang="my"] [data-rsvp-i18n],html[lang="my"] .qa-question,html[lang="my"] .qa-answer,html[lang="my"] .info-sheet,html[lang="my"] .rsvp-step,html[lang="my"] .rsvp-status{font-family:"Noto Serif Myanmar",serif!important}
 .rsvp-chapter.rsvp-sent .postcard-pin{display:none!important}
