@@ -104,33 +104,63 @@ html[lang="my"] .dym,html[lang="ja"] .dym{font-style:normal}
 .card.pick{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .card.pick:hover{border-color:rgba(124,50,65,.35)}
 .card.sel{border-color:var(--burg);box-shadow:0 0 0 2px rgba(124,50,65,.15),0 6px 22px rgba(92,62,46,.08)}
-.plan-wrap{width:100%;margin-top:1.4rem;text-align:center}
+.plan-wrap{width:100%;margin-top:1.8rem;text-align:center}
 .plan-wrap .eyebrow{margin-top:0}
-.plan-dir{font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin:.1rem 0 .9rem}
+.plan-dir{font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin:.1rem 0 .7rem}
 .plan-dir b{color:var(--burg);font-weight:500}
 html[lang="my"] .plan-dir{font-size:.98rem;line-height:1.9}
-.plan{position:relative;width:100%;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(92,62,46,.12);background:#f4efe4}
-.plan img{display:block;width:100%;height:auto}
-.ring{position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));border:3px solid var(--burg);border-radius:50%;box-shadow:0 0 0 6px rgba(124,50,65,.14);animation:glow 1.8s ease-in-out infinite;pointer-events:none}
-.ring.long{border-radius:28px}
-.pin{position:absolute;width:26px;height:26px;transform:translate(-50%,-50%);border-radius:50%;border:3px solid var(--burg);background:rgba(124,50,65,.14);box-shadow:0 0 0 2px #fff,0 3px 10px rgba(0,0,0,.2);pointer-events:none}
-.pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--burg);animation:ping 1.6s ease-out infinite}
-@keyframes glow{50%{box-shadow:0 0 0 12px rgba(124,50,65,.06)}}
-@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.5);opacity:0}}
-.plan-note{font-size:.72rem;letter-spacing:.06em;color:var(--muted);margin:.7rem 0 0}
-.guide{width:100%;margin-top:1.4rem;text-align:center}
-.guide summary{cursor:pointer;display:inline-block;padding:.6rem 1rem;border-radius:999px;border:1px solid rgba(124,50,65,.3);color:var(--burg);font:500 .62rem/1 Georgia,serif;letter-spacing:.14em;text-transform:uppercase;list-style:none}
-.guide summary::-webkit-details-marker{display:none}
-html[lang="my"] .guide summary,html[lang="ja"] .guide summary{letter-spacing:.02em;text-transform:none;font-family:var(--sans);font-size:.75rem}
-.guide img{display:block;width:100%;height:auto;margin-top:1rem;border-radius:14px;box-shadow:0 10px 30px rgba(92,62,46,.12)}
-@media (prefers-reduced-motion:reduce){.ring,.pin::after{animation:none}}
+.plan-hint{font-size:.82rem;color:var(--muted);margin:.1rem 0 .8rem}
+.plan{position:relative;width:100%;border-radius:22px;background:radial-gradient(ellipse 80% 60% at 50% 40%,#fdf9f1,#f3ead9);border:1px solid var(--line);box-shadow:0 10px 30px rgba(92,62,46,.1);padding:.4rem .2rem .2rem}
+#floor{display:block;width:100%;height:auto;-webkit-tap-highlight-color:transparent;user-select:none}
+#floor .tb{cursor:pointer;transition:opacity .45s ease,filter .45s ease}
+#floor .tb:focus{outline:none}
+#floor .tb:focus-visible .top{stroke:var(--burg);stroke-width:4}
+#floor.focus .tb{opacity:.2;filter:saturate(.3)}
+#floor.focus .tb.on{opacity:1;filter:none}
+#floor .top{fill:#fffaf2;stroke:#c9b48a;stroke-width:2.2;transition:stroke .3s,stroke-width .3s}
+#floor .tb:hover .top{stroke:#a98b5a}
+#floor .tb.on .top{stroke:var(--burg);stroke-width:3.5}
+#floor .halo{fill:rgba(124,50,65,.06);stroke:var(--burg);stroke-width:2;stroke-dasharray:5 7;opacity:0;transition:opacity .4s}
+#floor .tb.on .halo{opacity:1}
+#floor .chair{fill:#d3d8bf;stroke:#a3ab88;stroke-width:1.5;transition:fill .3s,stroke .3s}
+#floor .tb.on .chair.taken{fill:#bcc49f}
+#floor .chair.me{fill:var(--burg);stroke:var(--burg-d)}
+#floor .num circle{fill:#fffdf8;stroke:#c9b48a;stroke-width:1.3;transition:fill .3s,stroke .3s}
+#floor .num text{font:500 15px Georgia,serif;fill:#6b5b4b;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+#floor .num.me circle{fill:var(--burg);stroke:var(--burg)}
+#floor .num.me text{fill:#fff}
+#floor .letter{font:500 42px "Newsreader",Georgia,serif;fill:var(--burg);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+#floor .leaf{fill:#8f9c6d;opacity:.75}
+#floor .bloom{fill:#fff;stroke:#e3cfcf;stroke-width:1}
+#floor .bloom-c{fill:#d9b26a}
+#floor .sweet-lbl{font:500 13px Georgia,serif;letter-spacing:4px;fill:#7a6c5f;text-anchor:middle}
+#floor .ping{fill:none;stroke:var(--burg);stroke-width:2.5;transform-box:fill-box;transform-origin:center;animation:ping2 1.6s ease-out infinite;pointer-events:none}
+@keyframes ping2{from{transform:scale(.8);opacity:1}to{transform:scale(2);opacity:0}}
+.roster{margin-top:1rem;text-align:left;background:rgba(255,252,247,.94);border:1px solid var(--line);border-radius:18px;padding:1rem 1.1rem;box-shadow:0 6px 22px rgba(92,62,46,.07);animation:rise .5s var(--ease)}
+.roster-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}
+.roster-head h3{font:400 1.45rem/1.1 var(--serif);color:var(--burg);margin:0}
+html[lang="my"] .roster-head h3{font-family:"Noto Serif Myanmar",serif;font-size:1.15rem;line-height:1.6}
+.roster-head span{font-size:.75rem;color:var(--muted)}
+.roster ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.1rem 1rem}
+.roster li{display:flex;gap:.55rem;align-items:center;padding:.4rem .3rem;border-radius:8px;font-size:.92rem;line-height:1.35;cursor:pointer;transition:background .25s}
+.roster li:hover{background:rgba(124,50,65,.05)}
+.roster li .n{flex:0 0 1.65rem;height:1.65rem;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #c9b48a;font:500 .72rem/1 Georgia,serif;color:#6b5b4b;background:#fffdf8}
+.roster li .nm{overflow-wrap:anywhere}
+.roster li.me{background:rgba(124,50,65,.09)}
+.roster li.me .n{background:var(--burg);border-color:var(--burg);color:#fff}
+.roster li.me .nm{color:var(--burg)}
+.roster li.empty{cursor:default}
+.roster li.empty .nm{color:#b3a596}
+.roster .tbc{margin:.7rem 0 .2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+html[lang="my"] .roster .tbc,html[lang="ja"] .roster .tbc{letter-spacing:.02em;text-transform:none}
+@media (max-width:420px){.roster ol{grid-template-columns:1fr}}
+.plan-reset{margin-top:.9rem;background:none;border:1px solid rgba(124,50,65,.3);color:var(--burg);border-radius:999px;padding:.6rem 1.05rem;font:500 .6rem/1 Georgia,serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.plan-reset:hover{background:rgba(124,50,65,.06)}
+html[lang="my"] .plan-reset,html[lang="ja"] .plan-reset{letter-spacing:.02em;text-transform:none;font-family:var(--sans);font-size:.76rem}
+.plan-note{font-size:.72rem;letter-spacing:.06em;color:var(--muted);margin:.8rem 0 0}
+@media (prefers-reduced-motion:reduce){#floor .ping{animation:none}#floor .tb{transition:none}.roster{animation:none}}
 .status{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;min-height:1em}
 
-footer{text-align:center;padding:1.8rem var(--pad) max(2rem,env(safe-area-inset-bottom));border-top:1px solid var(--line);
-  width:100%;max-width:620px;margin:0 auto}
-footer .by{font-size:.56rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin:0 0 .3rem}
-footer a{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--burg);text-decoration:none;transition:color .3s}
-footer a:hover{color:var(--gold)}
 @media (prefers-reduced-motion:reduce){.rise,.card{animation:none;opacity:1;transform:none}}
 </style>
 </head>
@@ -159,26 +189,17 @@ footer a:hover{color:var(--gold)}
   <p class="status t" id="status" aria-live="polite"></p>
   <div id="results" aria-live="polite"></div>
 
-  <section id="plan" class="plan-wrap" hidden aria-labelledby="planTitle">
-    <p class="eyebrow t" id="planTitle" data-t="planTitle">Your seat</p>
-    <p class="plan-dir" id="planDir"></p>
-    <div class="plan" id="planBox">
-      <img src="../assets/seat/table-guide.webp" width="1055" height="1491" alt="Table guide: sweetheart table at the top, tables A to H arranged in two columns below it">
-      <span class="ring" id="planRing" hidden></span>
-      <span class="pin" id="planPin" hidden></span>
-    </div>
+  <section id="plan" class="plan-wrap" aria-labelledby="planTitle">
+    <p class="eyebrow t" id="planTitle" data-t="planTitle">Seating plan</p>
+    <p class="plan-dir" id="planDir" hidden></p>
+    <p class="plan-hint t" id="planHint" data-t="planHint">Tap a table to see who's sitting there.</p>
+    <div class="plan"><svg id="floor" viewBox="95 150 870 1065" role="group" aria-label="Seating plan: sweetheart table at the top, tables A to H below"></svg></div>
+    <div class="roster" id="roster" hidden aria-live="polite"></div>
+    <button class="plan-reset t" id="planReset" type="button" data-t="showAll" hidden>Show all tables</button>
     <p class="plan-note t" data-t="planNote">The plan is drawn as you face the sweetheart table.</p>
   </section>
-
-  <details class="guide" id="fullGuide">
-    <summary class="t" data-t="guideOpen">View the full table guide</summary>
-    <img src="../assets/seat/table-guide.webp" width="1055" height="1491" loading="lazy" alt="Table guide: sweetheart table at the top, tables A to H with numbered seats, and a seat orientation guide for round and long tables">
-  </details>
 </main>
 
-<footer>
-  <a href="https://www.facebook.com/p/Amor%C3%A9wedding-Tokyo-61575756988945/" target="_blank" rel="noopener noreferrer">Amoré Wedding Tokyo</a>
-</footer>
 
 <script>
 (function(){
@@ -192,8 +213,9 @@ footer a:hover{color:var(--gold)}
       notFoundH:"We couldn't find you",notFoundB:"No match for “{q}”. Please check the spelling, or ask our welcome staff — we'll gladly help.",
       more:"Keep typing to narrow down ({n} more)",loading:"Loading guest list…",
       didYouMean:"Did you mean…?",tryHint:"Tip: try just your first name, or one part of your name.",
-      planTitle:"Your seat",planNote:"The plan is drawn as you face the sweetheart table.",guideOpen:"View the full table guide",
-      tapHint:"Tap a name to see it on the table guide",
+      planTitle:"Seating plan",planHint:"Tap a table to see who's sitting there.",planNote:"The plan is drawn as you face the sweetheart table.",
+      showAll:"Show all tables",guestsN:"{n} guests",seatTbc:"Seat to be confirmed",
+      tapHint:"Tap a name to see it on the seating plan",
       left:"on the left",right:"on the right",rows:["front row","2nd row","3rd row","back row"],
       dir:"Facing the sweetheart table, <b>Table {t}</b> is {side}, {row}.",dirSeat:" Your seat is <b>No. {s}</b>."},
     ja:{nameMay:"May",nameHtoo:"Htoo",back:"← 招待状へ",eyebrow:"ようこそ",title:"お席をご確認ください",
@@ -201,8 +223,9 @@ footer a:hover{color:var(--gold)}
       notFoundH:"お名前が見つかりません",notFoundB:"「{q}」に一致するお名前がありません。綴りをご確認いただくか、受付スタッフにお声がけください。",
       more:"さらに入力して絞り込んでください（他 {n} 件）",loading:"ゲストリストを読み込み中…",
       didYouMean:"もしかして…？",tryHint:"ヒント：お名前の一部（ローマ字）だけでも検索できます。",
-      planTitle:"あなたのお席",planNote:"高砂（メインテーブル）を正面に見た配置図です。",guideOpen:"席次表全体を見る",
-      tapHint:"お名前をタップすると配置図に表示されます",
+      planTitle:"座席表",planHint:"テーブルをタップすると、そのテーブルのゲストが表示されます。",planNote:"高砂（メインテーブル）を正面に見た配置図です。",
+      showAll:"すべてのテーブルを表示",guestsN:"{n}名",seatTbc:"お席は当日ご案内します",
+      tapHint:"お名前をタップすると座席表に表示されます",
       left:"左側",right:"右側",rows:["最前列","前から2列目","前から3列目","最後列"],
       dir:"高砂を正面に見て、<b>{t}テーブル</b>は{side}の{row}です。",dirSeat:"お席は<b>{s}番</b>です。"},
     my:{nameMay:"မေ",nameHtoo:"ထူး",back:"← ဖိတ်စာသို့",eyebrow:"ကြိုဆိုပါသည်",title:"သင်၏ထိုင်ခုံကို ရှာဖွေပါ",
@@ -210,7 +233,8 @@ footer a:hover{color:var(--gold)}
       notFoundH:"အမည် မတွေ့ရှိပါ",notFoundB:"“{q}” နှင့် ကိုက်ညီသော အမည်မတွေ့ပါ။ စာလုံးပေါင်း ပြန်စစ်ပါ သို့မဟုတ် ကြိုဆိုရေးဝန်ထမ်းများကို မေးမြန်းပါ။",
       more:"ဆက်လက်ရိုက်ထည့်ပါ (နောက်ထပ် {n} ဦး)",loading:"ဧည့်စာရင်း ရယူနေသည်…",
       didYouMean:"ဤအမည်လား…?",tryHint:"အကြံပြုချက် - အမည်၏ တစ်စိတ်တစ်ပိုင်းကိုသာ (အင်္ဂလိပ်စာဖြင့်) ရိုက်ကြည့်ပါ။",
-      planTitle:"သင့်ထိုင်ခုံ",planNote:"သတို့သား၊ သတို့သမီး ထိုင်မည့် Sweetheart Table ကို မျက်နှာမူထားသည့်အတိုင်း ပြထားသော မြေပုံဖြစ်ပါသည်။",guideOpen:"စားပွဲနေရာပြ မြေပုံအပြည့်အစုံ ကြည့်ရန်",
+      planTitle:"ထိုင်ခုံနေရာပြ မြေပုံ",planHint:"စားပွဲကို နှိပ်ပြီး ထိုစားပွဲတွင် ထိုင်မည့်သူများကို ကြည့်နိုင်ပါသည်။",planNote:"သတို့သား၊ သတို့သမီး ထိုင်မည့် Sweetheart Table ကို မျက်နှာမူထားသည့်အတိုင်း ပြထားသော မြေပုံဖြစ်ပါသည်။",
+      showAll:"စားပွဲအားလုံး ပြန်ကြည့်ရန်",guestsN:"ဧည့်သည် {n} ဦး",seatTbc:"ထိုင်ခုံနံပါတ်ကို ပွဲနေ့တွင် လမ်းညွှန်ပေးပါမည်",
       tapHint:"အမည်ကို နှိပ်ပြီး မြေပုံပေါ်တွင် ကြည့်နိုင်ပါသည်",
       left:"ဘယ်ဘက်ခြမ်း",right:"ညာဘက်ခြမ်း",rows:["ရှေ့ဆုံးတန်း","ရှေ့မှ ဒုတိယတန်း","ရှေ့မှ တတိယတန်း","နောက်ဆုံးတန်း"],
       dir:"Sweetheart Table ကို မျက်နှာမူပြီး ကြည့်လျှင် <b>စားပွဲ {t}</b> သည် {side} {row}တွင် ရှိပါသည်။",dirSeat:" သင့်ထိုင်ခုံနံပါတ်မှာ <b>{s}</b> ဖြစ်ပါသည်။"}
@@ -232,6 +256,7 @@ footer a:hover{color:var(--gold)}
     $q.placeholder = T[l].placeholder;
     try{ localStorage.setItem("hm-lang", l); }catch(e){}
     render();
+    if(activeTable) selectTable(activeTable, selected, planSource);
   }
 
   function render(){
@@ -263,53 +288,194 @@ footer a:hover{color:var(--gold)}
     showPlan(keep);
   }
 
-  // ---- Table guide (assets/seat/table-guide.webp, 1055×1491) ----
-  // Positions are pixels on that image, which is drawn facing the sweetheart table (top).
-  // Round tables: seats 1–6. Long tables: odd seats on one side, even on the other.
-  var IMG_W = 1055, IMG_H = 1491;
+  // ---- Seating plan (drawn in SVG, laid out like the printed Table Guide) ----
+  // Coordinates follow the guide artwork (1055 wide), drawn facing the sweetheart table at the top.
+  // Round tables seat 1–6 clockwise from the top (1 top, 6 upper-right … 2 upper-left).
+  // Long tables: odd seats down the left side, even seats down the right, 1 & 2 at the top.
   var TABLES = {
-    A:{c:[716,410],w:150,h:150,side:"right",row:0,seats:{1:[714,297],2:[644,343],3:[636,429],4:[717,477],5:[796,429],6:[794,343]}},
-    B:{c:[337,410],w:150,h:150,side:"left", row:0,seats:{1:[337,297],2:[260,343],3:[258,429],4:[337,477],5:[415,429],6:[408,343]}},
-    C:{c:[272,612],w:120,h:262,rot:18,side:"left", row:1,long:true,seats:{1:[240,503],3:[224,540],5:[207,578],7:[192,620],9:[177,659],2:[364,549],4:[353,589],6:[340,629],8:[326,675],10:[314,717]}},
-    D:{c:[783,612],w:120,h:262,rot:-18,side:"right",row:1,long:true,seats:{1:[690,548],3:[702,586],5:[714,627],7:[726,675],9:[740,715],2:[817,503],4:[834,540],6:[849,579],8:[864,621],10:[880,660]}},
-    E:{c:[820,850],w:150,h:150,side:"right",row:2,seats:{1:[820,761],2:[742,802],3:[738,893],4:[820,942],5:[902,893],6:[900,802]}},
-    F:{c:[233,850],w:150,h:150,side:"left", row:2,seats:{1:[233,761],2:[153,802],3:[151,893],4:[233,942],5:[316,893],6:[312,802]}},
-    G:{c:[322,1066],w:120,h:262,rot:-18,side:"left", row:3,long:true,seats:{1:[217,1011],3:[233,1048],5:[252,1090],7:[271,1132],9:[291,1172],2:[343,957],4:[364,994],6:[384,1032],8:[402,1072],10:[424,1110]}},
-    H:{c:[732,1066],w:120,h:262,rot:18,side:"right",row:3,long:true,seats:{1:[709,957],3:[688,994],5:[670,1032],7:[651,1072],9:[630,1110],2:[837,1011],4:[821,1048],6:[804,1090],8:[783,1132],10:[763,1172]}}
+    A:{c:[716,410],side:"right",row:0}, B:{c:[337,410],side:"left",row:0},
+    C:{c:[272,612],side:"left",row:1,rot:18,long:true}, D:{c:[783,612],side:"right",row:1,rot:-18,long:true},
+    E:{c:[820,850],side:"right",row:2}, F:{c:[233,850],side:"left",row:2},
+    G:{c:[322,1066],side:"left",row:3,rot:-18,long:true}, H:{c:[732,1066],side:"right",row:3,rot:18,long:true}
   };
-  var $plan = document.getElementById("plan"), $ring = document.getElementById("planRing"),
-      $pin = document.getElementById("planPin"), $dir = document.getElementById("planDir");
-  var shownList = [], selected = null;
-  function pct(v, of){ return (v/of*100).toFixed(2)+"%"; }
+  var ROUND_ANGLE = {1:0,6:60,5:120,4:180,3:240,2:300};
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var $floor = document.getElementById("floor"), $roster = document.getElementById("roster"),
+      $dir = document.getElementById("planDir"), $hint = document.getElementById("planHint"),
+      $reset = document.getElementById("planReset"), $plan = document.getElementById("plan");
+  var shownList = [], selected = null, activeTable = null, planSource = null;
 
-  function showPlan(g){
-    selected = g;
-    var key = g ? String(g.table).trim().toUpperCase().replace(/^TABLE\s*/,"") : "";
-    var tb = TABLES[key];
-    if(!tb){ $plan.hidden = true; return; }
-    var t = T[lang], seatNo = String(g.seat||"").replace(/[^\d]/g,""), sp = tb.seats[seatNo];
-    $ring.className = "ring" + (tb.long ? " long" : "");
-    $ring.style.left = pct(tb.c[0],IMG_W); $ring.style.top = pct(tb.c[1],IMG_H);
-    $ring.style.width = pct(tb.w,IMG_W); $ring.style.height = pct(tb.h,IMG_H);
-    $ring.style.setProperty("--rot", (tb.rot||0)+"deg");
-    $ring.hidden = false;
-    if(sp){ $pin.style.left = pct(sp[0],IMG_W); $pin.style.top = pct(sp[1],IMG_H); $pin.hidden = false; }
-    else $pin.hidden = true;
-    $dir.innerHTML = t.dir.replace("{t}",esc(key)).replace("{side}",t[tb.side]).replace("{row}",t.rows[tb.row]) +
-      (sp ? t.dirSeat.replace("{s}",esc(seatNo)) : "");
-    $plan.hidden = false;
+  function el(name, attrs, parent){
+    var n = document.createElementNS(SVGNS, name);
+    for(var k in attrs) n.setAttribute(k, attrs[k]);
+    if(parent) parent.appendChild(n);
+    return n;
+  }
+  function rotPt(x, y, deg){ var r = deg*Math.PI/180; return [x*Math.cos(r) - y*Math.sin(r), x*Math.sin(r) + y*Math.cos(r)]; }
+  function flora(parent, x, y, s){
+    var g = el("g", {transform:"translate("+x+" "+y+") scale("+(s||1)+")"}, parent);
+    [[-14,-4,-30],[14,-4,30],[-10,9,20],[10,9,-20],[0,-13,0]].forEach(function(l){
+      el("ellipse", {"class":"leaf", cx:l[0], cy:l[1], rx:9, ry:4, transform:"rotate("+l[2]+" "+l[0]+" "+l[1]+")"}, g);
+    });
+    [[-6,0],[6,2],[0,-5]].forEach(function(b){
+      el("circle", {"class":"bloom", cx:b[0], cy:b[1], r:5}, g); el("circle", {"class":"bloom-c", cx:b[0], cy:b[1], r:1.6}, g);
+    });
+  }
+  function seatLabel(parent, n, x, y){
+    var g = el("g", {"class":"num", "data-s":n}, parent);
+    el("circle", {cx:x, cy:y, r:13}, g);
+    var tx = el("text", {x:x, y:y}, g); tx.textContent = n;
   }
 
-  function pick(el){
-    var g = shownList[+el.dataset.i]; if(!g) return;
+  function drawFloor(){
+    // Sweetheart table
+    var sw = el("g", {"class":"sweet"}, $floor);
+    var lbl = el("text", {"class":"sweet-lbl", x:527, y:176}, sw); lbl.textContent = "SWEETHEART TABLE";
+    el("rect", {x:497, y:192, width:26, height:22, rx:6, "class":"chair"}, sw);
+    el("rect", {x:531, y:192, width:26, height:22, rx:6, "class":"chair"}, sw);
+    el("rect", {x:437, y:214, width:180, height:52, rx:8, "class":"top"}, sw);
+    flora(sw, 490, 240, .9); flora(sw, 527, 240, 1.1); flora(sw, 564, 240, .9);
+
+    Object.keys(TABLES).forEach(function(key){
+      var tb = TABLES[key], cx = tb.c[0], cy = tb.c[1];
+      var g = el("g", {"class":"tb", "data-t":key, tabindex:"0", role:"button", "aria-label":"Table "+key}, $floor);
+      if(!tb.long){
+        el("circle", {"class":"halo", cx:cx, cy:cy, r:112}, g);
+        [1,2,3,4,5,6].forEach(function(n){
+          var a = ROUND_ANGLE[n], r = a*Math.PI/180;
+          var x = cx + 80*Math.sin(r), y = cy - 80*Math.cos(r);
+          el("rect", {"class":"chair", "data-s":n, x:x-17, y:y-12, width:34, height:24, rx:7, transform:"rotate("+a+" "+x+" "+y+")"}, g);
+        });
+        el("circle", {"class":"top", cx:cx, cy:cy, r:58}, g);
+        flora(g, cx, cy+28, .85);
+        [1,2,3,4,5,6].forEach(function(n){
+          var r = ROUND_ANGLE[n]*Math.PI/180;
+          seatLabel(g, n, cx + 120*Math.sin(r), cy - 120*Math.cos(r));
+        });
+        tb.seatXY = function(n){ var r = ROUND_ANGLE[n]*Math.PI/180; return [cx + 120*Math.sin(r), cy - 120*Math.cos(r)]; };
+      } else {
+        var body = el("g", {transform:"translate("+cx+" "+cy+") rotate("+tb.rot+")"}, g);
+        el("rect", {"class":"halo", x:-92, y:-160, width:184, height:320, rx:40}, body);
+        for(var k=0;k<5;k++){
+          var yy = -100 + k*50;
+          el("rect", {"class":"chair", "data-s":2*k+1, x:-73, y:yy-17, width:24, height:34, rx:7}, body);
+          el("rect", {"class":"chair", "data-s":2*k+2, x:49, y:yy-17, width:24, height:34, rx:7}, body);
+        }
+        el("rect", {"class":"top", x:-46, y:-128, width:92, height:256, rx:6}, body);
+        flora(body, 0, -70, .9); flora(body, 0, 70, .9);
+        var pts = {};
+        for(var j=0;j<5;j++){
+          var y2 = -100 + j*50, L = rotPt(-100, y2, tb.rot), R = rotPt(100, y2, tb.rot);
+          pts[2*j+1] = [cx+L[0], cy+L[1]]; pts[2*j+2] = [cx+R[0], cy+R[1]];
+        }
+        Object.keys(pts).forEach(function(n){ seatLabel(g, n, pts[n][0], pts[n][1]); });
+        tb.seatXY = function(n){ return pts[n]; };
+      }
+      var L2 = el("text", {"class":"letter", x:cx, y:tb.long ? cy : cy-8}, g); L2.textContent = key;
+    });
+  }
+
+  function tableKey(g){ return g ? String(g.table).trim().toUpperCase().replace(/^TABLE\s*/,"") : ""; }
+  function seatNo(g){ return String((g && g.seat) || "").replace(/[^\d]/g,""); }
+
+  function selectTable(key, guest, source){
+    var tb = TABLES[key];
+    if(!tb){ clearPlan(); return; }
+    activeTable = key; selected = guest || null; planSource = source || planSource;
+    var t = T[lang], mySeat = seatNo(selected);
+    var people = guests.filter(function(g){ return tableKey(g)===key; });
+    var taken = {}; people.forEach(function(g){ var s = seatNo(g); if(s){ (taken[s] = taken[s] || []).push(g); } });
+
+    $floor.classList.add("focus");
+    $floor.querySelectorAll(".ping").forEach(function(p){ p.remove(); });
+    $floor.querySelectorAll(".tb").forEach(function(g){
+      var on = g.getAttribute("data-t")===key;
+      g.classList.toggle("on", on);
+      g.querySelectorAll(".chair").forEach(function(c){
+        var s = c.getAttribute("data-s");
+        c.classList.toggle("taken", on && !!taken[s]);
+        c.classList.toggle("me", on && !!mySeat && s===mySeat);
+      });
+      g.querySelectorAll(".num").forEach(function(n){ n.classList.toggle("me", on && !!mySeat && n.getAttribute("data-s")===mySeat); });
+      if(on && mySeat && tb.seatXY(mySeat)){
+        var p = tb.seatXY(mySeat); el("circle", {"class":"ping", cx:p[0], cy:p[1], r:14}, g);
+      }
+    });
+
+    // Directions
+    $dir.innerHTML = t.dir.replace("{t}",esc(key)).replace("{side}",t[tb.side]).replace("{row}",t.rows[tb.row]) +
+      (selected && mySeat ? t.dirSeat.replace("{s}",esc(mySeat)) : "");
+    $dir.hidden = false; $hint.hidden = true; $reset.hidden = false;
+
+    // Who is at this table
+    var max = tb.long ? 10 : 6, rows = "";
+    for(var n=1;n<=max;n++){
+      var at = taken[n] || [];
+      if(!at.length) rows += '<li class="empty"><span class="n">'+n+'</span><span class="nm">—</span></li>';
+      at.forEach(function(g){
+        rows += '<li class="'+(g===selected?'me':'')+'" data-g="'+guests.indexOf(g)+'"><span class="n">'+n+'</span><span class="nm">'+esc(g.name)+'</span></li>';
+      });
+    }
+    var tbc = people.filter(function(g){ return !seatNo(g); }), tbcRows = tbc.map(function(g){
+      return '<li class="'+(g===selected?'me':'')+'" data-g="'+guests.indexOf(g)+'"><span class="n">·</span><span class="nm">'+esc(g.name)+'</span></li>';
+    }).join("");
+    $roster.innerHTML = '<div class="roster-head"><h3>'+esc(t.table)+' '+esc(key)+'</h3><span>'+esc(t.guestsN.replace("{n}",people.length))+'</span></div>'+
+      '<ol>'+rows+'</ol>' + (tbc.length ? '<p class="tbc">'+esc(t.seatTbc)+'</p><ol>'+tbcRows+'</ol>' : '');
+    $roster.hidden = false;
+  }
+
+  function clearPlan(){
+    activeTable = null; selected = null; planSource = null;
+    $floor.classList.remove("focus");
+    $floor.querySelectorAll(".tb").forEach(function(g){ g.classList.remove("on"); });
+    $floor.querySelectorAll(".chair.me,.chair.taken,.num.me").forEach(function(c){ c.classList.remove("me","taken"); });
+    $floor.querySelectorAll(".ping").forEach(function(p){ p.remove(); });
+    $dir.hidden = true; $roster.hidden = true; $reset.hidden = true; $hint.hidden = false;
     $res.querySelectorAll(".card.sel").forEach(function(c){ c.classList.remove("sel"); });
-    el.classList.add("sel");
-    showPlan(g);
-    if($plan.hidden) return;
+  }
+
+  // Search → plan
+  function showPlan(g){
+    if(g){ selectTable(tableKey(g), g, "search"); return; }
+    if(planSource==="search") clearPlan();
+  }
+
+  function pick(el2){
+    var g = shownList[+el2.dataset.i]; if(!g) return;
+    $res.querySelectorAll(".card.sel").forEach(function(c){ c.classList.remove("sel"); });
+    el2.classList.add("sel");
+    selectTable(tableKey(g), g, "search");
     $plan.scrollIntoView({behavior:"smooth", block:"start"});
   }
   $res.addEventListener("click", function(e){ var c = e.target.closest(".card.pick"); if(c) pick(c); });
   $res.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ var c = e.target.closest(".card.pick"); if(c){ e.preventDefault(); pick(c); } } });
+
+  // Plan → people
+  function tapTable(gEl, target){
+    var key = gEl.getAttribute("data-t");
+    var s = target && target.closest ? (target.closest(".chair,.num") || null) : null;
+    var seat = s ? s.getAttribute("data-s") : "";
+    var who = seat ? guests.filter(function(g){ return tableKey(g)===key && seatNo(g)===seat; })[0] : null;
+    $res.querySelectorAll(".card.sel").forEach(function(c){ c.classList.remove("sel"); });
+    selectTable(key, who || null, "table");
+  }
+  $floor.addEventListener("click", function(e){
+    var gEl = e.target.closest(".tb");
+    if(gEl) tapTable(gEl, e.target);
+    else if(activeTable) clearPlan();
+  });
+  $floor.addEventListener("keydown", function(e){
+    if(e.key!=="Enter" && e.key!==" ") return;
+    var gEl = e.target.closest(".tb"); if(!gEl) return;
+    e.preventDefault(); tapTable(gEl, null);
+  });
+  $roster.addEventListener("click", function(e){
+    var li = e.target.closest("li[data-g]"); if(!li) return;
+    selectTable(activeTable, guests[+li.getAttribute("data-g")], planSource);
+  });
+  $reset.addEventListener("click", function(){ clearPlan(); });
+
+  drawFloor();
 
   // ---- Name matching ----
   // Guests may type names differently from the sheet: other word order, with or
@@ -468,7 +634,7 @@ footer a:hover{color:var(--gold)}
       })
       .then(function(list){ guests = list || []; })
       .catch(function(err){ console.error(err); guests = []; })
-      .then(function(){ loading = false; render(); });
+      .then(function(){ loading = false; render(); if(activeTable) selectTable(activeTable, selected, planSource); });
   }
 
   document.querySelectorAll(".lang-b").forEach(function(b){ b.addEventListener("click",function(){ setLang(b.dataset.lang); }); });
