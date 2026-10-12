@@ -36,6 +36,9 @@ function doGet() {
     if (cName < 0) cName = head.findIndex(v => v.indexOf("name") > -1);
     if (cName < 0) throw new Error("No name column found");
     const cAtt  = head.indexOf("attendance");
+    // Optional extra searchable names: nickname, Burmese/Japanese name, reading, etc.
+    const AKA_RE = /nick|aka|also known|other name|burmese|myanmar|japanese|kana|reading/;
+    const cAka = head.map((v, i) => (i !== cName && AKA_RE.test(v)) ? i : -1).filter(i => i > -1);
 
     for (let r = h + 1; r < values.length; r++) {
       const row = values[r];
@@ -51,7 +54,8 @@ function doGet() {
       out.guests.push({
         name: name,
         table: table,
-        seat: cSeat > -1 ? String(row[cSeat] || "").trim() : ""
+        seat: cSeat > -1 ? String(row[cSeat] || "").trim() : "",
+        aka: cAka.map(i => String(row[i] || "").trim()).filter(Boolean)
       });
     }
   } catch (err) {
