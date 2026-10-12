@@ -104,7 +104,7 @@ html[lang="my"] .dym,html[lang="ja"] .dym{font-style:normal}
 .card.pick{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .card.pick:hover{border-color:rgba(124,50,65,.35)}
 .card.sel{border-color:var(--burg);box-shadow:0 0 0 2px rgba(124,50,65,.15),0 6px 22px rgba(92,62,46,.08)}
-.plan-wrap{width:100%;margin-top:1.8rem;text-align:center}
+.plan-wrap{width:100%;margin:0 0 1.8rem;text-align:center}
 .plan-wrap .eyebrow{margin-top:0}
 .plan-dir{font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin:.1rem 0 .7rem}
 .plan-dir b{color:var(--burg);font-weight:500}
@@ -234,15 +234,7 @@ body.intro-on .rise{animation-play-state:paused}
   <p class="eyebrow t rise d2" data-t="eyebrow">Welcome</p>
   <h1 class="rise d2" data-t="title">Please find your seat</h1>
 
-  <div class="search rise d3" id="searchBox">
-    <input id="q" type="search" lang="en" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="search" aria-label="Search your name">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-    <button id="clear" type="button" aria-label="Clear">×</button>
-  </div>
-  <p class="status t" id="status" aria-live="polite"></p>
-  <div id="results" aria-live="polite"></div>
-
-  <section id="plan" class="plan-wrap" aria-labelledby="planTitle">
+  <section id="plan" class="plan-wrap rise d3" aria-labelledby="planTitle">
     <p class="eyebrow t" id="planTitle" data-t="planTitle">Seating plan</p>
     <p class="plan-dir" id="planDir" hidden></p>
     <p class="plan-hint t" id="planHint" data-t="planHint">Tap a table to see who's sitting there.</p>
@@ -251,6 +243,15 @@ body.intro-on .rise{animation-play-state:paused}
     <button class="plan-reset t" id="planReset" type="button" data-t="showAll" hidden>Show all tables</button>
     <p class="plan-note t" data-t="planNote">The plan is drawn as you face the sweetheart table.</p>
   </section>
+
+  <div class="search rise d3" id="searchBox">
+    <input id="q" type="search" lang="en" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="search" aria-label="Search your name">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <button id="clear" type="button" aria-label="Clear">×</button>
+  </div>
+  <p class="status t" id="status" aria-live="polite"></p>
+  <div id="results" aria-live="polite"></div>
+
 </main>
 
 
