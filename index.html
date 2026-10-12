@@ -961,7 +961,7 @@ html[lang="my"] .rsvp-thanks-card p{font-family:"Noto Serif Myanmar",serif!impor
   <div class="info-focus-art"><img id="infoFocusImage" src="assets/chapter-06/save-date-calendar.png" alt=""></div>
   <div class="info-sheet">
    <p class="roman" data-i18n="informationTitle">Information</p><h3 id="infoDialogTitle"></h3><p id="infoDialogBody"></p>
-   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><figure class="info-venue" id="infoDialogVenue"><img src="assets/newsletter/venue-painting.png" width="680" height="296" loading="lazy" alt="Watercolour painting of AMANDAN HILLS — a glass pavilion and terraced building among trees, Atsugi, Kanagawa"></figure><div class="info-map" id="infoDialogMap"><iframe title="Google Map of AMANDAN HILLS, Atsugi, Kanagawa" loading="eager" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=AMANDAN%20HILLS%2013-3%20Morinosato%20Wakamiya%20Atsugi%20Kanagawa&amp;output=embed" allowfullscreen></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
+   <div class="info-meta" id="infoDialogMeta"></div><p class="info-rsvp-notice" id="infoRsvpNotice"></p><figure class="info-venue" id="infoDialogPickup"><img src="assets/newsletter/bus-pickup-map.webp" width="1484" height="1060" loading="lazy" alt="Bus pickup maps — Shinjuku: near Shinjuku Building, Shinjuku Station West Exit. Ikebukuro: in front of LUMINE / Esola Ikebukuro, near the Tobu Tojo Line South Exit / JR Metropolitan Exit."></figure><figure class="info-venue" id="infoDialogVenue"><img src="assets/newsletter/venue-painting.png" width="680" height="296" loading="lazy" alt="Watercolour painting of AMANDAN HILLS — a glass pavilion and terraced building among trees, Atsugi, Kanagawa"></figure><div class="info-map" id="infoDialogMap"><iframe title="Google Map of AMANDAN HILLS, Atsugi, Kanagawa" loading="eager" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=AMANDAN%20HILLS%2013-3%20Morinosato%20Wakamiya%20Atsugi%20Kanagawa&amp;output=embed" allowfullscreen></iframe></div><a class="info-action" id="infoDialogAction" href="#"></a>
   </div>
  </article>
 </div>
@@ -1351,19 +1351,19 @@ const infoContent = {
       notice: 'Please note: Due to the shuttle transit and overall schedule, the day may feel a bit long for young children or senior family members. If you need any accessibility support, please reach out to us in advance so we can assist you.'
     },
     transport: {
-      title: 'Free Shuttle Buses',
-      body: 'We’re organizing free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro straight to the venue and back after the party! Please let us know your preferred pick-up station in your RSVP so we can save your seat.',
-      meta: ['Hubs: Shinjuku · Tokyo · Ikebukuro', 'Round-trip rides available (time may varies).'],
-      action: '',
-      notice: 'Please choose your preferred shuttle station in the RSVP form.'
+      title: 'Free Guest Shuttle Bus',
+      body: 'Our free wedding guest bus will take you to AMANDAN HILLS and back. Please be at your pickup point 10–15 minutes early — the bus leaves right on time, and we’re so sorry but it can’t wait for late arrivals.',
+      meta: ['Ikebukuro · 11:10 — in front of LUMINE / Esola Ikebukuro (near Tobu Tojo Line South Exit / JR Metropolitan Exit)', 'Shinjuku · 11:30 — near Shinjuku Building, Shinjuku Station West Exit (1-8-1 Nishi-Shinjuku)', 'Return · around 18:00 — AMANDAN HILLS → Shinjuku / Ikebukuro', 'Casual Party guests · 20:45~ — return shuttle to Hon-Atsugi Station'],
+      action: 'Pickup maps & full bus guide',
+      notice: 'Please meet near the circled area on the map. The bus will stop wherever it’s permitted on the day.'
     },
     afterparty: {
       title: 'Joining us for the Casual Party?',
       body: 'Once the ceremony and reception wrap up, the night will still be young! You are warmly invited to keep the celebration going with us at the casual party. Note: This is completely optional. In line with local customs, there is a small cover charge at the door for catering and drinks.',
       highlight: 'This is completely optional. In line with local customs, there is a small cover charge at the door for catering and drinks.',
-      meta: [],
+      meta: ['Reception 17:30 · Party 18:30–20:30', 'Return shuttle 20:45~ → Hon-Atsugi Station'],
       action: 'Learn about Japan’s 会費制 custom →',
-      notice: 'Please select your casual party attendance in the RSVP form.'
+      notice: 'Joining the Casual Party? Please bring the Extension Pass we sent you to show at the reception.'
     }
   },
   ja: {
@@ -1388,18 +1388,18 @@ const infoContent = {
     },
     transport: {
       title: '無料送迎バスのご案内',
-      body: '主要3駅（新宿駅・東京駅・池袋駅）から無料の往復送迎バスをご用意しています！皆様のご希望に合わせて便数を調整しますので、RSVPフォームからご都合のよい駅を教えてくださいね。お帰りも同じ駅までお送りします。',
-      meta: ['発着駅：新宿 · 東京 · 池袋', '※お帰りも同じ駅まで送迎します！'],
-      action: '',
-      notice: 'ご希望の乗車駅は、RSVPフォームで必ずお知らせください。'
+      body: 'AMANDAN HILLSまで無料の往復送迎バスをご用意しています。バスは定刻どおりに出発し、遅れた方をお待ちすることができませんので、乗車場所には出発の10〜15分前までにお越しください。',
+      meta: ['池袋 · 11:10 — ルミネ池袋／エソラ池袋前（東武東上線南口・JRメトロポリタン口付近）', '新宿 · 11:30 — 新宿駅西口・新宿ビルディング前付近（西新宿1-8-1）', 'お帰り · 18:00頃 — AMANDAN HILLS → 新宿／池袋', 'カジュアルパーティーご参加の方 · 20:45〜 — 本厚木駅行きシャトル'],
+      action: '乗車場所の地図・バスの詳細を見る',
+      notice: '地図の丸で囲んだ付近でお待ちください。当日は停車可能な場所にバスが停まります。'
     },
     afterparty: {
       title: 'カジュアルパーティーへのご参加',
       body: '挙式・披露宴が終わった後も、まだまだ夜はこれから！もう少し皆様と楽しい時間を過ごしたく、カジュアルパーティーを企画しております。※こちらは自由参加となります。飲食代として当日の受付にて会費の一部のみ申し受けます。',
       highlight: '※こちらは自由参加となります。飲食代として当日の受付にて会費の一部のみ申し受けます。',
-      meta: [],
+      meta: ['受付 17:30 · パーティー 18:30〜20:30', '20:45〜 本厚木駅行きシャトル'],
       action: '日本の会費制について詳しく見る →',
-      notice: 'カジュアルパーティーへのご参加についてRSVPフォームでお知らせください。'
+      notice: 'カジュアルパーティーにご参加の方は、お送りしたExtension Passを受付でご提示ください。'
     }
   },
   my: {
@@ -1423,52 +1423,52 @@ const infoContent = {
       notice: 'မှတ်ချက် - ကြိုပို့ကား စီးနင်းချိန်နှင့် အချိန်ဇယားအရ ကလေးငယ်များနှင့် လူကြီးမိဘများအတွက် ခရီးပန်းနွမ်းနိုင်ပါသည်။ သွားလာရေးဆိုင်ရာ အထူးအကူအညီ လိုအပ်ပါက ကြိုတင်အသိပေး ဆွေးနွေးပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။'
     },
     transport: {
-      title: 'အခမဲ့ ကြိုပို့ယာဉ် စီစဉ်ထားရှိမှု',
-      body: 'အဓိက ဘူတာကြီး (၃) ခုဖြစ်တဲ့ Shinjuku၊ Tokyo Station နဲ့ Ikebukuro ဘူတာတွေကနေ ပွဲကျင်းပရာနေရာအထိ အခမဲ့ အသွားအပြန် ကြိုပို့ဘတ်စ်ကားတွေ စီစဉ်ပေးထားပါတယ်။ သွားလာရ အဆင်ပြေစေမယ့် ဘူတာလေးကို RSVP ဖောင်မှာ ရွေးချယ်ပေးပါဦးနော်။',
-      meta: ['ကြိုပို့ဘူတာများ- Shinjuku · Tokyo · Ikebukuro', 'အသွားအပြန် ကားစီစဉ်ပေးထားပါသည်'],
-      action: '',
-      notice: 'သင်နှစ်သက်သော ကြိုပို့ဘူတာကို RSVP ဖောင်တွင် ရွေးချယ်ပေးပါ။'
+      title: 'အခမဲ့ ကြိုပို့ဘတ်စ်ကား',
+      body: 'AMANDAN HILLS အထိ အခမဲ့ အသွားအပြန် Wedding Guest Bus စီစဉ်ပေးထားပါတယ်။ ဘတ်စ်ကားက သတ်မှတ်ချိန်အတိုင်း တိတိကျကျ ထွက်ခွာမှာ ဖြစ်ပြီး နောက်ကျမှ ရောက်လာသူများကို စောင့်ဆိုင်းပေးနိုင်မှာ မဟုတ်တာကြောင့် စောင့်ရမယ့်နေရာကို ၁၀–၁၅ မိနစ်ခန့် ကြိုတင်ရောက်ရှိပေးပါနော်။',
+      meta: ['Ikebukuro · 11:10 — LUMINE / Esola Ikebukuro ရှေ့ (Tobu Tojo Line South Exit / JR Metropolitan Exit အနီး)', 'Shinjuku · 11:30 — Shinjuku ဘူတာ West Exit၊ Shinjuku Building ရှေ့အနီး (1-8-1 Nishi-Shinjuku)', 'ပြန်ချိန် · 18:00 ခန့် — AMANDAN HILLS → Shinjuku / Ikebukuro', 'Casual Party တက်ရောက်သူများ · 20:45~ — Hon-Atsugi Station သို့ Return Shuttle'],
+      action: 'စောင့်ရမည့်နေရာ မြေပုံနှင့် အသေးစိတ် ကြည့်ရန်',
+      notice: 'မြေပုံပေါ်မှာ အဝိုင်းပြထားတဲ့ နေရာအနီးမှာ စောင့်ဆိုင်းပေးပါနော်။ ပွဲနေ့မှာ ရပ်ခွင့်ရှိတဲ့ နေရာမှာ ဘတ်စ်ကား ရပ်ပါမယ်။'
     },
     afterparty: {
       title: 'Casual Party သို့ ပါဝင်ဆင်နွှဲမည်လား။',
       body: 'မင်္ဂလာအခမ်းအနားနှင့် ဧည့်ခံပွဲ ပြီးဆုံးသွားသည့်တိုင် ညချမ်းအချိန်လေး ကျန်ရှိနေသေးပါသဖြင့် ကျွန်တော်တို့နှင့်အတူ Casual Party တွင် ဆက်လက်ဆင်နွှဲနိုင်ပါသည်။ မှတ်ချက် — ဤအစီအစဉ်သည် မိမိဆန္ဒအလျောက် လွတ်လပ်စွာ ရွေးချယ်နိုင်သော အစီအစဉ်ဖြစ်ပါသည်။ အစားအသောက်နှင့် အချိုရည်အတွက် ပွဲအဝင်တွင် ဧည့်သည်များ ကုန်ကျစရိတ်၏ တစ်စိတ်တစ်ပိုင်းကို ပေးဆောင်ခြင်းဖြင့် ဆက်လက်ပါဝင်ဆင်နွှဲနိုင်ပါသည်။',
       highlight: 'မှတ်ချက် — ဤအစီအစဉ်သည် မိမိဆန္ဒအလျောက် လွတ်လပ်စွာ ရွေးချယ်နိုင်သော အစီအစဉ်ဖြစ်ပါသည်။ အစားအသောက်နှင့် အချိုရည်အတွက် ပွဲအဝင်တွင် ဧည့်သည်များ ကုန်ကျစရိတ်၏ တစ်စိတ်တစ်ပိုင်းကို ပေးဆောင်ခြင်းဖြင့် ဆက်လက်ပါဝင်ဆင်နွှဲနိုင်ပါသည်။',
-      meta: [],
+      meta: ['Reception 17:30 · Party 18:30–20:30', '20:45~ Hon-Atsugi Station သို့ Return Shuttle'],
       action: 'ဂျပန်၍ casual party အကြောင်းလေ့လာရန် →',
-      notice: 'RSVP ဖောင်တွင် Casual Party တက်ရောက်မှုကို ဖြေကြားပေးပါ။'
+      notice: 'Casual Party တက်ရောက်မည်ဆိုပါက ကျွန်တော်တို့ ပို့ပေးထားတဲ့ Extension Pass ကို reception မှာ ပြသနိုင်ဖို့ ယူဆောင်လာပေးပါနော်။'
     }
   }
 };
 const qnaContent = {
   en: [
-    ['How do we get to the venue?', 'The venue is out in the scenic Atsugi area—about 48 minutes from Shinjuku Station. We’re running free shuttle buses from Shinjuku, Tokyo Station, and Ikebukuro! Since seats per bus are limited, please make sure to pick your preferred station in the RSVP form.'],
+    ['How do we get to the venue?', 'Hop on our free wedding guest bus! It leaves Ikebukuro at 11:10 (in front of LUMINE / Esola Ikebukuro) and Shinjuku at 11:30 (near Shinjuku Building, West Exit). Please arrive 10–15 minutes early — the bus leaves right on time. After the ceremony, it brings you back to Shinjuku / Ikebukuro around 18:00. Pickup maps are in the “Free Guest Shuttle Bus” card and our newsletter.'],
     ['Where is the exact location?', 'We’ll be celebrating at AMANDAN HILLS, 13-3 Morinosato-Wakamiya, Atsugi, Kanagawa (〒243-0124 神奈川県厚木市森の里若宮13-3). You’ll find the map in the Location card above and in our newsletter.'],
-    ['How should I share any dietary restrictions or allergies?', 'Super easy—just drop any food allergies or special dietary needs into the "Dietary Requirements" box on the RSVP form below.'],
-    ['What time should I arrive?', 'We suggest arriving around 14:10 (about 20 minutes before the 14:30 ceremony starts) so you have plenty of time to check in, grab a drink, and find a cozy seat.'],
-    ['Is there parking available on site?', 'Yes, we have parking spots available! Just let us know in advance on your RSVP form if you’ll be driving over so we can save a spot for you.'],
+    ['What about my dietary needs or allergies?', 'Thank you for sharing them in your RSVP — we’ve noted everything you told us. If anything has changed since then, please message us directly as soon as possible.'],
+    ['What time should I arrive?', 'Reception opens at 13:30 and the chapel ceremony begins at 14:30. If you’re on the guest bus, it’ll bring you in good time. Coming on your own? Please aim to arrive around 13:30 so you can settle in comfortably.'],
+    ['Is there parking available on site?', 'Yes. If you told us in your RSVP that you’d be driving, we’ve noted it. If your travel plans have changed, please let us know directly so we can update the arrangements.'],
     ['What should I wear (dress code)?', 'Check out the "Dress Code" card under the Event Details section above for all our outfit tips and color palette ideas!'],
-    ['Can I bring a plus-one (+1)?', 'Due to venue capacity, our celebration is limited to named invited guests. If you and your partner or spouse are attending together, you only need to submit one RSVP form—just be sure to include their name in the guest field so we can seat you together!'],
-    ['Can I update my RSVP details later if plans change?', 'Of course! Life happens and plans change. If you need to update anything, just reach out to us directly anytime.']
+    ['Can I bring a plus-one (+1)?', 'Our guest list is now finalized, and seats are arranged for named invited guests only. You can check your table and seat anytime — just tap “Seat” at the top of this page.'],
+    ['What if my plans change?', 'Our guest list, seating and bus seats are now confirmed — thank you so much for replying! If something unexpected comes up, please contact us directly as soon as you can so we can adjust.']
   ],
   ja: [
-    ['会場へのアクセス方法は？', '会場は緑豊かな厚木エリアにあります（新宿駅から約48分）。新宿駅・東京駅・池袋駅から無料送迎バスをご用意しています！お席に限りがありますので、RSVPフォームからご希望の乗車駅を教えてくださいね。'],
+    ['会場へのアクセス方法は？', '無料の送迎バスをご利用ください！池袋 11:10（ルミネ池袋／エソラ池袋前）、新宿 11:30（新宿駅西口・新宿ビルディング前付近）に出発します。バスは定刻どおりに出発しますので、10〜15分前にお越しください。お帰りは18:00頃に新宿・池袋へ戻ります。乗車場所の地図は「無料送迎バスのご案内」とニュースレターでご確認いただけます。'],
     ['詳しい会場の住所はいつ分かりますか？', '会場は「AMANDAN HILLS（アマンダンヒルズ）」〒243-0124 神奈川県厚木市森の里若宮13-3 です。地図は上の「会場」カードやニュースレターからご覧いただけます。'],
-    ['アレルギーや食事のリクエストはどう伝えればいいですか？', '下のRSVPフォームに「アレルギー・お食事のご要望」欄がありますので、そちらへ気軽にご記入ください！'],
-    ['当日は何時頃に着けばいいですか？', '挙式開式（14:30）の20分前、14:10頃を目安にお越しいただけると、ゆったり受付とお席の確保ができます！'],
-    ['車で行く場合、駐車場はありますか？', 'はい、お車でお越しいただけます！駐車スペースをご用意しますので、事前にRSVPフォームでお知らせくださいね。'],
+    ['アレルギーや食事のリクエストについて', 'RSVPでお知らせいただいた内容は、しっかり控えております。その後変更があった場合は、お早めに直接ご連絡ください。'],
+    ['当日は何時頃に着けばいいですか？', '受付は13:30、挙式は14:30開始です。送迎バスをご利用の方は時間に余裕をもって到着します。ご自身でお越しの方は13:30頃を目安にお越しください。'],
+    ['車で行く場合、駐車場はありますか？', 'はい、ございます。RSVPでお車でお越しとご回答いただいた方は控えております。ご予定が変わった場合は、直接ご連絡ください。'],
     ['服装（ドレスコード）の指定はありますか？', '本ページ上部の「イベントのご案内」内にある「ドレスコード」をぜひチェックしてみてください！'],
-    ['同伴者（+1）を連れて行ってもいいですか？', '会場の席数に限りがあるため、誠に恐縮ながらご招待状をお送りした方のみのご出席とさせていただいております。ご夫婦やパートナーとご一緒に出席される場合は、お二人で1回のみのRSVP回答で問題ございません。フォーム内にお連れ様のお名前をご記入ください。'],
-    ['回答後に内容を変更することはできますか？', 'もちろんいつでも変更OKです！予定が変わった際はお気軽に直接ご連絡くださいね。']
+    ['同伴者（+1）を連れて行ってもいいですか？', 'ゲストリストは確定しており、お席はご招待させていただいた方のお名前でご用意しています。ご自身のテーブル・お席は、ページ上部の「お席」からいつでもご確認いただけます。'],
+    ['予定が変わった場合は？', 'ゲストリスト・お席・送迎バスの座席はすべて確定いたしました。ご回答ありがとうございました！急なご事情がある場合は、お早めに直接ご連絡ください。']
   ],
   my: [
-    ['မင်္ဂလာပွဲ ကျင်းပမည့်နေရာကို ဘယ်လို သွားရမလဲခင်ဗျာ/ရှင့်။', 'ပွဲကျင်းပမည့်နေရာက Atsugi ဧရိယာမှာရှိပြီး Shinjuku ဘူတာကနေ မိနစ် ၄၈ မိနစ်ခန့် ကွာဝေးပါတယ်။ Shinjuku၊ Tokyo Station နဲ့ Ikebukuro ဘူတာတွေကနေ အခမဲ့ ကြိုပို့ဘတ်စ်ကားတွေ စီစဉ်ပေးထားတာမို့ RSVP ဖောင်မှာ ကြိုတင်စာရင်းပေးထားနိုင်ပါတယ်နော်။'],
+    ['မင်္ဂလာပွဲ ကျင်းပမည့်နေရာကို ဘယ်လို သွားရမလဲခင်ဗျာ/ရှင့်။', 'အခမဲ့ Wedding Guest Bus နဲ့ လာရောက်နိုင်ပါတယ်။ Ikebukuro မှ 11:10 (LUMINE / Esola Ikebukuro ရှေ့) နဲ့ Shinjuku မှ 11:30 (West Exit၊ Shinjuku Building ရှေ့အနီး) မှာ ထွက်ခွာပါမယ်။ ဘတ်စ်ကားက အချိန်တိတိ ထွက်ခွာမှာမို့ ၁၀–၁၅ မိနစ်ခန့် ကြိုတင်ရောက်ရှိပေးပါနော်။ ပွဲပြီးရင် 18:00 ခန့်မှာ Shinjuku / Ikebukuro ကို ပြန်ပို့ပေးပါမယ်။ စောင့်ရမည့်နေရာ မြေပုံကို “အခမဲ့ ကြိုပို့ဘတ်စ်ကား” ကတ်နဲ့ Newsletter မှာ ကြည့်နိုင်ပါတယ်။'],
     ['လိပ်စာအတိအကျကို ဘယ်အချိန် သိရမလဲနော်။', 'ပွဲကျင်းပမယ့်နေရာကတော့ AMANDAN HILLS ဖြစ်ပြီး လိပ်စာက 13-3 Morinosato-Wakamiya, Atsugi, Kanagawa (〒243-0124 神奈川県厚木市森の里若宮13-3) ပါ။ မြေပုံကို အပေါ်က Location ကတ်နဲ့ Newsletter မှာ ကြည့်နိုင်ပါတယ်နော်။'],
-    ['အစားအသောက် ဓာတ်မတည့်တာတွေကို ဘယ်လို အကြောင်းကြားရမလဲ။', 'အောက်ပါ RSVP ဖောင်ထဲက “အစားအသောက် လိုအပ်ချက်များ” နေရာမှာ ဓာတ်မတည့်တာတွေ ဒါမှမဟုတ် ရှောင်ချင်တာတွေကို လွတ်လပ်စွာ ရေးသားပေးနိုင်ပါတယ်ခင်ဗျာ/ရှင့်။'],
-    ['ပွဲကို ဘယ်အချိန် အရောက်လာရမလဲနော်။', 'မင်္ဂလာအခမ်းအနား စတင်မည့် ၁၄:၃၀ နာရီ မတိုင်မီ မိနစ် ၂၀ ခန့်အလို (၁၄:၁၀ နာရီခန့်) ကြိုတင်ရောက်ရှိပေးရင် အေးအေးဆေးဆေး နေရာယူနိုင်မှာပါနော်။'],
-    ['ကိုယ်ပိုင်ကားနဲ့ လာရင် ကားရပ်နားဖို့ နေရာရှိပါသလား။', 'ဟုတ်ကဲ့၊ ကားရပ်နားရန်နေရာ စီစဉ်ပေးထားပါတယ်နော်။ နေရာကြိုချထားနိုင်ဖို့အတွက် ကားနဲ့လာမယ့်အကြောင်း RSVP ဖောင်မှာ အသိပေးပေးပါနော်။'],
+    ['အစားအသောက် ဓာတ်မတည့်တာတွေကို ဘယ်လို အကြောင်းကြားရမလဲ။', 'RSVP မှာ အသိပေးထားတဲ့ အချက်အလက်တွေကို ကျွန်တော်တို့ မှတ်သားထားပြီးပါပြီ၊ ကျေးဇူးတင်ပါတယ်။ အပြောင်းအလဲ ရှိခဲ့ရင်တော့ အမြန်ဆုံး တိုက်ရိုက် ဆက်သွယ်အကြောင်းကြားပေးပါနော်။'],
+    ['ပွဲကို ဘယ်အချိန် အရောက်လာရမလဲနော်။', 'Reception ကို 13:30 မှာ ဖွင့်ပြီး Chapel Ceremony ကို 14:30 မှာ စတင်ပါမယ်။ Guest Bus နဲ့ လာမယ်ဆိုရင် အချိန်မီ ရောက်ရှိမှာပါ။ ကိုယ်တိုင် လာရောက်မယ်ဆိုရင်တော့ 13:30 ခန့်မှာ ရောက်ရှိအောင် လာပေးပါနော်။'],
+    ['ကိုယ်ပိုင်ကားနဲ့ လာရင် ကားရပ်နားဖို့ နေရာရှိပါသလား။', 'ဟုတ်ကဲ့၊ ရှိပါတယ်။ RSVP မှာ ကားနဲ့လာမယ်လို့ ဖြေကြားထားသူတွေကို မှတ်သားထားပြီးပါပြီ။ သွားလာမယ့် အစီအစဉ် ပြောင်းလဲခဲ့ရင် တိုက်ရိုက် အသိပေးပေးပါနော်။'],
     ['ဘယ်လို ဝတ်စုံဒီဇိုင်း ဝတ်ဆင်ရမလဲခင်ဗျာ/ရှင့်။', 'အထက်ပါ Information အပိုင်းထဲက “ဝတ်စုံဒီဇိုင်း စတိုင်လ်” အကွက်လေးမှာ အရောင်နှင့် စတိုင်လ် အသေးစိတ်ကို ဝင်ရောက်ကြည့်ရှုနိုင်ပါတယ်နော်။'],
-    ['အဖော် (+1) ခေါ်ဆောင်လာခွင့် ရှိပါသလား။', 'ပွဲခန်းမနေရာ အကန့်အသတ်ရှိပါသဖြင့် ဖိတ်ကြားထားသော ဧည့်သည်တော်များသာ တက်ရောက်ပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။ ဇနီးမောင်နှံ (သို့မဟုတ်) ဖိတ်ကြားထားသော စုံတွဲများ အတူတကွ တက်ရောက်မည်ဆိုပါက ဖောင်တစ်ကြိမ်သာ ဖြည့်စွက်ပေးရုံဖြင့် အတူတက်ရောက်မည့်သူ၏ အမည်ကို တစ်ပါတည်း ဖြည့်သွင်းပေးနိုင်ပါသည်။'],
-    ['RSVP ဖြည့်ပြီးသွားရင် အချက်အလက်တွေ ပြန်ပြင်လို့ ရပါသလား။', 'ဟုတ်ကဲ့၊ အချိန်မရွေး ပြင်ဆင်နိုင်ပါတယ်ခင်ဗျာ/ရှင့်။ အစီအစဉ် အပြောင်းအလဲရှိရင် ကျွန်တော်တို့ထံ တိုက်ရိုက် ဆက်သွယ် အကြောင်းကြားနိုင်ပါတယ်နော်။']
+    ['အဖော် (+1) ခေါ်ဆောင်လာခွင့် ရှိပါသလား။', 'ဧည့်သည်စာရင်းကို အတည်ပြုပြီးဖြစ်ပြီး ဖိတ်ကြားထားတဲ့ ဧည့်သည်တော်များရဲ့ အမည်နဲ့သာ ထိုင်ခုံနေရာ စီစဉ်ထားပါတယ်။ ကိုယ့်ရဲ့ စားပွဲနဲ့ ထိုင်ခုံကို ဒီစာမျက်နှာ အပေါ်က “ထိုင်ခုံ” ခလုတ်ကို နှိပ်ပြီး အချိန်မရွေး ကြည့်နိုင်ပါတယ်နော်။'],
+    ['အစီအစဉ် ပြောင်းလဲသွားရင် ဘာလုပ်ရမလဲ။', 'ဧည့်သည်စာရင်း၊ ထိုင်ခုံနဲ့ ဘတ်စ်ကားထိုင်ခုံတွေကို အတည်ပြုပြီးပါပြီ။ အကြောင်းပြန်ပေးကြတဲ့အတွက် ကျေးဇူးအများကြီးတင်ပါတယ်။ မမျှော်လင့်ဘဲ အကြောင်းတစ်ခုခု ပေါ်ပေါက်လာရင်တော့ အမြန်ဆုံး တိုက်ရိုက် ဆက်သွယ်ပေးပါနော်။']
   ]
 };
 let activeLang='en';
@@ -1532,9 +1532,10 @@ function renderInfo(key){
  infoRsvpNotice.textContent=item.notice||'';infoRsvpNotice.classList.toggle('show',Boolean(item.notice));
  infoDialogMap.classList.toggle('show',key==='location');
  document.getElementById('infoDialogVenue').classList.toggle('show',key==='location');
+ document.getElementById('infoDialogPickup').classList.toggle('show',key==='transport');
  infoDialogAction.textContent=item.action;infoDialogAction.dataset.kind=key;
  infoDialogAction.hidden=!item.action;
- const externalHref=key==='location'?'https://www.google.com/maps/search/?api=1&query=AMANDAN%20HILLS%2013-3%20Morinosato%20Wakamiya%20Atsugi%20Kanagawa':key==='afterparty'?'https://www.japanlivingguide.com/expatinfo/japaneseculture/wedding-etiquette/':'';
+ const externalHref=key==='location'?'https://www.google.com/maps/search/?api=1&query=AMANDAN%20HILLS%2013-3%20Morinosato%20Wakamiya%20Atsugi%20Kanagawa':key==='afterparty'?'https://www.japanlivingguide.com/expatinfo/japaneseculture/wedding-etiquette/':key==='transport'?'newsletter/?lang='+(activeLang==='my'?'my':'en')+'#pickup':'';
  infoDialogAction.href=externalHref||'#';
  infoDialogAction.target=externalHref?'_blank':'';infoDialogAction.rel=externalHref?'noopener noreferrer':'';
 }
@@ -1565,7 +1566,7 @@ function updateInformationScroll(progress){
 infoObjects.forEach(button=>button.addEventListener('click',()=>openInfo(button.dataset.info,button,false)));
 infoClose.addEventListener('click',closeInfo);infoOverlay.addEventListener('click',event=>{if(event.target===infoOverlay)closeInfo()});
 addEventListener('keydown',event=>{if(event.key==='Escape')closeInfo();if(event.key==='Tab'&&infoOverlay.classList.contains('open')){const focusable=[infoClose,infoDialogAction].filter(el=>!el.hidden),index=focusable.indexOf(document.activeElement);if(event.shiftKey&&index<=0){event.preventDefault();focusable.at(-1).focus()}else if(!event.shiftKey&&index===focusable.length-1){event.preventDefault();focusable[0].focus()}}});
-infoDialogAction.addEventListener('click',event=>{const key=infoDialogAction.dataset.kind;if(key==='save'){event.preventDefault();const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:AMANDAN HILLS\\, 13-3 Morinosato-Wakamiya\\, Atsugi\\, Kanagawa 243-0124\\, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}else if(key!=='location'&&key!=='afterparty'){event.preventDefault();closeInfo()}});
+infoDialogAction.addEventListener('click',event=>{const key=infoDialogAction.dataset.kind;if(key==='save'){event.preventDefault();const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:AMANDAN HILLS\\, 13-3 Morinosato-Wakamiya\\, Atsugi\\, Kanagawa 243-0124\\, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)}else if(key!=='location'&&key!=='afterparty'&&key!=='transport'){event.preventDefault();closeInfo()}});
 document.getElementById('rsvpCalendar').addEventListener('click',()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','DTSTART:20261016T053000Z','DTEND:20261016T120000Z','SUMMARY:Htoo & May Wedding','LOCATION:AMANDAN HILLS\\, 13-3 Morinosato-Wakamiya\\, Atsugi\\, Kanagawa 243-0124\\, Japan','END:VEVENT','END:VCALENDAR'].join('\r\n'),url=URL.createObjectURL(new Blob([ics],{type:'text/calendar'})),a=document.createElement('a');a.href=url;a.download='htoo-may-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),500)});
 document.getElementById('rsvpRevealThanks').addEventListener('click',()=>{if(rsvpForm.classList.contains('is-flying'))return;rsvpForm.classList.add('is-flying');rsvpChapter.classList.add('rsvp-sent')});
 function buildQnaIndex(){
