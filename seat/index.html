@@ -156,6 +156,28 @@ html[lang="my"] .roster-head h3{font-family:"Noto Serif Myanmar",serif;font-size
 .roster .tbc{margin:.7rem 0 .2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
 html[lang="my"] .roster .tbc,html[lang="ja"] .roster .tbc{letter-spacing:.02em;text-transform:none}
 @media (max-width:420px){.roster ol{grid-template-columns:1fr}}
+/* Pop-up beside the table */
+.plan .roster{position:absolute;z-index:6;margin:0;overflow:visible;padding:.7rem .75rem .55rem;border-radius:14px;
+  background:rgba(255,252,247,.98);border:1px solid rgba(124,50,65,.28);box-shadow:0 14px 34px rgba(75,52,42,.22);animation:pop .28s var(--ease)}
+.plan .roster > ol, .plan .roster > .tbc{position:relative}
+.plan .roster{display:flex;flex-direction:column}
+.plan .roster[hidden]{display:none}
+.plan .roster .roster-scroll{overflow:auto;min-height:0;flex:1 1 auto;overscroll-behavior:contain}
+.plan .roster ol{grid-template-columns:1fr;gap:0}
+.plan .roster li{font-size:.8rem;padding:.26rem .2rem;gap:.45rem}
+.plan .roster li .n{flex-basis:1.35rem;height:1.35rem;font-size:.62rem}
+.plan .roster-head{margin-bottom:.3rem;padding:0 1.4rem .3rem 0}
+.plan .roster-head h3{font-size:1.15rem}
+html[lang="my"] .plan .roster-head h3{font-size:.98rem}
+.plan .roster-head span{font-size:.66rem}
+.plan .roster .tbc{margin:.4rem 0 .1rem;font-size:.6rem}
+.roster-x{position:absolute;top:.35rem;right:.4rem;width:1.7rem;height:1.7rem;border:0;border-radius:50%;background:none;color:var(--muted);font-size:1.15rem;line-height:1;cursor:pointer}
+.roster-x:hover{background:rgba(124,50,65,.08);color:var(--burg)}
+.plan .roster::before{content:"";position:absolute;top:var(--arrow,50%);width:12px;height:12px;background:inherit;transform:translateY(-50%) rotate(45deg);
+  border:1px solid rgba(124,50,65,.28)}
+.plan .roster.from-left::before{left:-7px;border-right:0;border-top:0}
+.plan .roster:not(.from-left)::before{right:-7px;border-left:0;border-bottom:0}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
 .plan-reset{margin-top:.9rem;background:none;border:1px solid rgba(124,50,65,.3);color:var(--burg);border-radius:999px;padding:.6rem 1.05rem;font:500 .6rem/1 Georgia,serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .plan-reset:hover{background:rgba(124,50,65,.06)}
 html[lang="my"] .plan-reset,html[lang="ja"] .plan-reset{letter-spacing:.02em;text-transform:none;font-family:var(--sans);font-size:.76rem}
@@ -238,8 +260,8 @@ body.intro-on .rise{animation-play-state:paused}
     <p class="eyebrow t" id="planTitle" data-t="planTitle">Seating plan</p>
     <p class="plan-dir" id="planDir" hidden></p>
     <p class="plan-hint t" id="planHint" data-t="planHint">Tap a table to see who's sitting there.</p>
-    <div class="plan"><svg id="floor" viewBox="95 150 870 1065" role="group" aria-label="Seating plan: sweetheart table at the top, tables A to H below"></svg></div>
-    <div class="roster" id="roster" hidden aria-live="polite"></div>
+    <div class="plan"><svg id="floor" viewBox="95 150 870 1065" role="group" aria-label="Seating plan: sweetheart table at the top, tables A to H below"></svg>
+      <div class="roster" id="roster" hidden aria-live="polite"></div></div>
     <button class="plan-reset t" id="planReset" type="button" data-t="showAll" hidden>Show all tables</button>
     <p class="plan-note t" data-t="planNote">The plan is drawn as you face the sweetheart table.</p>
   </section>
@@ -477,10 +499,37 @@ body.intro-on .rise{animation-play-state:paused}
     var tbc = people.filter(function(g){ return !seatNo(g); }), tbcRows = tbc.map(function(g){
       return '<li class="'+(g===selected?'me':'')+'" data-g="'+guests.indexOf(g)+'"><span class="n">·</span><span class="nm">'+esc(g.name)+'</span></li>';
     }).join("");
-    $roster.innerHTML = '<div class="roster-head"><h3>'+esc(t.table)+' '+esc(key)+'</h3><span>'+esc(t.guestsN.replace("{n}",people.length))+'</span></div>'+
-      '<ol>'+rows+'</ol>' + (tbc.length ? '<p class="tbc">'+esc(t.seatTbc)+'</p><ol>'+tbcRows+'</ol>' : '');
+    $roster.innerHTML = '<button class="roster-x" type="button" aria-label="Close">×</button>'+
+      '<div class="roster-head"><h3>'+esc(t.table)+' '+esc(key)+'</h3><span>'+esc(t.guestsN.replace("{n}",people.length))+'</span></div>'+
+      '<div class="roster-scroll"><ol>'+rows+'</ol>' + (tbc.length ? '<p class="tbc">'+esc(t.seatTbc)+'</p><ol>'+tbcRows+'</ol>' : '')+'</div>';
     $roster.hidden = false;
+    placeRoster();
+    // keep the highlighted guest in view inside the card (without scrolling the page)
+    var me = $roster.querySelector("li.me"), sc = $roster.querySelector(".roster-scroll");
+    if(me && sc) sc.scrollTop = Math.max(0, me.offsetTop - sc.offsetTop - sc.clientHeight/2);
   }
+
+  // Float the guest list beside its table, on the side facing the open middle of the room
+  var VB = [95,150,870,1065];
+  function placeRoster(){
+    var tb = TABLES[activeTable]; if(!tb || $roster.hidden) return;
+    var box = $roster.parentElement, br = box.getBoundingClientRect(), sr = $floor.getBoundingClientRect();
+    var k = sr.width / VB[2];
+    var cx = sr.left - br.left + (tb.c[0]-VB[0])*k, cy = sr.top - br.top + (tb.c[1]-VB[1])*k;
+    var reach = (tb.long ? 112 : 132) * k, gap = 8;
+    var avail = tb.side==="left" ? br.width - (cx + reach + gap) - 6 : (cx - reach - gap) - 6;
+    var w = Math.max(168, Math.min(270, avail));
+    $roster.style.width = w + "px";
+    $roster.style.maxHeight = Math.min(br.height - 12, 380) + "px";
+    var h = $roster.offsetHeight;
+    var left = tb.side==="left" ? cx + reach + gap : cx - reach - gap - w;
+    left = Math.max(6, Math.min(br.width - w - 6, left));
+    var top = Math.max(6, Math.min(br.height - h - 6, cy - h/2));
+    $roster.style.left = left + "px"; $roster.style.top = top + "px";
+    $roster.classList.toggle("from-left", tb.side==="left");
+    $roster.style.setProperty("--arrow", Math.max(16, Math.min(h - 16, cy - top)) + "px");
+  }
+  window.addEventListener("resize", placeRoster);
 
   function clearPlan(){
     activeTable = null; selected = null; planSource = null;
@@ -528,6 +577,7 @@ body.intro-on .rise{animation-play-state:paused}
     e.preventDefault(); tapTable(gEl, null);
   });
   $roster.addEventListener("click", function(e){
+    if(e.target.closest(".roster-x")){ clearPlan(); return; }
     var li = e.target.closest("li[data-g]"); if(!li) return;
     selectTable(activeTable, guests[+li.getAttribute("data-g")], planSource);
   });
