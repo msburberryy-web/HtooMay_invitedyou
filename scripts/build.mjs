@@ -11,7 +11,10 @@ const assetPattern = /assets\/[A-Za-z0-9_./-]+?\.(?:png|jpe?g|webp|gif|svg|mp3|o
 const pages = [
   { source: "index.html", destination: "index.html" },
   { source: "casualparty.html", destination: "casualparty.html" },
+  { source: "seat/index.html", destination: "seat/index.html" },
 ];
+// Non-HTML files a page loads at runtime (not picked up by the asset scan).
+const extraFiles = ["seat/guests.json"];
 
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
@@ -31,7 +34,7 @@ for (const page of pages) {
 }
 
 let assetBytes = 0;
-for (const relativePath of [...assetPaths].sort()) {
+for (const relativePath of [...[...assetPaths].sort(), ...extraFiles]) {
   const source = path.join(root, ...relativePath.split("/"));
   const destination = path.join(output, ...relativePath.split("/"));
   await mkdir(path.dirname(destination), { recursive: true });
