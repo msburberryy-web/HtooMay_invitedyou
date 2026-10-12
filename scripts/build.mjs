@@ -12,6 +12,7 @@ const pages = [
   { source: "index.html", destination: "index.html" },
   { source: "casualparty.html", destination: "casualparty.html" },
   { source: "seat/index.html", destination: "seat/index.html" },
+  { source: "newsletter/index.html", destination: "newsletter/index.html" },
 ];
 // Non-HTML files a page loads at runtime (not picked up by the asset scan).
 const extraFiles = ["seat/guests.json"];
