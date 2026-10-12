@@ -105,6 +105,15 @@ html[lang="my"] .route h3{font-family:"Noto Serif Myanmar",serif;font-size:.95re
 .bullets li{margin:.45rem 0;font-size:.93rem}
 .bullets li::marker{color:var(--burg)}
 
+.stops{display:grid;gap:.8rem;margin-top:.9rem}
+.stop{border:1px solid var(--line);border-radius:14px;padding:1rem;background:rgba(251,245,233,.75)}
+.stop-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.stop h3{font:500 1.25rem/1.2 var(--serif);color:var(--burg);margin:0;letter-spacing:.04em}
+.stop-time{font:400 1.5rem/1 var(--serif);color:var(--burg)}
+.stop p{margin:.3rem 0;font-size:.92rem}
+.stop-jp{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:400;color:var(--ink)}
+.stop-addr{font-size:.8rem!important;color:var(--muted)}
+.stop .btn{margin-top:.55rem;padding:.65rem 1rem}
 .weather{display:flex;align-items:center;gap:1rem;margin:.4rem 0 .6rem}
 .weather img{width:48px;height:auto}
 .weather .temp{font:400 1.6rem/1 var(--serif);color:var(--burg)}
@@ -187,6 +196,32 @@ html[lang="my"] .route h3{font-family:"Noto Serif Myanmar",serif;font-size:.95re
     <p class="note alert" data-lang-block="my"><b>အရေးကြီးသော အသိပေးချက်</b> — ဘတ်စ်ကားက သတ်မှတ်ထားတဲ့ အချိန်အတိုင်း တိတိကျကျ ထွက်ခွာမှာ ဖြစ်တာကြောင့် meeting point ကို ၁၀–၁၅ မိနစ်ခန့် ကြိုတင်ရောက်ရှိပေးပါရန် မေတ္တာရပ်ခံအပ်ပါတယ်။ နောက်ကျပြီးမှ ရောက်လာပါက စောင့်ဆိုင်းပေးနိုင်မှာ မဟုတ်တာကို နားလည်ပေးကြဖို့ လေးစားစွာ အသိပေးအပ်ပါတယ်။</p>
   </section>
   <figure class="figure wide"><img src="../assets/newsletter/guest-bus-ticket.png" width="779" height="574" loading="lazy" alt="Wedding Guest Bus Ticket — to AMANDAN HILLS from Ikebukuro 11:10 and Shinjuku 11:30; return to Shinjuku and Ikebukuro at 18:00"></figure>
+
+  <!-- Bus pickup points -->
+  <section class="card" id="pickup">
+    <p class="eyebrow">Bus pickup points</p>
+    <h2><span data-lang-block="en">Where to meet the bus</span><span data-lang-block="my">ဘတ်စ်ကား စောင့်ရမည့်နေရာ</span></h2>
+    <p data-lang-block="en">Please meet near the circled area on the map. The bus will stop wherever it's permitted on the day, so look out for our team nearby.</p>
+    <p data-lang-block="my">မြေပုံပေါ်မှာ အဝိုင်းပြထားတဲ့ နေရာအနီးမှာ စောင့်ဆိုင်းပေးပါနော်။ ဘတ်စ်ကားက ပွဲနေ့မှာ ရပ်ခွင့်ရှိတဲ့ နေရာမှာ ရပ်မှာ ဖြစ်တာကြောင့် အနီးအနားမှာ ကျွန်တော်တို့ အဖွဲ့ဝင်တွေကို ရှာကြည့်ပေးပါ။</p>
+
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-top"><h3>Shinjuku</h3><span class="stop-time">11:30</span></div>
+        <p class="stop-jp">新宿駅西口・新宿ビルディング前付近</p>
+        <p><span data-lang-block="en">Near Shinjuku Building · Shinjuku Station West Exit</span><span data-lang-block="my">Shinjuku ဘူတာ West Exit · Shinjuku Building ရှေ့အနီး</span></p>
+        <p class="stop-addr">東京都新宿区西新宿1丁目8-1 · 1-8-1 Nishi-Shinjuku, Shinjuku-ku</p>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%AE%BF%E3%83%93%E3%83%AB%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%96%B0%E5%AE%BF%E5%8C%BA%E8%A5%BF%E6%96%B0%E5%AE%BF1-8-1" target="_blank" rel="noopener noreferrer"><span data-lang-block="en">Shinjuku pickup on Google Map</span><span data-lang-block="my">Shinjuku နေရာကို Google Map တွင်ကြည့်ရန်</span></a>
+      </div>
+      <div class="stop">
+        <div class="stop-top"><h3>Ikebukuro</h3><span class="stop-time">11:10</span></div>
+        <p class="stop-jp">池袋駅・ルミネ池袋／エソラ池袋前</p>
+        <p><span data-lang-block="en">In front of LUMINE Ikebukuro / Esola Ikebukuro — near the Tobu Tojo Line South Exit / JR Metropolitan Exit</span><span data-lang-block="my">LUMINE Ikebukuro / Esola Ikebukuro ရှေ့ — Tobu Tojo Line South Exit / JR Metropolitan Exit အနီး</span></p>
+        <p class="stop-addr">東武東上線南口・JRメトロポリタン口付近</p>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AB%E3%83%9F%E3%83%8D%E6%B1%A0%E8%A2%8B" target="_blank" rel="noopener noreferrer"><span data-lang-block="en">Ikebukuro pickup on Google Map</span><span data-lang-block="my">Ikebukuro နေရာကို Google Map တွင်ကြည့်ရန်</span></a>
+      </div>
+    </div>
+  </section>
+  <figure class="figure wide"><img src="../assets/newsletter/bus-pickup-map.webp" width="1484" height="1060" loading="lazy" alt="Pickup maps — Shinjuku: near Shinjuku Building, Shinjuku Station West Exit (1-8-1 Nishi-Shinjuku). Ikebukuro: in front of LUMINE Ikebukuro / Esola Ikebukuro, near the Tobu Tojo Line South Exit / JR Metropolitan Exit."></figure>
 
   <!-- After the ceremony -->
   <section class="card">
