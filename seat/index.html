@@ -97,6 +97,10 @@ html[lang="my"] .hint,html[lang="ja"] .hint{font-style:normal}
 .miss .h{font-family:var(--serif);font-size:1.2rem;color:var(--burg);margin-bottom:.4rem}
 .miss .b{font-size:.86rem;color:var(--muted);max-width:22rem;margin:0 auto}
 .more{font-size:.75rem;color:var(--muted);margin-top:.4rem}
+.dym{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--burg);margin:0 0 .8rem}
+html[lang="my"] .dym,html[lang="ja"] .dym{font-style:normal}
+.card .aka{display:block;font-family:var(--sans);font-size:.72rem;color:var(--muted);margin-top:.1rem}
+.miss .tip{margin-top:.7rem;font-size:.78rem;font-style:italic}
 .status{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;min-height:1em}
 
 footer{text-align:center;padding:1.8rem var(--pad) max(2rem,env(safe-area-inset-bottom));border-top:1px solid var(--line);
@@ -134,7 +138,6 @@ footer a:hover{color:var(--gold)}
 </main>
 
 <footer>
-  <p class="by t" data-t="by">Presented by</p>
   <a href="https://www.facebook.com/p/Amor%C3%A9wedding-Tokyo-61575756988945/" target="_blank" rel="noopener noreferrer">Amoré Wedding Tokyo</a>
 </footer>
 
@@ -148,15 +151,18 @@ footer a:hover{color:var(--gold)}
     en:{nameMay:"May",nameHtoo:"Htoo",back:"← Invitation",eyebrow:"Welcome",title:"Please find your seat",
       placeholder:"Type your name…",hint:"Enter your name to see your table",table:"Table",seat:"Seat",
       notFoundH:"We couldn't find you",notFoundB:"No match for “{q}”. Please check the spelling, or ask our welcome staff — we'll gladly help.",
-      more:"Keep typing to narrow down ({n} more)",loading:"Loading guest list…",by:"Presented by"},
+      more:"Keep typing to narrow down ({n} more)",loading:"Loading guest list…",
+      didYouMean:"Did you mean…?",tryHint:"Tip: try just your first name, or one part of your name."},
     ja:{nameMay:"May",nameHtoo:"Htoo",back:"← 招待状へ",eyebrow:"ようこそ",title:"お席をご確認ください",
       placeholder:"お名前を入力…",hint:"お名前を入力すると、お席が表示されます",table:"テーブル",seat:"席番号",
       notFoundH:"お名前が見つかりません",notFoundB:"「{q}」に一致するお名前がありません。綴りをご確認いただくか、受付スタッフにお声がけください。",
-      more:"さらに入力して絞り込んでください（他 {n} 件）",loading:"ゲストリストを読み込み中…",by:"プロデュース"},
+      more:"さらに入力して絞り込んでください（他 {n} 件）",loading:"ゲストリストを読み込み中…",
+      didYouMean:"もしかして…？",tryHint:"ヒント：お名前の一部（ローマ字）だけでも検索できます。"},
     my:{nameMay:"မေ",nameHtoo:"ထူး",back:"← ဖိတ်စာသို့",eyebrow:"ကြိုဆိုပါသည်",title:"သင်၏ထိုင်ခုံကို ရှာဖွေပါ",
       placeholder:"သင်၏အမည်ကို ရိုက်ထည့်ပါ…",hint:"စားပွဲနှင့် ထိုင်ခုံအမှတ်ကို သိရှိရန် အမည်ရိုက်ထည့်ပါ",table:"စားပွဲ",seat:"ထိုင်ခုံ",
       notFoundH:"အမည် မတွေ့ရှိပါ",notFoundB:"“{q}” နှင့် ကိုက်ညီသော အမည်မတွေ့ပါ။ စာလုံးပေါင်း ပြန်စစ်ပါ သို့မဟုတ် ကြိုဆိုရေးဝန်ထမ်းများကို မေးမြန်းပါ။",
-      more:"ဆက်လက်ရိုက်ထည့်ပါ (နောက်ထပ် {n} ဦး)",loading:"ဧည့်စာရင်း ရယူနေသည်…",by:"စီစဉ်တင်ဆက်သူ"}
+      more:"ဆက်လက်ရိုက်ထည့်ပါ (နောက်ထပ် {n} ဦး)",loading:"ဧည့်စာရင်း ရယူနေသည်…",
+      didYouMean:"ဤအမည်လား…?",tryHint:"အကြံပြုချက် - အမည်၏ တစ်စိတ်တစ်ပိုင်းကိုသာ (အင်္ဂလိပ်စာဖြင့်) ရိုက်ကြည့်ပါ။"}
   };
 
   var lang = "en", guests = [], loading = true;
@@ -183,27 +189,102 @@ footer a:hover{color:var(--gold)}
     $status.textContent = loading ? t.loading : "";
     if(!q){ $res.innerHTML = '<p class="hint">'+esc(t.hint)+'</p>'; return; }
     if(loading){ $res.innerHTML = ""; return; }
-    var qq = q.replace(/ /g,"");
-    var hits = guests.filter(function(g){ var n = norm(g.name); return n.indexOf(q)>-1 || n.replace(/ /g,"").indexOf(qq)>-1; });
-    // Exact / starts-with matches first
-    hits.sort(function(a,b){
-      var an=norm(a.name), bn=norm(b.name);
-      var as=(an===q?0:an.indexOf(q)===0?1:2), bs=(bn===q?0:bn.indexOf(q)===0?1:2);
-      return as-bs || an.localeCompare(bn);
-    });
+    var r = search(raw), hits = r.hits;
     if(!hits.length){
-      $res.innerHTML = '<div class="miss"><p class="h">'+esc(t.notFoundH)+'</p><p class="b">'+esc(t.notFoundB.replace("{q}",raw.trim()))+'</p></div>';
+      $res.innerHTML = '<div class="miss"><p class="h">'+esc(t.notFoundH)+'</p><p class="b">'+esc(t.notFoundB.replace("{q}",raw.trim()))+'</p>'+
+        '<p class="b tip">'+esc(t.tryHint)+'</p></div>';
       return;
     }
-    var shown = hits.slice(0,MAX_RESULTS), one = hits.length===1;
-    $res.innerHTML = shown.map(function(g,i){
+    var shown = hits.slice(0,MAX_RESULTS), one = hits.length===1 && !r.fuzzy;
+    $res.innerHTML = (r.fuzzy ? '<p class="dym t">'+esc(t.didYouMean)+'</p>' : '') + shown.map(function(g,i){
       return '<div class="card'+(one?' one':'')+'" style="animation-delay:'+(i*0.05)+'s">'+
-        '<span class="who">'+esc(g.name)+'</span>'+
+        '<span class="who">'+esc(g.name)+(g.aka.length ? '<small class="aka">'+esc(g.aka.join(" · "))+'</small>' : '')+'</span>'+
         '<span class="nums">'+
           '<span class="tbl"><span class="lbl t">'+esc(t.table)+'</span><span class="num">'+esc(g.table)+'</span></span>'+
           (g.seat ? '<span class="tbl"><span class="lbl t">'+esc(t.seat)+'</span><span class="num">'+esc(g.seat)+'</span></span>' : '')+
         '</span></div>';
     }).join("") + (hits.length>MAX_RESULTS ? '<p class="more">'+esc(t.more.replace("{n}",hits.length-MAX_RESULTS))+'</p>' : "");
+  }
+
+  // ---- Name matching ----
+  // Guests may type names differently from the sheet: other word order, with or
+  // without honorifics (U, Daw, Ko, Ma…), joined words, or small spelling slips
+  // (Htet/Het, Myat/Mya, Thandar/Thanda). Pass 1 = forgiving exact match,
+  // pass 2 (only if pass 1 finds nothing) = "Did you mean…?" fuzzy suggestions.
+  var HONORIFICS = ["u","daw","ko","ma","mg","dr","mr","mrs","ms","miss","saya","sayar","sayama","san","sama","chan","kun"];
+  var FUZZY_MAX = 6;
+
+  function words(s){
+    return String(s||"").normalize("NFKD").replace(/[̀-ͯ]/g,"").toLowerCase()
+      .replace(/[^\p{L}\p{M}\p{N}]+/gu," ").trim().split(" ").filter(Boolean);
+  }
+  function core(ws){ var c = ws.filter(function(w){ return HONORIFICS.indexOf(w)<0; }); return c.length ? c : ws; }
+  // Sound-alike key for romanised names: drop "h" after a consonant (Htoo→Too, Thet→Tet), squeeze doubled letters (Aung→Aung, Moee→Moe)
+  function key(w){ return w.replace(/([b-df-gj-np-tv-z])h/g,"$1").replace(/(.)\1+/g,"$1"); }
+  function lev(a,b){
+    if(a===b) return 0; if(!a.length) return b.length; if(!b.length) return a.length;
+    var prev=[], cur, i, j;
+    for(j=0;j<=b.length;j++) prev[j]=j;
+    for(i=1;i<=a.length;i++){ cur=[i];
+      for(j=1;j<=b.length;j++) cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1));
+      prev=cur; }
+    return prev[b.length];
+  }
+  function allowed(len){ return len<=2 ? 0 : len<=4 ? 1 : 2; }
+
+  function prep(g){
+    if(g._p) return g._p;
+    var names = [g.name].concat(g.aka);
+    return g._p = names.map(function(n){
+      var ws = core(words(n));
+      return {ws:ws, keys:ws.map(key), joined:ws.join(""), flat:words(n).join(" ")};
+    });
+  }
+
+  function search(raw){
+    var qAll = words(raw);
+    if(!qAll.length) return {hits:[], fuzzy:false};
+    var qw = core(qAll), qFlat = qAll.join(" "), qJoined = qw.join("");
+
+    // Pass 1: substring of the full name, joined-words match, or every typed word starts a name word (any order)
+    var exact = [];
+    guests.forEach(function(g){
+      var best = 99;
+      prep(g).forEach(function(v){
+        var s = 99;
+        if(v.flat===qFlat || v.joined===qJoined) s = 0;
+        else if(v.flat.indexOf(qFlat)===0) s = 1;
+        else if(v.flat.indexOf(qFlat)>-1 || v.joined.indexOf(qJoined)>-1) s = 2;
+        else if(qw.every(function(q){ return v.ws.some(function(w){ return w.indexOf(q)===0; }); })) s = 3;
+        if(s<best) best = s;
+      });
+      if(best<99) exact.push({g:g, s:best});
+    });
+    if(exact.length){
+      exact.sort(function(a,b){ return a.s-b.s || a.g.name.localeCompare(b.g.name); });
+      return {hits:exact.map(function(x){return x.g;}), fuzzy:false};
+    }
+
+    // Pass 2: sound-alike + small typos, per word and on the whole name
+    var qk = qw.map(key), qJk = key(qJoined), fuzzy = [];
+    guests.forEach(function(g){
+      var best = 99;
+      prep(g).forEach(function(v){
+        var total = 0, ok = qk.every(function(q){
+          if(q.length<2) return true;
+          var d = Math.min.apply(null, v.keys.map(function(k){
+            return k.indexOf(q)===0 ? 0 : lev(q, k.length>q.length+2 ? k.slice(0,q.length+1) : k);
+          }));
+          total += d; return d <= allowed(q.length);
+        });
+        if(ok && total<best) best = total;
+        var dj = lev(qJk, key(v.joined));
+        if(dj <= allowed(qJk.length) && dj<best) best = dj;
+      });
+      if(best<99) fuzzy.push({g:g, s:best});
+    });
+    fuzzy.sort(function(a,b){ return a.s-b.s || a.g.name.localeCompare(b.g.name); });
+    return {hits:fuzzy.slice(0,FUZZY_MAX).map(function(x){return x.g;}), fuzzy:true};
   }
 
   // ---- Data loading ----
@@ -253,7 +334,8 @@ footer a:hover{color:var(--gold)}
   function fromJson(list){
     return (list||[]).map(function(g){ return {name:String(g.name||"").trim(),
         table:String(g.table!=null&&g.table!==""?g.table:(g.tableNumber!=null?g.tableNumber:"?")),
-        seat:String(g.seat!=null?g.seat:"").trim()}; })
+        seat:String(g.seat!=null?g.seat:"").trim(),
+        aka:(Array.isArray(g.aka) ? g.aka : String(g.aka||"").split(/[,、;\/]/)).map(function(s){return String(s).trim();}).filter(Boolean)}; })
       // drop empty names and header rows repeated inside the sheet ("Guest Names | Table No | Seat No")
       .filter(function(g){return g.name && !/^table( no\.?| number)?$/i.test(g.table);});
   }
