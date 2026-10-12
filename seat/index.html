@@ -101,6 +101,29 @@ html[lang="my"] .hint,html[lang="ja"] .hint{font-style:normal}
 html[lang="my"] .dym,html[lang="ja"] .dym{font-style:normal}
 .card .aka{display:block;font-family:var(--sans);font-size:.72rem;color:var(--muted);margin-top:.1rem}
 .miss .tip{margin-top:.7rem;font-size:.78rem;font-style:italic}
+.card.pick{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card.pick:hover{border-color:rgba(124,50,65,.35)}
+.card.sel{border-color:var(--burg);box-shadow:0 0 0 2px rgba(124,50,65,.15),0 6px 22px rgba(92,62,46,.08)}
+.plan-wrap{width:100%;margin-top:1.4rem;text-align:center}
+.plan-wrap .eyebrow{margin-top:0}
+.plan-dir{font-family:var(--serif);font-size:1.08rem;color:var(--ink);margin:.1rem 0 .9rem}
+.plan-dir b{color:var(--burg);font-weight:500}
+html[lang="my"] .plan-dir{font-size:.98rem;line-height:1.9}
+.plan{position:relative;width:100%;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(92,62,46,.12);background:#f4efe4}
+.plan img{display:block;width:100%;height:auto}
+.ring{position:absolute;transform:translate(-50%,-50%) rotate(var(--rot,0deg));border:3px solid var(--burg);border-radius:50%;box-shadow:0 0 0 6px rgba(124,50,65,.14);animation:glow 1.8s ease-in-out infinite;pointer-events:none}
+.ring.long{border-radius:28px}
+.pin{position:absolute;width:26px;height:26px;transform:translate(-50%,-50%);border-radius:50%;border:3px solid var(--burg);background:rgba(124,50,65,.14);box-shadow:0 0 0 2px #fff,0 3px 10px rgba(0,0,0,.2);pointer-events:none}
+.pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--burg);animation:ping 1.6s ease-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 12px rgba(124,50,65,.06)}}
+@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.5);opacity:0}}
+.plan-note{font-size:.72rem;letter-spacing:.06em;color:var(--muted);margin:.7rem 0 0}
+.guide{width:100%;margin-top:1.4rem;text-align:center}
+.guide summary{cursor:pointer;display:inline-block;padding:.6rem 1rem;border-radius:999px;border:1px solid rgba(124,50,65,.3);color:var(--burg);font:500 .62rem/1 Georgia,serif;letter-spacing:.14em;text-transform:uppercase;list-style:none}
+.guide summary::-webkit-details-marker{display:none}
+html[lang="my"] .guide summary,html[lang="ja"] .guide summary{letter-spacing:.02em;text-transform:none;font-family:var(--sans);font-size:.75rem}
+.guide img{display:block;width:100%;height:auto;margin-top:1rem;border-radius:14px;box-shadow:0 10px 30px rgba(92,62,46,.12)}
+@media (prefers-reduced-motion:reduce){.ring,.pin::after{animation:none}}
 .status{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;min-height:1em}
 
 footer{text-align:center;padding:1.8rem var(--pad) max(2rem,env(safe-area-inset-bottom));border-top:1px solid var(--line);
@@ -135,6 +158,22 @@ footer a:hover{color:var(--gold)}
   </div>
   <p class="status t" id="status" aria-live="polite"></p>
   <div id="results" aria-live="polite"></div>
+
+  <section id="plan" class="plan-wrap" hidden aria-labelledby="planTitle">
+    <p class="eyebrow t" id="planTitle" data-t="planTitle">Your seat</p>
+    <p class="plan-dir" id="planDir"></p>
+    <div class="plan" id="planBox">
+      <img src="../assets/seat/table-guide.webp" width="1055" height="1491" alt="Table guide: sweetheart table at the top, tables A to H arranged in two columns below it">
+      <span class="ring" id="planRing" hidden></span>
+      <span class="pin" id="planPin" hidden></span>
+    </div>
+    <p class="plan-note t" data-t="planNote">The plan is drawn as you face the sweetheart table.</p>
+  </section>
+
+  <details class="guide" id="fullGuide">
+    <summary class="t" data-t="guideOpen">View the full table guide</summary>
+    <img src="../assets/seat/table-guide.webp" width="1055" height="1491" loading="lazy" alt="Table guide: sweetheart table at the top, tables A to H with numbered seats, and a seat orientation guide for round and long tables">
+  </details>
 </main>
 
 <footer>
@@ -152,17 +191,29 @@ footer a:hover{color:var(--gold)}
       placeholder:"Type your name in English…",hint:"Enter your name to see your table",table:"Table",seat:"Seat",
       notFoundH:"We couldn't find you",notFoundB:"No match for “{q}”. Please check the spelling, or ask our welcome staff — we'll gladly help.",
       more:"Keep typing to narrow down ({n} more)",loading:"Loading guest list…",
-      didYouMean:"Did you mean…?",tryHint:"Tip: try just your first name, or one part of your name."},
+      didYouMean:"Did you mean…?",tryHint:"Tip: try just your first name, or one part of your name.",
+      planTitle:"Your seat",planNote:"The plan is drawn as you face the sweetheart table.",guideOpen:"View the full table guide",
+      tapHint:"Tap a name to see it on the table guide",
+      left:"on the left",right:"on the right",rows:["front row","2nd row","3rd row","back row"],
+      dir:"Facing the sweetheart table, <b>Table {t}</b> is {side}, {row}.",dirSeat:" Your seat is <b>No. {s}</b>."},
     ja:{nameMay:"May",nameHtoo:"Htoo",back:"← 招待状へ",eyebrow:"ようこそ",title:"お席をご確認ください",
       placeholder:"お名前を英語（ローマ字）で入力…",hint:"お名前を入力すると、お席が表示されます",table:"テーブル",seat:"席番号",
       notFoundH:"お名前が見つかりません",notFoundB:"「{q}」に一致するお名前がありません。綴りをご確認いただくか、受付スタッフにお声がけください。",
       more:"さらに入力して絞り込んでください（他 {n} 件）",loading:"ゲストリストを読み込み中…",
-      didYouMean:"もしかして…？",tryHint:"ヒント：お名前の一部（ローマ字）だけでも検索できます。"},
+      didYouMean:"もしかして…？",tryHint:"ヒント：お名前の一部（ローマ字）だけでも検索できます。",
+      planTitle:"あなたのお席",planNote:"高砂（メインテーブル）を正面に見た配置図です。",guideOpen:"席次表全体を見る",
+      tapHint:"お名前をタップすると配置図に表示されます",
+      left:"左側",right:"右側",rows:["最前列","前から2列目","前から3列目","最後列"],
+      dir:"高砂を正面に見て、<b>{t}テーブル</b>は{side}の{row}です。",dirSeat:"お席は<b>{s}番</b>です。"},
     my:{nameMay:"မေ",nameHtoo:"ထူး",back:"← ဖိတ်စာသို့",eyebrow:"ကြိုဆိုပါသည်",title:"သင်၏ထိုင်ခုံကို ရှာဖွေပါ",
       placeholder:"အမည်ကို အင်္ဂလိပ်လို ရိုက်ထည့်ပါ…",hint:"စားပွဲနှင့် ထိုင်ခုံအမှတ်ကို သိရှိရန် အမည်ရိုက်ထည့်ပါ",table:"စားပွဲ",seat:"ထိုင်ခုံ",
       notFoundH:"အမည် မတွေ့ရှိပါ",notFoundB:"“{q}” နှင့် ကိုက်ညီသော အမည်မတွေ့ပါ။ စာလုံးပေါင်း ပြန်စစ်ပါ သို့မဟုတ် ကြိုဆိုရေးဝန်ထမ်းများကို မေးမြန်းပါ။",
       more:"ဆက်လက်ရိုက်ထည့်ပါ (နောက်ထပ် {n} ဦး)",loading:"ဧည့်စာရင်း ရယူနေသည်…",
-      didYouMean:"ဤအမည်လား…?",tryHint:"အကြံပြုချက် - အမည်၏ တစ်စိတ်တစ်ပိုင်းကိုသာ (အင်္ဂလိပ်စာဖြင့်) ရိုက်ကြည့်ပါ။"}
+      didYouMean:"ဤအမည်လား…?",tryHint:"အကြံပြုချက် - အမည်၏ တစ်စိတ်တစ်ပိုင်းကိုသာ (အင်္ဂလိပ်စာဖြင့်) ရိုက်ကြည့်ပါ။",
+      planTitle:"သင့်ထိုင်ခုံ",planNote:"သတို့သား၊ သတို့သမီး ထိုင်မည့် Sweetheart Table ကို မျက်နှာမူထားသည့်အတိုင်း ပြထားသော မြေပုံဖြစ်ပါသည်။",guideOpen:"စားပွဲနေရာပြ မြေပုံအပြည့်အစုံ ကြည့်ရန်",
+      tapHint:"အမည်ကို နှိပ်ပြီး မြေပုံပေါ်တွင် ကြည့်နိုင်ပါသည်",
+      left:"ဘယ်ဘက်ခြမ်း",right:"ညာဘက်ခြမ်း",rows:["ရှေ့ဆုံးတန်း","ရှေ့မှ ဒုတိယတန်း","ရှေ့မှ တတိယတန်း","နောက်ဆုံးတန်း"],
+      dir:"Sweetheart Table ကို မျက်နှာမူပြီး ကြည့်လျှင် <b>စားပွဲ {t}</b> သည် {side} {row}တွင် ရှိပါသည်။",dirSeat:" သင့်ထိုင်ခုံနံပါတ်မှာ <b>{s}</b> ဖြစ်ပါသည်။"}
   };
 
   var lang = "en", guests = [], loading = true;
@@ -187,24 +238,78 @@ footer a:hover{color:var(--gold)}
     var t = T[lang], raw = $q.value, q = norm(raw);
     $box.classList.toggle("has-q", raw.length>0);
     $status.textContent = loading ? t.loading : "";
-    if(!q){ $res.innerHTML = '<p class="hint">'+esc(t.hint)+'</p>'; return; }
-    if(loading){ $res.innerHTML = ""; return; }
+    shownList = [];
+    if(!q){ $res.innerHTML = '<p class="hint">'+esc(t.hint)+'</p>'; showPlan(null); return; }
+    if(loading){ $res.innerHTML = ""; showPlan(null); return; }
     var r = search(raw), hits = r.hits;
     if(!hits.length){
       $res.innerHTML = '<div class="miss"><p class="h">'+esc(t.notFoundH)+'</p><p class="b">'+esc(t.notFoundB.replace("{q}",raw.trim()))+'</p>'+
         '<p class="b tip">'+esc(t.tryHint)+'</p></div>';
+      showPlan(null);
       return;
     }
-    var shown = hits.slice(0,MAX_RESULTS), one = hits.length===1 && !r.fuzzy;
-    $res.innerHTML = (r.fuzzy ? '<p class="dym t">'+esc(t.didYouMean)+'</p>' : '') + shown.map(function(g,i){
-      return '<div class="card'+(one?' one':'')+'" style="animation-delay:'+(i*0.05)+'s">'+
+    var shown = shownList = hits.slice(0,MAX_RESULTS), one = hits.length===1 && !r.fuzzy;
+    // keep the guest's previous pick if it is still in the list; otherwise auto-pick a single exact match
+    var keep = selected && shown.indexOf(selected)>-1 ? selected : (one ? shown[0] : null);
+    $res.innerHTML = (r.fuzzy ? '<p class="dym t">'+esc(t.didYouMean)+'</p>' : '') +
+      (!one && TABLES ? '<p class="more t" style="margin:0 0 .7rem">'+esc(t.tapHint)+'</p>' : '') + shown.map(function(g,i){
+      return '<div class="card pick'+(one?' one':'')+(g===keep?' sel':'')+'" data-i="'+i+'" role="button" tabindex="0" style="animation-delay:'+(i*0.05)+'s">'+
         '<span class="who">'+esc(g.name)+(g.aka.length ? '<small class="aka">'+esc(g.aka.join(" · "))+'</small>' : '')+'</span>'+
         '<span class="nums">'+
           '<span class="tbl"><span class="lbl t">'+esc(t.table)+'</span><span class="num">'+esc(g.table)+'</span></span>'+
           (g.seat ? '<span class="tbl"><span class="lbl t">'+esc(t.seat)+'</span><span class="num">'+esc(g.seat)+'</span></span>' : '')+
         '</span></div>';
     }).join("") + (hits.length>MAX_RESULTS ? '<p class="more">'+esc(t.more.replace("{n}",hits.length-MAX_RESULTS))+'</p>' : "");
+    showPlan(keep);
   }
+
+  // ---- Table guide (assets/seat/table-guide.webp, 1055×1491) ----
+  // Positions are pixels on that image, which is drawn facing the sweetheart table (top).
+  // Round tables: seats 1–6. Long tables: odd seats on one side, even on the other.
+  var IMG_W = 1055, IMG_H = 1491;
+  var TABLES = {
+    A:{c:[716,410],w:150,h:150,side:"right",row:0,seats:{1:[714,297],2:[644,343],3:[636,429],4:[717,477],5:[796,429],6:[794,343]}},
+    B:{c:[337,410],w:150,h:150,side:"left", row:0,seats:{1:[337,297],2:[260,343],3:[258,429],4:[337,477],5:[415,429],6:[408,343]}},
+    C:{c:[272,612],w:120,h:262,rot:18,side:"left", row:1,long:true,seats:{1:[240,503],3:[224,540],5:[207,578],7:[192,620],9:[177,659],2:[364,549],4:[353,589],6:[340,629],8:[326,675],10:[314,717]}},
+    D:{c:[783,612],w:120,h:262,rot:-18,side:"right",row:1,long:true,seats:{1:[690,548],3:[702,586],5:[714,627],7:[726,675],9:[740,715],2:[817,503],4:[834,540],6:[849,579],8:[864,621],10:[880,660]}},
+    E:{c:[820,850],w:150,h:150,side:"right",row:2,seats:{1:[820,761],2:[742,802],3:[738,893],4:[820,942],5:[902,893],6:[900,802]}},
+    F:{c:[233,850],w:150,h:150,side:"left", row:2,seats:{1:[233,761],2:[153,802],3:[151,893],4:[233,942],5:[316,893],6:[312,802]}},
+    G:{c:[322,1066],w:120,h:262,rot:-18,side:"left", row:3,long:true,seats:{1:[217,1011],3:[233,1048],5:[252,1090],7:[271,1132],9:[291,1172],2:[343,957],4:[364,994],6:[384,1032],8:[402,1072],10:[424,1110]}},
+    H:{c:[732,1066],w:120,h:262,rot:18,side:"right",row:3,long:true,seats:{1:[709,957],3:[688,994],5:[670,1032],7:[651,1072],9:[630,1110],2:[837,1011],4:[821,1048],6:[804,1090],8:[783,1132],10:[763,1172]}}
+  };
+  var $plan = document.getElementById("plan"), $ring = document.getElementById("planRing"),
+      $pin = document.getElementById("planPin"), $dir = document.getElementById("planDir");
+  var shownList = [], selected = null;
+  function pct(v, of){ return (v/of*100).toFixed(2)+"%"; }
+
+  function showPlan(g){
+    selected = g;
+    var key = g ? String(g.table).trim().toUpperCase().replace(/^TABLE\s*/,"") : "";
+    var tb = TABLES[key];
+    if(!tb){ $plan.hidden = true; return; }
+    var t = T[lang], seatNo = String(g.seat||"").replace(/[^\d]/g,""), sp = tb.seats[seatNo];
+    $ring.className = "ring" + (tb.long ? " long" : "");
+    $ring.style.left = pct(tb.c[0],IMG_W); $ring.style.top = pct(tb.c[1],IMG_H);
+    $ring.style.width = pct(tb.w,IMG_W); $ring.style.height = pct(tb.h,IMG_H);
+    $ring.style.setProperty("--rot", (tb.rot||0)+"deg");
+    $ring.hidden = false;
+    if(sp){ $pin.style.left = pct(sp[0],IMG_W); $pin.style.top = pct(sp[1],IMG_H); $pin.hidden = false; }
+    else $pin.hidden = true;
+    $dir.innerHTML = t.dir.replace("{t}",esc(key)).replace("{side}",t[tb.side]).replace("{row}",t.rows[tb.row]) +
+      (sp ? t.dirSeat.replace("{s}",esc(seatNo)) : "");
+    $plan.hidden = false;
+  }
+
+  function pick(el){
+    var g = shownList[+el.dataset.i]; if(!g) return;
+    $res.querySelectorAll(".card.sel").forEach(function(c){ c.classList.remove("sel"); });
+    el.classList.add("sel");
+    showPlan(g);
+    if($plan.hidden) return;
+    $plan.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  $res.addEventListener("click", function(e){ var c = e.target.closest(".card.pick"); if(c) pick(c); });
+  $res.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ var c = e.target.closest(".card.pick"); if(c){ e.preventDefault(); pick(c); } } });
 
   // ---- Name matching ----
   // Guests may type names differently from the sheet: other word order, with or
