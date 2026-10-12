@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F4EADB">
+<title>Find Your Seat — Htoo &amp; May</title>
+<meta property="og:title" content="Find Your Seat — Htoo &amp; May">
+<meta property="og:description" content="Enter your name to see your table and seat — 16 October 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Noto+Serif+Myanmar:wght@300;400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:#f4ead8;--ivory2:#fbf5e9;--paper:#F4EADB;--sage:#727b57;--burg:#7c3241;--burg-d:#5f202d;--rasp:#985463;
+  --gold:#b4935d;--ink:#3f362e;--muted:#7a6c5f;--line:rgba(124,50,65,.16);
+  --serif:"Newsreader",Georgia,serif;--sans:"Zen Kaku Gothic New",system-ui,sans-serif;--script:"Alex Brush",cursive;
+  --pad:clamp(1.25rem,6vw,3rem);--ease:cubic-bezier(.16,.84,.34,1)}
+html[lang="my"]{--sans:"Noto Serif Myanmar",serif;--serif:"Noto Serif Myanmar",serif}
+html[lang="my"] .t{letter-spacing:normal!important;text-transform:none!important}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;
+  line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+/* soft watercolour washes, like the painted invitation */
+#wash{position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(ellipse 55% 38% at 8% 6%,rgba(152,84,99,.20),transparent 65%),
+    radial-gradient(ellipse 50% 40% at 96% 12%,rgba(114,123,87,.20),transparent 66%),
+    radial-gradient(ellipse 60% 45% at 4% 96%,rgba(114,123,87,.16),transparent 64%),
+    radial-gradient(ellipse 55% 42% at 98% 92%,rgba(180,147,93,.22),transparent 64%),
+    radial-gradient(ellipse 80% 60% at 50% 45%,rgba(251,245,233,.9),transparent 75%),
+    var(--paper)}
+
+#lang{position:fixed;z-index:20;right:max(1rem,env(safe-area-inset-right));top:max(1rem,env(safe-area-inset-top));
+  display:flex;align-items:center;padding:.3rem;border-radius:999px;background:rgba(255,252,247,.86);
+  box-shadow:0 5px 20px rgba(92,62,46,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.lang-b{border:0;background:none;color:var(--burg);padding:.5rem .68rem;cursor:pointer;font-size:.68rem;font-family:"Zen Kaku Gothic New",sans-serif;line-height:1}
+.lang-b[lang="my"]{font-family:"Noto Serif Myanmar",serif}
+.lang-b.on{color:#fff;background:var(--burg);border-radius:999px}
+.lang-sep{width:1px;height:12px;background:rgba(124,50,65,.18)}
+#back{position:fixed;z-index:20;left:max(1rem,env(safe-area-inset-left));top:max(1rem,env(safe-area-inset-top));
+  color:var(--burg);text-decoration:none;font:500 .62rem/1 Georgia,serif;letter-spacing:.12em;text-transform:uppercase;
+  padding:.72rem .9rem;border-radius:999px;background:rgba(255,252,247,.86);box-shadow:0 5px 20px rgba(92,62,46,.12);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background .3s,color .3s}
+#back:hover{background:var(--burg);color:#fff8ed}
+
+main{width:100%;max-width:620px;margin:0 auto;padding:5.5rem var(--pad) 3rem;flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.rise{opacity:0;transform:translateY(18px);animation:rise 1.1s var(--ease) forwards}
+.rise.d1{animation-delay:.12s}.rise.d2{animation-delay:.26s}.rise.d3{animation-delay:.4s}
+@keyframes rise{to{opacity:1;transform:none}}
+#mono{width:min(36vw,140px);height:auto;display:block;margin:0 auto 1rem}
+.names{font-family:var(--script);font-size:clamp(2.7rem,12vw,4.3rem);line-height:1.05;color:var(--burg);margin:0;font-weight:400}
+.names .amp{color:var(--gold);margin:0 .22em}
+html[lang="my"] .names{font-family:"Noto Serif Myanmar",serif;font-size:clamp(1.8rem,8vw,2.5rem);font-weight:500;line-height:1.7}
+.date{margin:.5rem 0 0;font-family:var(--serif);font-size:.82rem;letter-spacing:.42em;color:var(--sage)}
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2.2rem 0 .3rem;
+  font-size:.66rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;width:2.4rem;background:rgba(180,147,93,.55)}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,8vw,2.7rem);line-height:1.2;margin:.2rem 0 1.8rem;color:var(--ink)}
+html[lang="my"] h1{font-size:clamp(1.4rem,6vw,1.9rem);line-height:1.7}
+
+.search{position:relative;width:100%}
+.search input{width:100%;font:inherit;font-family:var(--serif);font-size:clamp(1.15rem,5vw,1.45rem);font-weight:400;
+  color:var(--ink);text-align:center;padding:1.1rem 3.2rem;border-radius:999px;-webkit-appearance:none;appearance:none;
+  background:rgba(255,252,247,.92);border:1px solid var(--line);outline:none;
+  box-shadow:0 8px 28px rgba(92,62,46,.08);transition:border-color .4s,box-shadow .4s}
+.search input::-webkit-search-cancel-button{display:none}
+.search input::placeholder{color:#a99a8b;font-weight:300}
+.search input:focus{border-color:var(--burg);box-shadow:0 0 0 5px rgba(124,50,65,.08),0 8px 28px rgba(92,62,46,.1)}
+.search svg{position:absolute;left:1.25rem;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--muted);transition:stroke .3s}
+.search input:focus ~ svg{stroke:var(--burg)}
+#clear{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);width:2.4rem;height:2.4rem;border-radius:50%;
+  border:0;background:none;color:var(--muted);font-size:1.3rem;line-height:1;cursor:pointer;display:none}
+#clear:hover{color:var(--burg)}
+.has-q #clear{display:block}
+
+#results{width:100%;margin-top:1.4rem;min-height:220px}
+.hint{color:var(--muted);font-family:var(--serif);font-style:italic;font-size:1.02rem;margin:2rem 0 0}
+html[lang="my"] .hint,html[lang="ja"] .hint{font-style:normal}
+.card{display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;
+  padding:1rem 1.35rem;margin-bottom:.75rem;border-radius:18px;
+  background:rgba(255,252,247,.9);border:1px solid var(--line);box-shadow:0 6px 22px rgba(92,62,46,.07);
+  opacity:0;transform:translateY(12px);animation:rise .7s var(--ease) forwards}
+.card .who{font-family:var(--serif);font-size:clamp(1.05rem,4.6vw,1.28rem);color:var(--ink);overflow-wrap:anywhere}
+.card .nums{display:flex;gap:1.2rem;flex-shrink:0}
+.card .nums .tbl + .tbl{padding-left:1.2rem;border-left:1px solid var(--line)}
+.card .tbl{display:flex;flex-direction:column;align-items:flex-end}
+.card .lbl{font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);white-space:nowrap}
+.card .num{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,8.5vw,2.6rem);line-height:1.05;color:var(--burg)}
+.card.one{flex-direction:column;text-align:center;padding:1.9rem 1.4rem;border-color:rgba(180,147,93,.5);
+  background:linear-gradient(180deg,rgba(255,252,247,.96),rgba(251,245,233,.96))}
+.card.one .nums{gap:2rem}.card.one .nums .tbl + .tbl{padding-left:2rem}
+.card.one .tbl{align-items:center}
+.card.one .num{font-size:clamp(3.2rem,17vw,4.6rem)}
+.miss{padding:1.7rem 1.4rem;border-radius:18px;border:1px dashed rgba(124,50,65,.28);background:rgba(255,252,247,.7)}
+.miss p{margin:0}
+.miss .h{font-family:var(--serif);font-size:1.2rem;color:var(--burg);margin-bottom:.4rem}
+.miss .b{font-size:.86rem;color:var(--muted);max-width:22rem;margin:0 auto}
+.more{font-size:.75rem;color:var(--muted);margin-top:.4rem}
+.status{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;min-height:1em}
+
+footer{text-align:center;padding:1.8rem var(--pad) max(2rem,env(safe-area-inset-bottom));border-top:1px solid var(--line);
+  width:100%;max-width:620px;margin:0 auto}
+footer .by{font-size:.56rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin:0 0 .3rem}
+footer a{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--burg);text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--gold)}
+@media (prefers-reduced-motion:reduce){.rise,.card{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="wash"></div>
+
+<a id="back" href="../" class="t" data-t="back">← Invitation</a>
+<div id="lang" role="group" aria-label="Language">
+  <button class="lang-b on" data-lang="en" lang="en">EN</button><span class="lang-sep"></span>
+  <button class="lang-b" data-lang="ja" lang="ja">日本語</button><span class="lang-sep"></span>
+  <button class="lang-b" data-lang="my" lang="my">မြန်မာ</button>
+</div>
+
+<main>
+  <img id="mono" class="rise" src="../assets/photos/monogram-burgundy-hd.png" alt="Htoo &amp; May monogram">
+  <p class="names rise d1"><span data-t="nameHtoo">Htoo</span><span class="amp">&amp;</span><span data-t="nameMay">May</span></p>
+  <p class="date rise d1">16 · 10 · 2026</p>
+  <p class="eyebrow t rise d2" data-t="eyebrow">Welcome</p>
+  <h1 class="rise d2" data-t="title">Please find your seat</h1>
+
+  <div class="search rise d3" id="searchBox">
+    <input id="q" type="search" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="search" aria-label="Search your name">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <button id="clear" type="button" aria-label="Clear">×</button>
+  </div>
+  <p class="status t" id="status" aria-live="polite"></p>
+  <div id="results" aria-live="polite"></div>
+</main>
+
+<footer>
+  <p class="by t" data-t="by">Presented by</p>
+  <a href="https://www.facebook.com/p/Amor%C3%A9wedding-Tokyo-61575756988945/" target="_blank" rel="noopener noreferrer">Amoré Wedding Tokyo</a>
+</footer>
+
+<script>
+(function(){
+  // Guest data lives in guests.json next to this file. See README.md.
+  var CONFIG_URL = "guests.json";
+  var MAX_RESULTS = 12;
+
+  var T = {
+    en:{nameMay:"May",nameHtoo:"Htoo",back:"← Invitation",eyebrow:"Welcome",title:"Please find your seat",
+      placeholder:"Type your name…",hint:"Enter your name to see your table",table:"Table",seat:"Seat",
+      notFoundH:"We couldn't find you",notFoundB:"No match for “{q}”. Please check the spelling, or ask our welcome staff — we'll gladly help.",
+      more:"Keep typing to narrow down ({n} more)",loading:"Loading guest list…",by:"Presented by"},
+    ja:{nameMay:"May",nameHtoo:"Htoo",back:"← 招待状へ",eyebrow:"ようこそ",title:"お席をご確認ください",
+      placeholder:"お名前を入力…",hint:"お名前を入力すると、お席が表示されます",table:"テーブル",seat:"席番号",
+      notFoundH:"お名前が見つかりません",notFoundB:"「{q}」に一致するお名前がありません。綴りをご確認いただくか、受付スタッフにお声がけください。",
+      more:"さらに入力して絞り込んでください（他 {n} 件）",loading:"ゲストリストを読み込み中…",by:"プロデュース"},
+    my:{nameMay:"မေ",nameHtoo:"ထူး",back:"← ဖိတ်စာသို့",eyebrow:"ကြိုဆိုပါသည်",title:"သင်၏ထိုင်ခုံကို ရှာဖွေပါ",
+      placeholder:"သင်၏အမည်ကို ရိုက်ထည့်ပါ…",hint:"စားပွဲနှင့် ထိုင်ခုံအမှတ်ကို သိရှိရန် အမည်ရိုက်ထည့်ပါ",table:"စားပွဲ",seat:"ထိုင်ခုံ",
+      notFoundH:"အမည် မတွေ့ရှိပါ",notFoundB:"“{q}” နှင့် ကိုက်ညီသော အမည်မတွေ့ပါ။ စာလုံးပေါင်း ပြန်စစ်ပါ သို့မဟုတ် ကြိုဆိုရေးဝန်ထမ်းများကို မေးမြန်းပါ။",
+      more:"ဆက်လက်ရိုက်ထည့်ပါ (နောက်ထပ် {n} ဦး)",loading:"ဧည့်စာရင်း ရယူနေသည်…",by:"စီစဉ်တင်ဆက်သူ"}
+  };
+
+  var lang = "en", guests = [], loading = true;
+  var $q = document.getElementById("q"), $res = document.getElementById("results"),
+      $status = document.getElementById("status"), $box = document.getElementById("searchBox");
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
+  function norm(s){return String(s).toLowerCase().normalize("NFKC").replace(/\s+/g," ").trim();}
+
+  function setLang(l){
+    if(!T[l]) l = "en";
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll(".lang-b").forEach(function(b){b.classList.toggle("on",b.dataset.lang===l);});
+    document.querySelectorAll("[data-t]").forEach(function(el){var v=T[l][el.dataset.t]; if(v!=null) el.textContent=v;});
+    $q.placeholder = T[l].placeholder;
+    try{ localStorage.setItem("hm-lang", l); }catch(e){}
+    render();
+  }
+
+  function render(){
+    var t = T[lang], raw = $q.value, q = norm(raw);
+    $box.classList.toggle("has-q", raw.length>0);
+    $status.textContent = loading ? t.loading : "";
+    if(!q){ $res.innerHTML = '<p class="hint">'+esc(t.hint)+'</p>'; return; }
+    if(loading){ $res.innerHTML = ""; return; }
+    var qq = q.replace(/ /g,"");
+    var hits = guests.filter(function(g){ var n = norm(g.name); return n.indexOf(q)>-1 || n.replace(/ /g,"").indexOf(qq)>-1; });
+    // Exact / starts-with matches first
+    hits.sort(function(a,b){
+      var an=norm(a.name), bn=norm(b.name);
+      var as=(an===q?0:an.indexOf(q)===0?1:2), bs=(bn===q?0:bn.indexOf(q)===0?1:2);
+      return as-bs || an.localeCompare(bn);
+    });
+    if(!hits.length){
+      $res.innerHTML = '<div class="miss"><p class="h">'+esc(t.notFoundH)+'</p><p class="b">'+esc(t.notFoundB.replace("{q}",raw.trim()))+'</p></div>';
+      return;
+    }
+    var shown = hits.slice(0,MAX_RESULTS), one = hits.length===1;
+    $res.innerHTML = shown.map(function(g,i){
+      return '<div class="card'+(one?' one':'')+'" style="animation-delay:'+(i*0.05)+'s">'+
+        '<span class="who">'+esc(g.name)+'</span>'+
+        '<span class="nums">'+
+          '<span class="tbl"><span class="lbl t">'+esc(t.table)+'</span><span class="num">'+esc(g.table)+'</span></span>'+
+          (g.seat ? '<span class="tbl"><span class="lbl t">'+esc(t.seat)+'</span><span class="num">'+esc(g.seat)+'</span></span>' : '')+
+        '</span></div>';
+    }).join("") + (hits.length>MAX_RESULTS ? '<p class="more">'+esc(t.more.replace("{n}",hits.length-MAX_RESULTS))+'</p>' : "");
+  }
+
+  // ---- Data loading ----
+  function sheetIdFrom(s){ s=String(s||"").trim(); var m=s.match(/\/d\/([a-zA-Z0-9_-]+)/); return m?m[1]:s; }
+
+  function parseCSV(text){
+    var rows=[], row=[], f="", i=0, q=false, c;
+    for(;i<text.length;i++){
+      c=text[i];
+      if(q){ if(c==='"'){ if(text[i+1]==='"'){f+='"';i++;} else q=false; } else f+=c; }
+      else if(c==='"') q=true;
+      else if(c===','){ row.push(f); f=""; }
+      else if(c==='\n'||c==='\r'){ if(c==='\r'&&text[i+1]==='\n') i++; row.push(f); rows.push(row); row=[]; f=""; }
+      else f+=c;
+    }
+    if(f!==""||row.length){ row.push(f); rows.push(row); }
+    return rows;
+  }
+
+  // Same column rules as the Amoré Findyourseat app:
+  // Name / Full Name, Table / Table Number / Seat, optional Attendance, optional Guest Info (extra names).
+  function guestsFromRows(rows){
+    if(!rows.length) return [];
+    var head = rows[0].map(function(h){return norm(h);});
+    function col(names){ for(var i=0;i<names.length;i++){ var k=head.indexOf(names[i]); if(k>-1) return k; } return -1; }
+    var cName = col(["full name","name"]); if(cName<0) cName = head.findIndex(function(h){return h.indexOf("name")>-1 && h!=="guest info";});
+    var cTable = col(["table no","table no.","table","table number"]);
+    var cSeat = col(["seat no","seat no.","seat","seat number"]);
+    var cAtt = col(["attendance"]), cInfo = col(["guest info"]);
+    if(cName<0) return [];
+    var out=[];
+    rows.slice(1).forEach(function(r){
+      if(cAtt>-1 && norm(r[cAtt]||"") && norm(r[cAtt])!=="attend") return;
+      var table = cTable>-1 ? String(r[cTable]||"").trim() : "";
+      if(!table) table = "?";
+      var seat = cSeat>-1 ? String(r[cSeat]||"").trim() : "";
+      var name = String(r[cName]||"").trim();
+      if(name) out.push({name:name, table:table, seat:seat});
+      if(cInfo>-1 && r[cInfo]){
+        String(r[cInfo]).split(/[,、&]|\band\b/i).map(function(n){return n.trim();})
+          .filter(function(n){return n.length>1;}).forEach(function(n){ out.push({name:n, table:table, seat:seat}); });
+      }
+    });
+    return out;
+  }
+
+  function fromJson(list){
+    return (list||[]).map(function(g){ return {name:String(g.name||"").trim(),
+        table:String(g.table!=null&&g.table!==""?g.table:(g.tableNumber!=null?g.tableNumber:"?")),
+        seat:String(g.seat!=null?g.seat:"").trim()}; })
+      // drop empty names and header rows repeated inside the sheet ("Guest Names | Table No | Seat No")
+      .filter(function(g){return g.name && !/^table( no\.?| number)?$/i.test(g.table);});
+  }
+
+  function load(){
+    loading = true; render();
+    fetch(CONFIG_URL, {cache:"no-store"}).then(function(r){ if(!r.ok) throw new Error("guests.json "+r.status); return r.json(); })
+      .then(function(cfg){
+        var local = fromJson(cfg.guests);
+        // 1) Private sheet via Apps Script feed (apps-script/seating) — preferred
+        if(cfg.seatingEndpoint){
+          return fetch(cfg.seatingEndpoint+(cfg.seatingEndpoint.indexOf("?")>-1?"&":"?")+"_="+Date.now())
+            .then(function(r){ if(!r.ok) throw new Error("feed "+r.status); return r.json(); })
+            .then(function(d){ if(!d.ok) throw new Error(d.error||"feed error"); var g = fromJson(d.guests); return g.length ? g : local; })
+            .catch(function(err){ console.warn("Seating feed failed, using guests.json list:", err); return local; });
+        }
+        // 2) Public ("anyone with link") Google Sheet
+        var id = sheetIdFrom(cfg.googleSheet);
+        if(!id) return local;
+        var url = "https://docs.google.com/spreadsheets/d/"+encodeURIComponent(id)+"/gviz/tq?tqx=out:csv"+
+          (cfg.sheetTab ? "&sheet="+encodeURIComponent(cfg.sheetTab) : "")+"&_="+Date.now();
+        return fetch(url).then(function(r){ if(!r.ok) throw new Error("sheet "+r.status); return r.text(); })
+          .then(function(csv){ var g = guestsFromRows(parseCSV(csv)); return g.length ? g : local; })
+          .catch(function(err){ console.warn("Google Sheet failed, using guests.json list:", err); return local; });
+      })
+      .then(function(list){ guests = list || []; })
+      .catch(function(err){ console.error(err); guests = []; })
+      .then(function(){ loading = false; render(); });
+  }
+
+  document.querySelectorAll(".lang-b").forEach(function(b){ b.addEventListener("click",function(){ setLang(b.dataset.lang); }); });
+  $q.addEventListener("input", render);
+  document.getElementById("clear").addEventListener("click", function(){ $q.value=""; render(); $q.focus(); });
+
+  var params = new URLSearchParams(location.search), saved = null;
+  try{ saved = localStorage.getItem("hm-lang"); }catch(e){}
+  setLang(params.get("lang") || saved || "en");
+  if(params.get("name")){ $q.value = params.get("name"); }
+  load();
+})();
+</script>
+</body>
+</html>
