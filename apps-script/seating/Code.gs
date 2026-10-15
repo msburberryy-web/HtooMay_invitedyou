@@ -50,7 +50,8 @@ function doGet() {
       }
       const table = String(row[cTable] || "").trim();
       if (!table) continue;                 // not seated yet → don't publish
-      if (TABLE_HEADERS.indexOf(table.toLowerCase()) > -1) continue;  // repeated header row
+      // A repeated header row starts the second (after-party) table — those guests have no seats, so stop here
+      if (TABLE_HEADERS.indexOf(table.toLowerCase()) > -1) break;
       out.guests.push({
         name: name,
         table: table,
