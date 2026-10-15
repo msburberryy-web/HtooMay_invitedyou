@@ -711,7 +711,13 @@ body.intro-on .rise{animation-play-state:paused}
   }
 
   function fromJson(list){
-    return (list||[]).map(function(g){ return {name:String(g.name||"").trim(),
+    list = list || [];
+    // The sheet has a second table (after-party guests, no seats) under a repeated
+    // "Guest Names | Table No | Seat No" header. Only use the rows above that header.
+    var cut = -1;
+    for(var i=0;i<list.length;i++){ if(/^table( no\.?| number)?$/i.test(String(list[i] && list[i].table || "").trim())){ cut = i; break; } }
+    if(cut > -1) list = list.slice(0, cut);
+    return list.map(function(g){ return {name:String(g.name||"").trim(),
         table:String(g.table!=null&&g.table!==""?g.table:(g.tableNumber!=null?g.tableNumber:"?")),
         seat:String(g.seat!=null?g.seat:"").trim(),
         aka:(Array.isArray(g.aka) ? g.aka : String(g.aka||"").split(/[,、;\/]/)).map(function(s){return String(s).trim();}).filter(Boolean)}; })
