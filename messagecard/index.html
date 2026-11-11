@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Htoo &amp; May — Gift Message Card</title>
+<style>
+:root{--ivory:#f7f0e3;--wine:#662d3d;--olive:#525b42;--pink:#dab5ae;--gold:#a28957}*{box-sizing:border-box}body{margin:0;background:#eae6dc;color:var(--wine);font-family:Georgia,serif}.stage{display:grid;justify-items:center;gap:18px;padding:32px 12px}.card{container-type:inline-size;width:min(100%,148mm);aspect-ratio:148/105;position:relative;background:var(--ivory);display:grid;grid-template-columns:47% 53%;padding:4.9%;padding:min(4.9vw,27.4px);box-shadow:0 12px 40px #40352226;overflow:hidden}.card:after{content:"";position:absolute;inset:2.5%;border:1px solid #a2895773;pointer-events:none}.photo{margin:0;min-width:0;min-height:0;position:relative;overflow:hidden;background:#dadfcd;border-radius:48% 48% 1px 1px / 29% 29% 1px 1px;outline:1px solid #a28957;outline-offset:3px}.photo svg,.photo img{width:100%;height:100%;display:block;position:absolute;inset:0}.photo img{object-fit:cover}.photo img[hidden]{display:none}.placeholder{position:absolute;bottom:7%;width:100%;text-align:center;color:#fff8e9;font:600 1.65cqw Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}.note{position:relative;text-align:center;padding:3% 2% 0 8%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}.eyebrow,.date,.to{font:600 1.65cqw Arial,sans-serif;letter-spacing:.23em;text-transform:uppercase;color:var(--olive);margin:0}.rule{width:48%;height:1px;background:var(--gold);margin:4% 0 5%;position:relative}.rule:after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);width:1.15cqw;height:1.15cqw;background:var(--pink);border:1px solid var(--gold)}.heading{font-size:7cqw;letter-spacing:-.055em;line-height:1;margin:0 0 5%;font-weight:400}.recipient{font:italic 4.4cqw Georgia,serif;line-height:1.12;margin:2% 0 4%;max-width:100%;overflow-wrap:anywhere}.message{font-size:2.65cqw;line-height:1.43;margin:0;color:#423b34;max-width:95%;overflow-wrap:anywhere}.signature{font-size:3.45cqw;font-style:italic;margin:5% 0 1.5%}.date{font-size:1.45cqw}.controls{width:min(100%,148mm);display:flex;gap:8px;flex-wrap:wrap;font:13px Arial,sans-serif;align-items:end}.controls label{display:grid;gap:5px}.controls input,.controls button{max-width:100%;font:inherit;padding:8px;border:1px solid #ac9f8d;border-radius:4px;background:#fffaf0;color:#382b2b}.controls button{background:var(--wine);color:white;cursor:pointer}.hint{width:100%;margin:0;color:#514b40;font-size:12px}[contenteditable]:focus{outline:1px dashed var(--gold)}
+@page{size:148mm 105mm;margin:0}@media print{html,body{margin:0;background:white}.stage{display:block;padding:0}.controls{display:none}.card{width:148mm;height:105mm;padding:7.25mm;box-shadow:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}[contenteditable]{outline:none!important}}
+.card{display:block;padding:0}.card:after{display:none}.art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.photo{position:absolute;left:var(--photo-left,8%);top:var(--photo-top,11%);width:var(--photo-width,34%);height:var(--photo-height,73%);border-radius:50% 50% 0 0 / 26% 26% 0 0;outline:0;background:none}.photo svg{display:none}.placeholder{bottom:9%;color:white;text-shadow:0 1px 4px #222;font-size:1.4cqw}.note{position:absolute;left:46%;right:6%;top:10%;bottom:10%;padding:0}.heading{font-size:6.4cqw}.message{font-size:2.5cqw;white-space:pre-wrap}.controls textarea{font:inherit;padding:8px;border:1px solid #ac9f8d;border-radius:4px;background:#fffaf0;color:#382b2b;resize:vertical;min-height:65px;width:100%}.controls .message-field{width:100%}.controls button.secondary{background:#fffaf0;color:#382b2b}.warning{color:#662d3d}.warning[hidden]{display:none}@media print{.card{padding:0}}
+.card{--photo-left:4.8%;--photo-top:8.5%;--photo-width:39.5%;--photo-height:77%;}.photo{border-radius:50% 50% 0 0 / 36% 36% 0 0}.photo img{clip-path:polygon(0 0,100% 0,100% 100%,54% 100%,53% 94%,47% 89%,38% 86%,29% 84%,24% 77%,22% 73%,16% 71%,14% 67%,8% 66%,6% 60%,0 58%,0 42%,6% 40%,12% 38%,18% 34%,18% 30%,13% 26%,9% 23%,0 24%)}.note{top:9%;bottom:13%}
+.photo img{clip-path:none}
+</style>
+<main class="stage">
+<article class="card" aria-label="Htoo and May wedding gift card">
+ <img class="art" alt="" src="./watercolor.webp">
+ <figure class="photo">
+  <img id="wedding-photo" alt="Wedding day photograph" hidden>
+  <figcaption id="placeholder" class="placeholder">Your wedding photo here</figcaption>
+ </figure>
+ <section class="note">
+  <p class="eyebrow">A little something from us</p><div class="rule"></div>
+  <h1 class="heading">Thank you.</h1>
+  <p class="to">For</p><p class="recipient" id="name">Guest Name</p>
+  <p class="message" id="message">Thank you for celebrating with us. We’re so glad you were part of the day, and we hope you enjoy this little gift.</p>
+  <p class="signature">With love, Htoo &amp; May</p><p class="date">16 October 2026</p>
+ </section>
+</article>
+<section class="controls" aria-label="Card editing controls">
+ <label>Recipient name<input id="recipient" value="Guest Name" maxlength="72"></label>
+ <label>Wedding photo<input type="file" id="upload" accept="image/*,.heic,.heif"></label>
+ <label>Photo position<input id="position" type="range" min="0" max="100" value="50"></label>
+ <label class="message-field">Thank-you message<textarea id="message-input" rows="3" maxlength="380"></textarea></label>
+ <p class="hint" id="photo-status" role="status">Your photo stays on this device.</p>
+ <button type="button" id="print">Print / Save PDF</button>
+ <button type="button" id="reset" class="secondary">Restore original message</button>
+ <p class="hint warning" id="overflow" hidden>Shorten the message or recipient name a little so everything fits on the card.</p>
+ <p class="hint">Print at actual size with headers and footers off. Edits stay in this tab; save each finished card as a PDF.</p>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id), photo=$('wedding-photo');
+const message=$('message'), input=$('message-input'), defaultMessage=message.textContent, note=document.querySelector('.note');
+input.value=defaultMessage;
+const check=()=>{const first=note.firstElementChild.getBoundingClientRect(), last=note.lastElementChild.getBoundingClientRect(), frame=note.getBoundingClientRect();const fits=first.top>=frame.top-1&&last.bottom<=frame.bottom+1;$('overflow').hidden=fits;$('print').disabled=!fits;};
+input.addEventListener('input',()=>{message.textContent=input.value;check()});
+$('reset').addEventListener('click',()=>{input.value=defaultMessage;message.textContent=defaultMessage;check()});
+$('print').addEventListener('click',()=>window.print());
+$('recipient').addEventListener('input',e=>{$('name').textContent=e.target.value.trim()||'Guest Name';check()});
+window.addEventListener('resize',check);window.addEventListener('load',check);
+$('position').addEventListener('input',e=>{photo.style.objectPosition='50% '+e.target.value+'%'});
+let url, selection=0;
+$('upload').addEventListener('change',e=>{
+ const file=e.target.files[0];if(!file)return;
+ const current=++selection, candidate=URL.createObjectURL(file), preview=new Image();
+ const status=$('photo-status');
+ status.textContent='Opening your photo…';
+ preview.onload=()=>{
+   if(current!==selection){URL.revokeObjectURL(candidate);return}
+   const previous=url;url=candidate;photo.src=url;photo.hidden=false;
+   $('placeholder').hidden=true;
+   if(previous)URL.revokeObjectURL(previous);
+   status.textContent='Photo added. It stays on this device.';
+ };
+ preview.onerror=()=>{
+   URL.revokeObjectURL(candidate);
+   if(current===selection){status.textContent='This browser couldn’t open the photo. Try a JPEG or PNG.';e.target.value=''}
+ };
+ preview.src=candidate;
+});
+</script></html>
