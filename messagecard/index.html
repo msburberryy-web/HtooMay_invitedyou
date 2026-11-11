@@ -10,6 +10,7 @@
 .photo{border-radius:50% 50% 0 0 / 35% 35% 0 0;z-index:1}
 .painted-foreground{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
 .note{top:9%;bottom:13%;z-index:3}
+.controls select{font:inherit;padding:8px;border:1px solid #ac9f8d;border-radius:4px;background:#fffaf0;color:#382b2b}.controls button:disabled{opacity:.6;cursor:wait}
 </style>
 <main class="stage">
 <article class="card" aria-label="Htoo and May wedding gift card">
@@ -50,7 +51,11 @@
  <label>Photo position<input id="position" type="range" min="0" max="100" value="50"></label>
  <label class="message-field">Thank-you message<textarea id="message-input" rows="3" maxlength="380"></textarea></label>
  <p class="hint" id="photo-status" role="status">Your photo stays on this device.</p>
- <button type="button" id="print">Print / Save PDF</button>
+ <label>Finished size<select id="export-size"><option value="105">A6 · 148 × 105 mm</option><option value="100">Postcard · 148 × 100 mm</option></select></label>
+ <button type="button" id="download-png">Download PNG · 300 dpi</button>
+ <button type="button" id="download-pdf">Download print PDF · bleed &amp; crop marks</button>
+ <button type="button" id="print" class="secondary">Browser Print · A6</button>
+ <p class="hint" id="download-status" role="status">Downloads are generated on this device. On iPhone, choose Save to Files if the file opens in a preview.</p>
  <button type="button" id="reset" class="secondary">Restore original message</button>
  <p class="hint warning" id="overflow" hidden>Shorten the message or recipient name a little so everything fits on the card.</p>
  <p class="hint">Print at actual size with headers and footers off. Edits stay in this tab; save each finished card as a PDF.</p>
@@ -86,4 +91,113 @@ $('upload').addEventListener('change',e=>{
  };
  preview.src=candidate;
 });
-</script></html>
+</script>
+<script>
+const DPI=300, px=mm=>Math.round(mm*DPI/25.4);
+function pngDensity(bytes){
+ const png=bytes instanceof Uint8Array?bytes:new Uint8Array(bytes), chunk=new Uint8Array(21), view=new DataView(chunk.buffer);
+ view.setUint32(0,9);chunk.set([112,72,89,115],4);view.setUint32(8,11811);view.setUint32(12,11811);chunk[16]=1;
+ let crc=0xffffffff;for(const b of chunk.subarray(4,17)){crc^=b;for(let i=0;i<8;i++)crc=(crc>>>1)^((crc&1)?0xedb88320:0)}
+ view.setUint32(17,(crc^0xffffffff)>>>0);
+ const parts=[png.subarray(0,8),png.subarray(8,33),chunk];const input=new DataView(png.buffer,png.byteOffset,png.byteLength);
+ for(let i=33;i<png.length;){const end=i+12+input.getUint32(i);if(end>png.length)throw Error('Invalid PNG');if(input.getUint32(i+4)!==0x70485973)parts.push(png.subarray(i,end));i=end}
+ return new Blob(parts,{type:'image/png'});
+}
+function pressPdf(jpg,pixelW,pixelH,trimH){
+ const pt=n=>(n*72/25.4).toFixed(5), box=(a,b,c,d)=>[a,b,c,d].map(pt).join(' ');
+ const marks=[];const line=(a,b,c,d)=>marks.push(`${pt(a)} ${pt(b)} m ${pt(c)} ${pt(d)} l S\n`);
+ for(const y of [8,8+trimH]){line(1,y,4.5,y);line(159.5,y,163,y)}
+ for(const x of [8,156]){line(x,1,x,4.5);line(x,trimH+11.5,x,trimH+15)}
+ const commands=`q ${pt(154)} 0 0 ${pt(trimH+6)} ${pt(5)} ${pt(5)} cm /Art Do Q\n0.25 w 0 0 0 1 K\n`+marks.join('');
+ const parts=[], offsets=[0];let offset=0;
+ const append=value=>{const data=typeof value==='string'?new TextEncoder().encode(value):value;parts.push(data);offset+=data.byteLength};
+ const object=(id,...data)=>{offsets[id]=offset;append(id+' 0 obj\n');data.forEach(append);append('\nendobj\n')};
+ append('%PDF-1.4\n');append(new Uint8Array([37,226,227,207,211,10]));
+ object(1,'<< /Type /Catalog /Pages 2 0 R >>');
+ object(2,'<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
+ object(3,`<< /Type /Page /Parent 2 0 R /MediaBox [${box(0,0,164,trimH+16)}] /TrimBox [${box(8,8,156,trimH+8)}] /BleedBox [${box(5,5,159,trimH+11)}] /Resources << /XObject << /Art 4 0 R >> >> /Contents 5 0 R >>`);
+ object(4,`<< /Type /XObject /Subtype /Image /Width ${pixelW} /Height ${pixelH} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpg.byteLength} >>\nstream\n`,jpg,'\nendstream');
+ object(5,`<< /Length ${commands.length} >>\nstream\n${commands}endstream`);
+ const xref=offset;append('xref\n0 6\n0000000000 65535 f \n');
+ for(const n of offsets.slice(1))append(String(n).padStart(10,'0')+' 00000 n \n');
+ append(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+ return new Blob(parts,{type:'application/pdf'});
+}
+function makeCanvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c}
+function blobOf(c,type,quality){return new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(Error('Could not encode the card.')),type,quality))}
+function addBleed(card,trimH){
+ const out=makeCanvas(px(154),px(trimH+6)), c=out.getContext('2d'), x=px(3),y=px(3),w=card.width,h=card.height;
+ const right=out.width-w-x,bottom=out.height-h-y;
+ const cols=[[0,x,0,x,-1],[0,w,x,w,1],[w-right,right,x+w,right,-1]];
+ const rows=[[0,y,0,y,-1],[0,h,y,h,1],[h-bottom,bottom,y+h,bottom,-1]];
+ for(const [sx,sw,dx,dw,fx] of cols)for(const [sy,sh,dy,dh,fy] of rows){
+  c.save();c.translate(dx+(fx<0?dw:0),dy+(fy<0?dh:0));c.scale(fx,fy);
+  c.drawImage(card,sx,sy,sw,sh,0,0,dw,dh);c.restore();
+ }
+ return out;
+}
+async function renderCard(trimH){
+ const art=document.querySelector('.art'), p=document.getElementById('wedding-photo');
+ await art.decode();await document.fonts.ready;
+ const canvas=makeCanvas(px(148),px(trimH)), c=canvas.getContext('2d',{alpha:false});
+ c.scale(canvas.width/1491,canvas.height/1055);
+ c.imageSmoothingQuality='high';c.drawImage(art,0,0,1491,1055);
+ if(!p.hidden&&p.naturalWidth){
+  const x=1491*.0465,y=1055*.0832,w=1491*.397,h=1055*.771,ry=h*.35;
+  c.save();c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y+ry);
+  c.ellipse(x+w/2,y+ry,w/2,ry,0,Math.PI,2*Math.PI);c.lineTo(x+w,y+h);c.closePath();c.clip();
+  const scale=Math.max(w/p.naturalWidth,h/p.naturalHeight),pw=p.naturalWidth*scale,ph=p.naturalHeight*scale;
+  c.drawImage(p,x+(w-pw)/2,y+(h-ph)*Number(document.getElementById('position').value)/100,pw,ph);c.restore();
+  const foreground=new Path2D();
+  for(const path of document.querySelectorAll('#painted-flowers-and-ribbon path'))foreground.addPath(new Path2D(path.getAttribute('d')));
+  c.save();c.clip(foreground);c.drawImage(art,0,0,1491,1055);c.restore();
+ }
+ const card=document.querySelector('.card'), note=card.querySelector('.note'), r=card.getBoundingClientRect();
+ const k=1491/r.width, ky=1055/r.height;
+ const rule=note.querySelector('.rule').getBoundingClientRect(), rx=(rule.left-r.left)*k, ry=(rule.top+rule.height/2-r.top)*ky;
+ c.fillStyle='#a28957';c.fillRect(rx,ry-1,rule.width*k,2);
+ c.save();c.translate(rx+rule.width*k/2,ry);c.rotate(Math.PI/4);c.fillStyle='#dab5ae';c.fillRect(-9,-9,18,18);c.strokeStyle='#a28957';c.lineWidth=2;c.strokeRect(-9,-9,18,18);c.restore();
+ for(const el of note.querySelectorAll('p,h1')){
+  const css=getComputedStyle(el), lines=new Map(), walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+  for(let node=walker.nextNode();node;node=walker.nextNode()){
+   const range=document.createRange();let at=0;
+   const chars=typeof Intl.Segmenter==='function'?[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(node.textContent)].map(x=>x.segment):Array.from(node.textContent);
+   for(const char of chars){range.setStart(node,at);at+=char.length;range.setEnd(node,at);
+    if(char==='\n')continue;
+    const rr=range.getBoundingClientRect(), key=rr.top.toFixed(2);if(!rr.height)continue;
+    if(!lines.has(key))lines.set(key,{left:rr.left,right:rr.right,top:rr.top,bottom:rr.bottom,text:''});
+    const row=lines.get(key);row.left=Math.min(row.left,rr.left);row.right=Math.max(row.right,rr.right);row.text+=char;
+   }
+  }
+  c.fillStyle=css.color;c.font=`${css.fontStyle} ${css.fontWeight} ${parseFloat(css.fontSize)*k}px ${css.fontFamily}`;
+  if('letterSpacing' in c)c.letterSpacing=(parseFloat(css.letterSpacing)||0)*k+'px';
+  c.textAlign='center';c.textBaseline='alphabetic';
+  for(const row of lines.values()){
+   const t=css.textTransform==='uppercase'?row.text.trim().toLocaleUpperCase():row.text.trim(),m=c.measureText(t);
+   const baseline=((row.top+row.bottom)/2-r.top)*ky+((m.fontBoundingBoxAscent??parseFloat(css.fontSize)*k*.8)-(m.fontBoundingBoxDescent??parseFloat(css.fontSize)*k*.2))/2;
+   c.fillText(t,((row.left+row.right)/2-r.left)*k,baseline);
+  }
+ }
+ return canvas;
+}
+function saveFile(blob,name){const link=document.createElement('a'),url=URL.createObjectURL(blob);link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
+if(typeof document!=='undefined'){
+ const controls=['download-png','download-pdf'].map(id=>document.getElementById(id)), status=document.getElementById('download-status');
+ controls.forEach((button,i)=>button.addEventListener('click',async()=>{
+  if(!document.getElementById('overflow').hidden){status.textContent='Please shorten the name or message before downloading.';return}
+  controls.forEach(b=>b.disabled=true);status.textContent='Preparing your 300 dpi file…';
+  try{
+   const h=Number(document.getElementById('export-size').value),c=await renderCard(h),size=h===105?'A6':'Postcard';
+   let blob;
+   if(i===0)blob=pngDensity(await (await blobOf(c,'image/png')).arrayBuffer());
+   else{const b=addBleed(c,h),jpg=new Uint8Array(await (await blobOf(b,'image/jpeg',.98)).arrayBuffer());blob=pressPdf(jpg,b.width,b.height,h)}
+   saveFile(blob,`Htoo-May-Message-Card-${size}${i===0?'-300dpi.png':'-bleed-cropmarks.pdf'}`);
+   status.textContent='File ready. If it opens in a preview on iPhone, use Share → Save to Files.';
+  }catch(e){console.error(e);status.textContent='The download could not be created. Wait for the artwork to load and try again.'}
+  finally{controls.forEach(b=>b.disabled=false)}
+ }));
+}
+if(typeof module!=='undefined')module.exports={px,pngDensity,pressPdf};
+
+</script>
+</html>
