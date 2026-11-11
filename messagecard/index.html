@@ -6,8 +6,10 @@
 :root{--ivory:#f7f0e3;--wine:#662d3d;--olive:#525b42;--pink:#dab5ae;--gold:#a28957}*{box-sizing:border-box}body{margin:0;background:#eae6dc;color:var(--wine);font-family:Georgia,serif}.stage{display:grid;justify-items:center;gap:18px;padding:32px 12px}.card{container-type:inline-size;width:min(100%,148mm);aspect-ratio:148/105;position:relative;background:var(--ivory);display:grid;grid-template-columns:47% 53%;padding:4.9%;padding:min(4.9vw,27.4px);box-shadow:0 12px 40px #40352226;overflow:hidden}.card:after{content:"";position:absolute;inset:2.5%;border:1px solid #a2895773;pointer-events:none}.photo{margin:0;min-width:0;min-height:0;position:relative;overflow:hidden;background:#dadfcd;border-radius:48% 48% 1px 1px / 29% 29% 1px 1px;outline:1px solid #a28957;outline-offset:3px}.photo svg,.photo img{width:100%;height:100%;display:block;position:absolute;inset:0}.photo img{object-fit:cover}.photo img[hidden]{display:none}.placeholder{position:absolute;bottom:7%;width:100%;text-align:center;color:#fff8e9;font:600 1.65cqw Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}.note{position:relative;text-align:center;padding:3% 2% 0 8%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}.eyebrow,.date,.to{font:600 1.65cqw Arial,sans-serif;letter-spacing:.23em;text-transform:uppercase;color:var(--olive);margin:0}.rule{width:48%;height:1px;background:var(--gold);margin:4% 0 5%;position:relative}.rule:after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);width:1.15cqw;height:1.15cqw;background:var(--pink);border:1px solid var(--gold)}.heading{font-size:7cqw;letter-spacing:-.055em;line-height:1;margin:0 0 5%;font-weight:400}.recipient{font:italic 4.4cqw Georgia,serif;line-height:1.12;margin:2% 0 4%;max-width:100%;overflow-wrap:anywhere}.message{font-size:2.65cqw;line-height:1.43;margin:0;color:#423b34;max-width:95%;overflow-wrap:anywhere}.signature{font-size:3.45cqw;font-style:italic;margin:5% 0 1.5%}.date{font-size:1.45cqw}.controls{width:min(100%,148mm);display:flex;gap:8px;flex-wrap:wrap;font:13px Arial,sans-serif;align-items:end}.controls label{display:grid;gap:5px}.controls input,.controls button{max-width:100%;font:inherit;padding:8px;border:1px solid #ac9f8d;border-radius:4px;background:#fffaf0;color:#382b2b}.controls button{background:var(--wine);color:white;cursor:pointer}.hint{width:100%;margin:0;color:#514b40;font-size:12px}[contenteditable]:focus{outline:1px dashed var(--gold)}
 @page{size:148mm 105mm;margin:0}@media print{html,body{margin:0;background:white}.stage{display:block;padding:0}.controls{display:none}.card{width:148mm;height:105mm;padding:7.25mm;box-shadow:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}[contenteditable]{outline:none!important}}
 .card{display:block;padding:0}.card:after{display:none}.art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.photo{position:absolute;left:var(--photo-left,8%);top:var(--photo-top,11%);width:var(--photo-width,34%);height:var(--photo-height,73%);border-radius:50% 50% 0 0 / 26% 26% 0 0;outline:0;background:none}.photo svg{display:none}.placeholder{bottom:9%;color:white;text-shadow:0 1px 4px #222;font-size:1.4cqw}.note{position:absolute;left:46%;right:6%;top:10%;bottom:10%;padding:0}.heading{font-size:6.4cqw}.message{font-size:2.5cqw;white-space:pre-wrap}.controls textarea{font:inherit;padding:8px;border:1px solid #ac9f8d;border-radius:4px;background:#fffaf0;color:#382b2b;resize:vertical;min-height:65px;width:100%}.controls .message-field{width:100%}.controls button.secondary{background:#fffaf0;color:#382b2b}.warning{color:#662d3d}.warning[hidden]{display:none}@media print{.card{padding:0}}
-.card{--photo-left:4.8%;--photo-top:8.5%;--photo-width:39.5%;--photo-height:77%;}.photo{border-radius:50% 50% 0 0 / 36% 36% 0 0}.photo img{clip-path:polygon(0 0,100% 0,100% 100%,54% 100%,53% 94%,47% 89%,38% 86%,29% 84%,24% 77%,22% 73%,16% 71%,14% 67%,8% 66%,6% 60%,0 58%,0 42%,6% 40%,12% 38%,18% 34%,18% 30%,13% 26%,9% 23%,0 24%)}.note{top:9%;bottom:13%}
-.photo img{clip-path:none}
+.card{--photo-left:4.65%;--photo-top:8.32%;--photo-width:39.7%;--photo-height:77.1%}
+.photo{border-radius:50% 50% 0 0 / 35% 35% 0 0;z-index:1}
+.painted-foreground{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.note{top:9%;bottom:13%;z-index:3}
 </style>
 <main class="stage">
 <article class="card" aria-label="Htoo and May wedding gift card">
@@ -16,6 +18,24 @@
   <img id="wedding-photo" alt="Wedding day photograph" hidden>
   <figcaption id="placeholder" class="placeholder">Your wedding photo here</figcaption>
  </figure>
+ <svg class="painted-foreground" viewBox="0 0 1491 1055" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <defs>
+   <clipPath id="painted-flowers-and-ribbon">
+    <!-- Reveal the original pixels along the foreground silhouettes. -->
+    <path d="M42 271 C64 259 84 261 98 273 C107 261 120 251 135 245 C147 259 139 291 129 303 C149 292 167 304 174 325 C183 343 175 359 159 367 C146 374 135 372 122 369 C129 380 137 391 135 402 C120 395 105 385 97 375 C82 383 72 373 70 358 C56 359 47 360 38 353 C48 333 62 322 74 317 C54 313 38 305 28 290 C28 282 34 277 42 271 Z"/>
+    <path d="M52 449 C57 442 64 437 73 433 C71 450 64 469 50 475 L42 480 L37 471 C38 463 45 455 52 449 Z"/>
+    <path d="M45 606 C59 573 84 527 137 517 C121 529 111 543 100 565 C87 590 81 617 72 640 C63 660 58 678 55 694 C45 666 39 635 45 606 Z"/>
+    <path d="M0 611 C6 588 19 576 32 577 C51 579 77 600 94 625 C107 644 114 664 119 683 L95 698 C91 673 75 649 58 630 C42 613 28 601 21 609 C13 623 16 638 23 655 L10 661 C1 645 0 630 0 611 Z"/>
+    <path d="M45 704 C58 691 76 691 88 683 C103 678 127 680 140 693 C145 676 151 661 164 651 C178 665 187 690 181 711 C197 696 207 701 217 710 C227 721 240 724 244 742 C245 764 228 780 210 781 C216 787 226 800 230 812 C213 817 192 809 181 802 C171 817 156 813 150 798 C140 799 132 808 126 816 C119 824 112 827 106 823 C109 804 106 782 112 767 C90 765 74 751 62 733 C53 726 48 716 45 704 Z"/>
+    <path d="M0 727 C26 743 46 754 66 771 C86 788 97 800 106 824 C77 815 56 805 39 786 C20 768 8 749 0 742 Z"/>
+    <path d="M10 866 C21 841 48 826 72 822 C89 817 111 821 132 830 C155 841 170 861 182 882 C192 898 199 919 208 924 C195 925 185 916 174 903 C160 890 153 880 139 870 C122 859 105 853 91 853 C65 849 43 859 31 878 L20 904 C9 894 5 882 10 866 Z"/>
+    <path d="M97 827 C94 806 95 785 105 766 L112 770 C105 791 103 809 107 831 Z"/>
+    <path d="M188 848 C199 825 217 817 233 815 C250 812 266 819 279 835 C278 820 273 805 257 798 C251 795 247 789 251 784 C262 774 284 783 296 795 C313 808 321 828 317 848 C332 836 344 830 354 840 C366 849 378 859 382 875 C389 887 386 902 377 911 C366 920 354 925 341 923 C350 931 355 943 356 951 C332 953 306 944 296 930 C284 946 273 949 262 935 C253 936 236 948 222 962 C218 968 213 969 209 963 C204 941 212 915 228 895 C221 883 205 869 190 864 C183 861 184 855 188 848 Z"/>
+    <path d="M392 922 C400 900 415 885 429 882 C429 901 416 923 402 928 Z"/>
+   </clipPath>
+  </defs>
+  <image href="./watercolor.webp" width="1491" height="1055" preserveAspectRatio="none" clip-path="url(#painted-flowers-and-ribbon)"/>
+ </svg>
  <section class="note">
   <p class="eyebrow">A little something from us</p><div class="rule"></div>
   <h1 class="heading">Thank you.</h1>
